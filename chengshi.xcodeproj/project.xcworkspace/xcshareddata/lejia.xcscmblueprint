@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "cf62510d-b13a-294a-9095-d442ffad1416++1690",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "cf62510d-b13a-294a-9095-d442ffad1416++1690" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "cf62510d-b13a-294a-9095-d442ffad1416++1690" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E79D303F-97C1-49DF-BF56-B52991D4F356",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "cf62510d-b13a-294a-9095-d442ffad1416++1690" : "lejia\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "lejia",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "lejia.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/192.168.2.100\/svn\/ios",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "cf62510d-b13a-294a-9095-d442ffad1416++1690"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yTZ-Cy-cms" customClass="postViewContent" customModule="chengshi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="351" height="257"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="写跟贴" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzu-AJ-Bwg">
+                    <rect key="frame" x="152" y="0.0" width="48" height="54"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="54" id="TQz-Lo-lwR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgS-zZ-Uks">
+                    <rect key="frame" x="308" y="13" width="28" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="28" id="EaS-lT-VRJ"/>
+                        <constraint firstAttribute="height" constant="28" id="tHs-Ay-Fe4"/>
+                    </constraints>
+                    <state key="normal" image="newsPostYes.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VfL-xS-DCh">
+                    <rect key="frame" x="15" y="13" width="28" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="1Us-Y7-riy"/>
+                        <constraint firstAttribute="width" constant="28" id="oiJ-ud-UeL"/>
+                    </constraints>
+                    <state key="normal" image="newsPostNo.png"/>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WWl-L0-fUx" customClass="XTextView" customModule="chengshi" customModuleProvider="target">
+                    <rect key="frame" x="12" y="54" width="327" height="183"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="hgS-zZ-Uks" firstAttribute="centerY" secondItem="Wzu-AJ-Bwg" secondAttribute="centerY" id="2kk-eE-TKP"/>
+                <constraint firstItem="WWl-L0-fUx" firstAttribute="leading" secondItem="yTZ-Cy-cms" secondAttribute="leading" constant="12" id="3YZ-VC-b2e"/>
+                <constraint firstAttribute="height" constant="160" id="8A0-tc-zAW"/>
+                <constraint firstItem="Wzu-AJ-Bwg" firstAttribute="top" secondItem="yTZ-Cy-cms" secondAttribute="top" id="8Rk-Ei-New"/>
+                <constraint firstItem="VfL-xS-DCh" firstAttribute="centerY" secondItem="Wzu-AJ-Bwg" secondAttribute="centerY" id="EZD-CD-wuQ"/>
+                <constraint firstItem="Wzu-AJ-Bwg" firstAttribute="centerX" secondItem="yTZ-Cy-cms" secondAttribute="centerX" id="SyW-QZ-B8h"/>
+                <constraint firstItem="VfL-xS-DCh" firstAttribute="leading" secondItem="yTZ-Cy-cms" secondAttribute="leading" constant="15" id="gsJ-WI-0Ma"/>
+                <constraint firstAttribute="trailing" secondItem="hgS-zZ-Uks" secondAttribute="trailing" constant="15" id="r3D-9P-iO0"/>
+                <constraint firstAttribute="trailing" secondItem="WWl-L0-fUx" secondAttribute="trailing" constant="12" id="skP-Es-yak"/>
+                <constraint firstItem="WWl-L0-fUx" firstAttribute="top" secondItem="yTZ-Cy-cms" secondAttribute="top" constant="54" id="u14-hL-2ev"/>
+                <constraint firstAttribute="bottom" secondItem="WWl-L0-fUx" secondAttribute="bottom" constant="20" id="ude-yl-Kqu"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="8A0-tc-zAW"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="cancleButton" destination="VfL-xS-DCh" id="afh-3d-9i1"/>
+                <outlet property="ptitle" destination="Wzu-AJ-Bwg" id="zcq-Xh-DEb"/>
+                <outlet property="sendButton" destination="hgS-zZ-Uks" id="OSQ-Ea-gDA"/>
+                <outlet property="textView" destination="WWl-L0-fUx" id="OsV-w8-pgR"/>
+            </connections>
+            <point key="canvasLocation" x="272.5" y="364.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="newsPostNo.png" width="62" height="62"/>
+        <image name="newsPostYes.png" width="62" height="62"/>
+    </resources>
+</document>

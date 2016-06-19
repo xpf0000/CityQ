@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PicNewsIndexView" customModule="chengshi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="359" height="520"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JLX-2o-vBs">
+                    <rect key="frame" x="0.0" y="0.0" width="359" height="520"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="TpV-B2-Ftg"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="quU-UR-kFu"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="JLX-2o-vBs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7x7-NF-UKi"/>
+                <constraint firstItem="JLX-2o-vBs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FZN-8l-P5y"/>
+                <constraint firstAttribute="trailing" secondItem="JLX-2o-vBs" secondAttribute="trailing" id="GG3-w3-Gzt"/>
+                <constraint firstAttribute="bottom" secondItem="JLX-2o-vBs" secondAttribute="bottom" id="kX9-ep-d3z"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="table" destination="JLX-2o-vBs" id="GtK-ja-uON"/>
+            </connections>
+            <point key="canvasLocation" x="207.5" y="300"/>
+        </view>
+    </objects>
+</document>

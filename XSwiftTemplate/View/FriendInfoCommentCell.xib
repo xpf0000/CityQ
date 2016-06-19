@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendInfoCommentCell" rowHeight="97" id="KGk-i7-Jjw" customClass="FriendInfoCommentCell" customModule="chengshi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="408" height="97"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="408" height="96"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kjD-Bo-P8L">
+                        <rect key="frame" x="10" y="10" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="Q9Y-OG-ubO"/>
+                            <constraint firstAttribute="width" constant="32" id="aOY-Ii-aTp"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KT9-IB-grv">
+                        <rect key="frame" x="50" y="13" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.14901960784313725" green="0.45490196078431372" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fC-2k-aCU">
+                        <rect key="frame" x="398" y="13" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="female_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dt0-w2-Pag">
+                        <rect key="frame" x="56" y="4" width="17" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="GE2-7t-ubf"/>
+                            <constraint firstAttribute="width" constant="17" id="zoo-9j-RGb"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="348" translatesAutoresizingMaskIntoConstraints="NO" id="qBr-gI-S8Y">
+                        <rect key="frame" x="50" y="42" width="348" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="KT9-IB-grv" firstAttribute="top" secondItem="kjD-Bo-P8L" secondAttribute="top" constant="3" id="JXp-9F-WOm"/>
+                    <constraint firstItem="qBr-gI-S8Y" firstAttribute="leading" secondItem="KT9-IB-grv" secondAttribute="leading" id="M1G-gw-b5k"/>
+                    <constraint firstItem="Dt0-w2-Pag" firstAttribute="centerY" secondItem="KT9-IB-grv" secondAttribute="centerY" constant="-1" id="P2S-So-P6R"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qBr-gI-S8Y" secondAttribute="bottom" constant="10" id="QPi-2C-9Xq"/>
+                    <constraint firstItem="qBr-gI-S8Y" firstAttribute="top" secondItem="kjD-Bo-P8L" secondAttribute="bottom" id="XbY-jc-S96"/>
+                    <constraint firstItem="kjD-Bo-P8L" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="pp5-5R-49u"/>
+                    <constraint firstItem="0fC-2k-aCU" firstAttribute="top" secondItem="KT9-IB-grv" secondAttribute="top" id="qVP-qX-FvP"/>
+                    <constraint firstItem="KT9-IB-grv" firstAttribute="leading" secondItem="kjD-Bo-P8L" secondAttribute="trailing" constant="8" id="vSv-LE-6kR"/>
+                    <constraint firstItem="Dt0-w2-Pag" firstAttribute="leading" secondItem="KT9-IB-grv" secondAttribute="trailing" constant="6" id="vrL-uC-PhL"/>
+                    <constraint firstItem="kjD-Bo-P8L" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="woe-Vl-ogS"/>
+                    <constraint firstAttribute="trailing" secondItem="qBr-gI-S8Y" secondAttribute="trailing" constant="10" id="zDd-q5-yhz"/>
+                    <constraint firstAttribute="trailing" secondItem="0fC-2k-aCU" secondAttribute="trailing" constant="10" id="ziQ-C8-pNp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="content" destination="qBr-gI-S8Y" id="hhK-G7-0S9"/>
+                <outlet property="headPic" destination="kjD-Bo-P8L" id="HWR-pj-iLa"/>
+                <outlet property="nick" destination="KT9-IB-grv" id="N16-Bu-1Fj"/>
+                <outlet property="sexIcon" destination="Dt0-w2-Pag" id="9Di-sG-7e7"/>
+                <outlet property="time" destination="0fC-2k-aCU" id="Pyh-Pc-LVM"/>
+            </connections>
+            <point key="canvasLocation" x="264" y="260.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="female_icon.png" width="54" height="54"/>
+    </resources>
+</document>

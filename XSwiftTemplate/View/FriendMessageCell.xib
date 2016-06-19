@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendMessageCell" rowHeight="110" id="KGk-i7-Jjw" customClass="FriendMessageCell" customModule="chengshi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="431" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="431" height="109"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e88-7b-pvL">
+                        <rect key="frame" x="361" y="10" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="0Nf-V0-4tK"/>
+                            <constraint firstAttribute="height" constant="60" id="5iR-dC-fvj"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="suC-3O-pAF">
+                        <rect key="frame" x="10" y="10" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="ODm-os-cRk"/>
+                            <constraint firstAttribute="width" constant="50" id="nny-AM-AjY"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cL6-FT-Yyo">
+                        <rect key="frame" x="70" y="12" width="11" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <color key="textColor" red="0.3411764705882353" green="0.41960784313725491" blue="0.58431372549019611" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="261" translatesAutoresizingMaskIntoConstraints="NO" id="6iQ-DW-vCA">
+                        <rect key="frame" x="70" y="36" width="261" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xej-wl-bf2">
+                        <rect key="frame" x="70" y="43" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart_icon02.png" translatesAutoresizingMaskIntoConstraints="NO" id="VjV-y0-7m1">
+                        <rect key="frame" x="70" y="26" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="ZcE-MN-kNd"/>
+                            <constraint firstAttribute="height" constant="20" id="heU-Fm-tCJ"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="suC-3O-pAF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="18F-T7-Q9R"/>
+                    <constraint firstItem="cL6-FT-Yyo" firstAttribute="top" secondItem="suC-3O-pAF" secondAttribute="top" constant="2" id="8CD-De-jMW"/>
+                    <constraint firstItem="e88-7b-pvL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="A00-D3-Huh"/>
+                    <constraint firstItem="6iQ-DW-vCA" firstAttribute="top" secondItem="cL6-FT-Yyo" secondAttribute="bottom" constant="7" id="JsE-WO-5iF"/>
+                    <constraint firstItem="cL6-FT-Yyo" firstAttribute="leading" secondItem="suC-3O-pAF" secondAttribute="trailing" constant="10" id="XrD-Hq-VJz"/>
+                    <constraint firstItem="VjV-y0-7m1" firstAttribute="centerY" secondItem="6iQ-DW-vCA" secondAttribute="centerY" id="ZGJ-90-3VG"/>
+                    <constraint firstItem="VjV-y0-7m1" firstAttribute="leading" secondItem="6iQ-DW-vCA" secondAttribute="leading" id="ckC-nm-7vq"/>
+                    <constraint firstItem="Xej-wl-bf2" firstAttribute="leading" secondItem="cL6-FT-Yyo" secondAttribute="leading" id="gIc-2N-OHi"/>
+                    <constraint firstItem="e88-7b-pvL" firstAttribute="leading" secondItem="6iQ-DW-vCA" secondAttribute="trailing" constant="30" id="gkW-EX-fMX"/>
+                    <constraint firstItem="Xej-wl-bf2" firstAttribute="top" secondItem="6iQ-DW-vCA" secondAttribute="bottom" constant="7" id="kIZ-Ta-sKw"/>
+                    <constraint firstAttribute="trailing" secondItem="e88-7b-pvL" secondAttribute="trailing" constant="10" id="mYZ-rS-RHc"/>
+                    <constraint firstItem="suC-3O-pAF" firstAttribute="top" secondItem="e88-7b-pvL" secondAttribute="top" id="t19-Bk-1ey"/>
+                    <constraint firstItem="6iQ-DW-vCA" firstAttribute="leading" secondItem="cL6-FT-Yyo" secondAttribute="leading" id="x4A-Ba-Ifg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="content" destination="6iQ-DW-vCA" id="quR-eq-mD8"/>
+                <outlet property="head" destination="suC-3O-pAF" id="n5n-Oh-W0m"/>
+                <outlet property="heatIcon" destination="VjV-y0-7m1" id="jr7-Ik-EK3"/>
+                <outlet property="nick" destination="cL6-FT-Yyo" id="sqq-zh-Kee"/>
+                <outlet property="pic" destination="e88-7b-pvL" id="M0y-7h-zcZ"/>
+                <outlet property="time" destination="Xej-wl-bf2" id="9X9-wU-0aj"/>
+            </connections>
+            <point key="canvasLocation" x="256.5" y="221"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="heart_icon02.png" width="68" height="68"/>
+    </resources>
+</document>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NoNewWork" customModule="chengshi" customModuleProvider="target">
+            <connections>
+                <outlet property="button" destination="k6H-fM-UuD" id="Dmg-Rp-5g1"/>
+                <outlet property="icon" destination="r3O-lI-Oyu" id="1gs-kK-lEJ"/>
+                <outlet property="iconH" destination="dve-KS-Ppv" id="Isl-He-5pT"/>
+                <outlet property="iconW" destination="IA2-er-vN4" id="AWs-hw-gdn"/>
+                <outlet property="label" destination="SJJ-hB-Blr" id="G7n-hU-Ogm"/>
+                <outlet property="waitH" destination="QId-IX-yWV" id="Kde-IK-z3y"/>
+                <outlet property="waitW" destination="FyT-dk-YDd" id="E9y-kE-MxI"/>
+                <outlet property="waiting" destination="bkp-Mn-k10" id="Vni-X2-USa"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="353" height="427"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="网络无法连接" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJJ-hB-Blr">
+                    <rect key="frame" x="129" y="204" width="96" height="20"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                    <color key="textColor" red="0.6470588235294118" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6H-fM-UuD">
+                    <rect key="frame" x="30" y="258" width="293" height="46"/>
+                    <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="12" maxX="0.0" maxY="12"/>
+                    <state key="normal" title="重新尝试">
+                        <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="reTry:" destination="-1" eventType="touchUpInside" id="6H8-l0-fZY"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noNet1.png" translatesAutoresizingMaskIntoConstraints="NO" id="r3O-lI-Oyu">
+                    <rect key="frame" x="126" y="70" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="IA2-er-vN4"/>
+                        <constraint firstAttribute="height" constant="100" id="dve-KS-Ppv"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkp-Mn-k10" customClass="NVActivityIndicatorView" customModule="chengshi" customModuleProvider="target">
+                    <rect key="frame" x="137" y="174" width="80" height="80"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="FyT-dk-YDd"/>
+                        <constraint firstAttribute="height" constant="80" id="QId-IX-yWV"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="bkp-Mn-k10" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0ks-ef-3mh"/>
+                <constraint firstItem="SJJ-hB-Blr" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="V55-VL-013"/>
+                <constraint firstItem="r3O-lI-Oyu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Wii-br-BkA"/>
+                <constraint firstItem="SJJ-hB-Blr" firstAttribute="top" secondItem="r3O-lI-Oyu" secondAttribute="bottom" constant="34" id="X4Y-Im-4pN"/>
+                <constraint firstAttribute="trailing" secondItem="k6H-fM-UuD" secondAttribute="trailing" constant="30" id="YEA-MI-Apu"/>
+                <constraint firstItem="bkp-Mn-k10" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="deS-um-4Wb"/>
+                <constraint firstItem="k6H-fM-UuD" firstAttribute="top" secondItem="SJJ-hB-Blr" secondAttribute="bottom" constant="34" id="neK-e4-9bn"/>
+                <constraint firstItem="SJJ-hB-Blr" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="whD-EH-1sZ"/>
+                <constraint firstItem="k6H-fM-UuD" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="z5j-fa-ICC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="38.5" y="386.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="noNet1.png" width="300" height="300"/>
+    </resources>
+</document>

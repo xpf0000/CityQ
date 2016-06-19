@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="HYQH.ttf">
+            <string>HYQiHei-EZJ</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FriendReplyView" customModule="chengshi" customModuleProvider="target">
+            <connections>
+                <outlet property="likedH" destination="7ao-v6-3vd" id="5gc-BT-tG3"/>
+                <outlet property="likedPeople" destination="GnX-TH-pq7" id="tP7-VU-SE5"/>
+                <outlet property="line" destination="gy4-WV-o1p" id="eNx-v8-Zwi"/>
+                <outlet property="lineH" destination="3ps-Wg-pbE" id="yE4-kd-fcr"/>
+                <outlet property="replyTable" destination="vrE-HM-I3g" id="a1v-Dz-ipP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="297" height="389"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMd-bQ-X1V">
+                    <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unlikedIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="pCs-bi-A4r">
+                            <rect key="frame" x="10" y="10" width="18" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="18" id="KqI-xD-JpD"/>
+                                <constraint firstAttribute="height" constant="18" id="wXT-A5-r9N"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gy4-WV-o1p">
+                            <rect key="frame" x="0.0" y="39" width="297" height="1"/>
+                            <color key="backgroundColor" red="0.7843137255" green="0.7843137255" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="3ps-Wg-pbE"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="249" translatesAutoresizingMaskIntoConstraints="NO" id="GnX-TH-pq7">
+                            <rect key="frame" x="36" y="13" width="251" height="0.0"/>
+                            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" name="HYQiHei-EZJ" family="HYQiHei" pointSize="13"/>
+                            <color key="textColor" red="0.14901960784313725" green="0.45490196078431372" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="gy4-WV-o1p" firstAttribute="leading" secondItem="dMd-bQ-X1V" secondAttribute="leading" id="4Zi-p1-QOv"/>
+                        <constraint firstItem="pCs-bi-A4r" firstAttribute="top" secondItem="dMd-bQ-X1V" secondAttribute="top" constant="10" id="6dr-hw-x9m"/>
+                        <constraint firstAttribute="height" constant="40" id="7ao-v6-3vd"/>
+                        <constraint firstAttribute="bottom" secondItem="gy4-WV-o1p" secondAttribute="bottom" id="8Wg-Fm-6iL"/>
+                        <constraint firstItem="GnX-TH-pq7" firstAttribute="leading" secondItem="pCs-bi-A4r" secondAttribute="trailing" constant="8" id="BIY-n2-US8"/>
+                        <constraint firstAttribute="trailing" secondItem="gy4-WV-o1p" secondAttribute="trailing" id="EuS-3t-Zaa"/>
+                        <constraint firstAttribute="trailing" secondItem="GnX-TH-pq7" secondAttribute="trailing" constant="10" id="JIF-A7-Woy"/>
+                        <constraint firstItem="pCs-bi-A4r" firstAttribute="leading" secondItem="dMd-bQ-X1V" secondAttribute="leading" constant="10" id="YfH-sx-34o"/>
+                        <constraint firstItem="GnX-TH-pq7" firstAttribute="top" secondItem="pCs-bi-A4r" secondAttribute="top" constant="3" id="b2c-Jy-at7"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vrE-HM-I3g">
+                    <rect key="frame" x="0.0" y="45" width="297" height="339"/>
+                    <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Xj3-Xw-E6W"/>
+                        <outlet property="delegate" destination="-1" id="QhJ-5p-dRd"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="vrE-HM-I3g" secondAttribute="trailing" id="3cK-pB-Xtm"/>
+                <constraint firstAttribute="bottom" secondItem="vrE-HM-I3g" secondAttribute="bottom" constant="5" id="Hmc-nw-Tig"/>
+                <constraint firstItem="vrE-HM-I3g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KMs-C3-1Sl"/>
+                <constraint firstItem="dMd-bQ-X1V" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="UbN-Cg-Hjk"/>
+                <constraint firstItem="vrE-HM-I3g" firstAttribute="top" secondItem="dMd-bQ-X1V" secondAttribute="bottom" constant="5" id="lei-bX-e9Y"/>
+                <constraint firstItem="dMd-bQ-X1V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wRt-sr-MdY"/>
+                <constraint firstAttribute="trailing" secondItem="dMd-bQ-X1V" secondAttribute="trailing" id="xyf-51-tzN"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="176.5" y="186.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="unlikedIcon.png" width="51" height="51"/>
+    </resources>
+</document>

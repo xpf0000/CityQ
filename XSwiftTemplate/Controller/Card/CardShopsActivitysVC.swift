@@ -58,15 +58,12 @@ class CardShopsActivitysVC: UIViewController,UITableViewDelegate {
         
         self.http()
         
-        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
-        
-        
+ 
     }
     
     

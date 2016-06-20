@@ -46,7 +46,7 @@ class PicNewsIndexView: UIView,UITableViewDelegate,UITableViewDataSource {
     
     func show()
     {
-        httpHandle.url="http://101.201.169.38/api/Public/Found/?service=News.getList&category_id=\(nid)&page=[page]&perNumber=20"
+        httpHandle.url=APPURL+"Public/Found/?service=News.getList&category_id=\(nid)&page=[page]&perNumber=20"
         httpHandle.pageStr="[page]"
         httpHandle.scrollView=self.table
         httpHandle.replace=["descrip":"description"]

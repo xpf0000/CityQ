@@ -41,7 +41,7 @@ class DiscountVC: XViewController ,UITableViewDataSource,UITableViewDelegate{
     {
         self.classArr.removeAll(keepCapacity: false)
         
-        let url="http://101.201.169.38/api/Public/Found/?service=Discount.getCategory"
+        let url=APPURL+"Public/Found/?service=Discount.getCategory"
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             
@@ -71,7 +71,7 @@ class DiscountVC: XViewController ,UITableViewDataSource,UITableViewDelegate{
         self.table.tableFooterView=view1
         self.table.tableHeaderView=view1
         
-        httpHandle.url="http://101.201.169.38/api/Public/Found/?service=Discount.getHot&page=[page]&perNumber=20"
+        httpHandle.url=APPURL+"Public/Found/?service=Discount.getHot&page=[page]&perNumber=20"
         httpHandle.pageStr="[page]"
         httpHandle.scrollView=self.table
         httpHandle.replace=nil

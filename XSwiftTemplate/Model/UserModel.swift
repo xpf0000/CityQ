@@ -50,7 +50,7 @@ class UserModel: Reflect {
     {
         if uid == "" || username == "" || houseid == "" {return}
         
-        let url="http://101.201.169.38/api/Public/Found/?service=User.getHouseList"
+        let url=APPURL+"Public/Found/?service=User.getHouseList"
         let body = "uid=\(uid)&username=\(username)"
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
             

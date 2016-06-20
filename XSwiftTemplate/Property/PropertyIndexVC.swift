@@ -32,7 +32,7 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
     func getMsgCount()
     {
         
-        let url = "http://101.201.169.38/api/Public/Found/?service=Wuye.getUserNewsCount&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
+        let url = APPURL+"Public/Found/?service=Wuye.getUserNewsCount&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](o) -> Void in
            
@@ -57,7 +57,7 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
     func getBanner()
     {
 
-        let url="http://101.201.169.38/api/Public/Found/?service=News.getGuanggao&typeid=93"
+        let url=APPURL+"Public/Found/?service=News.getGuanggao&typeid=93"
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             

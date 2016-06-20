@@ -28,7 +28,7 @@ class Preloading: NSObject{
     func getWelcomePic()
     {
         
-        let url="http://101.201.169.38/api/Public/Found/?service=News.getQidong"
+        let url=APPURL+"Public/Found/?service=News.getQidong"
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             
@@ -82,7 +82,7 @@ class Preloading: NSObject{
     func getQuanCategory()
     {
         DataCache.Share().quanCategory.removeAll(keepCapacity: false)
-        let url="http://101.201.169.38/api/Public/Found/?service=Quan.getCategory"
+        let url=APPURL+"Public/Found/?service=Quan.getCategory"
         
         XHttpPool.requestJsonAutoConnect(url, body: nil, method: .GET) { (o) -> Void in
             
@@ -177,7 +177,7 @@ class Preloading: NSObject{
     
     func getAdvImage()
     {
-        let url = "http://101.201.169.38/api/Public/Found/?service=News.getGuanggao&typeid=94"
+        let url = APPURL+"Public/Found/?service=News.getGuanggao&typeid=94"
         var image:UIImage?
         
         let path:NSString = NSString(string: XImageSavePath)

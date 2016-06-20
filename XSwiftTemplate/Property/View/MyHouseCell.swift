@@ -38,7 +38,7 @@ class MyHouseCell: UITableViewCell {
        
         self.viewController?.view.showWaiting()
         
-        let url="http://101.201.169.38/api/Public/Found/?service=User.delHouse"
+        let url=APPURL+"Public/Found/?service=User.delHouse"
         let body="uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&id=\(model.id)"
 
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in
@@ -67,7 +67,7 @@ class MyHouseCell: UITableViewCell {
         
         self.viewController?.view.showWaiting()
         
-        let url="http://101.201.169.38/api/Public/Found/?service=User.updateHouse"
+        let url=APPURL+"Public/Found/?service=User.updateHouse"
         let body="uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&houseid=\(model.houseid)&fanghaoid=\(model.fanghaoid)"
 
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in

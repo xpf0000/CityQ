@@ -18,8 +18,8 @@ class CardShopsActivitysCell: UITableViewCell {
     {
         didSet
         {
-            ctitle.text = "1.充值100元送话费20元"
-            time.text = "2016-06-11"
+            ctitle.text = model.title
+            time.text = model.create_time
         }
     }
     

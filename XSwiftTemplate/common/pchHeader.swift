@@ -151,4 +151,4 @@ func SetUMessageTag()
 
 var ContentMaxHeight:CGFloat = 0.0
 
-let apiUrl:String="http://192.168.2.28:8080/app.oa.api"
+let APPURL="http://123.57.162.97/hfapi/"

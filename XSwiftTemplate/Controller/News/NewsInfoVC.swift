@@ -52,7 +52,7 @@ class NewsInfoVC: XViewController {
             
             self?.cacheComment = txt as! String
             
-            let url = "http://101.201.169.38/api/Public/Found/?service=Comment.insert"
+            let url = APPURL+"Public/Found/?service=Comment.insert"
             let body="did=\(self!.model.id)&username="+DataCache.Share().userModel.username+"&content="+self!.cacheComment
             
             XHttpPool.requestJson(url, body: body, method: .POST, block: { [weak self](o) -> Void in
@@ -119,7 +119,7 @@ class NewsInfoVC: XViewController {
     {
         self.cbutton?.hidden = true
         
-        let url="http://101.201.169.38/api/Public/Found/?service=News.getArticle&id=\(model.id)"
+        let url=APPURL+"Public/Found/?service=News.getArticle&id=\(model.id)"
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](o) -> Void in
             
@@ -237,14 +237,14 @@ class NewsInfoVC: XViewController {
         var body=""
         if(sender.selected)
         {
-            url="http://101.201.169.38/api/Public/Found/?service=News.collectAdd"
+            url=APPURL+"Public/Found/?service=News.collectAdd"
             body="did="+model.id+"&username="+DataCache.Share().userModel.username
             DataCache.Share().newsCollect.dict[model.id] = true
             
         }
         else
         {
-            url="http://101.201.169.38/api/Public/Found/?service=News.collectDel"
+            url=APPURL+"Public/Found/?service=News.collectDel"
             body="id="+model.id+"&username="+DataCache.Share().userModel.username
             
             DataCache.Share().newsCollect.dict.removeValueForKey(model.id)

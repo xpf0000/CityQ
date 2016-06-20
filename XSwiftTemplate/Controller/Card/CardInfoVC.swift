@@ -10,6 +10,8 @@ import UIKit
 
 class CardInfoVC: UITableViewController {
 
+    @IBOutlet var imgBG: SkyRadiusView!
+    
     @IBOutlet var table: UITableView!
     
     @IBOutlet var img: UIImageView!
@@ -26,20 +28,113 @@ class CardInfoVC: UITableViewController {
     
     @IBOutlet var userContent: UILabel!
     
-    var harr:[CGFloat] = [133,42,42,42,12,42,128,100]
+    @IBOutlet var btn: UIButton!
+    
+    @IBOutlet var txtBG: SkyRadiusView!
+    
+    var harr:[CGFloat] = [133*screenFlag,42*screenFlag,42*screenFlag,42*screenFlag,12*screenFlag,42*screenFlag,128,100]
+    
+    private var model:CardModel!
+    {
+        didSet
+        {
+            show()
+        }
+    }
+    
+    var id = "0"
+    {
+        didSet
+        {
+            http()
+        }
+    }
     
     func http()
     {
-        let url = ""
+        let url = APPURL+"Public/Found/?service=Hyk.getArticle&username=\(DataCache.Share().userModel.username)&id=\(id)"
         
+        XHttpPool.requestJson(url, body: nil, method: .POST) { [weak self](json) in
+            
+            if let item = json?["data"]["info"][0]
+            {
+                self?.model = CardModel.parse(json: item, replace: nil)
+            }
+            
+        }
+        
+    }
+    
+    func show()
+    {
+        imgBG.backgroundColor = model.color.color
+        imgBG.setNeedsDisplay()
+        
+        name.text = model.shopname
+        rightLabel.text = model.type
+        img.url = model.logo
+        
+        phone.text = "电话: "+model.tel
+        address.text = "地址: "+model.address
+        
+        let (r,g,b) = model.color.color!.getRGB()
+        
+        if r<100 && g<100 && b<100
+        {
+            txtBG.backgroundColor = UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 0.75)
+        }
+        else
+        {
+            txtBG.backgroundColor = UIColor(red: 65.0/255.0, green: 65.0/255.0, blue: 65.0/255.0, alpha: 0.75)
+        }
+        txtBG.setNeedsDisplay()
+        
+        let attributedString1=NSMutableAttributedString(string: model.info)
+        let paragraphStyle1=NSMutableParagraphStyle()
+        paragraphStyle1.lineSpacing=5.0
+        paragraphStyle1.paragraphSpacing=10.0
+        paragraphStyle1.firstLineHeadIndent=10.0
+        attributedString1.addAttributes([NSParagraphStyleAttributeName:paragraphStyle1,NSFontAttributeName:UIFont.systemFontOfSize(18)], range: NSMakeRange(0, (model.info as NSString).length))
+        
+        userContent.attributedText = attributedString1
+        userContent.layoutIfNeeded()
+        
+        let size = userContent.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        
+        harr[6] = size.height + 16.0
+        
+        btn.hidden = model.orlq == 1
+        
+        table.reloadData()
+        
+    }
+    
+    func doLingqu()
+    {
+        if !self.checkIsLogin()
+        {
+            return
+        }
         
         
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        img.layer.cornerRadius = img.frame.size.width * 0.5
+        
+    }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "会员卡详情"
         self.addBackButton()
+        
+        img.layer.masksToBounds = true
+        leftLabel.hidden = true
         
         let view1=UIView()
         view1.backgroundColor=UIColor.clearColor()
@@ -54,12 +149,12 @@ class CardInfoVC: UITableViewController {
         }
         
         userContent.preferredMaxLayoutWidth = swidth-30
+    
         
-        let h = userContent.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height+16
-        
-        harr[6] = h
-        
-        self.table.reloadData()
+        btn.click {[weak self,weak btn] (b) in
+            
+            self?.doLingqu()
+        }
         
     }
     
@@ -116,7 +211,9 @@ class CardInfoVC: UITableViewController {
         
         if indexPath.row == 1
         {
-            let vc = "CardShopsInfoVC".VC("Card")
+            let vc = "CardShopsInfoVC".VC("Card") as! CardShopsInfoVC
+            vc.id = model.shopid
+            vc.title = model.shopname
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         }

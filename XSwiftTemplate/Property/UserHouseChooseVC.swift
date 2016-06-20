@@ -44,7 +44,7 @@ class UserHouseChooseVC: UIViewController,UITableViewDataSource,UITableViewDeleg
         XWaitingView.Share().black()
         self.view.showWaiting()
         
-        let url="http://101.201.169.38/api/Public/Found/?service=Common.getHouseList&pid=\(pid)&type=\(type)"
+        let url=APPURL+"Public/Found/?service=Common.getHouseList&pid=\(pid)&type=\(type)"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) {[weak self] (o) -> Void in
             

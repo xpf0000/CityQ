@@ -19,7 +19,7 @@ class PhoneSearchVC: XViewController ,UISearchBarDelegate{
         didSet
         {
             searchbar.text = searchText
-            let url="http://101.201.169.38/api/Public/Found/?service=Tel.search"
+            let url=APPURL+"Public/Found/?service=Tel.search"
             let body = "key="+searchText
             XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
                 

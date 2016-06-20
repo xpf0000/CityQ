@@ -57,7 +57,7 @@ class PicNewsInfoVC: XViewController,UIScrollViewDelegate,UITextViewDelegate {
             if self==nil {return}
             self?.cacheComment = txt as! String
             
-            let url = "http://101.201.169.38/api/Public/Found/?service=Comment.insert"
+            let url = APPURL+"Public/Found/?service=Comment.insert"
             let body="did=\(self!.model.id)&username="+DataCache.Share().userModel.username+"&content="+self!.cacheComment
             
             XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
@@ -129,7 +129,7 @@ class PicNewsInfoVC: XViewController,UIScrollViewDelegate,UITextViewDelegate {
     
     func http()
     {
-        let url="http://101.201.169.38/api/Public/Found/?service=News.getPicArticle&id=\(model.id)"
+        let url=APPURL+"Public/Found/?service=News.getPicArticle&id=\(model.id)"
         
         XHttpPool.requestJson(url, body: nil, method: .GET) {[weak self] (o) -> Void in
             

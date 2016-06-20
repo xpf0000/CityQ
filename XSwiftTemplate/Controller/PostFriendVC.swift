@@ -358,7 +358,7 @@ class PostFriendVC: XViewController,UICollectionViewDataSource,UICollectionViewD
             
         }
         
-        let url="http://101.201.169.38/api/Public/Found/?service=Quan.addQuan"
+        let url=APPURL+"Public/Found/?service=Quan.addQuan"
         
         let cid = self.choosedB == nil ? "68" : self.choosedB!.model.id
         

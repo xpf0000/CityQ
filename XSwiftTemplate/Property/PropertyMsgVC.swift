@@ -22,7 +22,7 @@ class PropertyMsgVC: UIViewController {
         self.view.addSubview(table)
         
         
-        table.httpHandle.url = "http://101.201.169.38/api/Public/Found/?service=Wuye.getUserNewsList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
+        table.httpHandle.url = APPURL+"Public/Found/?service=Wuye.getUserNewsList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
         
         self.table.httpHandle.pageStr = "[page]"
         self.table.httpHandle.keys = ["data","info"]

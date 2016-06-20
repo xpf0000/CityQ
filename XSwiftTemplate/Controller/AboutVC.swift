@@ -52,7 +52,7 @@ class AboutVC: UIViewController {
     
     func http()
     {
-        let url="http://101.201.169.38/api/Public/Found/?service=News.getAbout"
+        let url=APPURL+"Public/Found/?service=News.getAbout"
         XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](o) -> Void in
             
             if(o?["data"]["info"][0]["value"] != nil)

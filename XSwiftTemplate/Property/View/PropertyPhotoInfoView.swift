@@ -91,7 +91,7 @@ class PropertyPhotoInfoView: UIView,UITableViewDelegate,UITableViewDataSource {
     
     func show()
     {
-        httpHandle.url = "http://101.201.169.38/api/Public/Found/?service=Wuye.getFeedBackList&fid=\(model.id)"
+        httpHandle.url = APPURL+"Public/Found/?service=Wuye.getFeedBackList&fid=\(model.id)"
         httpHandle.handle()
     }
     

@@ -117,14 +117,14 @@ class DataCache: NSObject {
     
     func getUserInfo()
     {
-        var url="http://101.201.169.38/api/Public/Found/?service=User.login"
+        var url=APPURL+"Public/Found/?service=User.login"
         let p = userModel.password
         let u = userModel.mobile
         var body="password="+p+"&mobile="+u
         
         if(userModel.openid != "")
         {
-            url="http://101.201.169.38/api/Public/Found/?service=User.openLogin"
+            url=APPURL+"Public/Found/?service=User.openLogin"
             body="openid="+userModel.openid
         }
 

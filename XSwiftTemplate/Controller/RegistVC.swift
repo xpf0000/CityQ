@@ -54,7 +54,7 @@ class RegistVC: UITableViewController,UITextFieldDelegate {
         let nick=self.nickName.text!.trim()
         let pass = self.pass.text!.trim()
         
-        let url="http://101.201.169.38/api/Public/Found/?service=User.register"
+        let url=APPURL+"Public/Found/?service=User.register"
         let body="mobile="+registPhone+"&nickname="+nick+"&password="+pass+"&code="+code
         
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in

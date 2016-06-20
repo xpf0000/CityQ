@@ -37,7 +37,7 @@ class PropertyNoticVC: UIViewController,UITableViewDataSource,UITableViewDelegat
     
     func http()
     {
-        let url="http://101.201.169.38/api/Public/Found/?service=Wuye.getNewsList"
+        let url=APPURL+"Public/Found/?service=Wuye.getNewsList"
         let body="uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&houseid=\(DataCache.Share().userModel.house.houseid)"
         
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in

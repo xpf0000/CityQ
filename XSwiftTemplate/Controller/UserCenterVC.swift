@@ -97,7 +97,7 @@ class UserCenterVC: UITableViewController {
         let button=UIButton(type: UIButtonType.Custom)
         button.frame=CGRectMake(0, 0, 40, 21);
         button.setTitle("设置", forState: .Normal)
-        button.titleLabel?.font = UIFont.systemFontOfSize(15.0)
+        //button.titleLabel?.font = UIFont.systemFontOfSize(18.0)
         button.showsTouchWhenHighlighted = true
         button.exclusiveTouch = true
         let rightItem=UIBarButtonItem(customView: button)

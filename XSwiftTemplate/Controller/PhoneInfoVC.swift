@@ -72,7 +72,7 @@ class PhoneInfoVC: XViewController,UIActionSheetDelegate {
     
     func http()
     {
-        let url="http://101.201.169.38/api/Public/Found/?service=Tel.getArticle&id=\(model.id)"
+        let url=APPURL+"Public/Found/?service=Tel.getArticle&id=\(model.id)"
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             
             if(o?["data"].dictionaryValue.count > 0)

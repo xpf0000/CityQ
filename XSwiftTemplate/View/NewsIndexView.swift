@@ -58,8 +58,12 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         
         let view1=UIView()
         view1.backgroundColor=UIColor.clearColor()
-        self.tableFooterView=view1
         self.tableHeaderView=view1
+        
+        let footer=UIView()
+        footer.frame = CGRectMake(0, 0, swidth, 49.0)
+        footer.backgroundColor=UIColor.clearColor()
+        self.tableFooterView=footer
         
         self.separatorInset=UIEdgeInsetsZero
         if(IOS_Version>=8.0)
@@ -150,7 +154,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
     {
         self.bannerArr.removeAll(keepCapacity: false)
         
-        let url = "http://123.57.162.97/hfapi/Public/Found/?service=News.getGuanggao&typeid="+bannerID
+        let url = APPURL+"Public/Found/?service=News.getGuanggao&typeid="+bannerID
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             
@@ -219,7 +223,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         {
             if(self.bannerArr.count > 0)
             {
-               return swidth * 433.0 / 750.0
+               return swidth * 433.0 / 750.0 * screenFlag
             }
             else
             {
@@ -235,16 +239,16 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
             {
                 if bannerID == "98"
                 {
-                    return 170.0
+                    return 170.0 * screenFlag
                 }
                 else
                 {
-                    return 166.0
+                    return 166.0 * screenFlag
                 }
             }
             else
             {
-                return 110.0
+                return 110.0 * screenFlag
             }
             
         }
@@ -331,7 +335,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                     
                     (cell as! NewsListCell).setHasSee()
                     
-                    let url = "http://101.201.169.38/api/Public/Found/?service=News.addView&id="+vc.model.id
+                    let url = APPURL+"Public/Found/?service=News.addView&id="+vc.model.id
                     
                     XHttpPool.requestJson(url, body: nil, method: .GET, block: {[weak self] (o) -> Void in
                         

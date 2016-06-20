@@ -84,7 +84,7 @@ class ChooseHouseVC: XViewController,UITableViewDelegate,UITableViewDataSource {
         table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         
-        httpHandle.url = "http://101.201.169.38/api/Public/Found/?service=User.getHouseList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
+        httpHandle.url = APPURL+"Public/Found/?service=User.getHouseList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
         httpHandle.pageStr = "[page]"
         httpHandle.keys = ["data","info"]
         httpHandle.modelClass = MyHouseModel.self

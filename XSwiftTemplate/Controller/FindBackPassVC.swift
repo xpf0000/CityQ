@@ -46,7 +46,7 @@ class FindBackPassVC: UITableViewController,UITextFieldDelegate {
         let pass = self.pass.text!.trim()
         let code = self.code.text!.trim()
         
-        let url="http://101.201.169.38/api/Public/Found/?service=User.updatePass"
+        let url=APPURL+"Public/Found/?service=User.updatePass"
         let body="mobile="+DataCache.Share().userModel.mobile+"&password="+pass+"&code="+code
         let msg="密码重置成功"
         

@@ -367,12 +367,15 @@
                     <size key="freeformSize" width="600" height="700"/>
                     <connections>
                         <outlet property="address" destination="zZZ-C2-uCE" id="wZB-wv-ksh"/>
+                        <outlet property="btn" destination="PIB-r7-WYd" id="9Rq-CK-cbe"/>
                         <outlet property="img" destination="ni4-ZK-jRW" id="xUA-VJ-sBG"/>
+                        <outlet property="imgBG" destination="JvW-uz-3c9" id="oeE-vm-0TQ"/>
                         <outlet property="leftLabel" destination="33l-KX-tFF" id="g8s-EY-fAZ"/>
                         <outlet property="name" destination="e3U-P2-0HA" id="iFa-GC-7Nj"/>
                         <outlet property="phone" destination="lTd-hL-ZBw" id="AY9-dU-Cgp"/>
                         <outlet property="rightLabel" destination="o7k-l0-eOY" id="4km-wH-Art"/>
                         <outlet property="table" destination="iqD-K2-2s8" id="pdf-Iz-rYL"/>
+                        <outlet property="txtBG" destination="D0P-22-vpB" id="liK-gE-uSe"/>
                         <outlet property="userContent" destination="jAg-pt-zVl" id="eDo-Gw-LPU"/>
                     </connections>
                 </tableViewController>
@@ -1458,20 +1461,80 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="127"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iot-Nc-GrJ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="127"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="sWI-qH-zoL" id="gGu-MP-YIF"/>
-                                                    </connections>
-                                                </webView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="570" translatesAutoresizingMaskIntoConstraints="NO" id="2Wm-w7-ZKG">
+                                                    <rect key="frame" x="15" y="8" width="570" height="111"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="1">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="、此卡可享受会员优惠待遇；">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="17" name="PingFangSC-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content">
+2</string>
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="、此卡不得与其它优惠同时使用；">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="17" name="PingFangSC-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content">
+3</string>
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="、此卡一经售出，概不兑现。如有遗失，请及时挂失；">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="17" name="PingFangSC-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment>
+                                                            <string key="content">
+4</string>
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                        <fragment content="、本店保留此卡法律范围内的最终解释权。">
+                                                            <attributes>
+                                                                <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <font key="NSFont" size="17" name="PingFangSC-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="iot-Nc-GrJ" firstAttribute="top" secondItem="wPx-WK-yWb" secondAttribute="top" id="2E7-0j-hj7"/>
-                                                <constraint firstItem="iot-Nc-GrJ" firstAttribute="leading" secondItem="wPx-WK-yWb" secondAttribute="leading" id="J5Y-6M-qRL"/>
-                                                <constraint firstAttribute="trailing" secondItem="iot-Nc-GrJ" secondAttribute="trailing" id="d5R-Ye-23C"/>
-                                                <constraint firstAttribute="bottom" secondItem="iot-Nc-GrJ" secondAttribute="bottom" id="gyc-8r-GYx"/>
+                                                <constraint firstItem="2Wm-w7-ZKG" firstAttribute="leading" secondItem="wPx-WK-yWb" secondAttribute="leading" constant="15" id="C2s-iB-MKm"/>
+                                                <constraint firstAttribute="trailing" secondItem="2Wm-w7-ZKG" secondAttribute="trailing" constant="15" id="f4F-B4-A7v"/>
+                                                <constraint firstItem="2Wm-w7-ZKG" firstAttribute="top" secondItem="wPx-WK-yWb" secondAttribute="top" constant="8" id="iPJ-gi-Lwf"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1500,9 +1563,9 @@
                     <connections>
                         <outlet property="address" destination="W34-7y-vQk" id="tIW-8o-CGf"/>
                         <outlet property="img" destination="2uu-Xv-Yv2" id="cbo-WE-kNF"/>
+                        <outlet property="info" destination="2Wm-w7-ZKG" id="uSF-AL-3Eb"/>
                         <outlet property="phone" destination="SKh-2o-h2D" id="cyB-9e-IZn"/>
                         <outlet property="table" destination="ZfZ-xT-rzK" id="NVs-i3-gMs"/>
-                        <outlet property="web" destination="iot-Nc-GrJ" id="ofh-V4-JNZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etP-kE-Yjh" userLabel="First Responder" sceneMemberID="firstResponder"/>

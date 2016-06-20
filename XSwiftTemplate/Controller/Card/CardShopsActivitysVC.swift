@@ -12,6 +12,8 @@ class CardShopsActivitysVC: UIViewController,UITableViewDelegate {
     
     let table = XTableView(frame: CGRectMake(0, 0, swidth, sheight-64))
     
+    var id = ""
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -25,6 +27,17 @@ class CardShopsActivitysVC: UIViewController,UITableViewDelegate {
         self.title = "优惠活动"
     }
     
+    func http()
+    {
+        let url = APPURL+"Public/Found/?service=Hyk.getShopHD&id=\(id)"
+        
+        table.httpHandle.reSet()
+        
+        table.httpHandle.url = url
+        
+        table.httpHandle.handle()
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,14 +51,12 @@ class CardShopsActivitysVC: UIViewController,UITableViewDelegate {
         table.CellIdentifier = "CardShopsActivitysCell"
         table.cellHeight = 50
         
-        for _ in 0...3
-        {
-            table.httpHandle.listArr.append(CardActivityModel())
-        }
-        
-        table.reloadData()
-        
+        table.setHandle("", pageStr: "[page]", keys: ["data","info"], model: CardActivityModel.self, CellIdentifier: "CardShopsActivitysCell")
+        table.httpHandle.pageSize = 10000
+        table.httpHandle.replace = ["descrip":"description"]
         table.Delegate(self)
+        
+        self.http()
         
         
     }

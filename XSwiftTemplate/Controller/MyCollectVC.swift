@@ -17,7 +17,9 @@ class MyCollectVC: UITableViewController {
 
         self.addBackButton()
         
-        let url = "http://101.201.169.38/api/Public/Found/?service=News.getCollectList&uid=\(DataCache.Share().userModel.uid)&page=[page]&perNumber=20"
+        table.registerNib("MyCollectCell".Nib, forCellReuseIdentifier: "MyCollectCell")
+        
+        let url = APPURL+"Public/Found/?service=News.getCollectList&uid=\(DataCache.Share().userModel.uid)&page=[page]&perNumber=20"
         
         table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: MyCollectModel.self, CellIdentifier: "MyCollectCell")
         
@@ -48,7 +50,7 @@ class MyCollectVC: UITableViewController {
             let id=(self.table.httpHandle.listArr[indexPath.row] as! MyCollectModel).id
             let user=DataCache.Share().userModel.username
             
-            let url="http://101.201.169.38/api/Public/Found/?service=News.collectDel&id="+id+"&username="+user
+            let url=APPURL+"Public/Found/?service=News.collectDel&id="+id+"&username="+user
             
             XHttpPool.requestJson(url, body: nil, method: .GET, block: { (json) in
                 

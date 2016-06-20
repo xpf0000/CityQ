@@ -43,7 +43,7 @@ class PropertyPhotoVC: UIViewController,XPhotoDelegate {
         self.view.backgroundColor="#f0f0f0".color
         self.view.addSubview(table)
         
-        let url = "http://101.201.169.38/api/Public/Found/?service=Wuye.getFeedList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&houseid=\(DataCache.Share().userModel.house.houseid)&page=[page]&perNumber=20"
+        let url = APPURL+"Public/Found/?service=Wuye.getFeedList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&houseid=\(DataCache.Share().userModel.house.houseid)&page=[page]&perNumber=20"
         
         table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: PropertyPhoteModel.self, CellIdentifier: "PropertyPhptoCell")
         self.table.cellHeight = 100

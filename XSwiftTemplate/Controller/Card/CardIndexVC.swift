@@ -48,7 +48,7 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     func http()
     {
         table.httpHandle.reSet()
-        table.httpHandle.url = "http://123.57.162.97/hfapi/Public/Found/?service=Hyk.getList&category_id="+category_id+"&typeid="+typeid+"&page=[page]&perNumber=20"
+        table.httpHandle.url = APPURL+"Public/Found/?service=Hyk.getList&category_id="+category_id+"&typeid="+typeid+"&page=[page]&perNumber=20"
         table.httpHandle.handle()
     }
     
@@ -74,7 +74,7 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         table.separatorStyle = .None
         
         table.registerNib("CardIndexCell".Nib, forCellReuseIdentifier: "CardIndexCell")
-        table.cellHeight = 120*swidth/375.0
+        table.cellHeight = 120 * screenFlag
         
         table.setHandle("", pageStr: "[page]", keys: ["data","info"], model: CardModel.self, CellIdentifier: "CardIndexCell")
         
@@ -114,7 +114,7 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
             return
         }
         
-        let url = "http://123.57.162.97/hfapi/Public/Found/?service=Hyk.getCategory"
+        let url = APPURL+"Public/Found/?service=Hyk.getCategory"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) {[weak self] (json) in
             
@@ -269,9 +269,9 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         
         let model = table.httpHandle.listArr[indexPath.row] as! CardModel
         
-        var vc:UIViewController!
+        let vc = "CardInfoVC".VC("Card") as! CardInfoVC
         
-        vc = "CardInfoVC".VC("Card")
+        vc.id = model.id
         
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)

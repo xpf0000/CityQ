@@ -202,7 +202,6 @@
 		177E86E11D16CD4A00EE20CF /* NoGuanzhuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177E86DF1D16CD4A00EE20CF /* NoGuanzhuView.xib */; };
 		177E87C51D16CD9400EE20CF /* AddPhotoNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 177E86E31D16CD9400EE20CF /* AddPhotoNormal.png */; };
 		177E87C61D16CD9400EE20CF /* APPLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 177E86E41D16CD9400EE20CF /* APPLogo.png */; };
-		177E87C71D16CD9400EE20CF /* back@2x 16-52-37-935.png in Resources */ = {isa = PBXBuildFile; fileRef = 177E86E51D16CD9400EE20CF /* back@2x 16-52-37-935.png */; };
 		177E87C81D16CD9400EE20CF /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177E86E61D16CD9400EE20CF /* back@2x.png */; };
 		177E87C91D16CD9400EE20CF /* back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177E86E71D16CD9400EE20CF /* back@3x.png */; };
 		177E87CA1D16CD9400EE20CF /* bucket_no_picture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177E86E81D16CD9400EE20CF /* bucket_no_picture@2x.png */; };
@@ -938,7 +937,6 @@
 		177E86DF1D16CD4A00EE20CF /* NoGuanzhuView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoGuanzhuView.xib; sourceTree = "<group>"; };
 		177E86E31D16CD9400EE20CF /* AddPhotoNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddPhotoNormal.png; sourceTree = "<group>"; };
 		177E86E41D16CD9400EE20CF /* APPLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = APPLogo.png; sourceTree = "<group>"; };
-		177E86E51D16CD9400EE20CF /* back@2x 16-52-37-935.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x 16-52-37-935.png"; sourceTree = "<group>"; };
 		177E86E61D16CD9400EE20CF /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		177E86E71D16CD9400EE20CF /* back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@3x.png"; sourceTree = "<group>"; };
 		177E86E81D16CD9400EE20CF /* bucket_no_picture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bucket_no_picture@2x.png"; sourceTree = "<group>"; };
@@ -1961,7 +1959,6 @@
 				177E88A01D16D0D800EE20CF /* yijieshu.png */,
 				177E86E31D16CD9400EE20CF /* AddPhotoNormal.png */,
 				177E86E41D16CD9400EE20CF /* APPLogo.png */,
-				177E86E51D16CD9400EE20CF /* back@2x 16-52-37-935.png */,
 				177E86E61D16CD9400EE20CF /* back@2x.png */,
 				177E86E71D16CD9400EE20CF /* back@3x.png */,
 				177E86E81D16CD9400EE20CF /* bucket_no_picture@2x.png */,
@@ -3290,7 +3287,6 @@
 				177E87CC1D16CD9400EE20CF /* c2.png in Resources */,
 				177E88BC1D16D0E300EE20CF /* tarbar1_selected@2x.png in Resources */,
 				177E87CB1D16CD9400EE20CF /* c1.png in Resources */,
-				177E87C71D16CD9400EE20CF /* back@2x 16-52-37-935.png in Resources */,
 				177E881E1D16CD9400EE20CF /* news-reply@3x.png in Resources */,
 				177E88941D16CD9400EE20CF /* index02@2x.png in Resources */,
 				177E88231D16CD9400EE20CF /* news_Share@2x.png in Resources */,

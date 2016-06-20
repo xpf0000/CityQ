@@ -38,11 +38,11 @@ class MyFriendVC: XViewController,UITableViewDelegate,UITableViewDataSource {
             {
             case 0:
                 ""
-                url = "http://101.201.169.38/api/Public/Found/?service=Quan.getUserList&uid=\(DataCache.Share().userModel.uid)&page=[page]&perNumber=20"
+                url = APPURL+"Public/Found/?service=Quan.getUserList&uid=\(DataCache.Share().userModel.uid)&page=[page]&perNumber=20"
 
             case 1:
                 ""
-                url = "http://101.201.169.38/api/Public/Found/?service=Quan.getUserComment&uid=\(DataCache.Share().userModel.uid)&page=[page]&perNumber=20"
+                url = APPURL+"Public/Found/?service=Quan.getUserComment&uid=\(DataCache.Share().userModel.uid)&page=[page]&perNumber=20"
 
             default:
                 ""
@@ -98,11 +98,11 @@ class MyFriendVC: XViewController,UITableViewDelegate,UITableViewDataSource {
             var url=""
             if(tableView.tag == 20)
             {
-                url="http://101.201.169.38/api/Public/Found/?service=Quan.quanDel&id="+id+"&username="+user
+                url=APPURL+"Public/Found/?service=Quan.quanDel&id="+id+"&username="+user
             }
             else
             {
-                url="http://101.201.169.38/api/Public/Found/?service=Quan.commentDel&id="+cell.model.cid+"&username="+user
+                url=APPURL+"Public/Found/?service=Quan.commentDel&id="+cell.model.cid+"&username="+user
             }
             
             XHttpPool.requestJson(url, body: nil, method: .GET, block: { (json) in

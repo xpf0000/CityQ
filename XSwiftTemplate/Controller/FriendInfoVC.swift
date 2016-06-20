@@ -88,7 +88,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
     
     func http()
     {
-        let url="http://101.201.169.38/api/Public/Found/?service=Quan.getArticle&id=\(fmodel.id)&uid="+DataCache.Share().userModel.uid
+        let url=APPURL+"Public/Found/?service=Quan.getArticle&id=\(fmodel.id)&uid="+DataCache.Share().userModel.uid
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             if(o?["data"].dictionaryValue.count > 0)
@@ -179,7 +179,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
         self.typeButton.layer.borderWidth = 0.5
         self.typeButton.layer.masksToBounds = true
         
-        commentHandle.url="http://101.201.169.38/api/Public/Found/?service=Quan.getComment&id=\(fmodel.id)&page=[page]&perNumber=20"
+        commentHandle.url=APPURL+"Public/Found/?service=Quan.getComment&id=\(fmodel.id)&page=[page]&perNumber=20"
         commentHandle.pageStr="[page]"
         commentHandle.replace=nil
         commentHandle.keys=["data","info"]
@@ -200,7 +200,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
         
         commentHandle.handle()
         
-        zanHandle.url="http://101.201.169.38/api/Public/Found/?service=Quan.getZan&id=\(fmodel.id)&page=[page]&perNumber=20"
+        zanHandle.url=APPURL+"Public/Found/?service=Quan.getZan&id=\(fmodel.id)&page=[page]&perNumber=20"
         zanHandle.pageStr="[page]"
         zanHandle.replace=nil
         zanHandle.keys=["data","info"]
@@ -277,7 +277,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
                     [weak self]
                     (o)->Void in
                     
-                    let delU="http://101.201.169.38/api/Public/Found/?service=Quan.commentDel&id="+m.id+"&username="+DataCache.Share().userModel.username
+                    let delU=APPURL+"Public/Found/?service=Quan.commentDel&id="+m.id+"&username="+DataCache.Share().userModel.username
                     
                     XHttpPool.requestJson(delU, body: nil, method: .POST, block: {[weak self] (o) -> Void in
                         
@@ -328,7 +328,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
         
         view.show { (txt) -> Void in
             
-            let url="http://101.201.169.38/api/Public/Found/?service=Quan.addComment"
+            let url=APPURL+"Public/Found/?service=Quan.addComment"
             let body="did="+self.fmodel.id+"&username="+DataCache.Share().userModel.username+"&content="+(txt as! String)+"&tuid="+m.uid+"&dpic="+self.fmodel.picList[0].url+"&type=1"
             
             XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
@@ -596,7 +596,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
         
         view.show { (txt) -> Void in
             
-            let url="http://101.201.169.38/api/Public/Found/?service=Quan.addComment"
+            let url=APPURL+"Public/Found/?service=Quan.addComment"
             let body="did="+self.fmodel.id+"&username="+DataCache.Share().userModel.username+"&content="+(txt as! String)+"&tuid="+self.fmodel.uid+"&dpic="+self.fmodel.picList[0].url+"&type=0"
             
             XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
@@ -635,7 +635,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
         self.zanIcon.image = "likedIcon.png".image
         self.zanIcon.bounceAnimation(0.5, delegate: nil)
         
-        let url="http://101.201.169.38/api/Public/Found/?service=Quan.addZan"
+        let url=APPURL+"Public/Found/?service=Quan.addZan"
         let body="did="+self.fmodel.id+"&username="+DataCache.Share().userModel.username+"&tuid="+self.fmodel.uid+"&dpic="+self.fmodel.picList[0].url
         
         XHttpPool.requestJson(url, body: body, method: .POST, block: { [weak self](o) -> Void in

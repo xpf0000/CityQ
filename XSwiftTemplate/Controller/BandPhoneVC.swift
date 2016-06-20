@@ -135,7 +135,7 @@ class BandPhoneVC: UITableViewController,UITextFieldDelegate {
         let code=self.verCode.text!.trim()
         let phone=self.phone.text!.trim()
         
-        let url="http://101.201.169.38/api/Public/Found/?service=User.smsVerify"
+        let url=APPURL+"Public/Found/?service=User.smsVerify"
         let body="mobile="+phone+"&code="+code
         
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in

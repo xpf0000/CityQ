@@ -88,7 +88,7 @@ class DiscountSearchVC: XViewController ,UISearchBarDelegate{
         {
             self.searchTable.hidden = true
             
-            self.table.httpHandle.url = "http://101.201.169.38/api/Public/Found/?service=Discount.getList&category_id=\(classModel!.id)&perNumber=20&page=[page]"
+            self.table.httpHandle.url = APPURL+"Public/Found/?service=Discount.getList&category_id=\(classModel!.id)&perNumber=20&page=[page]"
             self.table.httpHandle.pageStr="[page]"
             self.table.cellHeight = 75+16
             self.table.CellIdentifier = "DiscountCell"
@@ -173,7 +173,7 @@ class DiscountSearchVC: XViewController ,UISearchBarDelegate{
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        let url="http://101.201.169.38/api/Public/Found/?service=Discount.search"
+        let url=APPURL+"Public/Found/?service=Discount.search"
         let body="key="+searchText
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
             

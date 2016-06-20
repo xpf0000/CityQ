@@ -55,7 +55,7 @@ class PropertyPhotoInfoVC: UIViewController,UITextFieldDelegate {
             
             let txt = textField.text?.trim()
             
-            let url = "http://101.201.169.38/api/Public/Found/?service=Wuye.addFeedBack"
+            let url = APPURL+"Public/Found/?service=Wuye.addFeedBack"
             
             let body="uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&fid=\(model.id)&content="+txt!
             

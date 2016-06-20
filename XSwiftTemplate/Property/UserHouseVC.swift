@@ -20,7 +20,7 @@ class UserHouseVC: UIViewController {
 
         self.addBackButton()
     
-        let url = "http://101.201.169.38/api/Public/Found/?service=User.getHouseList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
+        let url = APPURL+"Public/Found/?service=User.getHouseList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
         
         table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: MyHouseModel.self, CellIdentifier: "MyHouseCell")
         
@@ -118,7 +118,7 @@ class UserHouseVC: UIViewController {
     
     func clearnDefault()
     {
-        let url="http://101.201.169.38/api/Public/Found/?service=User.updateHouse"
+        let url=APPURL+"Public/Found/?service=User.updateHouse"
         let body="uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&houseid=&fanghaoid="
         
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in

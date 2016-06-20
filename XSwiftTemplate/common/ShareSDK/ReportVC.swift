@@ -59,7 +59,7 @@ class ReportVC: UIViewController {
         sender.enabled = false
         self.view.endEditing(true)
         
-        let url="http://101.201.169.38/api/Public/Found/?service=User.feedAdd&user="+DataCache.Share().userModel.username+"&content="+self.txt.text.trim()
+        let url=APPURL+"Public/Found/?service=User.feedAdd&user="+DataCache.Share().userModel.username+"&content="+self.txt.text.trim()
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { (o) -> Void in
             

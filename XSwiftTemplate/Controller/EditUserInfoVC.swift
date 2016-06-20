@@ -42,7 +42,7 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         let nick = nickName.text!.trim()
         let truename = name.text!.trim()
         
-        let url="http://101.201.169.38/api/Public/Found/?service=User.userEdit"
+        let url=APPURL+"Public/Found/?service=User.userEdit"
         
         let body="username="+DataCache.Share().userModel.username+"&nickname="+nick+"&sex=\(sexN)&truename=\(truename)"
         
@@ -242,7 +242,7 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
     func upLoadHeadPic()
     {
         let imgDataArr:Array<NSData> = [self.headImage!.data(0.5)!]
-        let url="http://101.201.169.38/api/Public/Found/?service=User.headEdit"
+        let url=APPURL+"Public/Found/?service=User.headEdit"
         
         XHttpPool.upLoadWithMutableName(url, parameters: ["username":DataCache.Share().userModel.username], file: imgDataArr, name: "file", progress: nil) { [weak self](o) -> Void in
                 

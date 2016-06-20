@@ -17,7 +17,7 @@ class FriendNewsVC: XViewController,UICollectionViewDataSource,UICollectionViewD
     {
         didSet
         {
-            httpHandle.url="http://101.201.169.38/api/Public/Found/?service=Quan.getListHot&page=[page]&perNumber=20&xiaoquid="+xiaoquid
+            httpHandle.url=APPURL+"Public/Found/?service=Quan.getListHot&page=[page]&perNumber=20&xiaoquid="+xiaoquid
             httpHandle.reSet()
             httpHandle.handle()
         }
@@ -33,7 +33,7 @@ class FriendNewsVC: XViewController,UICollectionViewDataSource,UICollectionViewD
         layout.delegate = self;
         self.collectionView.collectionViewLayout = layout
         
-        httpHandle.url="http://101.201.169.38/api/Public/Found/?service=Quan.getListHot&page=[page]&perNumber=20&xiaoquid="+xiaoquid
+        httpHandle.url=APPURL+"Public/Found/?service=Quan.getListHot&page=[page]&perNumber=20&xiaoquid="+xiaoquid
         httpHandle.pageStr="[page]"
         httpHandle.scrollView=self.collectionView
         httpHandle.replace=["descrip":"description"]

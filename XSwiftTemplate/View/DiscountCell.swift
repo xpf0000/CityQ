@@ -58,7 +58,7 @@ class DiscountCell: UITableViewCell {
             {
                 DataCache.Share().jigouViewRecord.add(vc.model.id)
 
-                let url = "http://101.201.169.38/api/Public/Found/?service=News.addView&id="+vc.model.id
+                let url = APPURL+"Public/Found/?service=News.addView&id="+vc.model.id
                 
                 XHttpPool.requestJson(url, body: nil, method: .GET, block: { (o) -> Void in
                     

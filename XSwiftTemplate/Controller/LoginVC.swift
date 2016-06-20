@@ -31,7 +31,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
             {
                 let uid=userInfo.uid()
                 
-                let url="http://101.201.169.38/api/Public/Found/?service=User.openLogin"
+                let url=APPURL+"Public/Found/?service=User.openLogin"
                 let body="openid="+uid
                 
                 XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
@@ -101,7 +101,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
             
         }
         
-        let url="http://101.201.169.38/api/Public/Found/?service=User.login"
+        let url=APPURL+"Public/Found/?service=User.login"
         let p = pass.text!.trim()
         let u = user.text!.trim()
         let body="password="+p+"&mobile="+u
@@ -187,7 +187,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
             {
                 let uid=userInfo.uid()
                 
-                let url="http://101.201.169.38/api/Public/Found/?service=User.openLogin"
+                let url=APPURL+"Public/Found/?service=User.openLogin"
                 let body="openid="+uid
                 
                 XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
@@ -246,7 +246,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
             {
                 let uid=userInfo.uid()
                 
-                let url="http://101.201.169.38/api/Public/Found/?service=User.openLogin"
+                let url=APPURL+"Public/Found/?service=User.openLogin"
                 let body="openid="+uid
                 
                 XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
@@ -300,7 +300,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
     
     func doRegist(body:String)
     {
-        let url="http://101.201.169.38/api/Public/Found/?service=User.openRegister"
+        let url=APPURL+"Public/Found/?service=User.openRegister"
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
             
             if(o?["data"]["info"].arrayValue.count > 0)

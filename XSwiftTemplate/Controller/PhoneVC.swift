@@ -47,7 +47,7 @@ class PhoneVC: UIViewController,UITextFieldDelegate {
         table.registerNib("PhoneCell".Nib, forCellReuseIdentifier: "PhoneCell")
         table.cellHeight = 75+16
         
-        let u = "http://101.201.169.38/api/Public/Found/?service=Tel.getHot&page=[page]&perNumber=20"
+        let u = APPURL+"Public/Found/?service=Tel.getHot&page=[page]&perNumber=20"
         
         table.setHandle(u, pageStr: "[page]", keys: ["data","info"], model: PhoneModel.self, CellIdentifier: "PhoneCell")
         
@@ -58,7 +58,7 @@ class PhoneVC: UIViewController,UITextFieldDelegate {
         self.classArr.append(m)
         
         
-        let url="http://101.201.169.38/api/Public/Found/?service=Tel.getCategory"
+        let url=APPURL+"Public/Found/?service=Tel.getCategory"
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             
@@ -81,7 +81,7 @@ class PhoneVC: UIViewController,UITextFieldDelegate {
                 table.registerNib("PhoneCell".Nib, forCellReuseIdentifier: "PhoneCell")
                 table.cellHeight = 75+16
                 
-                let url = "http://101.201.169.38/api/Public/Found/?service=Tel.getList&category_id=\(m.id)&perNumber=20&page=[page]"
+                let url = APPURL+"Public/Found/?service=Tel.getList&category_id=\(m.id)&perNumber=20&page=[page]"
                 
                 table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: PhoneModel.self, CellIdentifier: "PhoneCell")
                 

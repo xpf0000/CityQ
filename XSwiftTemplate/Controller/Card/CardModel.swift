@@ -16,6 +16,10 @@ class CardModel: Reflect {
     var shopname = ""
     var type = ""
     var orlq = 0
+    var tel = ""
+    var address = ""
+    var info = ""
+    var shopid = ""
     
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {
         
@@ -25,7 +29,41 @@ class CardModel: Reflect {
 
 class CardActivityModel: Reflect {
     
+    var id=""
+    var title=""
+    var descrip=""
+    var url=""
+    var view=""
+    var create_time = ""
+    var name = ""
     
+    override func setValue(value: AnyObject?, forKey key: String) {
+        
+        if(value == nil)
+        {
+            return
+        }
+        
+        if(key == "description")
+        {
+            self.descrip = value as! String
+            return
+        }
+        
+        if(key == "create_time" && value != nil)
+        {
+            let date=NSDate(timeIntervalSince1970: value!.doubleValue)
+            self.create_time = date.toStr("yyyy-MM-dd")!
+            return
+        }
+        
+        super.setValue(value, forKey: key)
+    }
+    
+    
+    override func setValue(value: AnyObject?, forUndefinedKey key: String) {
+        
+    }
     
 }
 

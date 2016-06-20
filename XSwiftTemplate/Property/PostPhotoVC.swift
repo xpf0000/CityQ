@@ -250,7 +250,7 @@ class PostPhotoVC: XViewController,UICollectionViewDataSource,UICollectionViewDe
             
         }
 
-        let url="http://101.201.169.38/api/Public/Found/?service=Wuye.addfeed"
+        let url=APPURL+"Public/Found/?service=Wuye.addfeed"
 
         let dict:[String:AnyObject] = ["uid":DataCache.Share().userModel.uid,"username":DataCache.Share().userModel.username,"houseid":DataCache.Share().userModel.house.houseid,"content":self.textView.text.trim(),"type":Int(fabs(Double(segment.selectedSegmentIndex)-2.0))]
 

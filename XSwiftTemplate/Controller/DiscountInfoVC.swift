@@ -53,7 +53,7 @@ class DiscountInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelegate {
     
     func http()
     {
-        let url="http://101.201.169.38/api/Public/Found/?service=Discount.getArticle&id=\(model.id)"
+        let url=APPURL+"Public/Found/?service=Discount.getArticle&id=\(model.id)"
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             
             if(o?["data"].dictionaryValue.count > 0)
@@ -153,7 +153,7 @@ class DiscountInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelegate {
     
     @IBAction func collect(sender: AnyObject) {
         
-        let url="http://101.201.169.38/api/Public/Found/?service=Discount.collectAdd&did="+model.id+"&username="+DataCache.Share().userModel.username
+        let url=APPURL+"Public/Found/?service=Discount.collectAdd&did="+model.id+"&username="+DataCache.Share().userModel.username
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { (o) -> Void in
             

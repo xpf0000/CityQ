@@ -84,7 +84,7 @@ class FrientQCell: UITableViewCell {
     
     func delSelfComment(cmodel:FriendCommentModel) {
         
-        let delU="http://101.201.169.38/api/Public/Found/?service=Quan.commentDel&id="+cmodel.id+"&username="+DataCache.Share().userModel.username
+        let delU=APPURL+"Public/Found/?service=Quan.commentDel&id="+cmodel.id+"&username="+DataCache.Share().userModel.username
         
         XHttpPool.requestJson(delU, body: nil, method: .POST, block: {[weak self] (o) -> Void in
             
@@ -181,7 +181,7 @@ class FrientQCell: UITableViewCell {
                 
                 view.show {[weak self] (txt) -> Void in
                     
-                    let url="http://101.201.169.38/api/Public/Found/?service=Quan.addComment"
+                    let url=APPURL+"Public/Found/?service=Quan.addComment"
                     let body="did="+self!.model.id+"&username="+DataCache.Share().userModel.username+"&content="+(txt as! String)+"&tuid="+cmodel.uid+"&dpic="+self!.model.picList[0].url+"&type=1"
                     
                     XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
@@ -446,7 +446,7 @@ class FrientQCell: UITableViewCell {
         
         view.show { (txt) -> Void in
             
-            let url="http://101.201.169.38/api/Public/Found/?service=Quan.addComment"
+            let url=APPURL+"Public/Found/?service=Quan.addComment"
             let body="did="+self.model.id+"&username="+DataCache.Share().userModel.username+"&content="+(txt as! String)+"&tuid="+self.model.uid+"&dpic="+self.model.picList[0].url+"&type=0"
             
             XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
@@ -483,7 +483,7 @@ class FrientQCell: UITableViewCell {
             return
         }
         
-        let url="http://101.201.169.38/api/Public/Found/?service=Quan.addZan"
+        let url=APPURL+"Public/Found/?service=Quan.addZan"
         let body="did="+self.model.id+"&username="+DataCache.Share().userModel.username+"&tuid="+self.model.uid+"&dpic="+self.model.picList[0].url
         
         XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in

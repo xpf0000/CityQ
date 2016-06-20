@@ -87,7 +87,7 @@ class HomeVC: XViewController {
         
         menu.frame = CGRectMake(swidth/6.0, 0, swidth/3.0*2.0, 42.0*screenFlag)
         
-        main.frame = CGRectMake(0, 42.0, swidth, sheight-64.0-42.0*screenFlag-49.0)
+        main.frame = CGRectMake(0, 42.0*screenFlag, swidth, sheight-64.0-42.0*screenFlag)
         
         main.menu = menu
         menu.line.backgroundColor=APPBlueColor
@@ -169,23 +169,23 @@ class HomeVC: XViewController {
             
             if i == 0
             {
-                item.imageInsets = UIEdgeInsetsMake(4.0, -17.0, -4.0, 17.0)
+                item.imageInsets = UIEdgeInsetsMake(4.0, -17.0*screenFlag, -4.0, 17.0*screenFlag)
             }
             else if i == 1
             {
-                item.imageInsets = UIEdgeInsetsMake(4.0, -8.0, -4.0, 8.0)
+                item.imageInsets = UIEdgeInsetsMake(4.0, -8.0*screenFlag, -4.0, 8.0*screenFlag)
             }
             else if i==2
             {
-                item.imageInsets = UIEdgeInsetsMake(4.0, 2.0, -4.0, -2.0)
+                item.imageInsets = UIEdgeInsetsMake(4.0, 2.0*screenFlag, -4.0, -2.0*screenFlag)
             }
             else if i == 3
             {
-                item.imageInsets = UIEdgeInsetsMake(4.0, 14.0, -4.0, -14.0)
+                item.imageInsets = UIEdgeInsetsMake(4.0, 14.0*screenFlag, -4.0, -14.0*screenFlag)
             }
             else
             {
-                item.imageInsets = UIEdgeInsetsMake(4.0, 17.0, -4.0, -17.0)
+                item.imageInsets = UIEdgeInsetsMake(4.0, 17.0*screenFlag, -4.0, -17.0*screenFlag)
             }
             
             item.setTitleTextAttributes([NSForegroundColorAttributeName:APPBlueColor,NSFontAttributeName:UIFont.systemFontOfSize(16.0)], forState: UIControlState.Selected)
@@ -209,10 +209,10 @@ class HomeVC: XViewController {
         let strArr = ["推荐","本地","关注","活动"]
         
         let urlArr =
-        ["http://123.57.162.97/hfapi/Public/Found/?service=News.getListTJ&page=[page]&perNumber=20",
-        "http://123.57.162.97/hfapi/Public/Found/?service=News.getList&category_id=97&page=[page]&perNumber=20",
-        "http://123.57.162.97/hfapi/Public/Found/?service=News.getListGZ&username=\(DataCache.Share().userModel.username)&page=[page]&perNumber=20",
-        "http://123.57.162.97/hfapi/Public/Found/?service=News.getList&category_id=98&page=[page]&perNumber=20"]
+        [APPURL+"Public/Found/?service=News.getListTJ&page=[page]&perNumber=20",
+        APPURL+"Public/Found/?service=News.getList&category_id=97&page=[page]&perNumber=20",
+        APPURL+"Public/Found/?service=News.getListGZ&username=\(DataCache.Share().userModel.username)&page=[page]&perNumber=20",
+        APPURL+"Public/Found/?service=News.getList&category_id=98&page=[page]&perNumber=20"]
         
         let idArr = ["83","97","103","98"]
         
@@ -225,7 +225,7 @@ class HomeVC: XViewController {
             let table = NewsIndexView()
             table.url = urlArr[i]
             table.bannerID = idArr[i]
-            
+
             model.view = table
             
             self.topArr.append(model)
@@ -235,7 +235,7 @@ class HomeVC: XViewController {
         
         self.menu.menuArr = self.topArr
         
-//        let url="http://101.201.169.38/api/Public/Found/?service=News.getCategory";
+//        let url=APPURL+"Public/Found/?service=News.getCategory";
 //        
 //        XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
 //            

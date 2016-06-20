@@ -184,7 +184,7 @@ class XVerifyButton: UIButton {
     func btnClick()
     {
         let temp=self.phone
-        let url="http://101.201.169.38/api/Public/Found/?service=User.getUserM&mobile="+temp
+        let url=APPURL+"Public/Found/?service=User.getUserM&mobile="+temp
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { (o) -> Void in
             
@@ -236,7 +236,7 @@ class XVerifyButton: UIButton {
             self.block!(nil)
         }
         
-        let url1="http://101.201.169.38/api/Public/Found/?service=User.smsSend"
+        let url1=APPURL+"Public/Found/?service=User.smsSend"
         
         let body="mobile="+str+"&type=\(self.type)"
         

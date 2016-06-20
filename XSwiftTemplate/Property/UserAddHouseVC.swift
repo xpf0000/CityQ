@@ -41,7 +41,7 @@ class UserAddHouseVC: UIViewController {
         sender.enabled = false
         self.view.showWaiting()
         
-        let url="http://101.201.169.38/api/Public/Found/?service=User.addHouse"
+        let url=APPURL+"Public/Found/?service=User.addHouse"
         let body="uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&fanghaoid=\(id)&houseid=\(houseid)"
 
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in

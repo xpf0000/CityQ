@@ -12,6 +12,8 @@ class CardShopsCardVC: UIViewController,UITableViewDelegate {
     
     let table = XTableView(frame: CGRectMake(0, 0, swidth, sheight-64), style: .Grouped)
     
+    var id = ""
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
@@ -26,6 +28,19 @@ class CardShopsCardVC: UIViewController,UITableViewDelegate {
     }
     
     
+    func http()
+    {
+        let url = APPURL+"Public/Found/?service=Hyk.getShopCard&id=\(id)"
+        
+        table.httpHandle.reSet()
+        
+        table.httpHandle.url = url
+        
+        table.httpHandle.handle()
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
@@ -36,7 +51,7 @@ class CardShopsCardVC: UIViewController,UITableViewDelegate {
         
         let header = UIView()
         header.backgroundColor = UIColor.whiteColor()
-        header.frame = CGRectMake(0, 0, swidth, 15.0)
+        header.frame = CGRectMake(0, 0, swidth, 13.0*screenFlag)
         table.tableHeaderView = header
         
         let footer = UIView()
@@ -48,17 +63,13 @@ class CardShopsCardVC: UIViewController,UITableViewDelegate {
         
         table.registerNib("CardIndexCell".Nib, forCellReuseIdentifier: "CardIndexCell")
         table.CellIdentifier = "CardIndexCell"
-        table.cellHeight = 145
+        table.cellHeight = 120 * screenFlag
         
-        for _ in 0...5
-        {
-            table.httpHandle.listArr.append(CardModel())
-        }
-        
-        table.reloadData()
-        
+        table.setHandle("", pageStr: "[page]", keys: ["data","info"], model: CardModel.self, CellIdentifier: "CardIndexCell")
+        table.httpHandle.pageSize = 10000
         table.Delegate(self)
         
+        self.http()
         
     }
     

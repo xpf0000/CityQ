@@ -58,6 +58,7 @@ class NewsModel: Reflect {
     var view=""
     var update_time=""
     var category_id = ""
+    var create_time = ""
     var name = ""
     
     override func setValue(value: AnyObject?, forKey key: String) {
@@ -77,6 +78,13 @@ class NewsModel: Reflect {
         {
             let date=NSDate(timeIntervalSince1970: value!.doubleValue)
             self.update_time = date.str!
+            return
+        }
+        
+        if(key == "create_time" && value != nil)
+        {
+            let date=NSDate(timeIntervalSince1970: value!.doubleValue)
+            self.create_time = date.str!
             return
         }
         

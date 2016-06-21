@@ -164,20 +164,6 @@ class UserCenterVC: UITableViewController {
         {
         case 0:
             self.toEdit()
-        case 5:
-            
-            if(!self.checkIsLogin())
-            {
-                return
-            }
-            
-            let vc:MyCollectVC = "MyCollectVC".VC("User") as! MyCollectVC
-            
-            vc.hidesBottomBarWhenPushed = true
-            
-            self.navigationController?.pushViewController(vc, animated: true)
-            
-            
         case 2:
             
             if(!self.checkIsLogin())
@@ -222,6 +208,32 @@ class UserCenterVC: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
             
             return
+            
+        case 5:
+            
+            if(!self.checkIsLogin())
+            {
+                return
+            }
+            
+            let vc:MyCollectVC = "MyCollectVC".VC("User") as! MyCollectVC
+            
+            vc.hidesBottomBarWhenPushed = true
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        case 6:
+            
+            if(!self.checkIsLogin())
+            {
+                return
+            }
+            
+            let vc:MyWalletVC = MyWalletVC()
+            
+            vc.hidesBottomBarWhenPushed = true
+            
+            self.navigationController?.pushViewController(vc, animated: true)
 
         case 8:
             

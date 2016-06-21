@@ -17,7 +17,11 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     
     let table = XTableView(frame: CGRectMake(0, 45, swidth, sheight-64-45), style: .Grouped)
     
-    var rightBtn:UIButton?
+    weak var rightBtn:UIButton?
+    
+    var category_id = ""
+    
+    var typeid = ""
     
     @IBAction func toGetCard(sender: AnyObject) {
         
@@ -28,12 +32,15 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         
         self.title = "我的会员卡"
         addBackButton()
+        
         rightBtn = addSearchButton {
             [weak self](btn)->Void in
             
             self?.toSearch()
         }
         
+        getCardCategory()
+        setRight()
     }
     
     func toSearch()
@@ -43,20 +50,27 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    func http()
+    {
+        table.httpHandle.reSet()
+        table.httpHandle.url = APPURL+"Public/Found/?service=Hyk.getUserList&category_id="+category_id+"&typeid="+typeid+"&page=[page]&perNumber=20&username=\(DataCache.Share().userModel.username)"
+        table.httpHandle.handle()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         rightBtn?.hidden = true
         
-        //self.view.addSubview(table)
+        self.view.addSubview(table)
         
-        //self.addTopBootButton()
+        self.addTopBootButton()
         
         table.backgroundColor = UIColor.whiteColor()
         
         let header = UIView()
         header.backgroundColor = UIColor.whiteColor()
-        header.frame = CGRectMake(0, 0, swidth, 15.0)
+        header.frame = CGRectMake(0, 0, swidth, 13.0*screenFlag)
         table.tableHeaderView = header
         
         let footer = UIView()
@@ -67,17 +81,32 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         table.separatorStyle = .None
         
         table.registerNib("CardIndexCell".Nib, forCellReuseIdentifier: "CardIndexCell")
-        table.CellIdentifier = "CardIndexCell"
-        table.cellHeight = 145
+        table.cellHeight = 120 * screenFlag
         
-        for _ in 0...12
-        {
-            table.httpHandle.listArr.append(CardModel())
-        }
-        
-        table.reloadData()
+        table.setHandle("", pageStr: "[page]", keys: ["data","info"], model: CardModel.self, CellIdentifier: "CardIndexCell")
         
         table.Delegate(self)
+        
+        table.httpHandle.BeforeBlock { [weak self](o) in
+            
+            if self?.table.hidden == false
+            {
+                return
+            }
+            
+            let b = o.count == 0
+            
+            self?.table.hidden = b
+            self?.top.hidden = b
+            self?.noView.hidden = !b
+            
+        }
+        
+        noView.hidden = true
+        table.hidden = true
+        top.hidden = true
+        
+        self.http()
         
         
     }
@@ -87,7 +116,7 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         
         top.tbHeight = 200.0
         top.tbWidth = swidth * 0.5
-        top.frame = CGRectMake(0, 0, swidth, 45)
+        top.frame = CGRectMake(0, 0, swidth, 43.0 * screenFlag)
         
         top.delegate = self
         
@@ -100,51 +129,79 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         top.tableWidths = [[1.0],[1.0]]
         top.onlyOne = false
         
-        var tarr = ["全部分类","汽车服务","丽人","服饰"]
+        self.view.addSubview(top)
         
+        
+    }
+    
+    func getCardCategory()
+    {
+        if DataCache.Share().cardCategory.count > 0
+        {
+            self.setLeft()
+            return
+        }
+        
+        let url = APPURL+"Public/Found/?service=Hyk.getCategory"
+        
+        XHttpPool.requestJson(url, body: nil, method: .POST) {[weak self] (json) in
+            
+            if let arr = json?["data"]["info"].array
+            {
+                for item in arr{
+                    
+                    let model = CategoryModel.parse(json: item, replace: nil)
+                    
+                    DataCache.Share().cardCategory.append(model)
+                }
+                
+                self?.setLeft()
+            }
+        }
+    }
+    
+    func setLeft()
+    {
         var arr:[ReactionMenuItemModel] = []
+        
         var i = 0
-        for str in tarr
+        for item in DataCache.Share().cardCategory
         {
             let model = ReactionMenuItemModel()
-            model.id = i+1
-            model.title = str
-            model.img = "left_type_\(i)@2x.png"
-            
+            model.id = item.id.numberValue.integerValue
+            model.title = item.title
+            model.img = item.url
             arr.append(model)
-            
             i += 1
         }
         
         topCellArr[0] = arr
         
+        self.top.items = topCellArr
+    }
+    
+    func setRight()
+    {
+        let tarr = ["打折卡","计次卡","充值卡","积分卡"]
+        let idArr = [3,1,2,4]
         
-        tarr.removeAll(keepCapacity: false)
-        arr.removeAll(keepCapacity: false)
+        var arr:[ReactionMenuItemModel] = []
         
-        tarr = ["打折卡","计次卡","充值卡","积分卡"]
-        i = 0
-        for str in tarr
+        var i = 0
+        for item in tarr
         {
             let model = ReactionMenuItemModel()
-            model.id = i+1
-            model.title = str
+            model.id = idArr[i]
+            model.title = item
             model.img = "right_type_\(i)@2x.png"
-            
+            model.sid = "0"
             arr.append(model)
-            
             i += 1
         }
         
         topCellArr[1] = arr
         
-        tarr.removeAll(keepCapacity: false)
-        arr.removeAll(keepCapacity: false)
-        
         self.top.items = topCellArr
-        self.view.addSubview(top)
-        
-        
     }
     
     func ReactionBeforeShow(view: ReactionMenuView) {
@@ -164,7 +221,7 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
             table.frame.size.width = swidth*0.5
         }
         
-        if indexPath.row == 0
+        if indexPath.row == 0 && top.selectRow == 1
         {
             return 0
         }
@@ -182,8 +239,6 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         cell.contentView.layer.masksToBounds = true
         cell.contentView.clipsToBounds = true
         
-        
-        
         cell.textLabel?.text = ""
         
         let label = UILabel()
@@ -193,7 +248,15 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         cell.contentView.addSubview(label)
         
         let img = UIImageView()
-        img.image = model.img.image
+        if model.sid == "0"
+        {
+            img.image = model.img.image
+        }
+        else
+        {
+            img.url = model.img
+        }
+        
         img.layer.masksToBounds = true
         cell.contentView.addSubview(img)
         
@@ -209,19 +272,26 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
             make.width.equalTo(20.0)
         }
         
-        
-        
     }
     
     func ReactionMenuChoose(arr: Array<ReactionMenuItemModel>, index: Int) {
         
-        print(index)
-        
         if index == 0
         {
             top.reSetColumn(1)
+            typeid = ""
+            category_id = "\(arr[0].id)"
+            http()
         }
+        else
+        {
+            typeid = "\(arr[0].id)"
+            http()
+        }
+        
     }
+    
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -246,6 +316,11 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
+    }
+    
+    deinit
+    {
+        print("MyCardVC deinit !!!!!!!!!!!")
     }
     
 }

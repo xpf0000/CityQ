@@ -16,9 +16,18 @@ class MyFriendVC: XViewController,UITableViewDelegate,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
+        self.view.backgroundColor = "F3F5F7".color
+        
+        self.view.addSubview(menu)
+        self.view.addSubview(main)
+        
+        menu.frame = CGRectMake(0, 0, swidth, 42.0)
+        main.frame = CGRectMake(0, 42.0, swidth, sheight-64.0-42.0)
         
         menu.main = main
-        menu.menuSelectColor = 腾讯颜色.图标蓝.rawValue.color!
+        menu.menuSelectColor = APPBlueColor
+        menu.line.backgroundColor = APPBlueColor
+        menu.menuMaxScale = 1.25
         menu.menuPageNum = 2
 
         var arr:Array<XHorizontalMenuModel> = []
@@ -30,7 +39,7 @@ class MyFriendVC: XViewController,UITableViewDelegate,UITableViewDataSource {
         {
             let model:XHorizontalMenuModel = XHorizontalMenuModel()
             
-            let view:MyPostFriendView = MyPostFriendView(frame: CGRectZero)
+            let table:XTableView = XTableView(frame: CGRectMake(0, 0, swidth, sheight-64.0-42.0))
             
             var url = ""
 
@@ -48,27 +57,27 @@ class MyFriendVC: XViewController,UITableViewDelegate,UITableViewDataSource {
                 ""
             }
             
-            view.table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: FriendModel.self, CellIdentifier: "MyPostFriendCell")
-            view.table.cellHeight = 95
-            view.table.CellIdentifier = "MyPostFriendCell"
-            view.table.tag = 20
+            table.registerNib("MyPostFriendCell".Nib, forCellReuseIdentifier: "MyPostFriendCell")
             
-            view.table.Delegate(self)
-            view.table.DataSource(self)
+            table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: FriendModel.self, CellIdentifier: "MyPostFriendCell")
+            table.cellHeight = 95
+            table.CellIdentifier = "MyPostFriendCell"
+            table.tag = 20+i
             
-            view.table.show()
+            table.Delegate(self)
+            table.DataSource(self)
+            
+            table.show()
             
             model.title = titles[i]
             
-            model.view = view
+            model.view = table
             
             arr.append(model)
         }
         
         menu.menuArr = arr
         main.scrollEnabled = false
-        
-        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

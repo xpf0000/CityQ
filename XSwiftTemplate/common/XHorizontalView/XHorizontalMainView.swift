@@ -35,6 +35,7 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
         
     }
     
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -80,12 +81,6 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
         registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "mainViewCell")
     }
     
-    init()
-    {
-        super.init(frame: CGRectMake(0, 0, 1, 1), collectionViewLayout: UICollectionViewLayout())
-        
-        self.initSelf()
-    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -102,14 +97,12 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
         
     }
     
-    convenience init(frame: CGRect,menu:XHorizontalMenuView) {
+    init()
+    {
+        super.init(frame: CGRectMake(0, 0, 1, 1), collectionViewLayout: UICollectionViewLayout())
         
-        self.init(frame: frame, collectionViewLayout: UICollectionViewLayout())
-        
-        self.menu = menu
-        self.menu?.main = self
+        self.initSelf()
     }
-    
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -155,7 +148,7 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
-        if menu == nil || menu?.menuArr.count == 0 {return}
+        if menu == nil {return}
         
         let currentPage : Int = Int(floor((scrollView.contentOffset.x - frame.size.width/2)/frame.size.width))+1;
         

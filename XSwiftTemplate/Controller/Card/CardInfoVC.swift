@@ -32,6 +32,13 @@ class CardInfoVC: UITableViewController {
     
     @IBOutlet var txtBG: SkyRadiusView!
     
+    var block:XNoBlock?
+    
+    func SuccessBlock(b:XNoBlock)
+    {
+        self.block = b
+    }
+    
     var harr:[CGFloat] = [133*screenFlag,42*screenFlag,42*screenFlag,42*screenFlag,12*screenFlag,42*screenFlag,128,100]
     
     private var model:CardModel!
@@ -116,7 +123,38 @@ class CardInfoVC: UITableViewController {
             return
         }
         
+        let url = "http://123.57.162.97/hfapi/Public/Found/?service=Hyk.addcard&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&cardid=\(id)"
         
+        XHttpPool.requestJson(url, body: nil, method: .POST) { [weak self](json) in
+            
+            if let code = json?["data"]["code"].int
+            {
+                if code == 0
+                {
+                    self?.lengquSuccess()
+                    ShowMessage("领取成功")
+                }
+                else
+                {
+                    ShowMessage(json!["data"]["msg"].stringValue)
+                }
+            }
+            else
+            {
+                ShowMessage("领取失败,请重试!")
+            }
+            
+            
+        }
+        
+    }
+    
+    func lengquSuccess()
+    {
+        self.block?()
+        leftLabel.text = "立即使用"
+        leftLabel.hidden = false
+        btn.hidden = true
     }
     
     override func viewWillLayoutSubviews() {
@@ -135,6 +173,7 @@ class CardInfoVC: UITableViewController {
         
         img.layer.masksToBounds = true
         leftLabel.hidden = true
+        btn.hidden = true
         
         let view1=UIView()
         view1.backgroundColor=UIColor.clearColor()
@@ -226,6 +265,9 @@ class CardInfoVC: UITableViewController {
         
     }
 
-    
+    deinit
+    {
+        print("CardInfoVC deinit !!!!!!!!")
+    }
 
 }

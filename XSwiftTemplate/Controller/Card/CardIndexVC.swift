@@ -79,7 +79,7 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         table.setHandle("", pageStr: "[page]", keys: ["data","info"], model: CardModel.self, CellIdentifier: "CardIndexCell")
         
         table.Delegate(self)
-        
+
         self.http()
     }
     
@@ -272,6 +272,15 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         let vc = "CardInfoVC".VC("Card") as! CardInfoVC
         
         vc.id = model.id
+        
+        vc.SuccessBlock {[weak self]()->Void in
+            
+            if self == nil {return}
+            
+            model.orlq = 1
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+            
+        }
         
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)

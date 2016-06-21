@@ -1,5 +1,5 @@
 //
-//  CardMoneyInfoVC.swift
+//  CardGetedInfoVC.swift
 //  chengshi
 //
 //  Created by X on 16/6/10.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardMoneyInfoVC: UITableViewController {
+class CardGetedInfoVC: UITableViewController {
     
     @IBOutlet var table: UITableView!
     

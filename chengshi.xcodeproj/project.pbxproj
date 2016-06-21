@@ -188,8 +188,7 @@
 		177E86C51D16CC9A00EE20CF /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E86C41D16CC9A00EE20CF /* CardModel.swift */; };
 		177E86C71D16CCB000EE20CF /* CardIndexVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E86C61D16CCB000EE20CF /* CardIndexVC.swift */; };
 		177E86C91D16CCB900EE20CF /* CardInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E86C81D16CCB900EE20CF /* CardInfoVC.swift */; };
-		177E86CB1D16CCC300EE20CF /* CardTimesInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E86CA1D16CCC300EE20CF /* CardTimesInfoVC.swift */; };
-		177E86CD1D16CCCB00EE20CF /* CardMoneyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E86CC1D16CCCB00EE20CF /* CardMoneyInfoVC.swift */; };
+		177E86CB1D16CCC300EE20CF /* CardGetedInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E86CA1D16CCC300EE20CF /* CardGetedInfoVC.swift */; };
 		177E86CF1D16CCD700EE20CF /* CardShopsInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E86CE1D16CCD700EE20CF /* CardShopsInfoVC.swift */; };
 		177E86D11D16CCDE00EE20CF /* CardShopsCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E86D01D16CCDE00EE20CF /* CardShopsCardVC.swift */; };
 		177E86D31D16CCE500EE20CF /* CardShopsActivitysVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E86D21D16CCE500EE20CF /* CardShopsActivitysVC.swift */; };
@@ -512,6 +511,10 @@
 		17D8F1261C75AB3E00731186 /* wuye_index_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D8F1221C75AB3E00731186 /* wuye_index_2.png */; };
 		17D8F1271C75AB3E00731186 /* wuye_index_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D8F1231C75AB3E00731186 /* wuye_index_3.png */; };
 		17DA03FA1BB53AA500DF1D9A /* LehuiHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DA03F91BB53AA500DF1D9A /* LehuiHomeModel.swift */; };
+		17DBB5901D192AED0090677D /* MyWalletVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DBB58F1D192AED0090677D /* MyWalletVC.swift */; };
+		17DBB5931D192B270090677D /* MyWalletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DBB5911D192B270090677D /* MyWalletCell.swift */; };
+		17DBB5941D192B270090677D /* MyWalletCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17DBB5921D192B270090677D /* MyWalletCell.xib */; };
+		17DBB5961D192DAD0090677D /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DBB5951D192DAD0090677D /* WalletModel.swift */; };
 		17DEAAF11C0BDFA100038B82 /* RegistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DEAAF01C0BDFA100038B82 /* RegistVC.swift */; };
 		17DEAB321C0BF84000038B82 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 17DEAB311C0BF84000038B82 /* libz.1.2.5.tbd */; };
 		17DEAB341C0BF85C00038B82 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17DEAB331C0BF85C00038B82 /* CoreText.framework */; };
@@ -923,8 +926,7 @@
 		177E86C41D16CC9A00EE20CF /* CardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardModel.swift; path = XSwiftTemplate/Controller/Card/CardModel.swift; sourceTree = SOURCE_ROOT; };
 		177E86C61D16CCB000EE20CF /* CardIndexVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardIndexVC.swift; path = XSwiftTemplate/Controller/Card/CardIndexVC.swift; sourceTree = SOURCE_ROOT; };
 		177E86C81D16CCB900EE20CF /* CardInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardInfoVC.swift; path = XSwiftTemplate/Controller/Card/CardInfoVC.swift; sourceTree = SOURCE_ROOT; };
-		177E86CA1D16CCC300EE20CF /* CardTimesInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardTimesInfoVC.swift; path = XSwiftTemplate/Controller/Card/CardTimesInfoVC.swift; sourceTree = SOURCE_ROOT; };
-		177E86CC1D16CCCB00EE20CF /* CardMoneyInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardMoneyInfoVC.swift; path = XSwiftTemplate/Controller/Card/CardMoneyInfoVC.swift; sourceTree = SOURCE_ROOT; };
+		177E86CA1D16CCC300EE20CF /* CardGetedInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardGetedInfoVC.swift; path = XSwiftTemplate/Controller/Card/CardGetedInfoVC.swift; sourceTree = SOURCE_ROOT; };
 		177E86CE1D16CCD700EE20CF /* CardShopsInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardShopsInfoVC.swift; path = XSwiftTemplate/Controller/Card/CardShopsInfoVC.swift; sourceTree = SOURCE_ROOT; };
 		177E86D01D16CCDE00EE20CF /* CardShopsCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardShopsCardVC.swift; path = XSwiftTemplate/Controller/Card/CardShopsCardVC.swift; sourceTree = SOURCE_ROOT; };
 		177E86D21D16CCE500EE20CF /* CardShopsActivitysVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardShopsActivitysVC.swift; path = XSwiftTemplate/Controller/Card/CardShopsActivitysVC.swift; sourceTree = SOURCE_ROOT; };
@@ -1253,6 +1255,10 @@
 		17D8F1221C75AB3E00731186 /* wuye_index_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wuye_index_2.png; sourceTree = "<group>"; };
 		17D8F1231C75AB3E00731186 /* wuye_index_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wuye_index_3.png; sourceTree = "<group>"; };
 		17DA03F91BB53AA500DF1D9A /* LehuiHomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LehuiHomeModel.swift; sourceTree = "<group>"; };
+		17DBB58F1D192AED0090677D /* MyWalletVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWalletVC.swift; sourceTree = "<group>"; };
+		17DBB5911D192B270090677D /* MyWalletCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWalletCell.swift; sourceTree = "<group>"; };
+		17DBB5921D192B270090677D /* MyWalletCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWalletCell.xib; sourceTree = "<group>"; };
+		17DBB5951D192DAD0090677D /* WalletModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
 		17DEAAF01C0BDFA100038B82 /* RegistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistVC.swift; sourceTree = "<group>"; };
 		17DEAB311C0BF84000038B82 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
 		17DEAB331C0BF85C00038B82 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -1587,6 +1593,7 @@
 				177E86B41D16CBD200EE20CF /* MyMessageVC.swift */,
 				177E86B61D16CBDB00EE20CF /* MyMessageInfoVC.swift */,
 				177E86B81D16CBEE00EE20CF /* MyCardVC.swift */,
+				17DBB58F1D192AED0090677D /* MyWalletVC.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -1816,6 +1823,8 @@
 				17DEAB4B1C0C489000038B82 /* MyPostFriendCell.xib */,
 				177E86AE1D16CBAD00EE20CF /* MyMessageInfoCell.swift */,
 				177E86AF1D16CBAD00EE20CF /* MyMessageInfoCell.xib */,
+				17DBB5911D192B270090677D /* MyWalletCell.swift */,
+				17DBB5921D192B270090677D /* MyWalletCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1824,6 +1833,7 @@
 			isa = PBXGroup;
 			children = (
 				177E86B21D16CBBE00EE20CF /* MessageModel.swift */,
+				17DBB5951D192DAD0090677D /* WalletModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1835,8 +1845,7 @@
 				173DAFE51D0AC6A5004C7DAA /* Model */,
 				177E86C61D16CCB000EE20CF /* CardIndexVC.swift */,
 				177E86C81D16CCB900EE20CF /* CardInfoVC.swift */,
-				177E86CA1D16CCC300EE20CF /* CardTimesInfoVC.swift */,
-				177E86CC1D16CCCB00EE20CF /* CardMoneyInfoVC.swift */,
+				177E86CA1D16CCC300EE20CF /* CardGetedInfoVC.swift */,
 				177E86CE1D16CCD700EE20CF /* CardShopsInfoVC.swift */,
 				177E86D01D16CCDE00EE20CF /* CardShopsCardVC.swift */,
 				177E86D21D16CCE500EE20CF /* CardShopsActivitysVC.swift */,
@@ -3262,6 +3271,7 @@
 				177E88B91D16D0E300EE20CF /* tarbar0_selected@3x.png in Resources */,
 				177E88341D16CD9400EE20CF /* search@3x.png in Resources */,
 				177E88851D16CD9400EE20CF /* app03_750.png in Resources */,
+				17DBB5941D192B270090677D /* MyWalletCell.xib in Resources */,
 				177E88951D16CD9400EE20CF /* index03@2x.png in Resources */,
 				177E88671D16CD9400EE20CF /* my_face_icon.png in Resources */,
 				17B402C71C1292CB00ED1E02 /* NewsCommentCell.xib in Resources */,
@@ -3668,8 +3678,9 @@
 				177E869B1D16C91200EE20CF /* Reflect.swift in Sources */,
 				177E86B71D16CBDB00EE20CF /* MyMessageInfoVC.swift in Sources */,
 				17FDBB821C06A120006F04BF /* FriendNewsVC.swift in Sources */,
-				177E86CB1D16CCC300EE20CF /* CardTimesInfoVC.swift in Sources */,
+				177E86CB1D16CCC300EE20CF /* CardGetedInfoVC.swift in Sources */,
 				178186DF1CE57F9B0030837A /* LayoutConstraint.swift in Sources */,
+				17DBB5931D192B270090677D /* MyWalletCell.swift in Sources */,
 				17F2035D1C23A516000D1B4B /* NVActivityIndicatorAnimationCubeTransition.swift in Sources */,
 				17FCD6911D01227D005DAD8E /* XHttpRequest.swift in Sources */,
 				175BB5671C14198F000C85FE /* DiscoverVC1.swift in Sources */,
@@ -3732,6 +3743,7 @@
 				17E85E2C1BFD550C00AC0FC9 /* Dictionary.swift in Sources */,
 				17FCD68F1D01227D005DAD8E /* XHttpPool.swift in Sources */,
 				17F342E51C3F46B50035E884 /* OAAddressBookInfoVC.swift in Sources */,
+				17DBB5961D192DAD0090677D /* WalletModel.swift in Sources */,
 				17FCD6901D01227D005DAD8E /* XHttpPoolHandle.swift in Sources */,
 				17E85E2D1BFD550C00AC0FC9 /* NSData.swift in Sources */,
 				17F63F2A1BBA402D0096C72A /* DiscountListModel.swift in Sources */,
@@ -3739,6 +3751,7 @@
 				17A8DD3A1D0FA5C500D8B70B /* ChangePassVC.swift in Sources */,
 				17E85E1A1BFD550C00AC0FC9 /* XAlertView.swift in Sources */,
 				17E85E291BFD550C00AC0FC9 /* Datecalculate.swift in Sources */,
+				17DBB5901D192AED0090677D /* MyWalletVC.swift in Sources */,
 				17E85E111BFD550C00AC0FC9 /* JumpAnimator.swift in Sources */,
 				17700A661BFDA18600F43B7D /* NewsListCell.swift in Sources */,
 				17B402C61C1292CB00ED1E02 /* NewsCommentCell.swift in Sources */,
@@ -3769,7 +3782,6 @@
 				17E85E311BFD550C00AC0FC9 /* string.swift in Sources */,
 				17E85E521BFD550C00AC0FC9 /* position.swift in Sources */,
 				170753B61C780243005552FA /* PropertyNoticeInfoVC.swift in Sources */,
-				177E86CD1D16CCCB00EE20CF /* CardMoneyInfoVC.swift in Sources */,
 				17699BD11CD1BF900032A385 /* SystemInfo.m in Sources */,
 				17ECF9CF1C07DAAD001243E4 /* AGIPCPreviewController.m in Sources */,
 				17269DD61C9F932900E7AC28 /* MRZoomScrollView.swift in Sources */,

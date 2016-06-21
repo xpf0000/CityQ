@@ -121,6 +121,16 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
     var lastIndex = 0
     
     weak var main:XHorizontalMainView?
+        {
+        didSet
+        {
+            if main?.menu != self
+            {
+                main?.menu = self
+                reloadData()
+            }
+        }
+    }
     
     var menuPageNum:CGFloat = 3
     
@@ -155,10 +165,11 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
     {
         didSet
         {
-            line.frame.origin.y = self.frame.size.height - lineHeight
             line.frame.size.height = lineHeight
+            line.frame.origin.y = self.frame.size.height - lineHeight
         }
     }
+    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -175,9 +186,10 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         {
             (self.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = CGSizeMake(menuWidth, frame.size.height)
             line.frame.size.width = self.menuWidth*0.8
+            line.center.x = self.menuWidth*CGFloat(self.selectIndex)+self.menuWidth/2.0
+            
             line.frame.size.height = lineHeight
-            self.line.frame.origin.y = self.frame.size.height - lineHeight
-            self.line.center.x = self.menuWidth*CGFloat(self.selectIndex)+self.menuWidth/2.0
+            line.frame.origin.y = self.frame.size.height - lineHeight
         }
         
         reloadData()
@@ -186,6 +198,7 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
     
     func initSelf()
     {
+        
         let menulayout = UICollectionViewFlowLayout()
         menulayout.scrollDirection = .Horizontal
         menulayout.minimumLineSpacing = 0.0

@@ -54,19 +54,19 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     
     override func willMoveToSuperview(newSuperview: UIView?) {
         super.willMoveToSuperview(newSuperview)
-        if(newSuperview == nil)
-        {
-            //self.block = nil
-            //self.editBlock = nil
-        }
     }
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
-        if(self.superview == nil)
+    }
+    
+    override func willMoveToWindow(newWindow: UIWindow?) {
+        super.willMoveToWindow(newWindow)
+        
+        if newWindow == nil
         {
-            //self.block = nil
-            //self.editBlock = nil
+            delegates.removeAll(keepCapacity: false)
+            dataSources.removeAll(keepCapacity: false)
         }
     }
     
@@ -84,6 +84,23 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
         tableHeaderView=view1
         
         httpHandle.scrollView = self
+        
+        httpHandle.ResetBlock { [weak self](o) in
+            
+            self?.cellHDict.removeAll(keepCapacity: false)
+        }
+        
+        setHeaderRefresh { [weak self] () -> Void in
+            
+            self?.httpHandle.reSet()
+            
+            self?.httpHandle.handle()
+        }
+        
+        setFooterRefresh {[weak self] () -> Void in
+            
+            self?.httpHandle.handle()
+        }
 
     }
     
@@ -105,30 +122,8 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     
     func show()
     {
-
-        httpHandle.ResetBlock { [weak self](o) in
-            
-            self?.cellHDict.removeAll(keepCapacity: false)
-        }
-        
-        self.setHeaderRefresh { [weak self] () -> Void in
-            
-            self?.httpHandle.reSet()
-            
-            self?.httpHandle.handle()
-        }
-
-        self.setFooterRefresh {[weak self] () -> Void in
-            
-            self?.httpHandle.handle()
-        }
-        
         self.httpHandle.handle()
-        
     }
-
-        
-    
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         

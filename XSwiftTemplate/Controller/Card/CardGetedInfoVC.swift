@@ -28,6 +28,8 @@ class CardGetedInfoVC: UITableViewController {
     
     @IBOutlet var num: UILabel!
     
+    @IBOutlet var typeTxt: UILabel!
+    
     
     var harr:[CGFloat] = [180,55,15,55,55,55,15,55,128,0]
     

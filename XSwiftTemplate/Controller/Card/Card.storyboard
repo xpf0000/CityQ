@@ -807,6 +807,7 @@
                         <outlet property="phone" destination="Kbc-tJ-Kzf" id="e8u-ed-9bC"/>
                         <outlet property="rightLabel" destination="esz-QQ-mSG" id="W1W-mD-aEZ"/>
                         <outlet property="table" destination="wzs-NC-rUD" id="rhe-fE-hJW"/>
+                        <outlet property="typeTxt" destination="gib-cN-OO6" id="0E2-e2-VMw"/>
                         <outlet property="userContent" destination="REN-VJ-fYu" id="LQJ-I7-5EG"/>
                     </connections>
                 </tableViewController>

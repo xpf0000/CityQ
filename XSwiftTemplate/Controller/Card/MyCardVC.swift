@@ -94,6 +94,11 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
                 return
             }
             
+            for item in o
+            {
+                item.setValue(1, forKey: "orlq")
+            }
+            
             let b = o.count == 0
             
             self?.table.hidden = b

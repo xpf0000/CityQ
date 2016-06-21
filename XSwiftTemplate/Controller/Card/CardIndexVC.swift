@@ -48,7 +48,7 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     func http()
     {
         table.httpHandle.reSet()
-        table.httpHandle.url = APPURL+"Public/Found/?service=Hyk.getList&category_id="+category_id+"&typeid="+typeid+"&page=[page]&perNumber=20"
+        table.httpHandle.url = APPURL+"Public/Found/?service=Hyk.getList&category_id="+category_id+"&typeid="+typeid+"&page=[page]&perNumber=20&username=\(DataCache.Share().userModel.username)"
         table.httpHandle.handle()
     }
     

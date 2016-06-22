@@ -24,6 +24,7 @@ class ChangePassVC: UITableViewController {
     
     @IBOutlet var hideView: UIView!
     
+    var code = ""
     
     @IBAction func submit(sender: UIButton) {
 
@@ -41,7 +42,6 @@ class ChangePassVC: UITableViewController {
         waitActiv.startAnimating()
         
         let pass = self.pass.text!.trim()
-        let code = ""
         
         let url=APPURL+"Public/Found/?service=User.updatePass"
         let body="mobile="+DataCache.Share().userModel.mobile+"&password="+pass+"&code="+code

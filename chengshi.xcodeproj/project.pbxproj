@@ -89,6 +89,7 @@
 		1723F1661C76E80400057CF3 /* UserAddHouseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723F1651C76E80400057CF3 /* UserAddHouseVC.swift */; };
 		1723F1681C76F14400057CF3 /* UserHouseChooseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723F1671C76F14400057CF3 /* UserHouseChooseVC.swift */; };
 		17247F6B1CA4E940005B1F8C /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17247F6A1CA4E940005B1F8C /* LaunchScreen.swift */; };
+		17258D1B1D1ACEAA00341C05 /* AuthBandPhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17258D1A1D1ACEAA00341C05 /* AuthBandPhoneVC.swift */; };
 		17269DD61C9F932900E7AC28 /* MRZoomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17269DCF1C9F932900E7AC28 /* MRZoomScrollView.swift */; };
 		17269DD71C9F932900E7AC28 /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17269DD01C9F932900E7AC28 /* Reach.swift */; };
 		17269DD81C9F932900E7AC28 /* XImageBrowse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17269DD11C9F932900E7AC28 /* XImageBrowse.swift */; };
@@ -825,6 +826,7 @@
 		1723F1651C76E80400057CF3 /* UserAddHouseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAddHouseVC.swift; sourceTree = "<group>"; };
 		1723F1671C76F14400057CF3 /* UserHouseChooseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHouseChooseVC.swift; sourceTree = "<group>"; };
 		17247F6A1CA4E940005B1F8C /* LaunchScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		17258D1A1D1ACEAA00341C05 /* AuthBandPhoneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthBandPhoneVC.swift; sourceTree = "<group>"; };
 		17269DCF1C9F932900E7AC28 /* MRZoomScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MRZoomScrollView.swift; sourceTree = "<group>"; };
 		17269DD01C9F932900E7AC28 /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
 		17269DD11C9F932900E7AC28 /* XImageBrowse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XImageBrowse.swift; sourceTree = "<group>"; };
@@ -1587,6 +1589,7 @@
 				17AA6EBE1D1A92DD00643C3B /* CheckPhoneVC.swift */,
 				17BDF1251C0AEB9400B922D8 /* BandPhoneVC.swift */,
 				17A8DD3B1D0FAC6000D8B70B /* FindBackPassVC.swift */,
+				17258D1A1D1ACEAA00341C05 /* AuthBandPhoneVC.swift */,
 				17A8DD391D0FA5C500D8B70B /* ChangePassVC.swift */,
 				17DEAAF01C0BDFA100038B82 /* RegistVC.swift */,
 				17DEAB3B1C0C319B00038B82 /* MyCollectVC.swift */,
@@ -3579,6 +3582,7 @@
 				177E86B51D16CBD200EE20CF /* MyMessageVC.swift in Sources */,
 				1703B74F1C099B8D00858FD2 /* UserModel.swift in Sources */,
 				173E6B9D1C0304F7008B14A8 /* DiscountSeachCell.swift in Sources */,
+				17258D1B1D1ACEAA00341C05 /* AuthBandPhoneVC.swift in Sources */,
 				17E85E361BFD550C00AC0FC9 /* UITextView.swift in Sources */,
 				171A890A1C3E4BB200F303F6 /* OAMessageVC.swift in Sources */,
 				17F203611C23A516000D1B4B /* NVActivityIndicatorAnimationLineScalePulseOutRapid.swift in Sources */,

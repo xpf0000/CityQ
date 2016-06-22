@@ -1,5 +1,5 @@
 //
-//  ChangePassVC.swift
+//  AuthBandPhoneVC.swift
 //  chengshi
 //
 //  Created by X on 15/12/1.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FindBackPassVC: UITableViewController,UITextFieldDelegate {
+class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
     
     @IBOutlet var cellContent: UIView!
     
@@ -47,9 +47,9 @@ class FindBackPassVC: UITableViewController,UITextFieldDelegate {
         let code = self.code.text!.trim()
         let p = self.phone.text!.trim()
         
-        let url=APPURL+"Public/Found/?service=User.updatePass"
-        let body="mobile="+p+"&password="+pass+"&code="+code
-        let msg="密码重置成功"
+        let url=APPURL+"Public/Found/?service=User.openMobileAdd"
+        let body="username="+DataCache.Share().userModel.username+"&mobile="+p+"&password="+pass+"&code="+code
+        let msg="绑定成功"
         
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
             
@@ -57,6 +57,10 @@ class FindBackPassVC: UITableViewController,UITextFieldDelegate {
             {
                 if(o!["data"]["code"].intValue == 0)
                 {
+                    DataCache.Share().userModel.mobile = p
+                    DataCache.Share().userModel.password = pass
+                    DataCache.Share().userModel.save()
+                    
                     self.navigationController?.view.showAlert(msg, block: { (o) -> Void in
                         
                         self.navigationController?.popToRootViewControllerAnimated(true)
@@ -75,7 +79,7 @@ class FindBackPassVC: UITableViewController,UITextFieldDelegate {
             else
             {
                 self.reSetButton()
-                self.navigationController?.view.showAlert("修改失败", block: nil)
+                self.navigationController?.view.showAlert("绑定失败", block: nil)
             }
             
         }
@@ -115,7 +119,7 @@ class FindBackPassVC: UITableViewController,UITextFieldDelegate {
         waitActiv.hidden = true
         self.button.enabled = false
         
-
+        
         let view1=UIView()
         view1.backgroundColor=UIColor.clearColor()
         table.tableFooterView=view1
@@ -123,7 +127,7 @@ class FindBackPassVC: UITableViewController,UITextFieldDelegate {
         
         self.cellContent.addSubview(XVerifyButton.Share())
         
-        XVerifyButton.Share().type = 2
+        XVerifyButton.Share().type = 1
         
         XVerifyButton.Share().snp_makeConstraints { (make) -> Void in
             
@@ -133,18 +137,8 @@ class FindBackPassVC: UITableViewController,UITextFieldDelegate {
             
         }
         
-        XVerifyButton.Share().block={
-            [weak self]
-            (o)->Void in
-            if(self != nil)
-            {
-                self?.phone.enabled = false
-            }
-        }
-
-        
     }
-
+    
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
@@ -170,7 +164,7 @@ class FindBackPassVC: UITableViewController,UITextFieldDelegate {
         
     }
     
-
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         self.view.endEditing(true)
@@ -230,14 +224,14 @@ class FindBackPassVC: UITableViewController,UITextFieldDelegate {
             }
         }
     }
-
+    
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
-
+    
+    
 }

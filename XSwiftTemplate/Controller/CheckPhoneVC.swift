@@ -24,13 +24,8 @@ class CheckPhoneVC: UITableViewController,UITextFieldDelegate {
         
         XVerifyButton.Share().type = 2
         
-        if(DataCache.Share().userModel.uid == "" || DataCache.Share().userModel.mobile == "")
-        {
-            self.phone.enabled = true
-            XVerifyButton.Share().type = 1
-        }
-        
         self.phone.text = DataCache.Share().userModel.mobile
+        
         XVerifyButton.Share().Phone(DataCache.Share().userModel.mobile)
         
         self.cellContent.addSubview(XVerifyButton.Share())
@@ -42,16 +37,6 @@ class CheckPhoneVC: UITableViewController,UITextFieldDelegate {
             make.height.equalTo(32)
             
         }
-        
-        XVerifyButton.Share().block={
-            [weak self]
-            (o)->Void in
-            if(self != nil)
-            {
-                self?.phone.enabled = false
-            }
-        }
-        
         
         let view1=UIView()
         view1.backgroundColor=UIColor.clearColor()
@@ -71,13 +56,13 @@ class CheckPhoneVC: UITableViewController,UITextFieldDelegate {
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if(indexPath.row == 1)
+        if(indexPath.row < 2)
         {
-            cell.separatorInset=UIEdgeInsetsMake(0, 15, 0, 15)
+            cell.separatorInset=UIEdgeInsetsMake(0, 0, 0, 0)
             if(IOS_Version>=8.0)
             {
                 if #available(iOS 8.0, *) {
-                    cell.layoutMargins=UIEdgeInsetsMake(0, 15, 0, 15)
+                    cell.layoutMargins=UIEdgeInsetsMake(0, 0, 0, 0)
                 } else {
                     // Fallback on earlier versions
                 }
@@ -126,17 +111,16 @@ class CheckPhoneVC: UITableViewController,UITextFieldDelegate {
         let code=self.verCode.text!.trim()
         let phone=self.phone.text!.trim()
         
-        let url="http://101.201.169.38/api/Public/Found/?service=User.smsVerify"
+        let url=APPURL + "Public/Found/?service=User.smsVerify"
         let body="mobile="+phone+"&code="+code
         
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
             
             
-            if(o?["data"]["code"].intValue == 0)
+            if(o?["data"]["code"].int == 0)
             {
                 let vc:ChangePassVC = "ChangePassVC".VC("User") as! ChangePassVC
                 vc.code = code
-                vc.phone = phone
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             else
@@ -145,22 +129,6 @@ class CheckPhoneVC: UITableViewController,UITextFieldDelegate {
             }
             
         }
-        
-    }
-    
-    
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        
-        if(textField == self.phone)
-        {
-            var txt=textField.text!
-            txt=(txt as NSString).stringByReplacingCharactersInRange(range, withString: string)
-            XVerifyButton.Share().Phone(txt)
-        }
-        
-        
-        
-        return true
         
     }
     

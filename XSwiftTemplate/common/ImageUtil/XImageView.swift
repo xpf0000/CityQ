@@ -205,14 +205,14 @@ extension UIImageView
         }
         set {
             
-            let oldValue = objc_getAssociatedObject(self, &XImageUrlKey) as? String
+           // let oldValue = objc_getAssociatedObject(self, &XImageUrlKey) as? String
             
             self.willChangeValueForKey("XImageUrlKey")
             objc_setAssociatedObject(self, &XImageUrlKey, newValue,
                 .OBJC_ASSOCIATION_RETAIN)
             self.didChangeValueForKey("XImageUrlKey")
             
-            if newValue==nil || newValue==oldValue {return}
+            if newValue==nil  {return}
             
             self.clipsToBounds = true
             self.layer.masksToBounds = true

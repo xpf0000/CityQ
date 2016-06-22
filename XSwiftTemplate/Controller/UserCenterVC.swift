@@ -244,11 +244,15 @@ class UserCenterVC: UITableViewController {
             
             if(DataCache.Share().userModel.mobile == "")
             {
-               
+                let vc = "AuthBandPhoneVC".VC("User")
+                
+                vc.hidesBottomBarWhenPushed = true
+                
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             else
             {
-                let vc = "ChangePassVC".VC("User")
+                let vc = "CheckPhoneVC".VC("User")
                 
                 vc.hidesBottomBarWhenPushed = true
                 

@@ -156,25 +156,6 @@ class BandPhoneVC: UITableViewController,UITextFieldDelegate {
             
         }
         
-//        
-//        SMSSDK.commitVerificationCode(self.verCode.text?.trim(), phoneNumber: self.phone.text?.trim(), zone: "86") { (err) -> Void in
-//            
-//            if(err == nil)
-//            {
-//                let vc:RegistVC = "RegistVC".VC("User") as! RegistVC
-//                vc.registPhone = self.phone.text!.trim()
-//                vc.rootVC = self.rootVC
-//                self.navigationController?.pushViewController(vc, animated: true)
-//                
-//            }
-//            else
-//            {
-//                
-//                 UIApplication.sharedApplication().keyWindow?.showAlert("验证失败", block: nil)
-//            }
-//            
-//        }
-        
     }
     
     

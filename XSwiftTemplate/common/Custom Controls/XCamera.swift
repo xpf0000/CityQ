@@ -65,31 +65,55 @@ class XCamera: NSObject ,UIImagePickerControllerDelegate,UINavigationControllerD
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         
-        var image = image
-        
-        let imageOrientation=image.imageOrientation;
-        if(imageOrientation != .Up)
-        {
-            // 原始图片可以根据照相时的角度来显示，但UIImage无法判定，于是出现获取的图片会向左转９０度的现象。
-            // 以下为调整图片角度的部分
-            UIGraphicsBeginImageContext(image.size);
-            image.drawInRect(CGRectMake(0, 0, image.size.width, image.size.height))
-            image = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            // 调整图片角度完毕
+        autoreleasepool { 
+            
+            var image = image
+            
+            let imageOrientation=image.imageOrientation;
+            
+            if(imageOrientation != .Up)
+            {
+                // 原始图片可以根据照相时的角度来显示，但UIImage无法判定，于是出现获取的图片会向左转９０度的现象。
+                // 以下为调整图片角度的部分
+                
+                let size = CGSizeMake(swidth*screenScale, image.size.height/image.size.width*swidth*screenScale)
+                
+                print(size)
+                
+                // 打开图片编辑模式
+                
+                UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+                
+                // 修改图片长和宽
+                
+                image.drawInRect(CGRect(origin: CGPointZero, size: size))
+                
+                // 生成新图片
+                
+                image = UIGraphicsGetImageFromCurrentImageContext()
+                
+                // 关闭图片编辑模式
+                
+                UIGraphicsEndImageContext()
+                
+                // 压缩图片
+                
+                
+                // 调整图片角度完毕
+            }
+            
+            self.block?(image)
+            self.delegate?.XPhotoResult!(image)
+            
+            vc?.dismissViewControllerAnimated(true, completion: { () -> Void in
+                
+                self.block?(nil)
+                self.delegate?.XPhotoResult!(nil)
+                
+                self.clean()
+            })
         }
-        
-        self.block?(image)
-        self.delegate?.XPhotoResult!(image)
-        
-        vc?.dismissViewControllerAnimated(true, completion: { () -> Void in
-            
-            self.block?(nil)
-            self.delegate?.XPhotoResult!(nil)
-            
-            self.clean()
-        })
-        
+ 
     }
     
     func clean()

@@ -19,7 +19,7 @@ class CardShopsActivitysCell: UITableViewCell {
         didSet
         {
             ctitle.text = model.title
-            time.text = model.create_time
+            time.text = model.s_time
         }
     }
     

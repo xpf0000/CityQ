@@ -167,7 +167,7 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if(indexPath.row==1)
+        if(indexPath.row==0)
         {
             self.navigationController?.view.window?.addSubview(XPhotoChoose.Share())
 

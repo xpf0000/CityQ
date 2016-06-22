@@ -801,12 +801,14 @@
                     <connections>
                         <outlet property="address" destination="6xr-45-s3X" id="ZzU-10-DTS"/>
                         <outlet property="img" destination="Pif-GV-Im1" id="IZb-Pc-Ti4"/>
+                        <outlet property="imgBG" destination="Z0L-A8-l3X" id="gHj-vf-JNq"/>
                         <outlet property="leftLabel" destination="1h7-Kp-81l" id="dt4-33-7mX"/>
                         <outlet property="name" destination="h94-ya-ufB" id="zjF-Sc-lsl"/>
                         <outlet property="num" destination="mkm-X7-uM8" id="jRm-BV-U9C"/>
                         <outlet property="phone" destination="Kbc-tJ-Kzf" id="e8u-ed-9bC"/>
                         <outlet property="rightLabel" destination="esz-QQ-mSG" id="W1W-mD-aEZ"/>
                         <outlet property="table" destination="wzs-NC-rUD" id="rhe-fE-hJW"/>
+                        <outlet property="txtBG" destination="8pk-9M-QBh" id="ml2-nx-sPm"/>
                         <outlet property="typeTxt" destination="gib-cN-OO6" id="0E2-e2-VMw"/>
                         <outlet property="userContent" destination="REN-VJ-fYu" id="LQJ-I7-5EG"/>
                     </connections>

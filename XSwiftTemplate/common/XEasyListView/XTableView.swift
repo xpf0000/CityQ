@@ -19,19 +19,18 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     
     var publicCell:UITableViewCell?
     
-    var delegates:[UITableViewDelegate] = []
+    private weak var xdelegate:UITableViewDelegate?
     
     func Delegate(d:UITableViewDelegate)
     {
-        delegates.append(d)
-
+        xdelegate = d
     }
     
-    var dataSources:[UITableViewDataSource] = []
+    private weak var xdataSource:UITableViewDataSource?
     
     func DataSource(d:UITableViewDataSource)
     {
-        dataSources.append(d)
+        xdataSource = d
     }
     
     
@@ -52,31 +51,10 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
         self.initTable()
     }
     
-    override func willMoveToSuperview(newSuperview: UIView?) {
-        super.willMoveToSuperview(newSuperview)
-    }
-    
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-    }
-    
-    override func willMoveToWindow(newWindow: UIWindow?) {
-        super.willMoveToWindow(newWindow)
-        
-        if newWindow == nil
-        {
-            delegates.removeAll(keepCapacity: false)
-            dataSources.removeAll(keepCapacity: false)
-        }
-    }
-    
     func initTable()
     {
         delegate = self
         dataSource = self
-        
-        dataSources.removeAll(keepCapacity: false)
-        delegates.removeAll(keepCapacity: false)
         
         let view1=UIView()
         view1.backgroundColor=UIColor.clearColor()
@@ -127,7 +105,7 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        delegates.last?.tableView?(tableView, willDisplayCell: cell, forRowAtIndexPath: indexPath)
+        xdelegate?.tableView?(tableView, willDisplayCell: cell, forRowAtIndexPath: indexPath)
         
     }
     
@@ -189,7 +167,7 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         
         
-        if let b = dataSources.last?.tableView?(tableView, canEditRowAtIndexPath: indexPath)
+        if let b = xdataSource?.tableView?(tableView, canEditRowAtIndexPath: indexPath)
         {
             return b
         }
@@ -200,44 +178,44 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        dataSources.last?.tableView?(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
+        xdataSource?.tableView?(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
         
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        delegates.last?.tableView?(tableView, didSelectRowAtIndexPath: indexPath)
+        xdelegate?.tableView?(tableView, didSelectRowAtIndexPath: indexPath)
         
     }
     
     func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-        return delegates.last?.tableView?(tableView, viewForFooterInSection: section)
+        return xdelegate?.tableView?(tableView, viewForFooterInSection: section)
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        return delegates.last?.tableView?(tableView, viewForHeaderInSection: section)
+        return xdelegate?.tableView?(tableView, viewForHeaderInSection: section)
     }
     
     func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         
-        return dataSources.last?.tableView?(tableView, titleForFooterInSection: section)
+        return xdataSource?.tableView?(tableView, titleForFooterInSection: section)
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
-        return dataSources.last?.tableView?(tableView, titleForHeaderInSection: section)
+        return xdataSource?.tableView?(tableView, titleForHeaderInSection: section)
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         
-        delegates.last?.tableView?(tableView, didDeselectRowAtIndexPath: indexPath)
+        xdelegate?.tableView?(tableView, didDeselectRowAtIndexPath: indexPath)
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
-        if let h = delegates.last?.tableView?(tableView, heightForFooterInSection: section)
+        if let h = xdelegate?.tableView?(tableView, heightForFooterInSection: section)
         {
             return h
         }
@@ -247,7 +225,7 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
  
-        if let h = delegates.last?.tableView?(tableView, heightForHeaderInSection: section)
+        if let h = xdelegate?.tableView?(tableView, heightForHeaderInSection: section)
         {
             return h
         }
@@ -257,22 +235,22 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     
     func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath) {
         
-        delegates.last?.tableView?(tableView, didHighlightRowAtIndexPath: indexPath)
+        xdelegate?.tableView?(tableView, didHighlightRowAtIndexPath: indexPath)
     }
     
     func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
         
-        delegates.last?.tableView?(tableView, didEndEditingRowAtIndexPath: indexPath)
+        xdelegate?.tableView?(tableView, didEndEditingRowAtIndexPath: indexPath)
     }
     
     func tableView(tableView: UITableView, didUnhighlightRowAtIndexPath indexPath: NSIndexPath) {
         
-        delegates.last?.tableView?(tableView, didUnhighlightRowAtIndexPath: indexPath)
+        xdelegate?.tableView?(tableView, didUnhighlightRowAtIndexPath: indexPath)
     }
     
     func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         
-        if let h = dataSources.last?.tableView?(tableView, canMoveRowAtIndexPath: indexPath)
+        if let h = xdataSource?.tableView?(tableView, canMoveRowAtIndexPath: indexPath)
         {
             return h
         }
@@ -283,7 +261,7 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     func tableView(tableView: UITableView, canFocusRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         
         if #available(iOS 9.0, *) {
-            if let h = delegates.last?.tableView?(tableView, canFocusRowAtIndexPath: indexPath)
+            if let h = xdelegate?.tableView?(tableView, canFocusRowAtIndexPath: indexPath)
             {
                 return h
             }
@@ -296,7 +274,7 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     
     func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
         
-        delegates.last?.tableView?(tableView, willBeginEditingRowAtIndexPath: indexPath)
+        xdelegate?.tableView?(tableView, willBeginEditingRowAtIndexPath: indexPath)
     }
     
     
@@ -304,11 +282,10 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     {
         self.delegate = nil
         self.dataSource = nil
+        xdelegate = nil
+        xdataSource = nil
         cellHDict.removeAll(keepCapacity: false)
         postDict.removeAll(keepCapacity: false)
-        delegates.removeAll(keepCapacity: false)
-        dataSources.removeAll(keepCapacity: false)
-    
     }
     
 }

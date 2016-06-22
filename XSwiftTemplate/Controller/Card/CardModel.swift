@@ -20,6 +20,7 @@ class CardModel: Reflect {
     var address = ""
     var info = ""
     var shopid = ""
+    var values = ""
     
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {
         
@@ -36,6 +37,8 @@ class CardActivityModel: Reflect {
     var view=""
     var create_time = ""
     var name = ""
+    var s_time = ""
+    var e_time = ""
     
     override func setValue(value: AnyObject?, forKey key: String) {
         
@@ -52,9 +55,38 @@ class CardActivityModel: Reflect {
         
         if(key == "create_time" && value != nil)
         {
-            let date=NSDate(timeIntervalSince1970: value!.doubleValue)
-            self.create_time = date.toStr("yyyy-MM-dd")!
-            return
+            if value?.doubleValue > 0
+            {
+                let date=NSDate(timeIntervalSince1970: value!.doubleValue)
+                self.create_time = date.toStr("yyyy-MM-dd")!
+                
+                return
+            }
+       
+        }
+        
+        if(key == "s_time" && value != nil)
+        {
+            if value?.doubleValue > 0
+            {
+                let date=NSDate(timeIntervalSince1970: value!.doubleValue)
+                self.s_time = date.toStr("yyyy-MM-dd")!
+                
+                return
+            }
+            
+        }
+        
+        if(key == "e_time" && value != nil)
+        {
+            if value?.doubleValue > 0
+            {
+                let date=NSDate(timeIntervalSince1970: value!.doubleValue)
+                self.e_time = date.toStr("yyyy-MM-dd")!
+                
+                return
+            }
+            
         }
         
         super.setValue(value, forKey: key)

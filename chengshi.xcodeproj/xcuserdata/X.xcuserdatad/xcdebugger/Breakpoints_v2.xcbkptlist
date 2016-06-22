@@ -1608,13 +1608,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "XSwiftTemplate/common/XEasyListView/XTableView.swift"
-            timestampString = "488193849.618084"
+            filePath = "XSwiftTemplate/Controller/Card/MyCardVC.swift"
+            timestampString = "488250582.787995"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "willMoveToSuperview(_:)"
+            startingLineNumber = "305"
+            endingLineNumber = "305"
+            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1624,13 +1624,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "XSwiftTemplate/common/XEasyListView/XTableView.swift"
-            timestampString = "488194177.312774"
+            filePath = "XSwiftTemplate/Model/NewsModel.swift"
+            timestampString = "488270433.957254"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "didMoveToSuperview()"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "setValue(_:forKey:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

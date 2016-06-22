@@ -302,18 +302,23 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if indexPath.row % 2 == 0
-        {
-            let vc = "CardInfoVC".VC("Card")
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        else
-        {
-            let vc = "CardTimesInfoVC".VC("Card")
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        let vc = "CardGetedInfoVC".VC("Card") as! CardGetedInfoVC
+        
+        vc.model = table.httpHandle.listArr[indexPath.row] as! CardModel
+        
+//        vc.id = model.id
+//        
+//        vc.SuccessBlock {[weak self]()->Void in
+//            
+//            if self == nil {return}
+//            
+//            model.orlq = 1
+//            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+//            
+//        }
+        
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     

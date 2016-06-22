@@ -76,7 +76,7 @@ class XPhotoLib: NSObject,AGImagePickerControllerDelegate {
         allButton.setImageWithAnimation("AGImagePickerController.bundle/AGIPC-Checkmark-0@2x.png".image, forState: UIControlState.Normal)
         allButton.setImageWithAnimation("AGImagePickerController.bundle/AGIPC-Checkmark-1@2x.png".image, forState: UIControlState.Selected)
         
-        allButton.addTarget(self, action: "allChoose:", forControlEvents: UIControlEvents.TouchUpInside)
+        allButton.addTarget(self, action: #selector(allChoose(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
          selectAll = AGIPCToolbarItem(barButtonItem: UIBarButtonItem(customView: allButton), andSelectionBlock: nil)
         

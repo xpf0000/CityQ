@@ -83,9 +83,14 @@ class NewsModel: Reflect {
         
         if(key == "create_time" && value != nil)
         {
-            let date=NSDate(timeIntervalSince1970: value!.doubleValue)
-            self.create_time = date.str!
-            return
+            if value?.doubleValue > 0
+            {
+                let date=NSDate(timeIntervalSince1970: value!.doubleValue)
+                self.create_time = date.str!
+                
+                return
+            }
+        
         }
         
         super.setValue(value, forKey: key)

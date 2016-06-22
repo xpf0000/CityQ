@@ -20,6 +20,15 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
     {
         didSet
         {
+            if url.has("News.getListGZ&")
+            {
+                httpHandle.modelClass=CardActivityModel.self
+            }
+            else
+            {
+                httpHandle.modelClass=NewsModel.self
+            }
+            
             httpHandle.url=url
             httpHandle.reSet()
             httpHandle.handle()
@@ -79,7 +88,6 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         httpHandle.scrollView=self
         httpHandle.replace=["descrip":"description"]
         httpHandle.keys=["data","info"]
-        httpHandle.modelClass=NewsModel.self
         
         self.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
@@ -88,6 +96,8 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         self.registerNib("NewsActivitysCell".Nib, forCellReuseIdentifier: "NewsActivitysCell")
         
         self.registerNib("ActivitysCell".Nib, forCellReuseIdentifier: "ActivitysCell")
+        
+        self.registerNib("CardShopsActivitysCell".Nib, forCellReuseIdentifier: "CardShopsActivitysCell")
         
         self.setHeaderRefresh { [weak self] () -> Void in
  
@@ -109,7 +119,15 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
             
             if self?.bannerID == "103" && arr.count == 0
             {
-                self?.addNoGuanzhu()
+                if arr.count == 0
+                {
+                    self?.addNoGuanzhu()
+                }
+                else
+                {
+                    self?.viewWithTag(555)?.removeFromSuperview()
+                }
+                
             }
             
             if self?.url.has("News.getList&category_id=98") == true
@@ -233,11 +251,11 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         }
         else
         {
-            let m = self.httpHandle.listArr[indexPath.row-1] as! NewsModel
+            let m = self.httpHandle.listArr[indexPath.row-1]
             
-            if m.category_id == "98"
+            if bannerID == "98"
             {
-                if bannerID == "98"
+                if (m as? NewsModel)?.category_id == "98"
                 {
                     return 170.0 * screenFlag
                 }
@@ -246,8 +264,13 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                     return 166.0 * screenFlag
                 }
             }
+            else if bannerID == "103"
+            {
+                return 50.0
+            }
             else
             {
+                
                 return 110.0 * screenFlag
             }
             
@@ -277,16 +300,16 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         }
         else
         {
-            let model = self.httpHandle.listArr[indexPath.row-1] as! NewsModel
+            let model = self.httpHandle.listArr[indexPath.row-1]
             
-            if model.category_id == "98"
+            if  bannerID == "98"
             {
-                if bannerID == "98"
+                if model.category_id == "98"
                 {
                     let cell:ActivitysCell = tableView.dequeueReusableCellWithIdentifier("ActivitysCell", forIndexPath: indexPath) as! ActivitysCell
                     
-                    model.url = "http://img2.imgtn.bdimg.com/it/u=3856760675,2206224679&fm=21&gp=0.jpg"
-                    cell.model = model
+                    (model as! NewsModel).url = "http://img2.imgtn.bdimg.com/it/u=3856760675,2206224679&fm=21&gp=0.jpg"
+                    cell.model = model as! NewsModel
                     
                     return cell
                 }
@@ -294,18 +317,26 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 {
                     let cell:NewsActivitysCell = tableView.dequeueReusableCellWithIdentifier("NewsActivitysCell", forIndexPath: indexPath) as! NewsActivitysCell
                     
-                    cell.model = model
+                    cell.model = model as! NewsModel
                     
                     return cell
                     
                 }
                 
             }
+            else if bannerID == "103"
+            {
+                let cell:CardShopsActivitysCell = tableView.dequeueReusableCellWithIdentifier("CardShopsActivitysCell", forIndexPath: indexPath) as! CardShopsActivitysCell
+                
+                cell.model = model as! CardActivityModel
+                
+                return cell
+            }
             else
             {
                 let cell:NewsListCell = tableView.dequeueReusableCellWithIdentifier("NewsListCell", forIndexPath: indexPath) as! NewsListCell
                 
-                cell.model = model
+                cell.model = model as! NewsModel
                 
                 return cell
             }
@@ -318,7 +349,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if(indexPath.row > 0)
+        if(indexPath.row > 0 && bannerID != "103")
         {
             let vc:NewsInfoVC = "NewsInfoVC".VC as! NewsInfoVC
             vc.model = self.httpHandle.listArr[indexPath.row-1] as! NewsModel

@@ -470,6 +470,7 @@
 		179F5E411BA40FD100F8208B /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179F5E401BA40FD100F8208B /* WeatherModel.swift */; };
 		17A8DD3A1D0FA5C500D8B70B /* ChangePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A8DD391D0FA5C500D8B70B /* ChangePassVC.swift */; };
 		17A8DD3C1D0FAC6000D8B70B /* FindBackPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A8DD3B1D0FAC6000D8B70B /* FindBackPassVC.swift */; };
+		17AA6EBF1D1A92DD00643C3B /* CheckPhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AA6EBE1D1A92DD00643C3B /* CheckPhoneVC.swift */; };
 		17B258691C1C075B00A09C80 /* HmtlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B258681C1C075A00A09C80 /* HmtlVC.swift */; };
 		17B402C61C1292CB00ED1E02 /* NewsCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B402C41C1292CB00ED1E02 /* NewsCommentCell.swift */; };
 		17B402C71C1292CB00ED1E02 /* NewsCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B402C51C1292CB00ED1E02 /* NewsCommentCell.xib */; };
@@ -1209,6 +1210,7 @@
 		179F5E401BA40FD100F8208B /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		17A8DD391D0FA5C500D8B70B /* ChangePassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePassVC.swift; sourceTree = "<group>"; };
 		17A8DD3B1D0FAC6000D8B70B /* FindBackPassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindBackPassVC.swift; sourceTree = "<group>"; };
+		17AA6EBE1D1A92DD00643C3B /* CheckPhoneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckPhoneVC.swift; sourceTree = "<group>"; };
 		17B258681C1C075A00A09C80 /* HmtlVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HmtlVC.swift; sourceTree = "<group>"; };
 		17B402C41C1292CB00ED1E02 /* NewsCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCommentCell.swift; sourceTree = "<group>"; };
 		17B402C51C1292CB00ED1E02 /* NewsCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsCommentCell.xib; sourceTree = "<group>"; };
@@ -1582,6 +1584,7 @@
 				1703B74C1C09980F00858FD2 /* LoginVC.swift */,
 				1703B7521C09A75B00858FD2 /* EditUserInfoVC.swift */,
 				17BDF1211C0ADD9F00B922D8 /* ConfigVC.swift */,
+				17AA6EBE1D1A92DD00643C3B /* CheckPhoneVC.swift */,
 				17BDF1251C0AEB9400B922D8 /* BandPhoneVC.swift */,
 				17A8DD3B1D0FAC6000D8B70B /* FindBackPassVC.swift */,
 				17A8DD391D0FA5C500D8B70B /* ChangePassVC.swift */,
@@ -3695,6 +3698,7 @@
 				177E869C1D16C91200EE20CF /* SwiftyJSON.swift in Sources */,
 				17DEAB431C0C341500038B82 /* MyCollectModel.swift in Sources */,
 				177E86B91D16CBEE00EE20CF /* MyCardVC.swift in Sources */,
+				17AA6EBF1D1A92DD00643C3B /* CheckPhoneVC.swift in Sources */,
 				17F203621C23A516000D1B4B /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
 				17F203501C23A516000D1B4B /* NVActivityIndicatorAnimationBallPulseRise.swift in Sources */,
 				177E86941D16C91200EE20CF /* Reflect+ArcFile.swift in Sources */,

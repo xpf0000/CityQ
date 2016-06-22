@@ -242,11 +242,18 @@ class UserCenterVC: UITableViewController {
                 return
             }
             
-            let vc = "ChangePassVC".VC("User")
-            
-            vc.hidesBottomBarWhenPushed = true
-            
-            self.navigationController?.pushViewController(vc, animated: true)
+            if(DataCache.Share().userModel.mobile == "")
+            {
+               
+            }
+            else
+            {
+                let vc = "ChangePassVC".VC("User")
+                
+                vc.hidesBottomBarWhenPushed = true
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             
             return
             

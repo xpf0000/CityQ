@@ -24,8 +24,6 @@ class ChangePassVC: UITableViewController {
     
     @IBOutlet var hideView: UIView!
     
-    var code = ""
-    
     @IBAction func submit(sender: UIButton) {
 
         self.view.endEditing(true)
@@ -36,15 +34,24 @@ class ChangePassVC: UITableViewController {
             return
         }
         
+        let old = self.pass.text!.trim()
+        let new = self.pass1.text!.trim()
+        
+        if old == new
+        {
+            ShowMessage("新密码和旧密码一样!")
+            return
+        }
+        
         sender.enabled = false
         sender.titleLabel?.alpha = 0.0
         waitActiv.hidden = false
         waitActiv.startAnimating()
         
-        let pass = self.pass.text!.trim()
         
-        let url=APPURL+"Public/Found/?service=User.updatePass"
-        let body="mobile="+DataCache.Share().userModel.mobile+"&password="+pass+"&code="+code
+        
+        let url=APPURL+"Public/Found/?service=User.updatePass2"
+        let body="mobile="+DataCache.Share().userModel.mobile+"&newpass="+new+"&oldpass="+old
         let msg="密码修改成功"
         
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in

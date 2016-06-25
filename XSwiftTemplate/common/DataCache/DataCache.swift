@@ -31,6 +31,8 @@ class DataCache: NSObject {
     lazy var oaDoc:OADocModel = OADocModel()
     lazy var oaFile:OAFileModel = OAFileModel()
     
+    lazy var userMsgArr:[String:MessageModel] = [:]
+    
     lazy var newsViewedModel:NewsSeeModel = NewsSeeModel()
     
     lazy var jigouViewRecord:UserViewRecordModel = UserViewRecordModel()

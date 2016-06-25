@@ -12,6 +12,14 @@ class MyMessageInfoVC: UIViewController {
 
     let table = XTableView()
     
+    var type = 1
+    {
+        didSet
+        {
+                
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
@@ -27,12 +35,7 @@ class MyMessageInfoVC: UIViewController {
         table.CellIdentifier = "MyMessageInfoCell"
         
         table.cellHeight = 170
-        
-        for _ in 0...10
-        {
-            table.httpHandle.listArr.append(MessageModel())
-        }
-        
+    
         table.separatorStyle = .None
         table.showsVerticalScrollIndicator = false
         table.showsHorizontalScrollIndicator = false
@@ -42,9 +45,13 @@ class MyMessageInfoVC: UIViewController {
         v.frame = CGRectMake(0, 0, swidth, 20)
         table.tableFooterView = v
         
-        table.reloadData()
+        let url = "http://123.57.162.97/hfapi/Public/Found/?service=User.getMessagesList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&type=\(type)"
         
+        table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: MessageModel.self, CellIdentifier: "MyMessageInfoCell")
         
+        table.show()
+
+
     }
 
     override func didReceiveMemoryWarning() {

@@ -120,7 +120,7 @@ class CheckPhoneVC: UITableViewController,UITextFieldDelegate {
             if(o?["data"]["code"].int == 0)
             {
                 let vc:ChangePassVC = "ChangePassVC".VC("User") as! ChangePassVC
-                vc.code = code
+                //vc.code = code
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             else

@@ -252,7 +252,7 @@ class UserCenterVC: UITableViewController {
             }
             else
             {
-                let vc = "CheckPhoneVC".VC("User")
+                let vc = "ChangePassVC".VC("User")
                 
                 vc.hidesBottomBarWhenPushed = true
                 

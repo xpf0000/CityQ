@@ -24,6 +24,8 @@ enum NoticeWord : String{
     case LoginSuccess="LoginSuccess"
     case LogoutSuccess="LogoutSuccess"
     case UpdateUserSuccess="UpdateUserSuccess"
+    case CardChanged="CardChanged"
+    
 }
 
 typealias AnyBlock = (Any?)->Void
@@ -66,8 +68,11 @@ let jumpAnim:JumpAnimator=JumpAnimator(type: AnimatorType.Default)
 var topHeight:CGFloat=0.0
 
 let APPBlueColor:UIColor = "21adfd".color!
+let APPBGColor:UIColor = "F3F5F7".color!
 let PageBGColor = "f8f8f8".color!
 let APPBlackColor = "333333".color!
+let APPMiddleColor = "666666".color!
+let APPGrayColor = "999999".color!
 
 let grayBGC:UIColor = "#f6f6f6".color!
 let borderBGC:UIColor = "#ebe9e9".color!

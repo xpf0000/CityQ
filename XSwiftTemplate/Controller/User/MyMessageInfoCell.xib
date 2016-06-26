@@ -15,24 +15,24 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CHw-ak-ZdN">
-                        <rect key="frame" x="18" y="48" width="431" height="152"/>
+                        <rect key="frame" x="18" y="38" width="431" height="162"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="停水停电通知" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEd-el-9DP">
-                                <rect key="frame" x="8" y="12" width="415" height="20"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <rect key="frame" x="8" y="12" width="415" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8W-ee-MG1">
-                                <rect key="frame" x="8" y="42" width="415" height="65"/>
+                                <rect key="frame" x="8" y="43" width="415" height="73"/>
                                 <string key="text">某某区临时停电 停电时间: 2016-04-05 12:00至2016-04-05 17:00某某区临时停电 停电时间: 2016-04-05 12:00至2016-04-05 17:00某某区临时停电 停电时间: 2016-04-05 12:00至2016-04-05 17:00</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSH-Ky-So5">
-                                <rect key="frame" x="8" y="117" width="68" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="8" y="126" width="72" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="6" maxX="12" maxY="0.0"/>
                                 <state key="normal" title="点击查看">
                                     <color key="titleColor" red="1" green="0.44705882352941173" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,11 +56,11 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年03月31号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mQ-pO-FWq">
-                        <rect key="frame" x="0.0" y="0.0" width="467" height="48"/>
+                        <rect key="frame" x="0.0" y="0.0" width="467" height="38"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="48" id="puk-Aa-y7Y"/>
+                            <constraint firstAttribute="height" constant="38" id="puk-Aa-y7Y"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

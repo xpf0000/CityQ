@@ -155,6 +155,8 @@ class CardInfoVC: UITableViewController {
         leftLabel.text = "立即使用"
         leftLabel.hidden = false
         btn.hidden = true
+        
+        NoticeWord.CardChanged.rawValue.postNotice()
     }
     
     override func viewWillLayoutSubviews() {

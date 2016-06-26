@@ -239,7 +239,7 @@
                                         <state key="normal" image="news_collect.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="c2.png"/>
+                                        <state key="selected" image="news_collect_s1.png"/>
                                         <connections>
                                             <action selector="doCollect:" destination="s9t-HD-Ejc" eventType="touchUpInside" id="Yh3-mK-kko"/>
                                         </connections>
@@ -1631,7 +1631,6 @@
     <resources>
         <image name="APPLogo.png" width="204" height="48"/>
         <image name="back_arrow.png" width="64" height="64"/>
-        <image name="c2.png" width="170" height="170"/>
         <image name="call_icon_w.png" width="126" height="126"/>
         <image name="find_jiaoyu.png" width="50" height="50"/>
         <image name="find_my.png" width="50" height="50"/>
@@ -1646,6 +1645,7 @@
         <image name="news-reply.png" width="35" height="35"/>
         <image name="news_Share.png" width="35" height="35"/>
         <image name="news_collect.png" width="25" height="25"/>
+        <image name="news_collect_s1.png" width="25" height="25"/>
         <image name="search.png" width="25" height="25"/>
         <image name="share_icon.png" width="72" height="72"/>
         <image name="tx.jpg" width="72" height="71"/>

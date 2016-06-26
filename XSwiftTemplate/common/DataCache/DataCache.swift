@@ -31,7 +31,7 @@ class DataCache: NSObject {
     lazy var oaDoc:OADocModel = OADocModel()
     lazy var oaFile:OAFileModel = OAFileModel()
     
-    lazy var userMsgArr:[String:MessageModel] = [:]
+    lazy var userMsg:UserMsgModel = UserMsgModel()
     
     lazy var newsViewedModel:NewsSeeModel = NewsSeeModel()
     
@@ -62,6 +62,11 @@ class DataCache: NSObject {
             self.getUserInfo()
         }
         
+       if let model = UserMsgModel.read(name: "UserMsgModel") as? UserMsgModel
+       {
+            userMsg = model
+        }
+  
         let model1 = NewsSeeModel.read(name: "NewsViewed")
         if(model1 != nil)
         {

@@ -138,6 +138,7 @@ class MyMessageVC: UITableViewController {
         let vc = MyMessageInfoVC()
         vc.title = arr[indexPath.row]
         vc.hidesBottomBarWhenPushed = true
+        vc.type = indexPath.row+1
         
         self.navigationController?.pushViewController(vc, animated: true)
 

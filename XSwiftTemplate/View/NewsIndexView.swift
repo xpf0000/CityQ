@@ -40,7 +40,21 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         didSet
         {
             getBanner()
+            
+            if bannerID == "103"
+            {
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userChange), name: NoticeWord.LogoutSuccess.rawValue, object: nil)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userChange), name: NoticeWord.LoginSuccess.rawValue, object: nil)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userChange), name: NoticeWord.CardChanged.rawValue, object: nil)
+            }
         }
+    }
+    
+    func userChange()
+    {
+        httpHandle.url = "http://123.57.162.97/hfapi/Public/Found/?service=News.getListGZ&username=\(Uname)&page=[page]&perNumber=20"
+        httpHandle.reSet()
+        httpHandle.handle()
     }
 
     func initSelf()
@@ -130,16 +144,6 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 
             }
             
-            if self?.url.has("News.getList&category_id=98") == true
-            {
-                if let list = arr as? [NewsModel]
-                {
-                    for item in list
-                    {
-                        item.category_id = "98"
-                    }
-                }
-            }
         }
         
     }
@@ -253,16 +257,20 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         {
             let m = self.httpHandle.listArr[indexPath.row-1]
             
-            if bannerID == "98"
+            if bannerID == "83"
             {
                 if (m as? NewsModel)?.category_id == "98"
                 {
-                    return 170.0 * screenFlag
+                    return 166.0 * screenFlag
                 }
                 else
                 {
-                    return 166.0 * screenFlag
+                    return 110 * screenFlag
                 }
+            }
+            else if bannerID == "98"
+            {
+                return 170.0 * screenFlag
             }
             else if bannerID == "103"
             {
@@ -270,7 +278,6 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
             }
             else
             {
-                
                 return 110.0 * screenFlag
             }
             
@@ -302,27 +309,35 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         {
             let model = self.httpHandle.listArr[indexPath.row-1]
             
-            if  bannerID == "98"
+            if bannerID == "83"
             {
                 if model.category_id == "98"
-                {
-                    let cell:ActivitysCell = tableView.dequeueReusableCellWithIdentifier("ActivitysCell", forIndexPath: indexPath) as! ActivitysCell
-                    
-                    (model as! NewsModel).url = "http://img2.imgtn.bdimg.com/it/u=3856760675,2206224679&fm=21&gp=0.jpg"
-                    cell.model = model as! NewsModel
-                    
-                    return cell
-                }
-                else
                 {
                     let cell:NewsActivitysCell = tableView.dequeueReusableCellWithIdentifier("NewsActivitysCell", forIndexPath: indexPath) as! NewsActivitysCell
                     
                     cell.model = model as! NewsModel
                     
                     return cell
-                    
                 }
+                else
+                {
+                    let cell:NewsListCell = tableView.dequeueReusableCellWithIdentifier("NewsListCell", forIndexPath: indexPath) as! NewsListCell
+                    
+                    cell.model = model as! NewsModel
+                    
+                    return cell
+
+                }
+            }
+            else if bannerID == "98"
+            {
+                let cell:ActivitysCell = tableView.dequeueReusableCellWithIdentifier("ActivitysCell", forIndexPath: indexPath) as! ActivitysCell
                 
+                (model as! NewsModel).url = "http://img2.imgtn.bdimg.com/it/u=3856760675,2206224679&fm=21&gp=0.jpg"
+                cell.model = model as! NewsModel
+                
+                return cell
+
             }
             else if bannerID == "103"
             {
@@ -384,7 +399,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
     
     deinit
     {
-
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 }

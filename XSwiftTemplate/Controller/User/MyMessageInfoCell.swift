@@ -20,14 +20,26 @@ class MyMessageInfoCell: UITableViewCell {
     
     @IBAction func toSee(sender: AnyObject) {
         
-        
+        toInfoVC()
+    }
+    
+    func toInfoVC()
+    {
+        let vc = "MyMessageContentVC".VC("User") as! MyMessageContentVC
+        vc.model = model
+        vc.hidesBottomBarWhenPushed = true
+        self.viewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
     var model:MessageModel!
     {
         didSet
         {
+                let date=NSDate(timeIntervalSince1970: model.create_time.doubleValue!)
+                time.text = date.toStr("yyyy年MM月dd号")!
             
+                mtitle.text = model.title
+                mcontent.text = model.content
         }
     }
     
@@ -50,7 +62,12 @@ class MyMessageInfoCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+        if selected
+        {
+            self.selected = false
         
+            toInfoVC()
+        }
         
     }
     

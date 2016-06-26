@@ -19,11 +19,19 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     
     weak var rightBtn:UIButton?
     
+    weak var tabbar:UITabBarController?
+    
     var category_id = ""
     
     var typeid = ""
     
     @IBAction func toGetCard(sender: AnyObject) {
+        
+        self.navigationController?.popToRootViewControllerAnimated(false)
+        
+        print(self.tabBarController)
+        
+       tabbar?.selectedIndex = 1
         
     }
     

@@ -160,16 +160,19 @@ class UserCenterVC: UITableViewController {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
+        if indexPath.row > 1 && indexPath.row < 9 && indexPath.row != 7
+        {
+            if(!self.checkIsLogin())
+            {
+                return
+            }
+        }
+        
         switch indexPath.row
         {
         case 0:
             self.toEdit()
         case 2:
-            
-            if(!self.checkIsLogin())
-            {
-                return
-            }
             
             let vc:MyFriendVC = MyFriendVC()
             
@@ -181,11 +184,6 @@ class UserCenterVC: UITableViewController {
             
         case 3:
             
-            if(!self.checkIsLogin())
-            {
-                return
-            }
-            
             let vc = "MyMessageVC".VC("User")
             
             vc.hidesBottomBarWhenPushed = true
@@ -196,25 +194,17 @@ class UserCenterVC: UITableViewController {
             
         case 4:
             
-            if(!self.checkIsLogin())
-            {
-                return
-            }
-            
-            let vc = "MyCardVC".VC("User")
+            let vc = "MyCardVC".VC("User") as!  MyCardVC
             
             vc.hidesBottomBarWhenPushed = true
+            
+            vc.tabbar = self.tabBarController
             
             self.navigationController?.pushViewController(vc, animated: true)
             
             return
             
         case 5:
-            
-            if(!self.checkIsLogin())
-            {
-                return
-            }
             
             let vc:MyCollectVC = "MyCollectVC".VC("User") as! MyCollectVC
             
@@ -224,11 +214,6 @@ class UserCenterVC: UITableViewController {
             
         case 6:
             
-            if(!self.checkIsLogin())
-            {
-                return
-            }
-            
             let vc:MyWalletVC = MyWalletVC()
             
             vc.hidesBottomBarWhenPushed = true
@@ -236,11 +221,6 @@ class UserCenterVC: UITableViewController {
             self.navigationController?.pushViewController(vc, animated: true)
 
         case 8:
-            
-            if(!self.checkIsLogin())
-            {
-                return
-            }
             
             if(DataCache.Share().userModel.mobile == "")
             {

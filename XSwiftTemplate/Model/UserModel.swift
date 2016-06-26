@@ -8,6 +8,21 @@
 
 import UIKit
 
+var Uid:String
+{
+    return DataCache.Share().userModel.uid
+}
+
+var Uname:String
+{
+    return DataCache.Share().userModel.username
+}
+
+var Umobile:String
+{
+    return DataCache.Share().userModel.mobile
+}
+
 class UserModel: Reflect {
     
     var uid=""

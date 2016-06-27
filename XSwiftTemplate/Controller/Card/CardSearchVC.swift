@@ -1,5 +1,5 @@
 //
-//  PhoneSearchVC.swift
+//  CardSearchVC.swift
 //  chengshi
 //
 //  Created by X on 15/11/23.
@@ -8,34 +8,21 @@
 
 import UIKit
 
-class PhoneSearchVC: XViewController ,UISearchBarDelegate{
+class CardSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate{
     
-    @IBOutlet var searchTable: XTableView!
-    
-    var isSearchVC:Bool=false
+    let searchTable = XTableView(frame: CGRectMake(0, 0, swidth, sheight-64.0), style: .Grouped)
     
     var searchText = ""
-    {
+        {
         didSet
         {
             searchbar.text = searchText
-            let url=APPURL+"Public/Found/?service=Tel.search"
-            let body = "key="+searchText
-            XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
-                
-                self.searchTable.httpHandle.listArr = []
-                
-                if(o?["data"]["info"] != nil)
-                {
-                    for item in o!["data"]["info"].arrayValue
-                    {
-                        let model:PhoneModel = PhoneModel.parse(json: item, replace: nil)
-                        self.searchTable.httpHandle.listArr.append(model)
-                    }
-                }
-                
-                self.searchTable.reloadData()
-            }
+            let url=APPURL+"Public/Found/?service=Hyk.search&keyword=\(searchText)&page=[page]&perNumber=20"
+            
+            searchTable.httpHandle.reSet()
+            searchTable.httpHandle.url = url
+            searchTable.httpHandle.handle()
+            
         }
     }
     
@@ -46,15 +33,26 @@ class PhoneSearchVC: XViewController ,UISearchBarDelegate{
     var classModel:CategoryModel?
     var searchIng=false
     
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = UIColor.whiteColor()
+        searchTable.backgroundColor = UIColor.whiteColor()
+        searchTable.frame = CGRectMake(0, 0, swidth, sheight-64)
+        
+        searchTable.keyboardDismissMode = .OnDrag
+        searchTable.hideHeadRefresh()
+        
+        self.view.addSubview(searchTable)
+        
         searchbar.delegate = self
         
         searchbar.layer.masksToBounds = true
@@ -79,12 +77,25 @@ class PhoneSearchVC: XViewController ,UISearchBarDelegate{
             }
         }
         
-        self.searchTable.registerNib("PhoneCell".Nib, forCellReuseIdentifier: "PhoneCell")
-        self.searchTable.cellHeight = 75+16
-        self.searchTable.CellIdentifier = "PhoneCell"
-        self.searchTable.httpHandle.modelClass = PhoneModel.self
-        searchTable.hideHeadRefresh()
-        searchTable.keyboardDismissMode = .OnDrag
+        
+        let header = UIView()
+        header.backgroundColor = UIColor.whiteColor()
+        header.frame = CGRectMake(0, 0, swidth, 13.0*screenFlag)
+        searchTable.tableHeaderView = header
+        
+        let footer = UIView()
+        footer.backgroundColor = UIColor.clearColor()
+        footer.frame = CGRectMake(0, 0, swidth, 34.0)
+        searchTable.tableFooterView = footer
+        
+        searchTable.separatorStyle = .None
+        
+        searchTable.registerNib("CardIndexCell".Nib, forCellReuseIdentifier: "CardIndexCell")
+        searchTable.cellHeight = 120 * screenFlag
+        
+        searchTable.setHandle("", pageStr: "[page]", keys: ["data","info"], model: CardModel.self, CellIdentifier: "CardIndexCell")
+        
+        searchTable.Delegate(self)
         
         self.navigationController?.navigationBar.addSubview(searchbar)
         searchbar.becomeFirstResponder()
@@ -116,19 +127,7 @@ class PhoneSearchVC: XViewController ,UISearchBarDelegate{
         
         searchbar.resignFirstResponder()
         self.view.endEditing(true)
-        
-        if(isSearchVC)
-        {
-            self.dismissViewControllerAnimated(true) { () -> Void in
-                
-                self.block?("show")
-            }
-        }
-        else
-        {
-            self.searchIng = false
-            searchBar.removeFromSuperview()
-        }
+        pop()
         
     }
     
@@ -136,7 +135,7 @@ class PhoneSearchVC: XViewController ,UISearchBarDelegate{
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
         self.searchText = searchText
-  
+        
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -144,11 +143,30 @@ class PhoneSearchVC: XViewController ,UISearchBarDelegate{
         searchbar.resignFirstResponder()
     }
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        self.view.endEdit()
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let model = searchTable.httpHandle.listArr[indexPath.row] as! CardModel
+        
+        let vc = "CardInfoVC".VC("Card") as! CardInfoVC
+        
+        vc.id = model.id
+        
+        vc.SuccessBlock {[weak self]()->Void in
+            
+            if self == nil {return}
+            
+            model.orlq = 1
+            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+            
+        }
+        
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
-
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -156,20 +174,20 @@ class PhoneSearchVC: XViewController ,UISearchBarDelegate{
         searchbar.removeFromSuperview()
         
     }
-
+    
     
     
     deinit
     {
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-       
+        
     }
     
-
     
-
+    
+    
 }

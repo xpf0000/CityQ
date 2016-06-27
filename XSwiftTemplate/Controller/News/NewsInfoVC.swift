@@ -19,7 +19,13 @@ class NewsInfoVC: XViewController {
     
     @IBOutlet var button: UIButton!
     
-    lazy var model:NewsModel = NewsModel()
+    var model:NewsModel!
+    {
+        didSet
+        {
+                http()
+        }
+    }
     
     @IBOutlet var commentBtn: UIButton!
     
@@ -117,8 +123,6 @@ class NewsInfoVC: XViewController {
     
     func http()
     {
-        self.cbutton?.hidden = true
-        
         let url=APPURL+"Public/Found/?service=News.getArticle&id=\(model.id)"
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](o) -> Void in
@@ -128,10 +132,9 @@ class NewsInfoVC: XViewController {
             {
                 self?.model.comment = o!["data"]["info"][0]["comment"].stringValue
                 
-                self?.num.text = "\(self!.model.comment)"
+                self?.num?.text = "\(self!.model.comment)"
                 
             }
-            
             
         }
     }
@@ -203,7 +206,7 @@ class NewsInfoVC: XViewController {
                 
         }
         
-    
+        num.text = model.comment
     }
     
     

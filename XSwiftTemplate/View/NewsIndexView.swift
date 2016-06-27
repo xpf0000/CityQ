@@ -333,7 +333,6 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
             {
                 let cell:ActivitysCell = tableView.dequeueReusableCellWithIdentifier("ActivitysCell", forIndexPath: indexPath) as! ActivitysCell
                 
-                (model as! NewsModel).url = "http://img2.imgtn.bdimg.com/it/u=3856760675,2206224679&fm=21&gp=0.jpg"
                 cell.model = model as! NewsModel
                 
                 return cell

@@ -10,22 +10,25 @@ import UIKit
 
 class DiscountSearchVC: XViewController ,UISearchBarDelegate{
     
-    @IBOutlet var nvTitle: UINavigationItem!
-    
-    
     @IBOutlet var table: XTableView!
     
     @IBOutlet var searchTable: XTableView!
     
-    
     var isSearchVC:Bool=false
     
     let searchbar:UISearchBar=UISearchBar()
-    let searchView:UIView=UIView(frame: CGRectMake(0, 0, swidth, 44))
+    
     
     var block:AnyBlock?
     
     var classModel:CategoryModel?
+    {
+        didSet
+        {
+            self.title = classModel?.title
+        }
+    }
+    
     var searchIng=false
     
     required init?(coder aDecoder: NSCoder) {
@@ -39,20 +42,9 @@ class DiscountSearchVC: XViewController ,UISearchBarDelegate{
         
         self.addBackButton()
         
-        self.nvTitle.title = classModel?.title
-        
-        searchView.backgroundColor = UIColor(red: 244.0/255.0, green: 244.0/255.0, blue: 244.0/255.0, alpha: 1.0)
-        
         searchbar.delegate = self
         
-        if(IOS_Version>=8.0)
-        {
-            searchbar.frame=CGRectMake(10, 0, swidth-20, 44)
-        }
-        else
-        {
-            searchbar.frame=CGRectMake(0, 0, swidth, 44)
-        }
+        searchbar.frame=CGRectMake(10, 0, swidth-20, 44)
         
         if(searchbar.respondsToSelector(Selector("barTintColor")))
         {
@@ -73,12 +65,17 @@ class DiscountSearchVC: XViewController ,UISearchBarDelegate{
             }
         }
         
-        searchView.addSubview(searchbar)
-        
         self.searchTable.registerNib("DiscountCell".Nib, forCellReuseIdentifier: "DiscountCell")
+        
+        table.registerNib("DiscountCell".Nib, forCellReuseIdentifier: "DiscountCell")
+        
         self.searchTable.cellHeight = 75+16
         self.searchTable.CellIdentifier = "DiscountCell"
         self.searchTable.httpHandle.modelClass = DiscountModel.self
+        
+        searchTable.keyboardDismissMode = .OnDrag
+        
+        searchTable.hideHeadRefresh()
         
         if(self.isSearchVC)
         {
@@ -87,6 +84,8 @@ class DiscountSearchVC: XViewController ,UISearchBarDelegate{
         else
         {
             self.searchTable.hidden = true
+            
+            
             
             self.table.httpHandle.url = APPURL+"Public/Found/?service=Discount.getList&category_id=\(classModel!.id)&perNumber=20&page=[page]"
             self.table.httpHandle.pageStr="[page]"
@@ -116,7 +115,7 @@ class DiscountSearchVC: XViewController ,UISearchBarDelegate{
     
     func showSearch()
     {
-        self.navigationController?.navigationBar.addSubview(searchView)
+        self.navigationController?.navigationBar.addSubview(searchbar)
         searchbar.becomeFirstResponder()
         self.searchIng = true
     }
@@ -135,7 +134,7 @@ class DiscountSearchVC: XViewController ,UISearchBarDelegate{
             {
                 (view as! UIButton).enabled=true
                 (view as! UIButton).setTitle("取消", forState: .Normal)
-                (view as! UIButton).setTitleColor(腾讯颜色.图标蓝.rawValue.color, forState: .Normal)
+                (view as! UIButton).setTitleColor(UIColor.whiteColor(), forState: .Normal)
                 break
             }
         }
@@ -162,7 +161,7 @@ class DiscountSearchVC: XViewController ,UISearchBarDelegate{
         else
         {
             self.searchIng = false
-            searchView.removeFromSuperview()
+            searchbar.removeFromSuperview()
             self.showTable()
             
         }
@@ -200,6 +199,11 @@ class DiscountSearchVC: XViewController ,UISearchBarDelegate{
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
         searchbar.resignFirstResponder()
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        
+        self.view.endEdit()
     }
 
     
@@ -239,7 +243,7 @@ class DiscountSearchVC: XViewController ,UISearchBarDelegate{
         super.viewWillDisappear(animated)
 
         searchbar.endEditing(true)
-        searchView.removeFromSuperview()
+        searchbar.removeFromSuperview()
         
     }
     

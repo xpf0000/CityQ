@@ -25,8 +25,25 @@ class ActivitysCell: UITableViewCell {
         {
         didSet
         {
+            
+            let date=NSDate(timeIntervalSince1970: model.e_time.numberValue.doubleValue)
+            let estr = date.toStr("yyyy-MM-dd")!
+            
             img.url = model.url
             ntitle.text = model.title
+            time.text = "活动时间: \(model.s_time)~\(estr)"
+            
+            let nt = NSDate().formart().timeIntervalSince1970
+            
+            if nt < model.e_time.numberValue.doubleValue
+            {
+                stateImg.image = "jingxingzhong.png".image
+            }
+            else
+            {
+                stateImg.image = "yijieshu.png".image
+            }
+
         }
     }
     

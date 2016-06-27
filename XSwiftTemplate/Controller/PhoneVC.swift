@@ -155,7 +155,12 @@ class PhoneVC: UIViewController,UITextFieldDelegate {
     {
         let vc:PhoneSearchVC = "PhoneSearchVC".VC as! PhoneSearchVC
         vc.isSearchVC = true
-        vc.searchText = searchTxt.text!.trim()
+        
+        if searchTxt.text!.trim() != ""
+        {
+            vc.searchText = searchTxt.text!.trim()
+        }
+        
         let nv:XNavigationController = XNavigationController(rootViewController: vc)
         
         self.presentViewController(nv, animated: true, completion: { () -> Void in

@@ -33,9 +33,6 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
         xdataSource = d
     }
     
-    
-    
-    
     let httpHandle:XHttpHandle=XHttpHandle()
     
     
@@ -276,7 +273,6 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
         
         xdelegate?.tableView?(tableView, willBeginEditingRowAtIndexPath: indexPath)
     }
-    
     
     deinit
     {

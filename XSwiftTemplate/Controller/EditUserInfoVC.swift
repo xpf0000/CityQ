@@ -10,6 +10,7 @@ import UIKit
 
 class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
+    @IBOutlet var picon: UIImageView!
     
     @IBOutlet var headPic: UIImageView!
     
@@ -31,6 +32,7 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
     var imageIng = false
     var headImage:UIImage?
     
+    let dp = datePicker(frame: CGRectZero, type: 0, flag: 1)
     
     @IBAction func submit(sender: UIButton) {
         
@@ -41,10 +43,12 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         let sexN = sex.text == "女" ? 0 : 1
         let nick = nickName.text!.trim()
         let truename = name.text!.trim()
+        let birthday = self.birthday.text!.trim()
+        let address = self.address.text!.trim()
         
         let url=APPURL+"Public/Found/?service=User.userEdit"
         
-        let body="username="+DataCache.Share().userModel.username+"&nickname="+nick+"&sex=\(sexN)&truename=\(truename)"
+        let body="username="+Uname+"&nickname="+nick+"&sex=\(sexN)&truename=\(truename)&birthday="+birthday+"&address="+address
         
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
             
@@ -57,6 +61,8 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
                     DataCache.Share().userModel.nickname = nick
                     DataCache.Share().userModel.sex = "\(sexN)"
                     DataCache.Share().userModel.truename = truename
+                    DataCache.Share().userModel.birthday = birthday
+                    DataCache.Share().userModel.address = address
                     DataCache.Share().userModel.save()
                     UIApplication.sharedApplication().keyWindow?.showAlert("设置成功", block: { (o) -> Void in
                         
@@ -93,10 +99,14 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
-        nickName.enabled = false
+
         self.headPic.url=DataCache.Share().userModel.headimage
         self.nickName.text = DataCache.Share().userModel.nickname
         self.name.text = DataCache.Share().userModel.truename
+        phone.text = Umobile
+        birthday.text = DataCache.Share().userModel.birthday
+        address.text = DataCache.Share().userModel.address
+        
         if(DataCache.Share().userModel.sex == "0")
         {
             self.sex.text = "女"
@@ -105,6 +115,8 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         {
             self.sex.text = "男"
         }
+        
+        picon.hidden = Umobile != ""
         
         self.headPic.placeholder="tx.jpg".image
         self.headPic.layer.cornerRadius=41.0
@@ -117,6 +129,15 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         
         self.nickName.addEndButton()
         
+        dp.maxDate = NSDate().formart()
+        
+        dp.block({[weak self] (str) in
+            
+            print(str)
+            self?.birthday.text = str
+            
+        })
+
       
     }
     
@@ -154,6 +175,13 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
     func endEdit()
     {
         self.view.endEditing(true)
+    }
+    
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        
+        dp.removeFromSuperview()
+        
+        return true
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -225,6 +253,17 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
                     
             }
         }
+        else if(indexPath.row==2)
+        {
+            if !picon.hidden
+            {
+                let vc = "AuthBandPhoneVC".VC("User")
+                
+                vc.hidesBottomBarWhenPushed = true
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
         
         else if(indexPath.row==3)
         {
@@ -235,6 +274,13 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
             
             cameraSheet.actionSheetStyle = UIActionSheetStyle.BlackTranslucent;
             cameraSheet.showInView(UIApplication.sharedApplication().keyWindow!)
+        }
+        
+        else if(indexPath.row==5)
+        {
+            endEdit()
+            self.view.addSubview(dp)
+            dp.show()
         }
         
     }

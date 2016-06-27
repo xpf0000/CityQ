@@ -72,7 +72,7 @@ class NewsListCell: UITableViewCell {
                 ntitle.layoutIfNeeded()
                 ntitle.setNeedsLayout()
                 
-                seeNum.text = m.comment
+                seeNum.text = m.view
                 
                 name.text = m.name
             }

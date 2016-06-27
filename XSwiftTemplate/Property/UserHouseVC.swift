@@ -24,6 +24,8 @@ class UserHouseVC: UIViewController {
         
         table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: MyHouseModel.self, CellIdentifier: "MyHouseCell")
         
+        table.registerNib("MyHouseCell".Nib, forCellReuseIdentifier: "MyHouseCell")
+        
         self.table.cellHeight = 166-0.68
         self.table.CellIdentifier = "MyHouseCell"
         self.table.httpHandle.pageSize = 10000

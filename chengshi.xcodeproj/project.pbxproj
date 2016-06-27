@@ -476,6 +476,8 @@
 		178F98481B9D6C9600B86E60 /* ShopsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F98101B9D6C9500B86E60 /* ShopsListModel.swift */; };
 		178F984C1B9D6C9600B86E60 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178F98151B9D6C9500B86E60 /* main.storyboard */; };
 		179F5E411BA40FD100F8208B /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179F5E401BA40FD100F8208B /* WeatherModel.swift */; };
+		17A433C51D211AAA00FB2876 /* CardSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A433C41D211AAA00FB2876 /* CardSearchVC.swift */; };
+		17A433C71D21255D00FB2876 /* NewsSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A433C61D21255D00FB2876 /* NewsSearchVC.swift */; };
 		17A8DD3A1D0FA5C500D8B70B /* ChangePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A8DD391D0FA5C500D8B70B /* ChangePassVC.swift */; };
 		17A8DD3C1D0FAC6000D8B70B /* FindBackPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A8DD3B1D0FAC6000D8B70B /* FindBackPassVC.swift */; };
 		17AA6EBF1D1A92DD00643C3B /* CheckPhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AA6EBE1D1A92DD00643C3B /* CheckPhoneVC.swift */; };
@@ -1224,6 +1226,8 @@
 		178F98101B9D6C9500B86E60 /* ShopsListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopsListModel.swift; sourceTree = "<group>"; };
 		178F98151B9D6C9500B86E60 /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
 		179F5E401BA40FD100F8208B /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		17A433C41D211AAA00FB2876 /* CardSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardSearchVC.swift; path = XSwiftTemplate/Controller/Card/CardSearchVC.swift; sourceTree = SOURCE_ROOT; };
+		17A433C61D21255D00FB2876 /* NewsSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsSearchVC.swift; sourceTree = "<group>"; };
 		17A8DD391D0FA5C500D8B70B /* ChangePassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePassVC.swift; sourceTree = "<group>"; };
 		17A8DD3B1D0FAC6000D8B70B /* FindBackPassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindBackPassVC.swift; sourceTree = "<group>"; };
 		17AA6EBE1D1A92DD00643C3B /* CheckPhoneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckPhoneVC.swift; sourceTree = "<group>"; };
@@ -1865,6 +1869,7 @@
 				173DAFE01D0AB618004C7DAA /* View */,
 				173DAFE51D0AC6A5004C7DAA /* Model */,
 				177E86C61D16CCB000EE20CF /* CardIndexVC.swift */,
+				17A433C41D211AAA00FB2876 /* CardSearchVC.swift */,
 				177E86C81D16CCB900EE20CF /* CardInfoVC.swift */,
 				177E86CA1D16CCC300EE20CF /* CardGetedInfoVC.swift */,
 				177E86CE1D16CCD700EE20CF /* CardShopsInfoVC.swift */,
@@ -2422,6 +2427,7 @@
 				177E86AA1D16CB7E00EE20CF /* NewsInfoVC.swift */,
 				176F26AE1C0006F300C8F277 /* PicNewsInfoVC.swift */,
 				177E86AC1D16CB8700EE20CF /* NewsCommentVC.swift */,
+				17A433C61D21255D00FB2876 /* NewsSearchVC.swift */,
 			);
 			name = News;
 			sourceTree = "<group>";
@@ -3545,6 +3551,7 @@
 				173E6B721C02B12E008B14A8 /* PhoneClassCell.swift in Sources */,
 				17149C701C7D5E1E005DD9B7 /* PropertyPhotoInfoTable.swift in Sources */,
 				17699BD31CD1E66E0032A385 /* XImageCache.swift in Sources */,
+				17A433C71D21255D00FB2876 /* NewsSearchVC.swift in Sources */,
 				17E85E8C1BFD6B9300AC0FC9 /* XBuyNumView.swift in Sources */,
 				173E16F51D052CF600458FB9 /* XHorizontalMainView.swift in Sources */,
 				17269DD81C9F932900E7AC28 /* XImageBrowse.swift in Sources */,
@@ -3643,6 +3650,7 @@
 				17F104A41C046AD5008EFEE8 /* FriendModel.swift in Sources */,
 				170384C01C8001D0005B3F6E /* PaymentInfoCell.swift in Sources */,
 				17E85E151BFD550C00AC0FC9 /* ReactionMenuView.swift in Sources */,
+				17A433C51D211AAA00FB2876 /* CardSearchVC.swift in Sources */,
 				172D0C0D1C0FD74B000EEBFA /* FriendClassListVC.swift in Sources */,
 				173E6B7C1C02B573008B14A8 /* PhoneCell.swift in Sources */,
 				1703B7361C0951F100858FD2 /* XProgressView.swift in Sources */,

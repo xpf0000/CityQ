@@ -39,18 +39,18 @@ class FriendHomeVC: XViewController ,UIScrollViewDelegate,XPhotoDelegate{
         
         contentW.constant=swidth*2.0
         
-        segmentedControl.tintColor=腾讯颜色.图标蓝.rawValue.color
+        //segmentedControl.tintColor=腾讯颜色.图标蓝.rawValue.color
         
-        segmentedControl.addTarget(self, action: "changePage:", forControlEvents: .ValueChanged)
+        segmentedControl.addTarget(self, action: #selector(FriendHomeVC.changePage(_:)), forControlEvents: .ValueChanged)
        
         if xiaoquid == "0"
         {
             let button=UIButton(type: UIButtonType.Custom)
             button.frame=CGRectMake(10, 2, 25, 25);
-            button.setBackgroundImage("class_icon_blue.png".image, forState: UIControlState.Normal)
+            button.setBackgroundImage("class_icon.png".image, forState: UIControlState.Normal)
             button.showsTouchWhenHighlighted = true
             button.exclusiveTouch = true
-            button.addTarget(self, action: "toClass", forControlEvents: UIControlEvents.TouchUpInside)
+            button.addTarget(self, action: #selector(FriendHomeVC.toClass), forControlEvents: UIControlEvents.TouchUpInside)
             let leftItem=UIBarButtonItem(customView: button)
             self.navigationItem.leftBarButtonItem=leftItem;
         }
@@ -66,10 +66,10 @@ class FriendHomeVC: XViewController ,UIScrollViewDelegate,XPhotoDelegate{
         
         let button1=UIButton(type: UIButtonType.Custom)
         button1.frame=CGRectMake(10, 2, 25, 25);
-        button1.setBackgroundImage("camera_icon_blue.png".image, forState: UIControlState.Normal)
+        button1.setBackgroundImage("camera_icon.png".image, forState: UIControlState.Normal)
         button1.showsTouchWhenHighlighted = true
         button1.exclusiveTouch = true
-        button1.addTarget(self, action: "toPhoto", forControlEvents: UIControlEvents.TouchUpInside)
+        button1.addTarget(self, action: #selector(toPhoto), forControlEvents: UIControlEvents.TouchUpInside)
         let rightItem=UIBarButtonItem(customView: button1)
         self.navigationItem.rightBarButtonItem=rightItem;
         

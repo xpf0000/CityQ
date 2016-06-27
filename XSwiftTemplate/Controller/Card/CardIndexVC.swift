@@ -40,9 +40,12 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     
     func toSearch()
     {
-        let vc = "CardMoneyInfoVC".VC("Card")
-        vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = CardSearchVC()
+        let nv = XNavigationController(rootViewController: vc)
+        
+        self.presentViewController(nv, animated: true) { 
+            
+        }
     }
     
     func http()

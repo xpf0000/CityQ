@@ -1173,21 +1173,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用户名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2F-5h-GzS">
-                                                    <rect key="frame" x="20" y="21" width="45" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c2F-5h-GzS">
+                                                    <rect key="frame" x="20" y="21" width="30" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="go_arrow_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vy4-fR-Ju6">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="go_arrow_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vy4-fR-Ju6">
                                                     <rect key="frame" x="563" y="19" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="GEK-Nt-zpH"/>
                                                         <constraint firstAttribute="width" constant="22" id="L0W-Qx-Ej8"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="od0-ho-Qeh">
-                                                    <rect key="frame" x="95" y="8" width="458" height="43"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="od0-ho-Qeh">
+                                                    <rect key="frame" x="80" y="8" width="473" height="43"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -1230,7 +1230,7 @@
                                                         <constraint firstAttribute="width" constant="22" id="jiI-by-S3g"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uf4-qr-NJn">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uf4-qr-NJn">
                                                     <rect key="frame" x="80" y="8" width="473" height="43"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1359,7 +1359,7 @@
                                                         <constraint firstAttribute="height" constant="22" id="YbU-XK-I9Z"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="出生年月" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wzg-jW-ozA">
+                                                <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="出生年月" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wzg-jW-ozA">
                                                     <rect key="frame" x="110" y="8" width="443" height="43"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1470,6 +1470,7 @@
                         <outlet property="name" destination="E0M-MI-eBq" id="kmB-ZR-k2o"/>
                         <outlet property="nickName" destination="od0-ho-Qeh" id="CoZ-gn-pNM"/>
                         <outlet property="phone" destination="uf4-qr-NJn" id="PAG-Ae-Zea"/>
+                        <outlet property="picon" destination="jB7-4p-Rca" id="3TI-zA-d5W"/>
                         <outlet property="sex" destination="jil-71-NJr" id="WoK-gf-Uf8"/>
                         <outlet property="table" destination="Xod-1R-FXj" id="Nsv-GU-1Cm"/>
                     </connections>

@@ -62,14 +62,14 @@ class datePicker:UIView
         let okButton=UIButton(frame: CGRectMake(swidth-50, 6, 40, 28))
         okButton.setTitle("确定", forState: UIControlState.Normal)
         okButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        okButton.addTarget(self, action: "hidden:", forControlEvents: UIControlEvents.TouchUpInside)
+        okButton.addTarget(self, action: #selector(hidden(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         okButton.tag=5
         view.addSubview(okButton)
         
         let cButton=UIButton(frame: CGRectMake(10, 6, 40, 28))
         cButton.setTitle("取消", forState: UIControlState.Normal)
         cButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        cButton.addTarget(self, action: "hidden:", forControlEvents: UIControlEvents.TouchUpInside)
+        cButton.addTarget(self, action: #selector(hidden(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         cButton.tag=6
         view.addSubview(cButton)
         

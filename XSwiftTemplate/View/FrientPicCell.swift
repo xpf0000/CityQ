@@ -12,10 +12,6 @@ class FrientPicCell: UICollectionViewCell {
 
     @IBOutlet var img: UIImageView!
     
-    @IBOutlet var imgW: NSLayoutConstraint!
-    
-    @IBOutlet var imgH: NSLayoutConstraint!
-    
     var model:FriendPicModel?
     
     func show()

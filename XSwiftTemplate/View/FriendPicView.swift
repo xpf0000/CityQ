@@ -18,17 +18,8 @@ class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
     
     func show()
     {
+ 
         
-        self.backgroundColor = UIColor.blueColor()
-        
-//        picCollection.delegate = nil
-//        picCollection.dataSource = nil
-//        picCollection.removeFromSuperview()
-        
-        
-        
-        
-//        
 //        if(picList.count >= 3)
 //        {
 //            return CGSizeMake(baseW/3.0, baseW/3.0);
@@ -87,9 +78,9 @@ class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
 //            return CGSizeMake(newW, newH);
 //        }
         
+        picCollection.registerNib("FrientPicCell".Nib, forCellWithReuseIdentifier: "FrientPicCell")
         
-        
-        //self.picCollection.reloadData()
+        self.picCollection.reloadData()
     }
     
     
@@ -234,8 +225,6 @@ class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
         
         let newFrame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
         containerView.frame = newFrame
-        
-        containerView.backgroundColor = UIColor.redColor()
         
         self.addSubview(containerView)
         

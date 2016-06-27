@@ -37,7 +37,11 @@ class UserModel: Reflect {
     var fanghaoid=""
     var house=MyHouseModel()
     var truename=""
-
+    var louhaoid = ""
+    var danyuanid = ""
+    var birthday=""
+    var address=""
+    
     func save()
     {
         UserModel.delete(name: "userModel")

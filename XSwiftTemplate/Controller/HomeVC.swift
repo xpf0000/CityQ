@@ -10,7 +10,7 @@ import UIKit
 
 var AdvImage:UIImageView? = UIImageView()
 
-class HomeVC: XViewController {
+class HomeVC: UIViewController {
     
     let menu = XHorizontalMenuView()
     let main = XHorizontalMainView()
@@ -79,6 +79,12 @@ class HomeVC: XViewController {
     
     func toSearch()
     {
+        let vc = NewsSearchVC()
+        let nv = XNavigationController(rootViewController: vc)
+        
+        self.presentViewController(nv, animated: true) { 
+            
+        }
         
     }
     
@@ -147,8 +153,6 @@ class HomeVC: XViewController {
         menu.menuTextColor = "666666".color!
         menu.menuSelectColor = "333333".color!
         menu.menuBGColor = PageBGColor
-
-        self.jumpAnimType=AnimatorType.Cards
         
         let arr:Array<UITabBarItem> = (self.tabBarController?.tabBar.items)!
         

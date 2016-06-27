@@ -18,68 +18,6 @@ class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
     
     func show()
     {
- 
-        
-//        if(picList.count >= 3)
-//        {
-//            return CGSizeMake(baseW/3.0, baseW/3.0);
-//        }
-//        else if(picList.count == 2)
-//        {
-//            return CGSizeMake(baseW/2.0, baseW/2.0);
-//        }
-//        else if(picList.count==1)
-//        {
-//            let width:CGFloat=picList[0].width
-//            let height:CGFloat = picList[0].height
-//            
-//            var newW:CGFloat = width
-//            var newH:CGFloat = height
-//            
-//            if(width / height > 3.0)
-//            {
-//                newW=baseW
-//                newH = baseW/3.0
-//            }
-//            else if(width / height < 1 / 3)
-//            {
-//                newW=baseW/3.0
-//                newH = baseW
-//            }
-//            else
-//            {
-//                if(width>height)
-//                {
-//                    if(width > baseW)
-//                    {
-//                        newW=baseW
-//                        newH=newW*height/width
-//                    }
-//                }
-//                else if(width<height)
-//                {
-//                    if(height > baseW)
-//                    {
-//                        newH=baseW
-//                        newW=newH*width/height
-//                    }
-//                }
-//                else
-//                {
-//                    if(width > baseW)
-//                    {
-//                        newW=baseW
-//                        newH=newW*height/width
-//                    }
-//                }
-//                
-//            }
-//            
-//            return CGSizeMake(newW, newH);
-//        }
-        
-        picCollection.registerNib("FrientPicCell".Nib, forCellWithReuseIdentifier: "FrientPicCell")
-        
         self.picCollection.reloadData()
     }
     
@@ -228,6 +166,8 @@ class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
         
         self.addSubview(containerView)
         
+        picCollection.registerNib("FrientPicCell".Nib, forCellWithReuseIdentifier: "FrientPicCell")
+        
         
     }
     
@@ -251,6 +191,11 @@ class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
         
         //self.picCollection.registerNib("FrientPicCell".Nib, forCellWithReuseIdentifier: "FrientPicCell")
         
+    }
+    
+    deinit
+    {
+        print("FriendPicView deinit !!!!!!!!!!!")
     }
 
 }

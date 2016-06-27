@@ -714,6 +714,9 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
         NSNotificationCenter.defaultCenter().removeObserver(self)
         self.cmodel = nil
         self.bottomLine.removeObserver(self, forKeyPath: "center")
+        
+       print("FriendInfoVC deinit !!!!!!!!!!!")
+    
     }
     
 

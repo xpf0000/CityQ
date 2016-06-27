@@ -13,7 +13,7 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="208" height="213"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Voa-rA-bsc">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Voa-rA-bsc">
                         <rect key="frame" x="2" y="2" width="204" height="209"/>
                     </imageView>
                 </subviews>
@@ -21,16 +21,16 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Voa-rA-bsc" secondAttribute="trailing" constant="2" id="BpE-Hd-m9s"/>
-                <constraint firstItem="Voa-rA-bsc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="CH7-i4-MH2"/>
-                <constraint firstItem="Voa-rA-bsc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="Meq-DN-oLZ"/>
-                <constraint firstAttribute="bottom" secondItem="Voa-rA-bsc" secondAttribute="bottom" constant="2" id="vAx-Fp-qC5"/>
+                <constraint firstAttribute="trailing" secondItem="Voa-rA-bsc" secondAttribute="trailing" constant="2" id="Fo4-28-Suk"/>
+                <constraint firstItem="Voa-rA-bsc" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="UsY-Ki-JQp"/>
+                <constraint firstAttribute="bottom" secondItem="Voa-rA-bsc" secondAttribute="bottom" constant="2" id="dfK-JO-yL3"/>
+                <constraint firstItem="Voa-rA-bsc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="e3u-db-M3L"/>
             </constraints>
             <size key="customSize" width="208" height="213"/>
             <connections>
                 <outlet property="img" destination="Voa-rA-bsc" id="7aW-O8-sla"/>
             </connections>
-            <point key="canvasLocation" x="198" y="261.5"/>
+            <point key="canvasLocation" x="560" y="263.5"/>
         </collectionViewCell>
     </objects>
 </document>

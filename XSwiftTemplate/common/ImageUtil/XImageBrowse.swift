@@ -16,7 +16,7 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
     var collection:UICollectionView!
     let clayout = UICollectionViewFlowLayout()
     
-    lazy var imageArr:Array<UIImageView> = []
+    lazy var imageArr:[UIImageView] = []
     var beginFrame:CGRect = CGRectZero
     var index:Int=0
     var showIng:Bool=false
@@ -52,19 +52,6 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
         self.backgroundColor = startBGC
         
         self.addSubview(collection)
-        
-//        self.scrollView.frame = frame
-//        self.scrollView.scrollEnabled=true
-//        self.scrollView.bounces=true
-//        self.scrollView.backgroundColor=UIColor.clearColor()
-//        self.scrollView.pagingEnabled=true
-//        self.scrollView.showsHorizontalScrollIndicator=false
-//        self.scrollView.showsVerticalScrollIndicator=false
-//        self.scrollView.layer.masksToBounds=true
-//        self.scrollView.delegate=self
-//        self.scrollView.alpha = 0.0
-//        self.addSubview(self.scrollView)
-        
         
     }
     

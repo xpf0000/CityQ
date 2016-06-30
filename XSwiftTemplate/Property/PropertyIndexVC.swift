@@ -74,7 +74,7 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
             {
                 let model:XBannerModel=XBannerModel()
                 model.obj = item["url"].stringValue
-                model.url =  item["picurl"].stringValue
+                model.imageURL =  item["picurl"].stringValue
                 bannerArr.append(model)
                 
             }
@@ -101,20 +101,17 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
         banner.page.pageIndicatorTintColor = UIColor.lightGrayColor()
         banner.page.currentPageIndicatorTintColor = APPBlueColor
         
-        
-        banner.block =
+        banner.click
             {
                 [weak self]
                 (o)->Void in
                 
                 if(self != nil)
                 {
-                    
                     let vc:HtmlVC = HtmlVC()
                     vc.hidesBottomBarWhenPushed = true
-                    vc.url = o as! String
+                    vc.url = o.obj as! String
                     self?.navigationController?.pushViewController(vc, animated: true)
-                    
                 }
         }
 

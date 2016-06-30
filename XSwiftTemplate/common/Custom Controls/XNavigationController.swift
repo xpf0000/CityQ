@@ -47,7 +47,7 @@ class XNavigationController: UINavigationController,UINavigationControllerDelega
         navBar.tintColor=UIColor.whiteColor()
         
         navBar.setBackgroundImage(APPBlueColor.image, forBarMetrics:.Default)
-        navBar.titleTextAttributes=[NSForegroundColorAttributeName:UIColor.whiteColor(),NSFontAttributeName:UIFont.boldSystemFontOfSize(18.0)]
+        navBar.titleTextAttributes=[NSForegroundColorAttributeName:UIColor.whiteColor(),NSFontAttributeName:UIFont.boldSystemFontOfSize(20.0)]
         //self.navigationBar.layer.masksToBounds = true;
         //navBar.translucent = true
         //navBar.shadowImage = UIColor.clearColor().image

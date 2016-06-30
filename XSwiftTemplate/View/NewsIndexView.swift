@@ -20,14 +20,14 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
     {
         didSet
         {
-            if url.has("News.getListGZ&")
-            {
-                httpHandle.modelClass=CardActivityModel.self
-            }
-            else
-            {
-                httpHandle.modelClass=NewsModel.self
-            }
+//            if url.has("News.getListGZ&")
+//            {
+//                httpHandle.modelClass=CardActivityModel.self
+//            }
+//            else
+//            {
+//                
+//            }
             
             httpHandle.url=url
             httpHandle.reSet()
@@ -59,14 +59,14 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
 
     func initSelf()
     {
-        banner.block =
+        banner.click
             {
                 [weak self]
                 (o)->Void in
                 
                 if(self != nil)
                 {
-                    let model=o as! NewsModel
+                    let model=o.obj as! NewsModel
                     
                     let vc:NewsInfoVC = "NewsInfoVC".VC as! NewsInfoVC
                     vc.model = model
@@ -102,6 +102,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         httpHandle.scrollView=self
         httpHandle.replace=["descrip":"description"]
         httpHandle.keys=["data","info"]
+        httpHandle.modelClass=NewsModel.self
         
         self.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
@@ -188,7 +189,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
             for item in o!["data"]["info"].arrayValue
             {
                 let model:XBannerModel=XBannerModel()
-                model.url =  item["picurl"].stringValue
+                model.imageURL =  item["picurl"].stringValue
                 model.title=item["title"].stringValue
                 
                 let m = NewsModel()
@@ -268,14 +269,14 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                     return 110 * screenFlag
                 }
             }
-            else if bannerID == "98"
+            else if bannerID == "98" || bannerID == "103"
             {
                 return 170.0 * screenFlag
             }
-            else if bannerID == "103"
-            {
-                return 50.0
-            }
+//            else if bannerID == "103"
+//            {
+//                return 50.0
+//            }
             else
             {
                 return 110.0 * screenFlag
@@ -329,7 +330,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
 
                 }
             }
-            else if bannerID == "98"
+            else if bannerID == "98" || bannerID == "103"
             {
                 let cell:ActivitysCell = tableView.dequeueReusableCellWithIdentifier("ActivitysCell", forIndexPath: indexPath) as! ActivitysCell
                 
@@ -338,14 +339,14 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 return cell
 
             }
-            else if bannerID == "103"
-            {
-                let cell:CardShopsActivitysCell = tableView.dequeueReusableCellWithIdentifier("CardShopsActivitysCell", forIndexPath: indexPath) as! CardShopsActivitysCell
-                
-                cell.model = model as! CardActivityModel
-                
-                return cell
-            }
+//            else if bannerID == "103"
+//            {
+//                let cell:CardShopsActivitysCell = tableView.dequeueReusableCellWithIdentifier("CardShopsActivitysCell", forIndexPath: indexPath) as! CardShopsActivitysCell
+//                
+//                cell.model = model as! CardActivityModel
+//                
+//                return cell
+//            }
             else
             {
                 let cell:NewsListCell = tableView.dequeueReusableCellWithIdentifier("NewsListCell", forIndexPath: indexPath) as! NewsListCell

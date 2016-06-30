@@ -14,7 +14,8 @@ class WalletModel: Reflect {
     var value=""
     var create_time=""
     var shopname=""
-    var type=""
+    var xftype=""
+    var cardtype = ""
     
     override func setValue(value: AnyObject?, forKey key: String) {
         

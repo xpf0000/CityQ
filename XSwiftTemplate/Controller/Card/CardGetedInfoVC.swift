@@ -214,6 +214,15 @@ class CardGetedInfoVC: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        if indexPath.row == 1
+        {
+            let vc:MyWalletVC = MyWalletVC()
+            vc.id = model.id
+            vc.hidesBottomBarWhenPushed = true
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
         if indexPath.row == 3
         {
             let vc = "CardShopsInfoVC".VC("Card") as! CardShopsInfoVC

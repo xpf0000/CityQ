@@ -173,7 +173,7 @@ class HomeVC: UIViewController {
             
             if i == 0
             {
-                item.imageInsets = UIEdgeInsetsMake(4.0, -17.0*screenFlag, -4.0, 17.0*screenFlag)
+                item.imageInsets = UIEdgeInsetsMake(4.0, -13.0*screenFlag, -4.0, 13.0*screenFlag)
             }
             else if i == 1
             {
@@ -189,7 +189,7 @@ class HomeVC: UIViewController {
             }
             else
             {
-                item.imageInsets = UIEdgeInsetsMake(4.0, 17.0*screenFlag, -4.0, -17.0*screenFlag)
+                item.imageInsets = UIEdgeInsetsMake(4.0, 13.0*screenFlag, -4.0, -13.0*screenFlag)
             }
             
             item.setTitleTextAttributes([NSForegroundColorAttributeName:APPBlueColor,NSFontAttributeName:UIFont.systemFontOfSize(16.0)], forState: UIControlState.Selected)
@@ -218,7 +218,7 @@ class HomeVC: UIViewController {
         APPURL+"Public/Found/?service=News.getListGZ&username=\(DataCache.Share().userModel.username)&page=[page]&perNumber=20",
         APPURL+"Public/Found/?service=News.getList&category_id=98&page=[page]&perNumber=20"]
         
-        let idArr = ["83","97","103","98"]
+        let idArr = ["83","104","103","106"]
         
         var i = 0
         for item in strArr

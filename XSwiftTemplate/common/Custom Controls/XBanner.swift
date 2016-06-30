@@ -4,106 +4,97 @@
 //
 //  Created by X on 15/9/11.
 //  Copyright (c) 2015年 XSwiftTemplate. All rights reserved.
-//import UIKit
+//
+
+import UIKit
 
 class XBannerModel:NSObject
 {
-    var url:String=""
-    var title:String=""
-    var image:String=""
+    var clickURL=""
+    var title=""
+    var image:UIImage?
+    var imageURL = ""
     var obj:AnyObject?
 }
 
-typealias XBannerBlock = (AnyObject?)->Void
+typealias XBannerBlock = (XBannerModel)->Void
 
 //@IBDesignable
 class XBanner: UIView , UIScrollViewDelegate{
-
+    
     @IBInspectable var AutoScroll: Bool = false
     @IBInspectable var LeftToRight:Bool = false
     @IBInspectable var scrollTime:Double = 2.0
     
-    
-    @IBOutlet var time: UILabel!
-    
-    @IBOutlet var timeH: NSLayoutConstraint!
-    
-    
     @IBOutlet var scrollView: UIScrollView!
     
-    @IBOutlet var titleView: UIView!
+    @IBOutlet var titleButton: UIButton!
     
     @IBOutlet var ctitle: UILabel!
     
     @IBOutlet var page: UIPageControl!
     
-    @IBOutlet var titleTop: NSLayoutConstraint!
-    
-   // @IBOutlet var pageLeft: NSLayoutConstraint!
     
     private var timer:NSTimer?
-    var block:XBannerBlock?
-    var width:CGFloat=0.0
-    var index:Int=0
-    dynamic var arr:Array<XBannerModel>=[]
-    dynamic var hiddenTitle:Bool=false
+    private var block:XBannerBlock?
     
-    var showUserDots=false
-    
-    func initBanner()
+    func click(b:XBannerBlock)
     {
-        let containerView:UIView=("XBanner".Nib.instantiateWithOwner(self, options: nil))[0] as! UIView
-        
-        let newFrame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
-        containerView.frame = newFrame
-        self.addSubview(containerView)
-        
-        self.addObserver(self, forKeyPath: "arr", options: .New , context: nil)
-        self.addObserver(self, forKeyPath: "index", options: [.New, .Old] , context: nil)
-        self.addObserver(self, forKeyPath: "hiddenTitle", options: [.New, .Old] , context: nil)
+        self.block = b
     }
     
-    override init(frame: CGRect) {
-        
-        super.init(frame: frame)
-        
-        self.initBanner()
-        
-    }
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        self.initBanner()
-    
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.width=self.frame.size.width
-        
-    }
-    
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        
-        if(keyPath == "hiddenTitle")
+    var width:CGFloat=0.0
         {
-            self.titleView.hidden=self.hiddenTitle
-            self.ctitle.hidden=self.hiddenTitle
-        }
-        
-        if(keyPath == "arr")
+        didSet
         {
-            for view in self.scrollView.subviews
+            if width == 0 {return}
+            
+            self.scrollView.contentSize=CGSizeMake(arr.count > 1 ? CGFloat(arr.count+4) * width : width,0);
+            
+            var i = 0
+            for item in btnArr
             {
-                view.removeFromSuperview()
+                item.frame = CGRectMake(self.width*CGFloat(i), 0, self.width, self.frame.size.height)
+                
+                i += 1
             }
+            
+            if index == 0
+            {
+                if(self.arr.count>1)
+                {
+                    self.scrollView.contentOffset=CGPointMake(self.width*2, 0)
+                }
+                else
+                {
+                    self.scrollView.contentOffset=CGPointMake(0, 0)
+                    
+                }
+            }
+        }
+    }
+    
+    var index:Int=0
+        {
+        didSet
+        {
+            if(self.arr.count > 0)
+            {
+                self.ctitle.text=self.arr[index].title
+                self.page.currentPage=index
+                //updateDots()
+            }
+        }
+    }
+    
+    
+    var arr:Array<XBannerModel>=[]
+        {
+        didSet
+        {
+            btnArr.removeAll(keepCapacity: false)
+            self.scrollView.removeAllSubViews()
+            scrollView.delegate = nil
             self.timer?.invalidate()
             self.timer=nil
             
@@ -141,118 +132,165 @@ class XBanner: UIView , UIScrollViewDelegate{
                 
                 let model:XBannerModel=self.arr[tt]
                 
-                var img:UIImageView?
-                if(model.image != "")
+                let img:UIImageView = UIImageView()
+                
+                if(model.image != nil)
                 {
-                    img=UIImageView(frame: CGRectMake(0, 0, self.width, self.frame.size.height))
-                    
-                    img?.image=model.image.image
+                    img.image=model.image
                 }
                 else
                 {
-                    img = UIImageView(frame: CGRectMake(0, 0, self.width, self.frame.size.height))
-                    img?.url = model.url
+                    img.url = model.imageURL
                 }
                 
-
+                
                 let button:UIButton=UIButton(type: UIButtonType.Custom)
                 button.frame=CGRectMake(self.width*CGFloat(i), 0, self.width, self.frame.size.height)
                 button.backgroundColor=UIColor.clearColor()
-                button.addTarget(self, action: #selector(XBanner.buttonClick(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 
-                button.addSubview(img!)
-
+                button.addTarget(self, action: #selector(buttonClick), forControlEvents: .TouchUpInside)
+                button.enabled = true
                 self.scrollView.addSubview(button)
- 
+                
+                button.layer.masksToBounds = true
+                button.clipsToBounds = true
+                
+                //img.userInteractionEnabled = false
+                
+                button.addSubview(img)
+                
+                img.snp_makeConstraints(closure: { (make) in
+                    make.top.equalTo(0.0)
+                    make.bottom.equalTo(0.0)
+                    make.leading.equalTo(0.0)
+                    make.trailing.equalTo(0.0)
+                })
+                
+                btnArr.append(button)
+                
             }
             
-            self.scrollView.contentSize=CGSizeMake(arr.count > 1 ? CGFloat(arr.count+4) * width : width,0);
             self.page.numberOfPages=self.arr.count
             self.page.currentPage=0
             
-            if(self.arr.count>1)
-            {
-                self.scrollView.contentOffset=CGPointMake(self.width*2, 0)
-                if(self.AutoScroll)
-                {
-                    
-                    let delayInSeconds:Double=self.scrollTime
-                    let popTime:dispatch_time_t=dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC)))
-                    
-                    dispatch_after(popTime, dispatch_get_main_queue(), { () -> Void in
-                        
-                        self.timer=NSTimer.scheduledTimerWithTimeInterval(self.scrollTime, target: self, selector: #selector(XBanner.doScroll), userInfo: nil, repeats: true)
-                        self.timer!.fire()
-                        
-                    })
-                    
-                }
-                self.scrollView.scrollEnabled = true
-            }
-            else
-            {
-                self.scrollView.contentOffset=CGPointMake(0, 0)
-                self.scrollView.scrollEnabled = false
-            }
-            
-            self.setValue(0, forKeyPath: "index")
+            self.index = 0
+            self.width=self.frame.size.width
             
             
-        }
-        
-        if(keyPath == "index")
-        {
-            if(self.arr.count > 0)
+            if(self.AutoScroll)
             {
-                self.ctitle.text=self.arr[index].title
-                self.page.currentPage=index
                 
-                if(self.showUserDots)
-                {
-                    updateDots()
-                }
+                let delayInSeconds:Double=self.scrollTime
+                let popTime:dispatch_time_t=dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC)))
+                
+                dispatch_after(popTime, dispatch_get_main_queue(), { () -> Void in
+                    
+                    self.timer=NSTimer.scheduledTimerWithTimeInterval(self.scrollTime, target: self, selector: #selector(XBanner.doScroll), userInfo: nil, repeats: true)
+                    self.timer!.fire()
+                    
+                })
                 
             }
             
+            scrollView.delegate = self
         }
+    }
+    
+    dynamic var hiddenTitle:Bool=false
+    
+    func initBanner()
+    {
+        let containerView:UIView=("XBanner".Nib.instantiateWithOwner(self, options: nil))[0] as! UIView
         
+        let newFrame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+        containerView.frame = newFrame
+        self.addSubview(containerView)
+        
+        self.addObserver(self, forKeyPath: "hiddenTitle", options: [.New, .Old] , context: nil)
+        
+        userInteractionEnabled = true
+        scrollView.userInteractionEnabled = true
+        
+        titleButton.addTarget(self, action: #selector(buttonClick), forControlEvents: .TouchUpInside)
+    }
+    
+    override init(frame: CGRect) {
+        
+        super.init(frame: frame)
+        
+        self.initBanner()
         
     }
     
-    func updateDots()
-    {
-        var i:CGFloat=0
-        let j:CGFloat=3.5
-        for item in self.page.subviews
-        {
-           item.removeAllSubViews()
-            item.backgroundColor = UIColor.whiteColor()
-            let  frame=item.frame
-            
-            let view:UIView=UIView()
-            item.addSubview(view)
-            
-            if(Int(i) != index)
-            {
-                view.backgroundColor = UIColor.lightGrayColor()
-                view.frame=CGRectMake(0, 0, 3.0, 3.0)
-                view.layer.masksToBounds = true
-                view.layer.cornerRadius = 2.0
-            }
-            else
-            {
-                view.backgroundColor = APPBlueColor
-                view.frame=CGRectMake(0, 0, 5.0, 5.0)
-                view.layer.cornerRadius = 2.0
-                view.layer.cornerRadius = 2.9
-            }
-            
-            view.center = CGPointMake(frame.width/2.0-j*i, frame.height/2.0)
-            
-            i++
-            
-        }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.initBanner()
+        
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.width=self.frame.size.width
+    }
+    
+    lazy var btnArr:[UIButton] = []
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        
+        if(keyPath == "hiddenTitle")
+        {
+            self.titleButton.hidden=self.hiddenTitle
+            self.ctitle.hidden=self.hiddenTitle
+        }
+        
+    }
+    
+    //    func updateDots()
+    //    {
+    //        var i:CGFloat=0
+    //        //TODO:j原来为3.5
+    //        let j:CGFloat=0.0
+    //        for item in self.page.subviews
+    //        {
+    //           item.removeAllSubViews()
+    //            //颜色原来为lightGary
+    //            item.backgroundColor = UIColor.whiteColor()
+    //            let  frame=item.frame
+    //
+    //            let view:UIView=UIView()
+    //            item.addSubview(view)
+    //
+    //            if(Int(i) != index)
+    //            {
+    //                view.backgroundColor = UIColor.whiteColor()
+    //                view.frame=CGRectMake(0, 0, 3.0, 3.0)
+    //                view.layer.masksToBounds = true
+    //                view.layer.cornerRadius = 2.0
+    //            }
+    //            else
+    //            {
+    //                view.backgroundColor = redTXT
+    //                view.frame=CGRectMake(0, 0, 5.0, 5.0)
+    //                view.layer.cornerRadius = 2.0
+    //                view.layer.cornerRadius = 2.9
+    //            }
+    //
+    //
+    //            view.center = CGPointMake(frame.width/2.0-j*i, frame.height/2.0)
+    //
+    //            i++
+    //
+    //        }
+    //    }
+    
+    
     
     func doScroll()
     {
@@ -263,7 +301,6 @@ class XBanner: UIView , UIScrollViewDelegate{
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
-        if !scrollView.scrollEnabled{return}
         
         if(scrollView.contentOffset.x<=width)
         {
@@ -280,32 +317,31 @@ class XBanner: UIView , UIScrollViewDelegate{
             let nowIndex:Int=Int(Int(scrollView.contentOffset.x*100)/Int(width*100))-2;
             if(nowIndex != index)
             {
-                self.setValue(nowIndex, forKeyPath: "index")
+                index = nowIndex
             }
         }
-        
         
     }
     
     
-    func buttonClick(sender: AnyObject) {
+    func buttonClick() {
         
-        if(self.block != nil)
+        if index < arr.count
         {
-            self.block!(self.arr[self.index].obj)
+            self.block?(self.arr[self.index])
         }
+        
     }
     
     deinit
     {
-        self.removeObserver(self, forKeyPath: "arr")
-        self.removeObserver(self, forKeyPath: "index")
         self.removeObserver(self, forKeyPath: "hiddenTitle")
         self.scrollView.delegate=nil
         self.block=nil
         self.timer?.invalidate()
         self.timer=nil
         
+        print("XBanner deinit !!!!!!!!!")
     }
-
+    
 }

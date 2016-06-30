@@ -26,7 +26,6 @@ class XImageDownLoader: NSOperation {
     
     weak var view:UIImageView?
     
-    
     var key:String
     {
         let size = view?.bounds.size
@@ -82,10 +81,20 @@ class XImageDownLoader: NSOperation {
     
     func doFinish()
     {
+        if !self.executing {
+            
+            self.doCancell()
+            
+            self.willChangeValueForKey("isExecuting")
+            selfRunning = true
+            self.didChangeValueForKey("isExecuting")
+            
+        }
+        
         self.willChangeValueForKey("isFinished")
         ended = true
         self.didChangeValueForKey("isFinished")
-
+        
     }
     
     override func cancel() {
@@ -97,21 +106,31 @@ class XImageDownLoader: NSOperation {
         
         doCancell()
         doFinish()
-        //destroy()
         
     }
     
     func destroy()
     {
-        self.view = nil
         XImageUtil.Share.removeTask(url.hash)
+        self.view = nil
         self.taskRunning = false
+        
+        for item in progress
+        {
+            item.block = nil
+            item.imgView = nil
+        }
+        for item in complete
+        {
+            item.block = nil
+            item.imgView = nil
+        }
+        
         self.progress.removeAll(keepCapacity: false)
         self.complete.removeAll(keepCapacity: false)
         self.task?.cancel()
         self.task = nil
         self.data = nil
-    
     }
     
     
@@ -139,10 +158,10 @@ class XImageDownLoader: NSOperation {
     
     
     var savePath:String
-        {
-            return (XImageSavePath as NSString).stringByAppendingPathComponent("\(url.hash)")
+    {
+        return (XImageSavePath as NSString).stringByAppendingPathComponent("\(url.hash)")
     }
-
+    
     func createTask()
     {
         if self.taskRunning || self.task != nil || self.url == "" || self.quxiao
@@ -190,37 +209,44 @@ class XImageDownLoader: NSOperation {
             return
         }
         
-        let r = NSMutableURLRequest(URL: NSURL(string: self.url)!)
-        r.timeoutInterval = 0
-        
-        self.task = XImageUtil.Share.session.dataTaskWithRequest(r)
-        
-        if #available(iOS 8.0, *) {
-            
-            self.task?.priority = 1.0
-   
-        } else {
-            // Fallback on earlier versions
-        }
-        self.taskRunning = false
-        
-        if self.immediately
+        if let u = NSURL(string: self.url)
         {
-            self.startDownLoad()
+            let r = NSMutableURLRequest(URL: u)
+            r.timeoutInterval = 0
+            
+            self.task = XImageUtil.Share.session.dataTaskWithRequest(r)
         }
         else
         {
             self.doFinish()
         }
         
-        return
+        if #available(iOS 8.0, *) {
+            
+            self.task?.priority = 1.0
+            
+        } else {
+            // Fallback on earlier versions
+        }
+        self.taskRunning = false
+        
+        if !self.immediately || self.task == nil
+        {
+            self.doFinish()
+            return
+        }
+        
+        self.startDownLoad()
         
     }
     
     
     func startDownLoad()
     {
-        if self.task == nil {return}
+        if self.task == nil {
+            
+            return
+        }
         
         if self.task?.state != .Completed && self.task?.state != .Running && self.task?.state != .Canceling
         {
@@ -246,13 +272,13 @@ class XImageDownLoader: NSOperation {
         autoreleasepool {
             
             self.data?.writeToFile(savePath, atomically: false)
-  
+            
         }
         
         return handleData(self.data!)
         
     }
-
+    
     private func handleData(d:NSData)->(UIImage?,NSData?)
     {
         var image:UIImage?

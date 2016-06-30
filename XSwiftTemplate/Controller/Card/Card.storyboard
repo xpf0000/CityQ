@@ -440,7 +440,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pif-GV-Im1">
-                                                            <rect key="frame" x="12" y="12" width="85" height="85"/>
+                                                            <rect key="frame" x="10" y="8" width="93" height="93"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="Pif-GV-Im1" secondAttribute="height" multiplier="1:1" id="WNI-EN-4VC"/>
                                                             </constraints>
@@ -455,11 +455,11 @@
                                                     <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="8pk-9M-QBh" secondAttribute="trailing" id="A9X-kQ-5XR"/>
-                                                        <constraint firstItem="Pif-GV-Im1" firstAttribute="top" secondItem="Z0L-A8-l3X" secondAttribute="top" constant="12" id="MXm-hA-pa1"/>
-                                                        <constraint firstItem="Pif-GV-Im1" firstAttribute="leading" secondItem="Z0L-A8-l3X" secondAttribute="leading" constant="12" id="UrM-Zf-cjh"/>
+                                                        <constraint firstItem="Pif-GV-Im1" firstAttribute="top" secondItem="Z0L-A8-l3X" secondAttribute="top" constant="8" id="MXm-hA-pa1"/>
+                                                        <constraint firstItem="Pif-GV-Im1" firstAttribute="leading" secondItem="Z0L-A8-l3X" secondAttribute="leading" constant="10" id="UrM-Zf-cjh"/>
                                                         <constraint firstItem="8pk-9M-QBh" firstAttribute="leading" secondItem="Z0L-A8-l3X" secondAttribute="leading" id="ZMT-am-F2z"/>
                                                         <constraint firstAttribute="bottom" secondItem="8pk-9M-QBh" secondAttribute="bottom" id="ZNA-pY-xsa"/>
-                                                        <constraint firstItem="8pk-9M-QBh" firstAttribute="top" secondItem="Pif-GV-Im1" secondAttribute="bottom" constant="12" id="esU-iP-I2L"/>
+                                                        <constraint firstItem="8pk-9M-QBh" firstAttribute="top" secondItem="Pif-GV-Im1" secondAttribute="bottom" constant="8" id="esU-iP-I2L"/>
                                                         <constraint firstAttribute="trailing" secondItem="h94-ya-ufB" secondAttribute="trailing" constant="12" id="jxf-Zg-thX"/>
                                                         <constraint firstItem="h94-ya-ufB" firstAttribute="top" secondItem="Z0L-A8-l3X" secondAttribute="top" constant="22" id="yqx-OF-8lp"/>
                                                     </constraints>

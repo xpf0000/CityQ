@@ -15,6 +15,7 @@ class MyFriendVC: XViewController,UITableViewDelegate,UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "我的发布"
         self.addBackButton()
         self.view.backgroundColor = "F3F5F7".color
         

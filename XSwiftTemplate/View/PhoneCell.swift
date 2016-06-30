@@ -72,6 +72,8 @@ class PhoneCell: UITableViewCell,UIActionSheetDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         lineH.constant = 0.333333
+        img.layer.masksToBounds = true
+        img.layer.cornerRadius = img.frame.size.width/2.0
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

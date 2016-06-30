@@ -88,6 +88,14 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         
     }
     
+    var menuFontSize : CGFloat = 16.0
+    {
+        didSet
+        {
+            reloadData()
+        }
+    }
+    
     var menuWidth:CGFloat
     {
         return frame.size.width/self.menuPageNum
@@ -169,6 +177,8 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
             line.frame.origin.y = self.frame.size.height - lineHeight
         }
     }
+    
+    
     
     
     override func layoutSubviews() {
@@ -307,7 +317,7 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         titleLabel.textAlignment=NSTextAlignment.Center;
         titleLabel.backgroundColor=UIColor.clearColor()
         titleLabel.textColor = menuTextColor
-        titleLabel.font=UIFont.systemFontOfSize(15.0)
+        titleLabel.font=UIFont.systemFontOfSize(menuFontSize)
         titleLabel.tag = 30+indexPath.row
         
         titleLabel.sizeToFit()

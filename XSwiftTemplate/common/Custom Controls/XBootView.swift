@@ -30,6 +30,8 @@ class XBootView: UIView,UIScrollViewDelegate {
         self.addSubview(containerView)
         
         self.scrollView.delegate = nil
+        
+        page.hidden = true
 
     }
     

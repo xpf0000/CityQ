@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import ImageIO
 
+var testD:XImageDownLoader?
+
 class XImgProgressModel: NSObject {
     
     weak var imgView:UIImageView?
@@ -27,9 +29,9 @@ class XImgCompleteModel: NSObject {
 }
 
 
-@objc protocol UIImageViewGroupDelegate:NSObjectProtocol{
+@objc protocol XImageViewGroupDelegate:NSObjectProtocol{
     //回调方法
-    optional func UIImageViewGroupTap(obj:UIImageView)
+    optional func XImageViewGroupTap(obj:UIImageView)
 }
 
 private var XImageUrlKey : CChar = 0
@@ -38,11 +40,27 @@ private var XImageCAShapeLayerKey:CChar = 0
 private var XImageControllBtnKey:CChar = 0
 private var XImageGroupDelegateKey:CChar = 0
 private var XImageIsGroupKey:CChar = 0
+private var XImageHasLayouted:CChar = 0
 
 let IOQueue:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 
 extension UIImageView
 {
+    
+    private var hasLayouted:Bool?
+        {
+        get
+        {
+            return objc_getAssociatedObject(self, &XImageHasLayouted) as? Bool
+        }
+        set(newValue) {
+            self.willChangeValueForKey("XImageHasLayouted")
+            objc_setAssociatedObject(self, &XImageHasLayouted, newValue,
+                                     .OBJC_ASSOCIATION_ASSIGN)
+            self.didChangeValueForKey("XImageHasLayouted")
+            
+        }
+    }
     
     var placeholder:UIImage?
         {
@@ -53,7 +71,7 @@ extension UIImageView
         set(newValue) {
             self.willChangeValueForKey("XImagePlaceholderKey")
             objc_setAssociatedObject(self, &XImagePlaceholderKey, newValue,
-                .OBJC_ASSOCIATION_RETAIN)
+                                     .OBJC_ASSOCIATION_RETAIN)
             self.didChangeValueForKey("XImagePlaceholderKey")
             
             if self.url == nil {self.image = newValue;return}
@@ -69,17 +87,17 @@ extension UIImageView
         }
     }
     
-    var groupDelegate:UIImageViewGroupDelegate?
+    var groupDelegate:XImageViewGroupDelegate?
         {
         get
         {
-            return objc_getAssociatedObject(self, &XImageGroupDelegateKey) as? UIImageViewGroupDelegate
+            return objc_getAssociatedObject(self, &XImageGroupDelegateKey) as? XImageViewGroupDelegate
         }
         set {
             
             self.willChangeValueForKey("XImageGroupDelegateKey")
             objc_setAssociatedObject(self, &XImageGroupDelegateKey, newValue,
-                .OBJC_ASSOCIATION_ASSIGN)
+                                     .OBJC_ASSOCIATION_ASSIGN)
             self.didChangeValueForKey("XImageGroupDelegateKey")
             
         }
@@ -97,8 +115,14 @@ extension UIImageView
             
             self.willChangeValueForKey("XImageIsGroupKey")
             objc_setAssociatedObject(self, &XImageIsGroupKey, newValue,
-                .OBJC_ASSOCIATION_COPY_NONATOMIC)
+                                     .OBJC_ASSOCIATION_RETAIN)
             self.didChangeValueForKey("XImageIsGroupKey")
+            self.userInteractionEnabled = true
+            
+            if controllBtn?.superview == nil
+            {
+                self.btnLabelHidden(true)
+            }
             
         }
     }
@@ -114,7 +138,7 @@ extension UIImageView
             
             self.willChangeValueForKey("XImageControllBtnKey")
             objc_setAssociatedObject(self, &XImageControllBtnKey, newValue,
-                .OBJC_ASSOCIATION_RETAIN)
+                                     .OBJC_ASSOCIATION_RETAIN)
             self.didChangeValueForKey("XImageControllBtnKey")
             
             
@@ -132,7 +156,7 @@ extension UIImageView
             
             self.willChangeValueForKey("XImageCAShapeLayerKey")
             objc_setAssociatedObject(self, &XImageCAShapeLayerKey, newValue,
-                .OBJC_ASSOCIATION_RETAIN)
+                                     .OBJC_ASSOCIATION_RETAIN)
             self.didChangeValueForKey("XImageCAShapeLayerKey")
         }
     }
@@ -165,7 +189,7 @@ extension UIImageView
             
             self.layer.addSublayer(progressLayer!)
         }
-
+        
         
     }
     
@@ -190,6 +214,7 @@ extension UIImageView
         
         if controllBtn?.superview == nil
         {
+            self.userInteractionEnabled = true
             controllBtn?.selected = false
             self.addSubview(controllBtn!)
         }
@@ -205,20 +230,17 @@ extension UIImageView
         }
         set {
             
-           // let oldValue = objc_getAssociatedObject(self, &XImageUrlKey) as? String
+            let oldValue = objc_getAssociatedObject(self, &XImageUrlKey) as? String
             
             self.willChangeValueForKey("XImageUrlKey")
             objc_setAssociatedObject(self, &XImageUrlKey, newValue,
-                .OBJC_ASSOCIATION_RETAIN)
+                                     .OBJC_ASSOCIATION_RETAIN)
             self.didChangeValueForKey("XImageUrlKey")
             
-            if newValue==nil  {return}
+            if newValue==nil || oldValue == newValue {return}
             
             self.clipsToBounds = true
             self.layer.masksToBounds = true
-            //self.layer.shouldRasterize = true
-            //self.contentMode = .ScaleAspectFill
-            self.userInteractionEnabled = true
             self.image = placeholder
             
             self.progressLayer?.removeFromSuperlayer()
@@ -232,7 +254,7 @@ extension UIImageView
             }
             
             self.creatOperation(newValue!, immediately: immediately)
- 
+            
         }
         
     }
@@ -318,6 +340,7 @@ extension UIImageView
                     }
                     else
                     {
+                        self?.userInteractionEnabled = false
                         self?.controllBtn?.removeFromSuperview()
                     }
                 }
@@ -345,6 +368,11 @@ extension UIImageView
             
         }
         
+        if self.hasLayouted == nil
+        {
+            self.layoutIfNeeded()
+            self.setNeedsLayout()
+        }
         
         if !XImageOperationManager.Share.operation.operations.contains(downloader) && !downloader.finished
         {
@@ -352,7 +380,11 @@ extension UIImageView
             
             if XImageOperationManager.Share.lastOperation?.dependencies.count == 0
             {
-                XImageOperationManager.Share.lastOperation?.addDependency(downloader)
+                if immediately
+                {
+                    XImageOperationManager.Share.lastOperation?.addDependency(downloader)
+                }
+                
             }
             
             XImageOperationManager.Share.lastOperation = downloader
@@ -360,11 +392,15 @@ extension UIImageView
         }
         else
         {
-            if immediately{downloader.startDownLoad()}
+            if immediately{
+                
+                downloader.startDownLoad()
+                
+            }
         }
         
     }
-
+    
     func doDownLoad(sender:UIButton)
     {
         if !sender.selected
@@ -375,24 +411,25 @@ extension UIImageView
         {
             if self.groupDelegate != nil
             {
-                self.groupDelegate?.UIImageViewGroupTap?(self)
+                self.groupDelegate?.XImageViewGroupTap?(self)
             }
             else
             {
                 if self.superview == nil {return}
-                XImageBrowse.Share.imageArr.removeAll(keepCapacity: false)
+                //XImageBrowse.Share.imageArr.removeAll(keepCapacity: false)
+                var arr:[UIImageView] = []
                 for item in self.superview!.subviews
                 {
                     if let view = item as? UIImageView
                     {
                         if view.isGroup
                         {
-                            XImageBrowse.Share.imageArr.append(view)
+                            arr.append(view)
                         }
                     }
                 }
                 
-                XImageBrowse.Share.show(self)
+                XImageBrowse(arr: arr).show(self)
             }
             
             
@@ -437,6 +474,8 @@ extension UIImageView
         
         super.layoutSubviews()
         
+        self.hasLayouted = true
+        
         if self.url != nil
         {
             if controllBtn?.frame != bounds
@@ -452,7 +491,7 @@ extension UIImageView
                 let path = UIBezierPath(arcCenter: point, radius: circleRadius, startAngle: CGFloat(M_PI * 1.0), endAngle: CGFloat(M_PI * 3.0), clockwise: true)
                 progressLayer?.path = path.CGPath
             }
-
+            
         }
         
         

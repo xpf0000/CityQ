@@ -149,7 +149,7 @@ class NewsInfoVC: XViewController {
         super.viewDidLoad()
 
         self.addBackButton()
-        self.title = "怀府新闻"
+        self.title = "详情"
         
         commentBtn.click { [weak self](btn) in
             

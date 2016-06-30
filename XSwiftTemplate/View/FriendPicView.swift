@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIImageViewGroupDelegate {
+class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,XImageViewGroupDelegate {
 
     @IBOutlet var picCollection: UICollectionView!
     
@@ -145,8 +145,7 @@ class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
             arr.append(imgArr[i]!)
         }
         
-        XImageBrowse.Share.imageArr = arr
-        XImageBrowse.Share.show(obj)
+        XImageBrowse(arr: arr).show(obj)
         
     }
     

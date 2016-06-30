@@ -121,7 +121,6 @@ class UserCenterVC: UITableViewController {
         
         self.headPic.layer.borderWidth=1.0
         self.headPic.layer.borderColor="#bfbfbf".color?.CGColor
-        self.headPic.layer.cornerRadius=7.0
         self.headPic.layer.masksToBounds=true
         self.headPic.placeholder = "tx.jpg".image
         
@@ -144,6 +143,8 @@ class UserCenterVC: UITableViewController {
     override func viewDidLayoutSubviews() {
         
         super.viewDidLayoutSubviews()
+        
+        self.headPic.layer.cornerRadius=headPic.frame.size.width/2.0
         
         self.table.separatorInset=UIEdgeInsetsZero
         if(IOS_Version>=8.0)

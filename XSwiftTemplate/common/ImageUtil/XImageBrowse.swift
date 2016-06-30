@@ -10,13 +10,13 @@ import UIKit
 import AVFoundation
 
 class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionViewDelegate,UICollectionViewDataSource {
-
-    static let Share = XImageBrowse(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
+    
+    //static let Share = XImageBrowse(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
     
     var collection:UICollectionView!
     let clayout = UICollectionViewFlowLayout()
     
-    lazy var imageArr:[UIImageView] = []
+    lazy var imageArr:Array<UIImageView> = []
     var beginFrame:CGRect = CGRectZero
     var index:Int=0
     var showIng:Bool=false
@@ -26,8 +26,14 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
     
     let swidth = UIScreen.mainScreen().bounds.width
     let sheight = UIScreen.mainScreen().bounds.height
-
-    private override init(frame: CGRect) {
+    
+    convenience init(arr:[UIImageView])
+    {
+        self.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height))
+        self.imageArr = arr
+    }
+    
+    override init(frame: CGRect) {
         super.init(frame: frame)
         
         clayout.scrollDirection = .Horizontal
@@ -63,13 +69,17 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath)
-        cell.contentView.removeAllSubViews()
+        
+        for item in cell.contentView.subviews
+        {
+            item.removeFromSuperview()
+        }
         
         let i = indexPath.row
         let item = self.imageArr[i]
         
         let zoomScrollView:MRZoomScrollView = MRZoomScrollView(img: item)
-
+        
         zoomScrollView.frame = CGRectMake(0, 0, swidth, sheight)
         
         zoomScrollView.tag=70+i
@@ -90,21 +100,6 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
         self.index = index!
         
         self.beginFrame = frame!
-    
-//        var i:Int=0
-//        for item in self.imageArr
-//        {
-//            let zoomScrollView:MRZoomScrollView = MRZoomScrollView(img: item)
-//            
-//            let x:CGFloat=CGFloat(i) * swidth
-//            
-//            zoomScrollView.frame = CGRectMake(x, 0, swidth, sheight)
-//        
-//            zoomScrollView.tag=70+i
-//            zoomScrollView.zoomDelegate=self
-//            self.scrollView.addSubview(zoomScrollView)
-//            i += 1
-//        }
         
         self.collection.reloadData()
         
@@ -114,7 +109,6 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
         
         UIApplication.sharedApplication().keyWindow?.addSubview(self)
         
-        //self.scrollView.contentSize=CGSize(width: self.imageArr.count*Int(swidth), height: 0)
         
         self.show()
         
@@ -122,8 +116,6 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
     
     private func show()
     {
-        
-        //self.scrollView.contentOffset.x=CGFloat(self.index) * swidth
         
         let fromImage = imageArr[index]
         
@@ -137,12 +129,17 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
         let toImage = UIImageView()
         toImage.image = fromImage.image
         view.addSubview(toImage)
-
+        
         toImage.frame = trueFrame(fromImage)
         toImage.center = imgCenter(beginFrame, img: fromImage)
         toImage.contentMode = .ScaleToFill
         
-        let rect = AVMakeRectWithAspectRatioInsideRect(fromImage.image!.size, CGRectMake(0, 0, self.swidth, self.sheight))
+        var rect = CGRectZero
+        
+        if fromImage.image != nil
+        {
+            rect = AVMakeRectWithAspectRatioInsideRect(fromImage.image!.size, CGRectMake(0, 0, self.swidth, self.sheight))
+        }
         
         fromImage.alpha = 0.0
         
@@ -163,15 +160,13 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
                 self.collection.alpha = 1.0
                 fromImage.alpha = 1.0
                 
-            })
+        })
     }
     
     
     
     func hide()
     {
-        //index = Int(floor(self.scrollView.contentOffset.x / swidth))
-        
         index = Int(floor(self.collection.contentOffset.x / swidth))
         
         let temp=viewWithTag(70+index) as! MRZoomScrollView
@@ -196,13 +191,9 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
             
             fromImg.frame = fromeFrame!
         }
-        else
-        {
-            print("super view000: \(fromImg.superview) | keyWindow: \(UIApplication.sharedApplication().keyWindow)")
-        }
         
         self.collection.alpha = 0.0
-
+        
         let toImg = imageArr[index]
         if toImg.image == nil
         {
@@ -252,10 +243,14 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
                 
                 (completion) in
                 toImg.alpha=1.0
+                self.imageArr.removeAll(keepCapacity: false)
+                self.collection.delegate = nil
+                self.collection.dataSource = nil
+                self.collection.removeFromSuperview()
                 fromImg.removeFromSuperview()
                 view.removeFromSuperview()
                 self.removeFromSuperview()
-                self.reSet()
+                
                 
         })
         
@@ -266,7 +261,7 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
         
         switch img.contentMode
         {
-
+            
         case .Top:
             ""
             return CGPointMake(frame.width/2.0, img.image!.size.height/2.0)
@@ -278,7 +273,7 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
         case .Left:
             ""
             return CGPointMake(img.image!.size.width/2.0, frame.height/2.0)
-         
+            
         case .Right:
             ""
             return CGPointMake(-(img.image!.size.width/2.0-frame.width), frame.height/2.0)
@@ -310,6 +305,7 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
     
     func trueFrame(img:UIImageView)->CGRect
     {
+        if img.image == nil {return img.frame}
         
         switch img.contentMode
         {
@@ -357,27 +353,19 @@ class XImageBrowse: UIView,UIScrollViewDelegate,zoomScrollDelegate,UICollectionV
     }
     
     
-
+    
     func zoomTapClick() {
         
         self.hide()
     }
     
-    func reSet()
-    {
-        self.imageArr.removeAll(keepCapacity: false)
-        self.collection.reloadData()
-        
-        beginFrame = CGRectZero
-        index = 0
-        self.showIng = false
-        self.collection.alpha = 0.0
-    }
-    
-
     required internal init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-
+    deinit
+    {
+        
+    }
+    
 }

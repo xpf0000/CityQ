@@ -12,6 +12,8 @@ class MyWalletVC: UIViewController {
 
     let table = XTableView()
     
+    var id = "0"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +27,7 @@ class MyWalletVC: UIViewController {
         self.view.addSubview(table)
         
         
-        let url = "http://123.57.162.97/hfapi/Public/Found/?service=Hyk.getUserMoneys&username=cheng&page=[page]&perNumber=20"
+        let url = "http://123.57.162.97/hfapi/Public/Found/?service=Hyk.getUserMoneys&username=\(Uname)&page=[page]&perNumber=20&id=\(id)"
         
 //        let url = "http://123.57.162.97/hfapi/Public/Found/?service=Hyk.getUserMoneys&username=\(DataCache.Share().userModel.username)&page=[page]&perNumber=20"
         

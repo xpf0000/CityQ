@@ -49,23 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
             RegistUMessage()
             
             DataCache.Share().welcom.show = true
-            if(sheight * UIScreen.mainScreen().scale == 960.0)
-            {
-                DataCache.Share().welcom.info = ["app01_6402.png","app02_6402.png","app03_6402.png"]
-            }
-            else if(sheight * UIScreen.mainScreen().scale == 1136)
-            {
-                DataCache.Share().welcom.info = ["app01_6401.png","app02_6401.png","app03_6401.png"]
-            }
-            else if(sheight * UIScreen.mainScreen().scale == 1334)
-            {
-                DataCache.Share().welcom.info = ["app01_750.png","app02_750.png","app03_750.png"]
-            }
-            else
-            {
-                DataCache.Share().welcom.info = ["app01_1242.png","app02_1242.png","app03_1242.png"]
-            }
-
+            
+            let w = Int(sheight * UIScreen.mainScreen().scale)
+            
+            DataCache.Share().welcom.info = ["\(w)_1.png","\(w)_2.png","\(w)_3.png"]
+            
             DataCache.Share().welcom.save()
             
         }

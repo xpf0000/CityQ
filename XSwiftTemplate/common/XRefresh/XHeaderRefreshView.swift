@@ -261,7 +261,7 @@ class XHeaderRefreshView: UIView {
                                 self.scrollView?.footRefresh?.reSet()
                             }
                             
-                            self.scrollView!.refreshEnable = true
+                            self.scrollView?.refreshEnable = true
                             
                         })
                 })
@@ -294,7 +294,7 @@ class XHeaderRefreshView: UIView {
             })
             
         case .Refreshing:
-            scrollView!.refreshEnable = false
+            scrollView?.refreshEnable = false
             self.state = .Refreshing
             self.state = state
             
@@ -304,8 +304,8 @@ class XHeaderRefreshView: UIView {
             
             UIView.animateWithDuration(0.25, animations: { () -> Void in
                 
-                self.scrollView!.contentInset.top=self.height
-                self.scrollView!.setContentOffset(CGPointMake(0, -self.height), animated: false)
+                self.scrollView?.contentInset.top=self.height
+                self.scrollView?.setContentOffset(CGPointMake(0, -self.height), animated: false)
                 
                 }, completion: { (finish) -> Void in
                     

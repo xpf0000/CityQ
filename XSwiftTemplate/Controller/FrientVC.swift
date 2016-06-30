@@ -47,7 +47,7 @@ class FrientVC: XViewController ,UITableViewDelegate,UITableViewDataSource,commo
             {
                 let model:XBannerModel=XBannerModel()
                 model.obj = item["url"].stringValue
-                model.url =  item["picurl"].stringValue
+                model.imageURL =  item["picurl"].stringValue
                 self.bannerArr.append(model)
                 
             }
@@ -156,8 +156,7 @@ class FrientVC: XViewController ,UITableViewDelegate,UITableViewDataSource,commo
         banner.page.pageIndicatorTintColor = UIColor.lightGrayColor()
         banner.page.currentPageIndicatorTintColor = APPBlueColor
         
-        
-        banner.block =
+        banner.click
             {
                 [weak self]
                 (o)->Void in
@@ -167,7 +166,7 @@ class FrientVC: XViewController ,UITableViewDelegate,UITableViewDataSource,commo
                     
                     let vc:HtmlVC = HtmlVC()
                     vc.hidesBottomBarWhenPushed = true
-                    vc.url = o as! String
+                    vc.url = o.obj as! String
                     self?.navigationController?.pushViewController(vc, animated: true)
                     
                 }

@@ -136,7 +136,8 @@ class PhoneVC: UIViewController,UITextFieldDelegate {
         menu.menuTextColor = APPBlackColor
         menu.menuBGColor = UIColor.whiteColor()
         menu.line.hidden = true
-        menu.menuMaxScale = 1.2
+        menu.menuMaxScale = 1.1
+        menu.menuFontSize = 17.0
         menu.mutableMenuWidth = true
         menu.menuArr = classArr
  

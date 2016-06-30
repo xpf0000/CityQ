@@ -18,6 +18,8 @@ class MyWalletCell: UITableViewCell {
     
     @IBOutlet var lineH: NSLayoutConstraint!
     
+    var CardType = ["次","元","折","分"]
+    
     var model:WalletModel!
     {
         didSet
@@ -26,22 +28,53 @@ class MyWalletCell: UITableViewCell {
             var str = ""
             var str1=""
             //1充值 2消费
-            if model.type == "1"
+            if model.xftype == "1"
             {
-                str += "充值: +"+model.money+"元"
+                switch model.cardtype {
+                case "1":
+                    ""
+                    str += "充值: +"+model.value+"次"
+                    str1 = "\r\n现金: "+model.money+"元"
+                    
+                case "2":
+                    ""
+                    str += "充值: +"+model.value+"元"
+                    str1 = "\r\n现金: "+model.money+"元"
+    
+                default:
+                    ""
+                }
             }
             else
             {
-                str += "消费: -"+model.money+"元"
+                switch model.cardtype {
+                case "1":
+                    ""
+                    str += "消费: -"+model.value+"次"
+                    
+                case "2":
+                    ""
+                    str += "消费: -"+model.money+"元"
+                    
+                case "3":
+                    ""
+                    str += "消费: "+model.money+"元"
+                    str1 = "\r\n折扣后金额: "+model.value+"元"
+                    
+                case "4":
+                    ""
+                    str += "消费: "+model.money+"元"
+                    str1 = "\r\n获得积分: "+model.value+"分"
+                    
+                default:
+                    ""
+                }
+                
+                
             }
             
-            str1 += str
+            str1 = str + str1
             
-            if model.value.numberValue.doubleValue > 0.0
-            {
-                str1 += "\r\n获得积分: "+model.value
-            }
-          
             str1 += "\r\n店铺名称: "+model.shopname
             
             
@@ -55,7 +88,7 @@ class MyWalletCell: UITableViewCell {
             
             let rang = (str1 as NSString).rangeOfString(str)
             var color:UIColor!
-            if model.type == "1"
+            if model.xftype == "1"
             {
                 color = "239400".color
             }

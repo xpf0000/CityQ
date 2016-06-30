@@ -272,16 +272,29 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         
         let model = table.httpHandle.listArr[indexPath.row] as! CardModel
         
-        let vc = "CardInfoVC".VC("Card") as! CardInfoVC
+        var vc:UIViewController!
         
-        vc.id = model.id
-        
-        vc.SuccessBlock {[weak self]()->Void in
+        if model.orlq > 0
+        {
+            vc = "CardGetedInfoVC".VC("Card")
             
-            if self == nil {return}
+            (vc as! CardGetedInfoVC).model = model
+   
+        }
+        else
+        {
+            vc = "CardInfoVC".VC("Card")
             
-            model.orlq = 1
-            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+            (vc as! CardInfoVC).id = model.id
+            
+            (vc as! CardInfoVC).SuccessBlock {[weak self]()->Void in
+                
+                if self == nil {return}
+                
+                model.orlq = 1
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                
+            }
             
         }
         

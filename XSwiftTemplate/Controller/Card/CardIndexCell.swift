@@ -92,8 +92,8 @@ class CardIndexCell: UITableViewCell {
         imgTop.constant = 17.0/2.0 * screenFlag
         imgBottom.constant = 14.0/2.0 * screenFlag
         
-        img.layoutIfNeeded()
-        img.setNeedsLayout()
+        //img.layoutIfNeeded()
+        //img.setNeedsLayout()
         
         bViewH.constant = 77.0/2.0 * screenFlag
         

@@ -3087,7 +3087,7 @@
 				TargetAttributes = {
 					17BE5A111B9D68FC00C8958A = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 24AVM954YM;
+						DevelopmentTeam = QPBSPA49NG;
 					};
 					17BE5A261B9D68FC00C8958A = {
 						CreatedOnToolsVersion = 6.4;
@@ -3955,6 +3955,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3981,6 +3982,7 @@
 				OTHER_SWIFT_FLAGS = "-DSNAPKIT_DEPLOYMENT_LEGACY";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.huaifu.chengshiquan-1";
 				PRODUCT_NAME = chengshi;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "XSwiftTemplate/XSwiftTemplate-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -3994,6 +3996,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4020,6 +4023,7 @@
 				OTHER_SWIFT_FLAGS = "-DSNAPKIT_DEPLOYMENT_LEGACY";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.huaifu.chengshiquan-1";
 				PRODUCT_NAME = chengshi;
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "XSwiftTemplate/XSwiftTemplate-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "";
 			};

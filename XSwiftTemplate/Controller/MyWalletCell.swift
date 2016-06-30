@@ -70,7 +70,6 @@ class MyWalletCell: UITableViewCell {
                     ""
                 }
                 
-                
             }
             
             str1 = str + str1

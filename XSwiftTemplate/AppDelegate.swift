@@ -52,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
             
             let w = Int(sheight * UIScreen.mainScreen().scale)
             
-            DataCache.Share().welcom.info = ["\(w)_1.png","\(w)_2.png","\(w)_3.png"]
+            DataCache.Share().welcom.info = ["\(w)_1.jpg","\(w)_2.jpg","\(w)_3.jpg"]
             
             DataCache.Share().welcom.save()
             

@@ -116,8 +116,14 @@ class UserCenterVC: UITableViewController {
         
         let view1=UIView()
         view1.backgroundColor=UIColor.clearColor()
-        table.tableFooterView=view1
+        view1.frame = CGRectMake(0, 0, swidth, 0.01)
         table.tableHeaderView=view1
+        
+        let view2=UIView()
+        view2.backgroundColor=UIColor.clearColor()
+        view2.frame = CGRectMake(0, 0, swidth, 50.0)
+        table.tableFooterView=view2
+        
         
         self.headPic.layer.borderWidth=1.0
         self.headPic.layer.borderColor="#bfbfbf".color?.CGColor

@@ -53,6 +53,8 @@ class CardIndexCell: UITableViewCell {
         didSet
         {
             img.url = model.logo
+            img.layoutIfNeeded()
+            img.setNeedsLayout()
             bgView.backgroundColor = model.color.color
             bgView.setNeedsDisplay()
             
@@ -89,6 +91,9 @@ class CardIndexCell: UITableViewCell {
         imgLeft.constant = 21.0/2.0 * screenFlag
         imgTop.constant = 17.0/2.0 * screenFlag
         imgBottom.constant = 14.0/2.0 * screenFlag
+        
+        img.layoutIfNeeded()
+        img.setNeedsLayout()
         
         bViewH.constant = 77.0/2.0 * screenFlag
         

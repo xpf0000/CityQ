@@ -10,7 +10,7 @@ import UIKit
 
 class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
 
-    var banner:XBanner = XBanner(frame: CGRectMake(0, 0, swidth, swidth * 433.0 / 750.0))
+    var banner:XBanner = XBanner(frame: CGRectMake(0, 0, swidth, swidth * 433.0 / 750.0 * screenFlag))
     
     var httpHandle:XHttpHandle=XHttpHandle()
     
@@ -364,36 +364,62 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if(indexPath.row > 0 && bannerID != "103")
+        if(indexPath.row > 0)
         {
-            let vc:NewsInfoVC = "NewsInfoVC".VC as! NewsInfoVC
-            vc.model = self.httpHandle.listArr[indexPath.row-1] as! NewsModel
-            vc.hidesBottomBarWhenPushed = true
-            self.viewController?.navigationController?.pushViewController(vc, animated: true)
+            let model = self.httpHandle.listArr[indexPath.row-1] as! NewsModel
             
-            let cell=tableView.cellForRowAtIndexPath(indexPath)
+            var isHuodong = false
             
-            if cell is NewsListCell
+            if bannerID != "103"
             {
-                if(!DataCache.Share().newsViewedModel.has(vc.model.id))
+                if model.category_id == "98"
                 {
-                    DataCache.Share().newsViewedModel.add(vc.model.id)
-                    
-                    (cell as! NewsListCell).setHasSee()
-                    
-                    let url = APPURL+"Public/Found/?service=News.addView&id="+vc.model.id
-                    
-                    XHttpPool.requestJson(url, body: nil, method: .GET, block: {[weak self] (o) -> Void in
+                    isHuodong = true
+                }
+            }
+            else
+            {
+                isHuodong = true
+            }
+
+            if isHuodong
+            {
+                let vc:CardActivitysInfoVC = "CardActivitysInfoVC".VC("Card") as! CardActivitysInfoVC
+                vc.model.id = model.id
+                vc.hidesBottomBarWhenPushed = true
+                self.viewController?.navigationController?.pushViewController(vc, animated: true)
+            }
+            else
+            {
+                let vc:NewsInfoVC = "NewsInfoVC".VC as! NewsInfoVC
+                vc.model = model
+                vc.hidesBottomBarWhenPushed = true
+                self.viewController?.navigationController?.pushViewController(vc, animated: true)
+                
+                let cell=tableView.cellForRowAtIndexPath(indexPath)
+                
+                if cell is NewsListCell
+                {
+                    if(!DataCache.Share().newsViewedModel.has(vc.model.id))
+                    {
+                        DataCache.Share().newsViewedModel.add(vc.model.id)
                         
+                        (cell as! NewsListCell).setHasSee()
                         
-                    })
+                        let url = APPURL+"Public/Found/?service=News.addView&id="+vc.model.id
+                        
+                        XHttpPool.requestJson(url, body: nil, method: .GET, block: {[weak self] (o) -> Void in
+                            
+                            
+                            })
+                        
+                    }
                     
                 }
-
             }
   
         }
-        
+  
     }
     
     

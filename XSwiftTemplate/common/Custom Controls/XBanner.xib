@@ -10,7 +10,7 @@
         </mutableArray>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XBanner" customModule="rexian" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XBanner" customModule="chengshi" customModuleProvider="target">
             <connections>
                 <outlet property="ctitle" destination="a2g-co-WE5" id="YuO-rV-yTS"/>
                 <outlet property="page" destination="8hL-pQ-vLO" id="B4B-Ty-ukE"/>
@@ -49,7 +49,7 @@
                         <constraint firstAttribute="height" constant="30" id="HKi-3B-2L7"/>
                     </constraints>
                     <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="currentPageIndicatorTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="0.12941176469999999" green="0.67843137249999996" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                 </pageControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

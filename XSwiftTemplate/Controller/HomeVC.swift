@@ -98,6 +98,7 @@ class HomeVC: UIViewController {
         main.menu = menu
         menu.line.backgroundColor=APPBlueColor
         menu.lineHeight = 4.0*screenFlag
+        menu.menuFontSize = 17.0
         
         self.view.backgroundColor = PageBGColor
         

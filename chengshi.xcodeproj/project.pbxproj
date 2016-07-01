@@ -465,6 +465,7 @@
 		17A8DD3A1D0FA5C500D8B70B /* ChangePassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A8DD391D0FA5C500D8B70B /* ChangePassVC.swift */; };
 		17A8DD3C1D0FAC6000D8B70B /* FindBackPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A8DD3B1D0FAC6000D8B70B /* FindBackPassVC.swift */; };
 		17AA6EBF1D1A92DD00643C3B /* CheckPhoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AA6EBE1D1A92DD00643C3B /* CheckPhoneVC.swift */; };
+		17ADD19C1D2648CD007CA23D /* CardActivitysInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ADD19B1D2648CD007CA23D /* CardActivitysInfoVC.swift */; };
 		17B258691C1C075B00A09C80 /* HmtlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B258681C1C075A00A09C80 /* HmtlVC.swift */; };
 		17B402C61C1292CB00ED1E02 /* NewsCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B402C41C1292CB00ED1E02 /* NewsCommentCell.swift */; };
 		17B402C71C1292CB00ED1E02 /* NewsCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17B402C51C1292CB00ED1E02 /* NewsCommentCell.xib */; };
@@ -1212,6 +1213,7 @@
 		17A8DD391D0FA5C500D8B70B /* ChangePassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePassVC.swift; sourceTree = "<group>"; };
 		17A8DD3B1D0FAC6000D8B70B /* FindBackPassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindBackPassVC.swift; sourceTree = "<group>"; };
 		17AA6EBE1D1A92DD00643C3B /* CheckPhoneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckPhoneVC.swift; sourceTree = "<group>"; };
+		17ADD19B1D2648CD007CA23D /* CardActivitysInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardActivitysInfoVC.swift; path = XSwiftTemplate/Controller/Card/CardActivitysInfoVC.swift; sourceTree = SOURCE_ROOT; };
 		17B258681C1C075A00A09C80 /* HmtlVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HmtlVC.swift; sourceTree = "<group>"; };
 		17B402C41C1292CB00ED1E02 /* NewsCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsCommentCell.swift; sourceTree = "<group>"; };
 		17B402C51C1292CB00ED1E02 /* NewsCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsCommentCell.xib; sourceTree = "<group>"; };
@@ -1869,6 +1871,7 @@
 				177E86CE1D16CCD700EE20CF /* CardShopsInfoVC.swift */,
 				177E86D01D16CCDE00EE20CF /* CardShopsCardVC.swift */,
 				177E86D21D16CCE500EE20CF /* CardShopsActivitysVC.swift */,
+				17ADD19B1D2648CD007CA23D /* CardActivitysInfoVC.swift */,
 				177E86D41D16CCEE00EE20CF /* Card.storyboard */,
 			);
 			name = Card;
@@ -3087,7 +3090,7 @@
 				TargetAttributes = {
 					17BE5A111B9D68FC00C8958A = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = QPBSPA49NG;
+						DevelopmentTeam = 24AVM954YM;
 					};
 					17BE5A261B9D68FC00C8958A = {
 						CreatedOnToolsVersion = 6.4;
@@ -3792,6 +3795,7 @@
 				17E2BC731CA8BD74007F95DF /* PropertyPhoneVC.swift in Sources */,
 				17149C721C7D5E56005DD9B7 /* PropertyPhotoInfoVC.swift in Sources */,
 				178186D71CE57F9B0030837A /* Constraint.swift in Sources */,
+				17ADD19C1D2648CD007CA23D /* CardActivitysInfoVC.swift in Sources */,
 				17F2034C1C23A516000D1B4B /* NVActivityIndicatorAnimationBallClipRotatePulse.swift in Sources */,
 				1703B7531C09A75B00858FD2 /* EditUserInfoVC.swift in Sources */,
 				173E6B8D1C030479008B14A8 /* DiscountInfoVC.swift in Sources */,

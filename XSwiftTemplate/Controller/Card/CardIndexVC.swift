@@ -61,11 +61,11 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         self.view.addSubview(table)
 
         self.addTopBootButton()
-        
-        table.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = APPBGColor
+        table.backgroundColor = APPBGColor
         
         let header = UIView()
-        header.backgroundColor = UIColor.whiteColor()
+        header.backgroundColor = UIColor.clearColor()
         header.frame = CGRectMake(0, 0, swidth, 13.0*screenFlag)
         table.tableHeaderView = header
         

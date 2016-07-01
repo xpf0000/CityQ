@@ -14,6 +14,10 @@ class NewsActivitysCell: UITableViewCell {
     
     @IBOutlet var ntitle: UILabel!
 
+    @IBOutlet var top: NSLayoutConstraint!
+    
+    @IBOutlet var bottom: NSLayoutConstraint!
+    
     
     var model:NewsModel!
     {
@@ -28,6 +32,12 @@ class NewsActivitysCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        top.constant = 10 * screenFlag
+        bottom.constant = 8 * screenFlag
+        
+//        self.layoutIfNeeded()
+//        self.setNeedsLayout()
        
     }
 

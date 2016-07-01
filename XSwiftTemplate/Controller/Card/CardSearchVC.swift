@@ -44,8 +44,10 @@ class CardSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.whiteColor()
-        searchTable.backgroundColor = UIColor.whiteColor()
+        
+        self.view.backgroundColor = APPBGColor
+        searchTable.backgroundColor = APPBGColor
+        
         searchTable.frame = CGRectMake(0, 0, swidth, sheight-64)
         
         searchTable.keyboardDismissMode = .OnDrag
@@ -79,7 +81,7 @@ class CardSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate{
         
         
         let header = UIView()
-        header.backgroundColor = UIColor.whiteColor()
+        header.backgroundColor = UIColor.clearColor()
         header.frame = CGRectMake(0, 0, swidth, 13.0*screenFlag)
         searchTable.tableHeaderView = header
         

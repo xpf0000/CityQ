@@ -219,7 +219,7 @@ class CardGetedInfoVC: UITableViewController {
             let vc:MyWalletVC = MyWalletVC()
             vc.id = model.id
             vc.hidesBottomBarWhenPushed = true
-            
+            vc.ctitle = "消费详情"
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

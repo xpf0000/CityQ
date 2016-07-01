@@ -14,13 +14,15 @@ class MyWalletVC: UIViewController {
     
     var id = "0"
     
+    var ctitle = "我的钱包"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let color = "F3F5F7".color
         
         self.addBackButton()
-        self.title = "我的钱包"
+        self.title = ctitle
         self.view.backgroundColor = color
         table.backgroundColor = color
         table.separatorStyle = .None

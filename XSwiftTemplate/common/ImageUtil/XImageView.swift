@@ -242,6 +242,7 @@ extension UIImageView
             self.clipsToBounds = true
             self.layer.masksToBounds = true
             self.image = placeholder
+            self.contentMode = .ScaleAspectFill
             
             self.progressLayer?.removeFromSuperlayer()
             self.progressLayer?.strokeEnd = 0.0

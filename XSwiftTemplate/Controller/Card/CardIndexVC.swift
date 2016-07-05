@@ -55,13 +55,22 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         table.httpHandle.handle()
     }
     
+    func userChange()
+    {
+        http()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.addSubview(table)
-
+    
         self.addTopBootButton()
         self.view.backgroundColor = APPBGColor
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userChange), name: NoticeWord.LogoutSuccess.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userChange), name: NoticeWord.LoginSuccess.rawValue, object: nil)
+        
         table.backgroundColor = APPBGColor
         
         let header = UIView()
@@ -84,6 +93,8 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         table.Delegate(self)
 
         self.http()
+        
+        
     }
     
     ////顶部button
@@ -307,6 +318,11 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
+    }
+    
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
 }

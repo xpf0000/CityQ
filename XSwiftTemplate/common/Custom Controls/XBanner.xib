@@ -31,20 +31,20 @@
                     </connections>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bol-XK-bme">
-                    <rect key="frame" x="0.0" y="266" width="472" height="40"/>
+                    <rect key="frame" x="0.0" y="268" width="472" height="38"/>
                     <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="BrC-cz-YOP"/>
+                        <constraint firstAttribute="height" constant="38" id="BrC-cz-YOP"/>
                     </constraints>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a2g-co-WE5">
-                    <rect key="frame" x="10" y="286" width="0.0" height="0.0"/>
+                    <rect key="frame" x="10" y="287" width="0.0" height="0.0"/>
                     <fontDescription key="fontDescription" name="HYQiHei-EZJ" family="HYQiHei" pointSize="13"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8hL-pQ-vLO">
-                    <rect key="frame" x="460" y="271" width="0.0" height="30"/>
+                    <rect key="frame" x="460" y="272" width="0.0" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="HKi-3B-2L7"/>
                     </constraints>

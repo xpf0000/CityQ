@@ -24,6 +24,8 @@ class MyWalletCell: UITableViewCell {
     {
         didSet
         {
+            info.preferredMaxLayoutWidth = swidth - 56.0
+            
             time.text = model.create_time
             var str = ""
             var str1=""
@@ -101,7 +103,7 @@ class MyWalletCell: UITableViewCell {
             
             info.attributedText = attributedString1
             info.layoutIfNeeded()
-            
+            info.setNeedsLayout()
             
         }
     }

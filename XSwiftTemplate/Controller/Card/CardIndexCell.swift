@@ -10,7 +10,7 @@ import UIKit
 
 class CardIndexCell: UITableViewCell {
     
-    @IBOutlet var bView: SkyRadiusView!
+    @IBOutlet var bView: UIView!
     
     @IBOutlet var mainRight: NSLayoutConstraint!
     
@@ -38,7 +38,7 @@ class CardIndexCell: UITableViewCell {
     
     @IBOutlet var img: UIImageView!
     
-    @IBOutlet var bgView: SkyRadiusView!
+    @IBOutlet var bgView: UIView!
     
     @IBOutlet var name: UILabel!
     
@@ -57,7 +57,6 @@ class CardIndexCell: UITableViewCell {
             self.setNeedsLayout()
             
             bgView.backgroundColor = model.color.color
-            bgView.setNeedsDisplay()
             
             let (r,g,b) = model.color.color!.getRGB()
             
@@ -69,8 +68,7 @@ class CardIndexCell: UITableViewCell {
             {
                 bView.backgroundColor = UIColor(red: 65.0/255.0, green: 65.0/255.0, blue: 65.0/255.0, alpha: 0.75)
             }
-            bView.setNeedsDisplay()
-            
+
             name.text = model.shopname
             
             rightLabel.text = model.type
@@ -93,9 +91,6 @@ class CardIndexCell: UITableViewCell {
         imgTop.constant = 17.0/2.0 * screenFlag
         imgBottom.constant = 14.0/2.0 * screenFlag
         
-//        self.layoutIfNeeded()
-//        self.setNeedsLayout()
-        
         bViewH.constant = 77.0/2.0 * screenFlag
         
         nameRight.constant = 15.0 * screenFlag
@@ -117,8 +112,10 @@ class CardIndexCell: UITableViewCell {
         
         let n = 8.0 * screenFlag
         
-        bView.cornerRadius = n
-        bgView.cornerRadius = n
+        bgView.layer.masksToBounds = true
+        bgView.clipsToBounds = true
+        bgView.layer.cornerRadius = n
+
     }
     
     override func layoutSubviews() {

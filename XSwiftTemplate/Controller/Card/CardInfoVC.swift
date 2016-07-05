@@ -10,7 +10,7 @@ import UIKit
 
 class CardInfoVC: UITableViewController {
 
-    @IBOutlet var imgBG: SkyRadiusView!
+    @IBOutlet var imgBG: UIView!
     
     @IBOutlet var table: UITableView!
     
@@ -30,7 +30,7 @@ class CardInfoVC: UITableViewController {
     
     @IBOutlet var btn: UIButton!
     
-    @IBOutlet var txtBG: SkyRadiusView!
+    @IBOutlet var txtBG: UIView!
     
     var block:XNoBlock?
     
@@ -123,7 +123,7 @@ class CardInfoVC: UITableViewController {
             return
         }
         
-        let url = "http://123.57.162.97/hfapi/Public/Found/?service=Hyk.addcard&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&cardid=\(id)"
+        let url = "http://123.57.162.97/hfapi/Public/Found/?service=Hyk.addCard&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&cardid=\(id)"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { [weak self](json) in
             
@@ -172,6 +172,12 @@ class CardInfoVC: UITableViewController {
         super.viewDidLoad()
         self.title = "会员卡详情"
         self.addBackButton()
+        
+        let n = 8.0 * screenFlag
+        
+        imgBG.layer.masksToBounds = true
+        imgBG.clipsToBounds = true
+        imgBG.layer.cornerRadius = n
         
         img.layer.masksToBounds = true
         leftLabel.hidden = true

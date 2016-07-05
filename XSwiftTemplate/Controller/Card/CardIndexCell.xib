@@ -15,10 +15,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="410" height="148"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMR-K2-6Qk" customClass="SkyRadiusView">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMR-K2-6Qk">
                         <rect key="frame" x="8" y="0.0" width="393" height="135"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6I7-gY-JtP" customClass="SkyRadiusView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6I7-gY-JtP">
                                 <rect key="frame" x="0.0" y="96" width="393" height="39"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="打折卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6R8-7i-WiA">
@@ -42,16 +42,6 @@
                                     <constraint firstAttribute="height" constant="39" id="sAX-Xw-QEn"/>
                                     <constraint firstItem="cdZ-Lm-RXF" firstAttribute="top" secondItem="6I7-gY-JtP" secondAttribute="top" constant="11" id="sAx-wg-ZLu"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRightRadius" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeftRadius" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topRightRadius" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topLeftRadius" value="NO"/>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OU6-c2-QLj">
                                 <rect key="frame" x="9" y="7" width="82" height="82"/>
@@ -77,16 +67,6 @@
                             <constraint firstItem="6I7-gY-JtP" firstAttribute="leading" secondItem="LMR-K2-6Qk" secondAttribute="leading" id="sz6-dK-8n1"/>
                             <constraint firstItem="OU6-c2-QLj" firstAttribute="leading" secondItem="LMR-K2-6Qk" secondAttribute="leading" constant="9" id="y5c-vv-VkA"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="8"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="topRightRadius" value="YES"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="topLeftRadius" value="YES"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRightRadius" value="YES"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeftRadius" value="YES"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" red="0.95294117649999999" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>

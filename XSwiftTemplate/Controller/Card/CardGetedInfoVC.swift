@@ -30,9 +30,9 @@ class CardGetedInfoVC: UITableViewController {
     
     @IBOutlet var typeTxt: UILabel!
     
-    @IBOutlet var imgBG: SkyRadiusView!
+    @IBOutlet var imgBG: UIView!
     
-    @IBOutlet var txtBG: SkyRadiusView!
+    @IBOutlet var txtBG: UIView!
     
     
     var harr:[CGFloat] = [133*screenFlag,42*screenFlag,15,42*screenFlag,42*screenFlag,42*screenFlag,15,42*screenFlag,128,0]
@@ -54,7 +54,7 @@ class CardGetedInfoVC: UITableViewController {
     
     func http()
     {
-        let url = APPURL+"Public/Found/?service=Hyk.getArticle&username=\(DataCache.Share().userModel.username)&id=\(model.id)"
+        let url = APPURL+"Public/Found/?service=Hyk.getArticleYLQ&username=\(DataCache.Share().userModel.username)&id=\(model.hcmid)"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { [weak self](json) in
             
@@ -134,6 +134,12 @@ class CardGetedInfoVC: UITableViewController {
         super.viewDidLoad()
         self.title = "会员卡详情"
         self.addBackButton()
+        
+        let n = 8.0 * screenFlag
+        
+        imgBG.layer.masksToBounds = true
+        imgBG.clipsToBounds = true
+        imgBG.layer.cornerRadius = n
         
         img.layer.masksToBounds = true
         

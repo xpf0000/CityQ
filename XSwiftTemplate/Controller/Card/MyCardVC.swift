@@ -313,18 +313,10 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         
         let vc = "CardGetedInfoVC".VC("Card") as! CardGetedInfoVC
         
-        vc.model = table.httpHandle.listArr[indexPath.row] as! CardModel
+        let model = table.httpHandle.listArr[indexPath.row] as! CardModel
+        model.hcmid = model.id
+        vc.model = model
         
-//        vc.id = model.id
-//        
-//        vc.SuccessBlock {[weak self]()->Void in
-//            
-//            if self == nil {return}
-//            
-//            model.orlq = 1
-//            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
-//            
-//        }
         
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)

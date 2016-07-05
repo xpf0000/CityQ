@@ -40,10 +40,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="132"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JvW-uz-3c9" customClass="SkyRadiusView">
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JvW-uz-3c9">
                                                     <rect key="frame" x="10" y="14" width="580" height="104"/>
                                                     <subviews>
-                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0P-22-vpB" customClass="SkyRadiusView">
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0P-22-vpB">
                                                             <rect key="frame" x="0.0" y="68" width="580" height="36"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="打折卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7k-l0-eOY">
@@ -67,16 +67,6 @@
                                                                 <constraint firstAttribute="height" constant="36" id="uCA-w3-Pu5"/>
                                                                 <constraint firstItem="o7k-l0-eOY" firstAttribute="centerY" secondItem="D0P-22-vpB" secondAttribute="centerY" constant="2" id="yBG-31-TAS"/>
                                                             </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="8"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRightRadius" value="YES"/>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeftRadius" value="YES"/>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="topRightRadius" value="NO"/>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="topLeftRadius" value="NO"/>
-                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ni4-ZK-jRW">
                                                             <rect key="frame" x="8" y="6" width="56" height="56"/>
@@ -91,7 +81,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="D0P-22-vpB" firstAttribute="leading" secondItem="JvW-uz-3c9" secondAttribute="leading" id="2gE-W1-Ckk"/>
                                                         <constraint firstItem="ni4-ZK-jRW" firstAttribute="top" secondItem="JvW-uz-3c9" secondAttribute="top" constant="6" id="92v-h0-vOZ"/>
@@ -102,16 +92,6 @@
                                                         <constraint firstItem="e3U-P2-0HA" firstAttribute="top" secondItem="JvW-uz-3c9" secondAttribute="top" constant="22" id="dei-wg-NCn"/>
                                                         <constraint firstItem="D0P-22-vpB" firstAttribute="top" secondItem="ni4-ZK-jRW" secondAttribute="bottom" constant="6" id="jgn-xO-OTs"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="8"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="topRightRadius" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="topLeftRadius" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRightRadius" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeftRadius" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.95294117649999999" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -416,10 +396,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="179"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0L-A8-l3X" customClass="SkyRadiusView">
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z0L-A8-l3X">
                                                     <rect key="frame" x="12" y="15" width="576" height="149"/>
                                                     <subviews>
-                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8pk-9M-QBh" customClass="SkyRadiusView">
+                                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8pk-9M-QBh">
                                                             <rect key="frame" x="0.0" y="113" width="576" height="36"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="计次卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esz-QQ-mSG">
@@ -443,16 +423,6 @@
                                                                 <constraint firstItem="1h7-Kp-81l" firstAttribute="centerY" secondItem="8pk-9M-QBh" secondAttribute="centerY" id="wf1-1j-euO"/>
                                                                 <constraint firstAttribute="height" constant="36" id="yCX-OH-Zrl"/>
                                                             </constraints>
-                                                            <userDefinedRuntimeAttributes>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="8"/>
-                                                                </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRightRadius" value="YES"/>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeftRadius" value="YES"/>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="topRightRadius" value="NO"/>
-                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="topLeftRadius" value="NO"/>
-                                                            </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pif-GV-Im1">
                                                             <rect key="frame" x="8" y="6" width="101" height="101"/>
@@ -467,7 +437,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="8pk-9M-QBh" secondAttribute="trailing" id="A9X-kQ-5XR"/>
                                                         <constraint firstItem="Pif-GV-Im1" firstAttribute="top" secondItem="Z0L-A8-l3X" secondAttribute="top" constant="6" id="MXm-hA-pa1"/>
@@ -478,16 +448,6 @@
                                                         <constraint firstAttribute="trailing" secondItem="h94-ya-ufB" secondAttribute="trailing" constant="12" id="jxf-Zg-thX"/>
                                                         <constraint firstItem="h94-ya-ufB" firstAttribute="top" secondItem="Z0L-A8-l3X" secondAttribute="top" constant="22" id="yqx-OF-8lp"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="8"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="topRightRadius" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="topLeftRadius" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRightRadius" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeftRadius" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.95294117649999999" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>

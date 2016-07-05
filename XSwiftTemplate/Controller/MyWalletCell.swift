@@ -83,8 +83,7 @@ class MyWalletCell: UITableViewCell {
             let attributedString1=NSMutableAttributedString(string: str1)
             let paragraphStyle1=NSMutableParagraphStyle()
             paragraphStyle1.lineSpacing=5.0
-//            paragraphStyle1.paragraphSpacing=10.0
-//            paragraphStyle1.firstLineHeadIndent=10.0
+
             attributedString1.addAttributes([NSParagraphStyleAttributeName:paragraphStyle1,NSFontAttributeName:UIFont.systemFontOfSize(16.0)], range: NSMakeRange(0, (str1 as NSString).length))
             
             let rang = (str1 as NSString).rangeOfString(str)

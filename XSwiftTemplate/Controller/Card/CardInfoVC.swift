@@ -151,7 +151,7 @@ class CardInfoVC: UITableViewController {
     
     func lengquSuccess()
     {
-        self.block?()
+        //self.block?()
         leftLabel.text = "立即使用"
         leftLabel.hidden = false
         btn.hidden = true

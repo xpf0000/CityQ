@@ -132,7 +132,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         
         httpHandle.BeforeBlock {[weak self] (arr) in
             
-            if self?.bannerID == "103" && arr.count == 0
+            if self?.bannerID == "103"
             {
                 if arr.count == 0
                 {

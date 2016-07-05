@@ -30,7 +30,7 @@ class CardShopsCardVC: UIViewController,UITableViewDelegate {
     
     func http()
     {
-        let url = APPURL+"Public/Found/?service=Hyk.getShopCard&id=\(id)"
+        let url = APPURL+"Public/Found/?service=Hyk.getShopCard&id=\(id)&username=\(Uname)"
         
         table.httpHandle.reSet()
         
@@ -40,10 +40,19 @@ class CardShopsCardVC: UIViewController,UITableViewDelegate {
         
     }
     
+    func userChange()
+    {
+        http()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userChange), name: NoticeWord.LogoutSuccess.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userChange), name: NoticeWord.LoginSuccess.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userChange), name: NoticeWord.CardChanged.rawValue, object: nil)
         
         self.view.addSubview(table)
         
@@ -78,25 +87,47 @@ class CardShopsCardVC: UIViewController,UITableViewDelegate {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if indexPath.row % 2 == 0
+        let model = table.httpHandle.listArr[indexPath.row] as! CardModel
+        
+        var vc:UIViewController!
+        
+        if model.orlq > 0
         {
-            let vc = "CardInfoVC".VC("Card")
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
+            vc = "CardGetedInfoVC".VC("Card")
+            
+            (vc as! CardGetedInfoVC).model = model
+            
         }
         else
         {
-            let vc = "CardTimesInfoVC".VC("Card")
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
+            vc = "CardInfoVC".VC("Card")
+            
+            (vc as! CardInfoVC).id = model.id
+            
+            (vc as! CardInfoVC).SuccessBlock {[weak self]()->Void in
+                
+                if self == nil {return}
+                
+                model.orlq = 1
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                
+            }
+            
         }
         
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
+    }
+    
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
 }

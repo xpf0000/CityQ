@@ -3984,7 +3984,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "-DSNAPKIT_DEPLOYMENT_LEGACY";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.huaifu.chengshiquan-1";
+				PRODUCT_BUNDLE_IDENTIFIER = com.huaifu.chengshiquan;
 				PRODUCT_NAME = chengshi;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "XSwiftTemplate/XSwiftTemplate-Bridging-Header.h";
@@ -4025,7 +4025,7 @@
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "-DSNAPKIT_DEPLOYMENT_LEGACY";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.huaifu.chengshiquan-1";
+				PRODUCT_BUNDLE_IDENTIFIER = com.huaifu.chengshiquan;
 				PRODUCT_NAME = chengshi;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "XSwiftTemplate/XSwiftTemplate-Bridging-Header.h";

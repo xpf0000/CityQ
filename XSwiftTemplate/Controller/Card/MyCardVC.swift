@@ -65,6 +65,11 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         table.httpHandle.handle()
     }
     
+    func userChange()
+    {
+        http()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,6 +78,10 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         self.view.addSubview(table)
         
         self.addTopBootButton()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userChange), name: NoticeWord.LogoutSuccess.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userChange), name: NoticeWord.LoginSuccess.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(userChange), name: NoticeWord.CardChanged.rawValue, object: nil)
         
         self.view.backgroundColor = APPBGColor
         table.backgroundColor = APPBGColor
@@ -97,11 +106,6 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         table.Delegate(self)
         
         table.httpHandle.BeforeBlock { [weak self](o) in
-            
-            if self?.table.hidden == false
-            {
-                return
-            }
             
             for item in o
             {
@@ -331,6 +335,7 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     
     deinit
     {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
         print("MyCardVC deinit !!!!!!!!!!!")
     }
     

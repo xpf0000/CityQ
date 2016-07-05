@@ -11,7 +11,7 @@ import UIKit
 class CardModel: Reflect {
 
     var id = ""
-    var color = "ffffff"
+    var color = "232323"
     var logo = ""
     var shopname = ""
     var type = ""
@@ -22,6 +22,7 @@ class CardModel: Reflect {
     var shopid = ""
     var values = ""
     var hcmid = ""
+    var cardnumber = ""
     
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {
         

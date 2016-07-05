@@ -232,7 +232,7 @@ class CardGetedInfoVC: UITableViewController {
         if indexPath.row == 3
         {
             let vc = "CardShopsInfoVC".VC("Card") as! CardShopsInfoVC
-            vc.id = model.id
+            vc.id = model.shopid
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
         }

@@ -81,6 +81,7 @@ class UserCenterVC: UITableViewController {
         }
         else
         {
+            self.headPic.url = ""
             self.headPic.image = "tx.jpg".image
             self.userName.text = "点击登录"
             self.nickName.text = "登录后查看更多"

@@ -207,6 +207,38 @@ class HomeVC: UIViewController {
         
         NSThread(target: self, selector: #selector(timeThread), object: nil).start()
         
+        
+        
+        if !CheckNet()
+        {
+            self.view.addSubview(self.noNet)
+            
+            self.noNet.block =
+                {
+                    [weak self]
+                    (o)->Void in
+                    
+                    if CheckNet()
+                    {
+                        for item in self!.topArr
+                        {
+                            (item.view as! NewsIndexView).httpHandle.reSet()
+                            (item.view as! NewsIndexView).httpHandle.handle()
+                        }
+                        
+                       self?.noNet.removeFromSuperview()
+                    }
+                    else
+                    {
+                        self?.noNet.connectFail()
+                    }
+                    
+            }
+            
+            
+
+        }
+        
     }
     
     func getCategory()

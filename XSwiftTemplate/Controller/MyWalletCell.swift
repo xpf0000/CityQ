@@ -56,7 +56,7 @@ class MyWalletCell: UITableViewCell {
                     
                 case "2":
                     ""
-                    str += "消费: -"+model.money+"元"
+                    str += "消费: -"+model.value+"元"
                     
                 case "3":
                     ""

@@ -45,6 +45,8 @@ class PropertyPhotoVC: UIViewController,XPhotoDelegate {
         
         let url = APPURL+"Public/Found/?service=Wuye.getFeedList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&houseid=\(DataCache.Share().userModel.house.houseid)&page=[page]&perNumber=20"
         
+        table.registerNib("PropertyPhptoCell".Nib, forCellReuseIdentifier: "PropertyPhptoCell")
+        
         table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: PropertyPhoteModel.self, CellIdentifier: "PropertyPhptoCell")
         self.table.cellHeight = 100
         self.table.show()

@@ -21,6 +21,7 @@ class PropertyMsgVC: UIViewController {
         table.frame = CGRectMake(0, 0, swidth, sheight-64)
         self.view.addSubview(table)
         
+        table.registerNib("PropertyMsgCell".Nib, forCellReuseIdentifier: "PropertyMsgCell")
         
         table.httpHandle.url = APPURL+"Public/Found/?service=Wuye.getUserNewsList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
         

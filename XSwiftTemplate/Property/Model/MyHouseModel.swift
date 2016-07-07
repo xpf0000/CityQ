@@ -36,8 +36,11 @@ class MyHouseModel: Reflect {
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             
-            self.status = (o?["data"]["info"][0]["status"].stringValue.numberValue.integerValue)!
-            
+            if let status = o?["data"]["info"][0]["status"].stringValue.numberValue.integerValue
+            {
+                self.status = status
+            }
+    
         }
         
         if showMsg

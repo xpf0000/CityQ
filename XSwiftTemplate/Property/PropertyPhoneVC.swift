@@ -21,6 +21,8 @@ class PropertyPhoneVC: UIViewController {
         table.frame = CGRectMake(0, 0, swidth, sheight-64)
         self.view.addSubview(table)
         
+        table.registerNib("PropertyPhoneCell".Nib, forCellReuseIdentifier: "PropertyPhoneCell")
+        
         table.httpHandle.url = APPURL+"Public/Found/?service=Wuye.getTelList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&houseid=\(DataCache.Share().userModel.house.houseid)"
         
         self.table.httpHandle.pageStr = "[page]"

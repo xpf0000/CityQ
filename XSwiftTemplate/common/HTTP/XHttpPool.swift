@@ -51,7 +51,7 @@ func CheckNet()->Bool
     switch status {
     case .Unknown, .Offline:
         
-        //ShowMessage("网络无法连接")
+        ShowMessage("网络无法连接")
         return false
         ""
         

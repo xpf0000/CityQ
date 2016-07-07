@@ -34,6 +34,8 @@ class PaymentInfoView: UIView {
         self.line.backgroundColor = self.table.separatorColor
         self.lineH.constant = 0.34
     
+        table.registerNib("PaymentInfoCell".Nib, forCellReuseIdentifier: "PaymentInfoCell")
+        
         self.table.httpHandle.pageStr = "[page]"
         self.table.httpHandle.keys = ["data","info"]
         self.table.cellHeight = 60.0

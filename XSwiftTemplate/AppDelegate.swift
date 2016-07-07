@@ -142,10 +142,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         ShareSDK.connectSinaWeiboWithAppKey(kSinaWeiBo_Share_AppKey, appSecret: kSinaWeiBo_Share_AppSecret, redirectUri: kSinaWeiBo_RedirectUri)
         ShareSDK.connectSinaWeiboWithAppKey(kSinaWeiBo_Share_AppKey, appSecret: kSinaWeiBo_Share_AppSecret, redirectUri: kSinaWeiBo_RedirectUri, weiboSDKCls: WeiboSDK.self)
         
-        ShareSDK.connectWeChatWithAppId(kWX_Share_AppKey, wechatCls: WXApi.self)
+        //ShareSDK.connectWeChatWithAppId(kWX_Share_AppKey, wechatCls: WXApi.self)
         ShareSDK.connectWeChatWithAppId(kWX_Share_AppKey, appSecret: kWX_Share_AppSecret, wechatCls: WXApi.self)
         
-        ShareSDK.connectWeChatTimelineWithAppId(kWX_Share_AppKey, wechatCls: WXApi.self)
+        //ShareSDK.connectWeChatTimelineWithAppId(kWX_Share_AppKey, wechatCls: WXApi.self)
         ShareSDK.connectWeChatTimelineWithAppId(kWX_Share_AppKey, appSecret: kWX_Share_AppSecret, wechatCls: WXApi.self)
         
     }

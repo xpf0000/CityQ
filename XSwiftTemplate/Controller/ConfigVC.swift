@@ -158,6 +158,9 @@ class ConfigVC: UITableViewController ,UIAlertViewDelegate{
             ShareSDK.cancelAuthWithType(ShareTypeQQ)
             ShareSDK.cancelAuthWithType(ShareTypeQQSpace)
             
+            //ShareSDK.cancelAuthWithType(ShareTypeWeixiSession)
+            ShareSDK.cancelAuthWithType(ShareTypeWeixiTimeline)
+            
             DataCache.Share().userModel.reSet()
             logoutButton.hidden = true
             NSUserDefaults.standardUserDefaults().removeObjectForKey("userID")

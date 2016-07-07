@@ -157,6 +157,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
             self.addSubview(v)
             v.tag = 555
             v.frame = CGRectMake(0, 0, swidth, sheight-64.0-42.0*screenFlag-49.0)
+            v.btn.setTitle("", forState: .Normal)
         }
         
     }

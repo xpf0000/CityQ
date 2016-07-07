@@ -129,6 +129,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     
     func initShareSDK()
     {
+ 
         ShareSDK.connectQZoneWithAppKey(kQQ_Share_AppKey, appSecret: kQQ_Share_AppSecret)
         ShareSDK.connectQZoneWithAppKey(kQQ_Share_AppKey, appSecret: kQQ_Share_AppSecret, qqApiInterfaceCls: QQApiInterface.self, tencentOAuthCls: TencentOAuth.self)
         
@@ -143,6 +144,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         
         ShareSDK.connectWeChatWithAppId(kWX_Share_AppKey, wechatCls: WXApi.self)
         ShareSDK.connectWeChatWithAppId(kWX_Share_AppKey, appSecret: kWX_Share_AppSecret, wechatCls: WXApi.self)
+        
+        ShareSDK.connectWeChatTimelineWithAppId(kWX_Share_AppKey, wechatCls: WXApi.self)
+        ShareSDK.connectWeChatTimelineWithAppId(kWX_Share_AppKey, appSecret: kWX_Share_AppSecret, wechatCls: WXApi.self)
+        
     }
     
     

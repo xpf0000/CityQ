@@ -25,7 +25,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
     
     @IBAction func wxLogin(sender: AnyObject) {
         
-        ShareSDK.getUserInfoWithType(ShareTypeWeixiSession, authOptions: nil) { [weak self](result, userInfo, err) -> Void in
+        ShareSDK.getUserInfoWithType(ShareTypeWeixiTimeline, authOptions: nil) { [weak self](result, userInfo, err) -> Void in
             
             if(result)
             {

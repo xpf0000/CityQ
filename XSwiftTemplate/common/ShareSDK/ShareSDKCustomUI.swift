@@ -279,7 +279,7 @@ class ShareSDKCustomUI: UIView,UIGestureRecognizerDelegate,UICollectionViewDeleg
                 shareType=ShareTypeWeixiSession
             case 1:
                 ""
-                shareType=ShareTypeWeixiFav
+                shareType=ShareTypeWeixiTimeline
             case 2:
                 ""
                 shareType=ShareTypeSinaWeibo

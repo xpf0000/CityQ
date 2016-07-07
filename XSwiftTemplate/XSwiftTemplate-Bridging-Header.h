@@ -52,3 +52,10 @@
 //#import <BaiduMapAPI_Radar/BMKRadarComponent.h>//引入周边雷达功能所有的头文件
 
 //#import <BaiduMapAPI_Map/BMKMapView.h>//只引入所需的单个头文件
+
+//微信SDK头文件
+//初始化的import参数注意要链接原生微信SDK。
+//case SSDKPlatformTypeWechat:
+//[ShareSDKConnector connectWeChat:[WXApi class]];
+//break;
+

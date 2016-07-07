@@ -151,13 +151,17 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
     
     func addNoGuanzhu()
     {
-        if self.viewWithTag(555) == nil
+        if let v = self.viewWithTag(555) as? NoGuanzhuView
+        {
+            v.reSetTitle()
+        }
+        else
         {
             let v = NoGuanzhuView()
             self.addSubview(v)
             v.tag = 555
             v.frame = CGRectMake(0, 0, swidth, sheight-64.0-42.0*screenFlag-49.0)
-            v.btn.setTitle("", forState: .Normal)
+            v.reSetTitle()
         }
         
     }

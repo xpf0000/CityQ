@@ -46,4 +46,18 @@ class NoGuanzhuView: UIView {
         
     }
     
+    func reSetTitle()
+    {
+        if Uid == ""
+        {
+            txt.text = "您还没有登录"
+            btn.setTitle("马上登录", forState: .Normal)
+        }
+        else
+        {
+            txt.text = "您当前还没有任何会员卡"
+            btn.setTitle("马上去领取", forState: .Normal)
+        }
+    }
+    
 }

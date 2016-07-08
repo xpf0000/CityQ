@@ -197,7 +197,6 @@ class CardInfoVC: UITableViewController {
         
         userContent.preferredMaxLayoutWidth = swidth-30
     
-        
         btn.click {[weak self,weak btn] (b) in
             
             self?.doLingqu()

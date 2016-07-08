@@ -133,7 +133,7 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         
         dp.block({[weak self] (str) in
             
-            print(str)
+            //print(str)
             self?.birthday.text = str
             
         })

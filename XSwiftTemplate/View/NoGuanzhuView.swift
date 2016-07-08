@@ -25,7 +25,11 @@ class NoGuanzhuView: UIView {
         
         btn.click { [weak self,weak btn](b) in
             
-            self?.viewController?.tabBarController?.selectedIndex = 1
+            if self?.viewController?.checkIsLogin() == true
+            {
+                self?.viewController?.tabBarController?.selectedIndex = 1
+            }
+
         }
         
     }

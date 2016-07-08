@@ -49,7 +49,7 @@ class CardActivitysInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelega
     {
         //let url=APPURL+"Public/Found/?service=Discount.getArticle&id=\(model.id)"
         
-        let url=APPURL+"Public/Found/?service=Discount.getArticle&id=5251"
+        let url=APPURL+"Public/Found/?service=Discount.getArticle&id=\(model.id)"
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             
@@ -94,9 +94,6 @@ class CardActivitysInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelega
         
         
         self.model.content = html + model.content+"\r\n</body>\r\n</html>"
-        
-        print(model.content)
-        
         
         self.infoWeb.scrollView.backgroundColor = UIColor.whiteColor()
         self.infoWeb.backgroundColor = UIColor.whiteColor()

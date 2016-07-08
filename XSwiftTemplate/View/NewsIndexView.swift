@@ -274,14 +274,10 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                     return 110 * screenFlag
                 }
             }
-            else if bannerID == "98" || bannerID == "103"
+            else if bannerID == "106" || bannerID == "103"
             {
                 return 170.0 * screenFlag
             }
-//            else if bannerID == "103"
-//            {
-//                return 50.0
-//            }
             else
             {
                 return 110.0 * screenFlag
@@ -335,7 +331,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
 
                 }
             }
-            else if bannerID == "98" || bannerID == "103"
+            else if bannerID == "106" || bannerID == "103"
             {
                 let cell:ActivitysCell = tableView.dequeueReusableCellWithIdentifier("ActivitysCell", forIndexPath: indexPath) as! ActivitysCell
                 
@@ -344,14 +340,6 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 return cell
 
             }
-//            else if bannerID == "103"
-//            {
-//                let cell:CardShopsActivitysCell = tableView.dequeueReusableCellWithIdentifier("CardShopsActivitysCell", forIndexPath: indexPath) as! CardShopsActivitysCell
-//                
-//                cell.model = model as! CardActivityModel
-//                
-//                return cell
-//            }
             else
             {
                 let cell:NewsListCell = tableView.dequeueReusableCellWithIdentifier("NewsListCell", forIndexPath: indexPath) as! NewsListCell
@@ -375,16 +363,16 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
             
             var isHuodong = false
             
-            if bannerID != "103"
+            if bannerID == "103" || bannerID == "106"
+            {
+                isHuodong = true
+            }
+            else
             {
                 if model.category_id == "98"
                 {
                     isHuodong = true
                 }
-            }
-            else
-            {
-                isHuodong = true
             }
 
             if isHuodong

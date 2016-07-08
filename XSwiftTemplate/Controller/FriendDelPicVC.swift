@@ -67,7 +67,7 @@ class FriendDelPicVC: XViewController,UIScrollViewDelegate,UITextViewDelegate,zo
     {
         scrollView.removeAllSubViews()
         
-        print(self.imgArr)
+        //print(self.imgArr)
         
         var i:Int=0
         for img in self.imgArr

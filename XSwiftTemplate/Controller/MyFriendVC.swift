@@ -150,6 +150,26 @@ class MyFriendVC: XViewController,UITableViewDelegate,UITableViewDataSource {
             
         }
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let model = (tableView as! XTableView).httpHandle.listArr[indexPath.row] as! FriendModel
+        
+        
+        let vc:FriendInfoVC = "FriendInfoVC".VC("Friend") as! FriendInfoVC
+        vc.hidesBottomBarWhenPushed = true
+        vc.fmodel = FriendModel()
+        vc.fmodel.id = model.id
+        if(model.qid != "")
+        {
+            vc.fmodel.id = model.qid
+        }
+        
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -164,7 +184,6 @@ class MyFriendVC: XViewController,UITableViewDelegate,UITableViewDataSource {
         
     }
     
-    
     deinit
     {
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -176,15 +195,5 @@ class MyFriendVC: XViewController,UITableViewDelegate,UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

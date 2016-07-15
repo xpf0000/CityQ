@@ -29,7 +29,20 @@ class UIString {
     {
         var str:String=""
         let dateFormatter:NSDateFormatter=NSDateFormatter()
-        dateFormatter.dateFormat="yyyy-MM-dd HH:mm:ss"
+        
+        if time.length() == 10
+        {
+            dateFormatter.dateFormat="yyyy-MM-dd"
+        }
+        else if(time.length() == 16)
+        {
+            dateFormatter.dateFormat="yyyy-MM-dd HH:mm"
+        }
+        else
+        {
+            dateFormatter.dateFormat="yyyy-MM-dd HH:mm:ss"
+        }
+        
         
         let date:NSDate=dateFormatter.dateFromString(time)!
         let gregorian:NSCalendar=NSCalendar(calendarIdentifier: NSGregorianCalendar)!
@@ -48,23 +61,23 @@ class UIString {
         
         if(comps?.day>1)
         {
-            return "\(comps?.day)天"
+            return "\(comps!.day)天"
         }
         
         if(comps?.hour==0)
         {
             if(comps?.minute>=1)
             {
-                str="\(comps?.minute)分"
+                str="\(comps!.minute)分钟"
             }
             else if(comps?.minute>=0 && comps?.second>0)
             {
-                str="\(comps?.second)秒"
+                str="\(comps!.second)秒"
             }
         }
         else if(comps?.hour>0)
         {
-            str="\(comps?.hour)小时";
+            str="\(comps!.hour)小时";
         }
         
         return str;
@@ -98,7 +111,7 @@ class UIString {
         {
             if(comps?.minute>=1)
             {
-                str="\(comps?.minute)分"
+                str="\(comps?.minute)分钟"
             }
             else if(comps?.minute>=0 && comps?.second>0)
             {

@@ -123,7 +123,7 @@
                                                         <constraint firstAttribute="height" constant="16" id="5OO-wW-dY6"/>
                                                         <constraint firstAttribute="width" constant="16" id="beO-z4-Shp"/>
                                                     </constraints>
-                                                    <state key="normal" image="card_down.png"/>
+                                                    <state key="normal" image="more.png"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -154,12 +154,22 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCi-r5-AGL">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="41"/>
+                                                    <connections>
+                                                        <action selector="callPhone:" destination="ZHY-jq-JZr" eventType="touchUpInside" id="XU0-u2-xDQ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="lTd-hL-ZBw" firstAttribute="leading" secondItem="E6S-eL-8zF" secondAttribute="leadingMargin" constant="45" id="4hd-Ic-N19"/>
+                                                <constraint firstItem="XCi-r5-AGL" firstAttribute="top" secondItem="E6S-eL-8zF" secondAttribute="top" id="DBf-0n-bej"/>
+                                                <constraint firstAttribute="trailing" secondItem="XCi-r5-AGL" secondAttribute="trailing" id="J3w-s3-dv3"/>
+                                                <constraint firstAttribute="bottom" secondItem="XCi-r5-AGL" secondAttribute="bottom" id="aBZ-ct-Wdt"/>
                                                 <constraint firstItem="lTd-hL-ZBw" firstAttribute="centerY" secondItem="wrH-X4-yco" secondAttribute="centerY" id="aqO-YS-xaJ"/>
                                                 <constraint firstItem="wrH-X4-yco" firstAttribute="centerY" secondItem="E6S-eL-8zF" secondAttribute="centerY" id="fE7-Uj-cWs"/>
                                                 <constraint firstItem="wrH-X4-yco" firstAttribute="leading" secondItem="E6S-eL-8zF" secondAttribute="leading" constant="15" id="nZp-7S-74e"/>
+                                                <constraint firstItem="XCi-r5-AGL" firstAttribute="leading" secondItem="E6S-eL-8zF" secondAttribute="leading" id="tHu-FG-CDa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -473,7 +483,7 @@
                                                         <constraint firstAttribute="width" constant="20" id="9UW-iZ-JDY"/>
                                                         <constraint firstAttribute="height" constant="20" id="RfW-Or-yoH"/>
                                                     </constraints>
-                                                    <state key="normal" image="card_down.png"/>
+                                                    <state key="normal" image="more.png"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -504,11 +514,21 @@
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdZ-1n-bg7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
+                                                    <connections>
+                                                        <action selector="callPhone:" destination="PMZ-Zm-94w" eventType="touchUpInside" id="fcw-pF-5dY"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="PdZ-1n-bg7" firstAttribute="leading" secondItem="Lcf-l9-8R5" secondAttribute="leading" id="0lx-Xx-5ab"/>
+                                                <constraint firstAttribute="bottom" secondItem="PdZ-1n-bg7" secondAttribute="bottom" id="NPc-Ir-wfK"/>
                                                 <constraint firstItem="Kbc-tJ-Kzf" firstAttribute="centerY" secondItem="Ls5-QZ-6dS" secondAttribute="centerY" id="NTH-Ro-RsE"/>
                                                 <constraint firstItem="Kbc-tJ-Kzf" firstAttribute="leading" secondItem="Lcf-l9-8R5" secondAttribute="leadingMargin" constant="45" id="grm-rM-2bH"/>
+                                                <constraint firstItem="PdZ-1n-bg7" firstAttribute="top" secondItem="Lcf-l9-8R5" secondAttribute="top" id="hY4-ZG-OVS"/>
                                                 <constraint firstItem="Ls5-QZ-6dS" firstAttribute="leading" secondItem="Lcf-l9-8R5" secondAttribute="leading" constant="15" id="j4F-Nn-IHF"/>
+                                                <constraint firstAttribute="trailing" secondItem="PdZ-1n-bg7" secondAttribute="trailing" id="mx0-xk-hsM"/>
                                                 <constraint firstItem="Ls5-QZ-6dS" firstAttribute="centerY" secondItem="Lcf-l9-8R5" secondAttribute="centerY" id="qOp-hJ-wiU"/>
                                             </constraints>
                                         </tableViewCellContentView>

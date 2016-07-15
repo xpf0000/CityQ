@@ -112,6 +112,8 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         
         self.registerNib("ActivitysCell".Nib, forCellReuseIdentifier: "ActivitysCell")
         
+        self.registerNib("NewsMorePicCell".Nib, forCellReuseIdentifier: "NewsMorePicCell")
+        
         self.registerNib("CardShopsActivitysCell".Nib, forCellReuseIdentifier: "CardShopsActivitysCell")
         
         self.setHeaderRefresh { [weak self] () -> Void in
@@ -261,22 +263,25 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         }
         else
         {
-            let m = self.httpHandle.listArr[indexPath.row-1]
+            let m = self.httpHandle.listArr[indexPath.row-1] as! NewsModel
             
             if bannerID == "83"
             {
-                if (m as? NewsModel)?.category_id == "98"
+                if m.category_id == "98"
                 {
                     return 166.0 * screenFlag
                 }
-                else
-                {
-                    return 110 * screenFlag
-                }
+
             }
             else if bannerID == "106" || bannerID == "103"
             {
                 return 170.0 * screenFlag
+            }
+
+            
+            if m.picList.count >= 3
+            {
+                return 166.0 * screenFlag
             }
             else
             {
@@ -309,7 +314,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         }
         else
         {
-            let model = self.httpHandle.listArr[indexPath.row-1]
+            let model = self.httpHandle.listArr[indexPath.row-1] as! NewsModel
             
             if bannerID == "83"
             {
@@ -317,38 +322,40 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 {
                     let cell:NewsActivitysCell = tableView.dequeueReusableCellWithIdentifier("NewsActivitysCell", forIndexPath: indexPath) as! NewsActivitysCell
                     
-                    cell.model = model as! NewsModel
+                    cell.model = model
                     
                     return cell
                 }
-                else
-                {
-                    let cell:NewsListCell = tableView.dequeueReusableCellWithIdentifier("NewsListCell", forIndexPath: indexPath) as! NewsListCell
-                    
-                    cell.model = model as! NewsModel
-                    
-                    return cell
-
-                }
+                
             }
             else if bannerID == "106" || bannerID == "103"
             {
                 let cell:ActivitysCell = tableView.dequeueReusableCellWithIdentifier("ActivitysCell", forIndexPath: indexPath) as! ActivitysCell
                 
-                cell.model = model as! NewsModel
+                cell.model = model
                 
                 return cell
 
+            }
+            
+            if model.picList.count >= 3
+            {
+                let cell:NewsMorePicCell = tableView.dequeueReusableCellWithIdentifier("NewsMorePicCell", forIndexPath: indexPath) as! NewsMorePicCell
+                
+                cell.model = model
+                
+                return cell
             }
             else
             {
                 let cell:NewsListCell = tableView.dequeueReusableCellWithIdentifier("NewsListCell", forIndexPath: indexPath) as! NewsListCell
                 
-                cell.model = model as! NewsModel
+                cell.model = model
                 
                 return cell
             }
             
+  
         }
         
         

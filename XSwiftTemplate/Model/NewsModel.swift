@@ -46,6 +46,11 @@ class NewsSeeModel: Reflect {
     
 }
 
+class NewsPicModel: Reflect {
+    
+    var url = ""
+}
+
 class NewsModel: Reflect {
 
     
@@ -62,6 +67,7 @@ class NewsModel: Reflect {
     var name = ""
     var s_time = ""
     var e_time = ""
+    var picList:[NewsPicModel] = [];
     
     override func setValue(value: AnyObject?, forKey key: String) {
         

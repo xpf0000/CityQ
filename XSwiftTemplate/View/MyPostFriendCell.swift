@@ -91,20 +91,6 @@ class MyPostFriendCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        if(selected)
-        {
-            let vc:FriendInfoVC = "FriendInfoVC".VC("Friend") as! FriendInfoVC
-            vc.hidesBottomBarWhenPushed = true
-            vc.fmodel = FriendModel()
-            vc.fmodel.id = self.model.id
-            if(self.model.qid != "")
-            {
-                vc.fmodel.id = self.model.qid
-            }
-            
-            
-            self.viewController?.navigationController?.pushViewController(vc, animated: true)
-        }
     }
     
 }

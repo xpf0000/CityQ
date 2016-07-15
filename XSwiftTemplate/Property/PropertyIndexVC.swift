@@ -12,8 +12,8 @@ import UIKit
 class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout
 {
     var gridView:UICollectionView?
-    var picArr=["wuye_index_3.png","wuye_index_0.png","wuye_index_1.png","wuye_index_2.png","wuye_index_5.png","wuye_index_6.png"]
-    var txtArr=["房屋信息","小区公告","物业缴费","物业报修","电话黄页","小区朋友圈"]
+    var picArr=["wuye_index_3.png","wuye_index_0.png","wuye_index_1.png","wuye_index_2.png","wuye_index_5.png"]
+    var txtArr=["房屋信息","小区公告","物业缴费","物业报修","电话黄页"]
     
     var banner:XBanner = XBanner(frame: CGRectMake(0, 0, swidth, swidth / 16.0 * 6.0))
     
@@ -150,7 +150,7 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 5
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {

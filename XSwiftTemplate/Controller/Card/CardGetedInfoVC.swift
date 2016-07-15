@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardGetedInfoVC: UITableViewController {
+class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
     
     @IBOutlet var table: UITableView!
     
@@ -33,6 +33,37 @@ class CardGetedInfoVC: UITableViewController {
     @IBOutlet var imgBG: UIView!
     
     @IBOutlet var txtBG: UIView!
+    
+    
+    @IBAction func callPhone(sender: AnyObject) {
+        if(self.model.tel == "")
+        {
+            return
+        }
+        
+        let cameraSheet=UIActionSheet()
+        cameraSheet.delegate=self
+        cameraSheet.addButtonWithTitle("拨打: "+self.model.tel)
+        cameraSheet.addButtonWithTitle("取消")
+        
+        cameraSheet.actionSheetStyle = UIActionSheetStyle.BlackTranslucent;
+        cameraSheet.showInView(UIApplication.sharedApplication().keyWindow!)
+    }
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        
+        if(buttonIndex == 0)
+        {
+            let str="tel:"+self.model.tel
+            if(str.url != nil)
+            {
+                UIApplication.sharedApplication().openURL(str.url!)
+            }
+            
+        }
+        
+    }
+    
     
     
     var harr:[CGFloat] = [133*screenFlag,42*screenFlag,15,42*screenFlag,42*screenFlag,42*screenFlag,15,42*screenFlag,128,0]

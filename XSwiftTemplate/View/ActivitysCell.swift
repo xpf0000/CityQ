@@ -29,7 +29,27 @@ class ActivitysCell: UITableViewCell {
             let date=NSDate(timeIntervalSince1970: model.e_time.numberValue.doubleValue)
             let estr = date.toStr("yyyy-MM-dd")!
             
-            img.url = model.url
+            var b = false
+            if model.url != ""
+            {
+                img.url = model.url
+                b = true
+            }
+            else
+            {
+                if model.picList.count > 0
+                {
+                    img.url = model.picList[0].url
+                    b = true
+                }
+            }
+            
+            if !b
+            {
+                img.image = nil
+                img.url = nil
+            }
+            
             ntitle.text = model.title
             time.text = "活动时间: \(model.s_time)~\(estr)"
             

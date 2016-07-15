@@ -125,8 +125,9 @@ class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
             cell.model = picList[indexPath.row]
         }
         
-        cell.img.isGroup = true
         cell.img.groupDelegate = self
+        cell.img.isGroup = true
+        
         cell.show()
         
         imgArr[indexPath.row] = cell.img
@@ -137,7 +138,7 @@ class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
     
     var imgArr:[Int:UIImageView] = [:]
     
-    func UIImageViewGroupTap(obj: UIImageView) {
+    func XImageViewGroupTap(obj: UIImageView) {
         
         var arr:[UIImageView] = []
         for i in 0..<picList.count
@@ -146,10 +147,7 @@ class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
         }
         
         XImageBrowse(arr: arr).show(obj)
-        
     }
-    
-    
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         

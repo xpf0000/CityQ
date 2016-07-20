@@ -47,11 +47,11 @@ class CardShopsActivitysVC: UIViewController,UITableViewDelegate {
         
         table.backgroundColor = UIColor.whiteColor()
         
-        table.registerNib("CardShopsActivitysCell".Nib, forCellReuseIdentifier: "CardShopsActivitysCell")
-        table.CellIdentifier = "CardShopsActivitysCell"
-        table.cellHeight = 50
+        table.registerNib("ActivitysCell".Nib, forCellReuseIdentifier: "ActivitysCell")
+        table.CellIdentifier = "ActivitysCell"
+        table.cellHeight = 170.0 * screenFlag
         
-        table.setHandle("", pageStr: "[page]", keys: ["data","info"], model: CardActivityModel.self, CellIdentifier: "CardShopsActivitysCell")
+        table.setHandle("", pageStr: "[page]", keys: ["data","info"], model: NewsModel.self, CellIdentifier: "ActivitysCell")
         table.httpHandle.pageSize = 10000
         table.httpHandle.replace = ["descrip":"description"]
         table.Delegate(self)
@@ -63,6 +63,14 @@ class CardShopsActivitysVC: UIViewController,UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        
+        let model = table.httpHandle.listArr[indexPath.row] as! NewsModel
+        
+        let vc:CardActivitysInfoVC = "CardActivitysInfoVC".VC("Card") as! CardActivitysInfoVC
+        vc.model.id = model.id
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
  
     }
     

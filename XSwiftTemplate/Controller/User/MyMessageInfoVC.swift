@@ -51,28 +51,46 @@ class MyMessageInfoVC: UIViewController {
                 DataCache.Share().userMsg.save()
                 
                 
-                switch self.type {
-                case 1:
-                    ""
-                    self.table.httpHandle.listArr = DataCache.Share().userMsg.users[Uid]!.type1
-                    
-                case 2:
-                    ""
-                    self.table.httpHandle.listArr = DataCache.Share().userMsg.users[Uid]!.type2
-                    
-                case 3:
-                    ""
-                    self.table.httpHandle.listArr = DataCache.Share().userMsg.users[Uid]!.type3
-                    
-                default:
-                    ""
-                }
-                
-                self.table.reloadData()
+                self.setData()
                 
             }
             
         }
+    }
+    
+    
+    func setData()
+    {
+        self.table.httpHandle.listArr.removeAll(keepCapacity: false)
+        
+        switch self.type {
+        case 1:
+            ""
+            if let arr = DataCache.Share().userMsg.users[Uid]?.type1
+            {
+                self.table.httpHandle.listArr = arr
+            }
+            
+            
+        case 2:
+            ""
+            if let arr = DataCache.Share().userMsg.users[Uid]?.type2
+            {
+                self.table.httpHandle.listArr = arr
+            }
+            
+        case 3:
+            ""
+            if let arr = DataCache.Share().userMsg.users[Uid]?.type3
+            {
+                self.table.httpHandle.listArr = arr
+            }
+            
+        default:
+            ""
+        }
+        
+        self.table.reloadData()
     }
     
     override func viewDidLoad() {
@@ -104,6 +122,8 @@ class MyMessageInfoVC: UIViewController {
         
         table.hideFootRefresh()
         table.hideHeadRefresh()
+        
+        setData()
         
         http()
 

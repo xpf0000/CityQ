@@ -1179,14 +1179,14 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="go_arrow_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vy4-fR-Ju6">
+                                                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="go_arrow_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vy4-fR-Ju6">
                                                     <rect key="frame" x="563" y="19" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="GEK-Nt-zpH"/>
                                                         <constraint firstAttribute="width" constant="22" id="L0W-Qx-Ej8"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="od0-ho-Qeh">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="od0-ho-Qeh">
                                                     <rect key="frame" x="80" y="8" width="473" height="43"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1468,6 +1468,7 @@
                         <outlet property="birthday" destination="Wzg-jW-ozA" id="Nr0-ek-NOD"/>
                         <outlet property="headPic" destination="hw4-iJ-jAn" id="jnj-P7-y3y"/>
                         <outlet property="name" destination="E0M-MI-eBq" id="kmB-ZR-k2o"/>
+                        <outlet property="nameIcon" destination="sNO-j3-Edd" id="9fT-XX-Cg9"/>
                         <outlet property="nickName" destination="od0-ho-Qeh" id="CoZ-gn-pNM"/>
                         <outlet property="phone" destination="uf4-qr-NJn" id="PAG-Ae-Zea"/>
                         <outlet property="picon" destination="jB7-4p-Rca" id="3TI-zA-d5W"/>

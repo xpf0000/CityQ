@@ -34,7 +34,7 @@ class HomeVC: UIViewController {
     var time = 3
     let coverImage = UIImageView()
     
-    let timeLabel = UILabel()
+    let timeLabel = UIButton(type: .Custom)
     var timer:NSTimer?
     
     func timerGo()
@@ -42,10 +42,11 @@ class HomeVC: UIViewController {
         if time > 0
         {
             time = time-1
-            timeLabel.text = "\(time)"
+            //timeLabel.text = "\(time)"
         }
         else
         {
+            
             timer?.invalidate()
             timer = nil
             
@@ -137,14 +138,38 @@ class HomeVC: UIViewController {
         coverImage.addSubview(AdvImage!)
         
         timeLabel.frame=CGRectMake(swidth-48-16, 22, 44, 24)
-        timeLabel.text = "\(time)"
-        timeLabel.textColor = UIColor.whiteColor()
+        timeLabel.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        timeLabel.setTitle("跳过", forState: .Normal)
+        timeLabel.titleLabel?.font = UIFont.boldSystemFontOfSize(16.0)
+        //timeLabel.text = "\(time)"
+        //timeLabel.textColor = UIColor.whiteColor()
         timeLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.8)
-        timeLabel.font = UIFont.boldSystemFontOfSize(18.0)
-        timeLabel.textAlignment = .Center
+        //timeLabel.font = UIFont.boldSystemFontOfSize(18.0)
+        //timeLabel.textAlignment = .Center
         timeLabel.layer.cornerRadius = 5.0
         timeLabel.layer.masksToBounds = true
         coverImage.addSubview(timeLabel)
+        
+        coverImage.userInteractionEnabled = true;
+        
+        timeLabel.click {[weak self,weak timeLabel] (btn) in
+            
+            self?.timer?.invalidate()
+            self?.timer = nil
+            
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                
+                self?.coverImage.alpha = 0.0
+                
+                }, completion: { (finish) -> Void in
+                    
+                    self?.coverImage.removeFromSuperview()
+                    AdvImage?.image = nil
+                    AdvImage = nil
+            })
+            
+            UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: UIStatusBarAnimation.Fade)
+        }
         
 
         UIApplication.sharedApplication().keyWindow?.addSubview(coverImage)

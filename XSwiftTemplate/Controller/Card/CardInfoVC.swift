@@ -113,8 +113,8 @@ class CardInfoVC: UITableViewController ,UIActionSheetDelegate {
         rightLabel.text = model.type
         img.url = model.logo
         
-        phone.text = "电话: "+model.tel
-        address.text = "地址: "+model.address
+        phone.text = model.tel
+        address.text = model.address
         
         let (r,g,b) = model.color.color!.getRGB()
         

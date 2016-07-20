@@ -220,15 +220,15 @@ class UserCenterVC: UITableViewController {
             
             self.navigationController?.pushViewController(vc, animated: true)
             
-        case 6:
-            
-            let vc:MyWalletVC = MyWalletVC()
-            
-            vc.hidesBottomBarWhenPushed = true
-            
-            self.navigationController?.pushViewController(vc, animated: true)
+//        case 6:
+//            
+//            let vc:MyWalletVC = MyWalletVC()
+//            
+//            vc.hidesBottomBarWhenPushed = true
+//            
+//            self.navigationController?.pushViewController(vc, animated: true)
 
-        case 8:
+        case 7:
             
             if(DataCache.Share().userModel.mobile == "")
             {
@@ -249,7 +249,7 @@ class UserCenterVC: UITableViewController {
             
             return
             
-        case 7 :
+        case 8 :
             ""
 
             

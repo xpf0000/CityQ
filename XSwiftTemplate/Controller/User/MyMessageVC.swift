@@ -29,51 +29,66 @@ class MyMessageVC: UITableViewController {
     {
         
         
-        let url = "http://123.57.162.97/hfapi/Public/Found/?service=User.getMessagesCount&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&type=1"
+        let url = "http://123.57.162.97/hfapi/Public/Found/?service=User.getMessagesCount&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { (json) in
             
-            if let count = json?["data"]["info"][0]["count"].int
+            if let count = json?["data"]["info"]["count1"].string?.numberValue.integerValue
             {
                 if count > 0
                 {
                     self.txt1.text = "\(count)"
+                    self.txt1.superview?.hidden = false
+                }
+                else
+                {
+                    self.txt1.superview?.hidden = true
                 }
             }
+            else
+            {
+                self.txt1.superview?.hidden = true
+            }
             
-        }
-        
-        let url1 = "http://123.57.162.97/hfapi/Public/Found/?service=User.getMessagesCount&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&type=2"
-        
-        XHttpPool.requestJson(url1, body: nil, method: .POST) { (json) in
             
-            if let count = json?["data"]["info"][0]["count"].int
+            
+            if let count = json?["data"]["info"]["count2"].string?.numberValue.integerValue
             {
                 if count > 0
                 {
                     self.txt2.text = "\(count)"
+                    self.txt2.superview?.hidden = false
+                }
+                else
+                {
+                    self.txt2.superview?.hidden = true
                 }
             }
+            else
+            {
+                self.txt2.superview?.hidden = true
+            }
             
-        }
-
-        
-        let url2 = "http://123.57.162.97/hfapi/Public/Found/?service=User.getMessagesCount&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&type=3"
-        
-        XHttpPool.requestJson(url2, body: nil, method: .POST) { (json) in
             
-            if let count = json?["data"]["info"][0]["count"].int
+            if let count = json?["data"]["info"]["count3"].string?.numberValue.integerValue
             {
                 if count > 0
                 {
                     self.txt3.text = "\(count)"
+                    self.txt3.superview?.hidden = false
                 }
+                else
+                {
+                    self.txt3.superview?.hidden = true
+                }
+            }
+            else
+            {
+                self.txt3.superview?.hidden = true
             }
             
         }
 
-
-        
         
     }
     
@@ -81,6 +96,10 @@ class MyMessageVC: UITableViewController {
         super.viewDidLoad()
         self.title = "我的消息"
         self.addBackButton()
+        
+        self.txt1.superview?.hidden = true
+        self.txt2.superview?.hidden = true
+        self.txt3.superview?.hidden = true
 
         let view1=UIView()
         view1.backgroundColor=UIColor.clearColor()
@@ -141,6 +160,30 @@ class MyMessageVC: UITableViewController {
         vc.type = indexPath.row+1
         
         self.navigationController?.pushViewController(vc, animated: true)
+        
+        switch indexPath.row {
+        case 0:
+            ""
+            self.txt1.superview?.hidden = true
+            //self.txt2.superview?.hidden = true
+            //self.txt3.superview?.hidden = true
+            
+        case 1:
+            ""
+            //self.txt1.superview?.hidden = true
+            self.txt2.superview?.hidden = true
+            //self.txt3.superview?.hidden = true
+            
+        case 2:
+            ""
+            //self.txt1.superview?.hidden = true
+            //self.txt2.superview?.hidden = true
+            self.txt3.superview?.hidden = true
+            
+        default:
+            ""
+        }
+        
 
     }
 

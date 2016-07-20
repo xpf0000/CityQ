@@ -28,6 +28,8 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
     
     @IBOutlet var address: UITextField!
     
+    @IBOutlet var nameIcon: UIImageView!
+    
     
     var imageIng = false
     var headImage:UIImage?
@@ -103,6 +105,18 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         self.headPic.url=DataCache.Share().userModel.headimage
         self.nickName.text = DataCache.Share().userModel.nickname
         self.name.text = DataCache.Share().userModel.truename
+        
+        if self.name.text != ""
+        {
+            name.enabled = false
+            nameIcon.hidden = true
+        }
+        else
+        {
+            name.enabled = true
+            nameIcon.hidden = false
+        }
+        
         phone.text = Umobile
         birthday.text = DataCache.Share().userModel.birthday
         address.text = DataCache.Share().userModel.address

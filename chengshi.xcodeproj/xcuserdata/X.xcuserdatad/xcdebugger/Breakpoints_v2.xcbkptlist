@@ -1401,11 +1401,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XSwiftTemplate/Controller/EditUserInfoVC.swift"
-            timestampString = "488706361.572717"
+            timestampString = "490699881.399479"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "submit(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1535,6 +1535,22 @@
             startingLineNumber = "78"
             endingLineNumber = "78"
             landmarkName = "wxLogin(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XSwiftTemplate/Controller/User/MyMessageVC.swift"
+            timestampString = "490352976.285111"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "http()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

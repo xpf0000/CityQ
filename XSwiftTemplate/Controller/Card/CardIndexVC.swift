@@ -208,10 +208,10 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
             table.frame.size.width = swidth*0.5
         }
         
-        if indexPath.row == 0 && top.selectRow == 1
-        {
-            return 0
-        }
+//        if indexPath.row == 0 && top.selectRow == 1
+//        {
+//            return 0
+//        }
         
         return 50.0
     }

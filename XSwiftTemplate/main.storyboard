@@ -1306,38 +1306,8 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="55" id="IkG-Ws-FXz">
-                                        <rect key="frame" x="0.0" y="379" width="600" height="55"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IkG-Ws-FXz" id="kL2-i0-W6H">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的钱包" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pRc-tm-haw">
-                                                    <rect key="frame" x="57" y="17" width="68" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_icon4.png" translatesAutoresizingMaskIntoConstraints="NO" id="w2s-ef-Bwf">
-                                                    <rect key="frame" x="15" y="14" width="27" height="27"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="27" id="6T7-O2-oZU"/>
-                                                        <constraint firstAttribute="height" constant="27" id="B3u-Xg-BYT"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="w2s-ef-Bwf" firstAttribute="leading" secondItem="kL2-i0-W6H" secondAttribute="leading" constant="15" id="fel-XG-Iun"/>
-                                                <constraint firstItem="pRc-tm-haw" firstAttribute="leading" secondItem="w2s-ef-Bwf" secondAttribute="trailing" constant="15" id="huF-mO-kDQ"/>
-                                                <constraint firstAttribute="centerY" secondItem="w2s-ef-Bwf" secondAttribute="centerY" id="lAQ-lG-Sml"/>
-                                                <constraint firstItem="pRc-tm-haw" firstAttribute="centerY" secondItem="w2s-ef-Bwf" secondAttribute="centerY" id="xQp-S3-Mwe"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="20" id="W75-v7-VB6">
-                                        <rect key="frame" x="0.0" y="434" width="600" height="20"/>
+                                        <rect key="frame" x="0.0" y="379" width="600" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W75-v7-VB6" id="mNe-PO-XOt">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="19"/>
@@ -1348,7 +1318,7 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" rowHeight="55" id="weP-uz-d5D">
-                                        <rect key="frame" x="0.0" y="454" width="600" height="55"/>
+                                        <rect key="frame" x="0.0" y="399" width="600" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="weP-uz-d5D" id="08J-1V-Y5b">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="54"/>
@@ -1641,7 +1611,6 @@
         <image name="my_icon1.png" width="50" height="50"/>
         <image name="my_icon2.png" width="50" height="50"/>
         <image name="my_icon3.png" width="50" height="50"/>
-        <image name="my_icon4.png" width="50" height="50"/>
         <image name="my_icon5.png" width="50" height="50"/>
         <image name="news-reply.png" width="35" height="35"/>
         <image name="news_Share.png" width="35" height="35"/>

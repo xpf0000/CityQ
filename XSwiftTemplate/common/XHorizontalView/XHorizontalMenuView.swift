@@ -32,6 +32,8 @@ extension UIColor
     }
 }
 
+typealias XHorizontalMenuBlock = (Int)->Void
+
 class XHorizontalMenuModel: NSObject {
     
     var title:String=""
@@ -50,6 +52,13 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
     let line:UIView = UIView()
     
     var mutableMenuWidth = false
+    
+    private var block:XHorizontalMenuBlock?
+    
+    func selectBlock(b:XHorizontalMenuBlock)
+    {
+        self.block = b
+    }
     
     lazy var menuWidthArr:[NSIndexPath:CGSize] = [:]
     
@@ -109,10 +118,12 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         {
             self.lastIndex = oldValue
             
+            block?(selectIndex)
+            
             reloadData()
             
             selectItemAtIndexPath(NSIndexPath(forRow: self.selectIndex, inSection: 0), animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
-            
+
             UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
                 
                 self.line.center.x = self.menuWidth*CGFloat(self.selectIndex)+self.menuWidth/2.0
@@ -147,7 +158,7 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         didSet
         {
             self.changeUI()
-            self.main?.changeUI()
+            self.main?.menuArr = menuArr
             if selectIndex >= menuArr.count
             {
                 selectIndex = menuArr.count-1

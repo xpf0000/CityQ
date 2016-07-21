@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardShopsInfoVC: UITableViewController,UIWebViewDelegate {
+class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDelegate {
     
     @IBOutlet var table: UITableView!
     
@@ -19,6 +19,38 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate {
     @IBOutlet var address: UILabel!
     
     @IBOutlet var info: UILabel!
+    
+    
+    @IBAction func doCall(sender: AnyObject) {
+        
+        if(self.model.tel == "")
+        {
+            return
+        }
+        
+        let cameraSheet=UIActionSheet()
+        cameraSheet.delegate=self
+        cameraSheet.addButtonWithTitle("拨打: "+self.model.tel)
+        cameraSheet.addButtonWithTitle("取消")
+        
+        cameraSheet.actionSheetStyle = UIActionSheetStyle.BlackTranslucent;
+        cameraSheet.showInView(UIApplication.sharedApplication().keyWindow!)
+    }
+    
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        
+        if(buttonIndex == 0)
+        {
+            let str="tel:"+self.model.tel
+            if(str.url != nil)
+            {
+                UIApplication.sharedApplication().openURL(str.url!)
+            }
+            
+        }
+        
+    }
+    
 
     var id = "0"
     {
@@ -57,8 +89,8 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate {
     {
         img.url = model.logo
         
-        phone.text = "电话: "+model.tel
-        address.text = "地址: "+model.address
+        phone.text = model.tel
+        address.text = model.address
         
         let attributedString1=NSMutableAttributedString(string: model.info)
         let paragraphStyle1=NSMutableParagraphStyle()

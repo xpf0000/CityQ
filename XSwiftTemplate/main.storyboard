@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oI2-k2-tHv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="oI2-k2-tHv">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -555,7 +555,33 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" id="zMq-gH-uot"/>
+                    <navigationItem key="navigationItem" id="zMq-gH-uot">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="hxm-1E-1x9">
+                            <rect key="frame" x="240" y="6" width="120" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4Qr-3o-KT8">
+                                    <rect key="frame" x="0.0" y="3" width="120" height="29"/>
+                                    <segments>
+                                        <segment title="未领取"/>
+                                        <segment title="已领取"/>
+                                    </segments>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="4Qr-3o-KT8" firstAttribute="leading" secondItem="hxm-1E-1x9" secondAttribute="leading" id="Eqo-ae-gf5"/>
+                                <constraint firstAttribute="trailing" secondItem="4Qr-3o-KT8" secondAttribute="trailing" id="a0a-ZP-m7v"/>
+                                <constraint firstItem="4Qr-3o-KT8" firstAttribute="centerY" secondItem="hxm-1E-1x9" secondAttribute="centerY" id="rxf-L0-0eL"/>
+                                <constraint firstItem="4Qr-3o-KT8" firstAttribute="centerX" secondItem="hxm-1E-1x9" secondAttribute="centerX" id="sFm-8q-3bN"/>
+                            </constraints>
+                        </view>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="segment" destination="4Qr-3o-KT8" id="Zjq-6h-52E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5R-Sh-y3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

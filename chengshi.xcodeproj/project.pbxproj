@@ -111,6 +111,7 @@
 		172D0C0B1C0FCF68000EEBFA /* FriendClassCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 172D0C091C0FCF68000EEBFA /* FriendClassCell.xib */; };
 		172D0C0D1C0FD74B000EEBFA /* FriendClassListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172D0C0C1C0FD74B000EEBFA /* FriendClassListVC.swift */; };
 		172FF7A41CA2748A005E4A02 /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172FF7A21CA2748A005E4A02 /* WebP.framework */; };
+		173C9F451D4086DD00C5C566 /* CardNoLingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173C9F441D4086DD00C5C566 /* CardNoLingVC.swift */; };
 		173E16F51D052CF600458FB9 /* XHorizontalMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E16F21D052CF600458FB9 /* XHorizontalMainView.swift */; };
 		173E16F61D052CF600458FB9 /* XHorizontalMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E16F31D052CF600458FB9 /* XHorizontalMenuView.swift */; };
 		173E16F71D052CF600458FB9 /* XHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E16F41D052CF600458FB9 /* XHorizontalView.swift */; };
@@ -857,6 +858,7 @@
 		172D0C091C0FCF68000EEBFA /* FriendClassCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendClassCell.xib; sourceTree = "<group>"; };
 		172D0C0C1C0FD74B000EEBFA /* FriendClassListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendClassListVC.swift; sourceTree = "<group>"; };
 		172FF7A21CA2748A005E4A02 /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebP.framework; sourceTree = "<group>"; };
+		173C9F441D4086DD00C5C566 /* CardNoLingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardNoLingVC.swift; path = XSwiftTemplate/Controller/Card/CardNoLingVC.swift; sourceTree = SOURCE_ROOT; };
 		173E16F21D052CF600458FB9 /* XHorizontalMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHorizontalMainView.swift; sourceTree = "<group>"; };
 		173E16F31D052CF600458FB9 /* XHorizontalMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHorizontalMenuView.swift; sourceTree = "<group>"; };
 		173E16F41D052CF600458FB9 /* XHorizontalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHorizontalView.swift; sourceTree = "<group>"; };
@@ -1869,6 +1871,7 @@
 				173DAFE01D0AB618004C7DAA /* View */,
 				173DAFE51D0AC6A5004C7DAA /* Model */,
 				177E86C61D16CCB000EE20CF /* CardIndexVC.swift */,
+				173C9F441D4086DD00C5C566 /* CardNoLingVC.swift */,
 				17A433C41D211AAA00FB2876 /* CardSearchVC.swift */,
 				177E86C81D16CCB900EE20CF /* CardInfoVC.swift */,
 				177E86CA1D16CCC300EE20CF /* CardGetedInfoVC.swift */,
@@ -3716,6 +3719,7 @@
 				171A89091C3E4BB200F303F6 /* OAMessageInfoVC.swift in Sources */,
 				17F2034B1C23A516000D1B4B /* NVActivityIndicatorAnimationBallClipRotateMultiple.swift in Sources */,
 				177E86D81D16CD2A00EE20CF /* NewsActivitysCell.swift in Sources */,
+				173C9F451D4086DD00C5C566 /* CardNoLingVC.swift in Sources */,
 				177E869B1D16C91200EE20CF /* Reflect.swift in Sources */,
 				177E86B71D16CBDB00EE20CF /* MyMessageInfoVC.swift in Sources */,
 				17FDBB821C06A120006F04BF /* FriendNewsVC.swift in Sources */,

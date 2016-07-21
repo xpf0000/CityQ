@@ -22,6 +22,34 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
         }
     }
     
+    private var block:XHorizontalMenuBlock?
+    
+    func selectBlock(b:XHorizontalMenuBlock)
+    {
+        self.block = b
+    }
+    
+    var selectIndex : Int = 0
+        {
+        didSet
+        {
+            block?(selectIndex)
+            
+            selectItemAtIndexPath(NSIndexPath(forRow: self.selectIndex, inSection: 0), animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
+            
+        }
+    }
+    
+    
+    var menuArr:[XHorizontalMenuModel] = []
+    {
+        didSet
+        {
+            self.changeUI()
+        }
+    }
+
+    
     var UIChanged:Bool = false
         {
         willSet
@@ -106,7 +134,7 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return menu == nil ? 0 : menu!.menuArr.count
+        return menuArr.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -120,9 +148,9 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
             item.removeFromSuperview()
         }
         
-        let obj = menu?.menuArr[indexPath.row]
+        let obj = menuArr[indexPath.row]
         
-        if let view = obj?.view
+        if let view = obj.view
         {
             view.frame = CGRectZero
             cell.contentView.addSubview(view)
@@ -152,9 +180,9 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
         
         let currentPage : Int = Int(floor((scrollView.contentOffset.x - frame.size.width/2)/frame.size.width))+1;
         
-        var i : CGFloat = scrollView.contentOffset.x/(frame.size.width*CGFloat(menu!.menuArr.count))
+        var i : CGFloat = scrollView.contentOffset.x/(frame.size.width*CGFloat(menuArr.count))
         
-        menu?.line.center.x = menu!.menuWidth*CGFloat(menu!.menuArr.count)*i+menu!.menuWidth/2.0
+        menu?.line.center.x = menu!.menuWidth*CGFloat(menuArr.count)*i+menu!.menuWidth/2.0
         
         var nextIndex=0
         
@@ -172,7 +200,7 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
         var r ,g ,b : CGFloat
         var r1,g1,b1:CGFloat
         
-        if(nextIndex>=0 && nextIndex<menu!.menuArr.count)
+        if(nextIndex>=0 && nextIndex<menuArr.count)
         {
             (r,g,b) = menu!.menuTextColor.getRGB()
             (r1,g1,b1) = menu!.menuSelectColor.getRGB()
@@ -194,16 +222,16 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         
-        if menu == nil {return}
-        
         let currentPage : Int = Int(floor((scrollView.contentOffset.x - frame.size.width/2)/frame.size.width))+1;
         
-        if(menu!.selectIndex != currentPage)
+        if(menu?.selectIndex != currentPage)
         {
             menu?.lastIndex = currentPage;
-            menu!.selectIndex=currentPage;
+            menu?.selectIndex=currentPage;
             menu?.lastIndex = currentPage;
         }
+        
+        selectIndex = currentPage;
     }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {

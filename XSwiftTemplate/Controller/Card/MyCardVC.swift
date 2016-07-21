@@ -12,6 +12,11 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     
     @IBOutlet var noView: UIView!
     
+    @IBOutlet var btn: UIButton!
+    
+    @IBOutlet var msg: UILabel!
+    
+    
     let top = ReactionMenuView()
     var topCellArr:Array<Array<ReactionMenuItemModel>> = [[],[]]
     
@@ -27,17 +32,25 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     
     @IBAction func toGetCard(sender: AnyObject) {
         
-        self.navigationController?.popToRootViewControllerAnimated(false)
+        if self.checkIsLogin()
+        {
+            self.navigationController?.popToRootViewControllerAnimated(false)
+            
+            tabbar?.selectedIndex = 1
+        }
         
-        print(self.tabBarController)
         
-       tabbar?.selectedIndex = 1
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        initSelf()
+    }
+    
+    func initSelf()
+    {
         self.title = "我的会员卡"
         addBackButton()
         
@@ -50,6 +63,7 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         getCardCategory()
         setRight()
     }
+    
     
     func toSearch()
     {
@@ -65,9 +79,39 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         table.httpHandle.handle()
     }
     
+    func check()->Bool
+    {
+        if Uid == ""
+        {
+            btn.setTitle("点击登录", forState: .Normal)
+            msg.text = "您还没有登录"
+            
+            noView.hidden = false
+            table.hidden = true
+            top.hidden = true
+
+            return false
+        }
+        else
+        {
+            btn.setTitle("马上去领取", forState: .Normal)
+            msg.text = "您当前还没有任何会员卡"
+            
+            noView.hidden = true
+            table.hidden = true
+            top.hidden = true
+            
+            return true
+        }
+    }
+    
     func userChange()
     {
-        http()
+        if check()
+        {
+            http()
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -119,13 +163,11 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
             self?.noView.hidden = !b
             
         }
-        
-        noView.hidden = true
-        table.hidden = true
-        top.hidden = true
-        
-        self.http()
-        
+
+        if check()
+        {
+            http()
+        }
         
     }
     
@@ -239,11 +281,6 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
             table.frame.size.width = swidth*0.5
         }
         
-        if indexPath.row == 0 && top.selectRow == 1
-        {
-            return 0
-        }
-        
         return 50.0
     }
     
@@ -272,7 +309,15 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         }
         else
         {
-            img.url = model.img
+            if top.selectRow == 1
+            {
+                img.image = "left_type_0@3x.png".image
+            }
+            else
+            {
+                img.url = model.img
+            }
+            
         }
         
         img.layer.masksToBounds = true

@@ -16,7 +16,7 @@ typealias reactionMenuBlock = (Array<ReactionMenuItemModel>,Int)->Void
     
     optional func ReactionTableHeight(table:UITableView,indexPath:NSIndexPath)->CGFloat
     
-    optional func ReactionTableCell(cell:UITableViewCell,model:ReactionMenuItemModel)
+    optional func ReactionTableCell(indexPath:NSIndexPath,cell:UITableViewCell,model:ReactionMenuItemModel)
     
     optional func ReactionBeforeShow(view:ReactionMenuView)
 }
@@ -545,7 +545,7 @@ class ReactionMenuView: UIView,UICollectionViewDataSource,UICollectionViewDelega
         
         cell?.textLabel?.text=model.title
         
-        delegate?.ReactionTableCell?(cell!, model: model)
+        delegate?.ReactionTableCell?(indexPath,cell:cell!, model: model)
         
         return cell!
         

@@ -226,7 +226,10 @@ class CardNoLingVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         return 50.0
     }
     
-    func ReactionTableCell(cell: UITableViewCell, model: ReactionMenuItemModel) {
+    
+    
+    
+    func ReactionTableCell(indexPath: NSIndexPath,cell: UITableViewCell, model: ReactionMenuItemModel) {
         
         cell.backgroundColor=UIColor.whiteColor()
         
@@ -245,21 +248,22 @@ class CardNoLingVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         cell.contentView.addSubview(label)
         
         let img = UIImageView()
-        if model.sid == "0"
+        
+        if indexPath.row == 0
         {
-          img.image = model.img.image
+            img.image = "left_type_0@3x.png".image
         }
         else
         {
-            if top.selectRow == 1
+            if model.sid == "0"
             {
-                img.image = "left_type_0@3x.png".image
+                img.image = model.img.image
             }
             else
             {
-                img.url = model.img
+               img.url = model.img
             }
-            
+
         }
         
         img.layer.masksToBounds = true

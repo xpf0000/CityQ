@@ -155,7 +155,7 @@ class CardInfoVC: UITableViewController ,UIActionSheetDelegate {
             return
         }
         
-        let url = "http://123.57.162.97/hfapi/Public/Found/?service=Hyk.addCard&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&cardid=\(id)"
+        let url = APPURL + "Public/Found/?service=Hyk.addCard&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&cardid=\(id)"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { [weak self](json) in
             

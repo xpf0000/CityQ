@@ -16,7 +16,7 @@ class MyMessageInfoVC: UIViewController {
     
     func http()
     {
-        let url = "http://123.57.162.97/hfapi/Public/Found/?service=User.getMessagesList&uid=\(Uid)&username=\(Uname)&type=\(type)"
+        let url = APPURL + "Public/Found/?service=User.getMessagesList&uid=\(Uid)&username=\(Uname)&type=\(type)"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { (json) in
             

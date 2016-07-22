@@ -29,7 +29,7 @@ class MyMessageVC: UITableViewController {
     {
         
         
-        let url = "http://123.57.162.97/hfapi/Public/Found/?service=User.getMessagesCount&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
+        let url = APPURL + "Public/Found/?service=User.getMessagesCount&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { (json) in
             

@@ -52,7 +52,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
     
     func userChange()
     {
-        httpHandle.url = "http://123.57.162.97/hfapi/Public/Found/?service=News.getListGZ&username=\(Uname)&page=[page]&perNumber=20"
+        httpHandle.url = APPURL + "Public/Found/?service=News.getListGZ&username=\(Uname)&page=[page]&perNumber=20"
         httpHandle.reSet()
         httpHandle.handle()
     }

@@ -272,6 +272,7 @@
                         <outlet property="pass" destination="xQC-Ak-W3t" id="4iB-Id-7tk"/>
                         <outlet property="table" destination="G92-N1-nAX" id="MOY-7d-ykp"/>
                         <outlet property="user" destination="arG-cA-CGN" id="eJP-dv-t25"/>
+                        <outlet property="wxBtn" destination="fSt-Am-2Yv" id="Cjo-mf-V79"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yrj-JG-hdI" userLabel="First Responder" sceneMemberID="firstResponder"/>

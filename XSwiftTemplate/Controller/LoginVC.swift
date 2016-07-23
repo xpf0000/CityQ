@@ -20,6 +20,11 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
     
     @IBOutlet var loginButton: UIButton!
     
+    
+    @IBOutlet var wxBtn: UIButton!
+    
+    
+    
     var block:AnyBlock?
     
     
@@ -348,7 +353,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
         table.tableFooterView=view1
         table.tableHeaderView=view1
         
-        
+        wxBtn.hidden = !WXApi.isWXAppInstalled()
         
     }
     

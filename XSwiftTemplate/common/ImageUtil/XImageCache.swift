@@ -34,7 +34,7 @@ class XImageCache: NSCache {
         
         super.removeAllObjects()
         
-        print("XImageCachedCount: \(XImageCachedCount) | max: \(self.totalCostLimit)")
+        //print("XImageCachedCount: \(XImageCachedCount) | max: \(self.totalCostLimit)")
         
         XImageCachedCount = 0
     }

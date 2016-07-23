@@ -27,7 +27,7 @@ extension Reflect{
             }
             catch
             {
-                print(name+" save fail !!!")
+                //print(name+" save fail !!!")
             }
             
         }

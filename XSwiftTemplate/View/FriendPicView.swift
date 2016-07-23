@@ -192,7 +192,7 @@ class FriendPicView: UIView,UICollectionViewDataSource,UICollectionViewDelegate,
     
     deinit
     {
-        print("FriendPicView deinit !!!!!!!!!!!")
+        //print("FriendPicView deinit !!!!!!!!!!!")
     }
 
 }

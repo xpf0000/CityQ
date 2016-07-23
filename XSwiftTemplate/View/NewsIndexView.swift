@@ -398,24 +398,38 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 
                 let cell=tableView.cellForRowAtIndexPath(indexPath)
                 
-                if cell is NewsListCell
+                if(!DataCache.Share().newsViewedModel.has(vc.model.id))
                 {
-                    if(!DataCache.Share().newsViewedModel.has(vc.model.id))
+                    DataCache.Share().newsViewedModel.add(vc.model.id)
+                    
+                    if let cell = tableView.cellForRowAtIndexPath(indexPath) as? NewsListCell
                     {
-                        DataCache.Share().newsViewedModel.add(vc.model.id)
-                        
-                        (cell as! NewsListCell).setHasSee()
-                        
-                        let url = APPURL+"Public/Found/?service=News.addView&id="+vc.model.id
-                        
-                        XHttpPool.requestJson(url, body: nil, method: .GET, block: {[weak self] (o) -> Void in
-                            
-                            
-                            })
-                        
+                        cell.setHasSee()
                     }
                     
+                    if let cell = tableView.cellForRowAtIndexPath(indexPath) as? NewsMorePicCell
+                    {
+                        cell.setHasSee()
+                    }
+                    
+                    let url = APPURL+"Public/Found/?service=News.addView&id="+vc.model.id
+                    
+                    XHttpPool.requestJson(url, body: nil, method: .GET, block: {[weak self] (o) -> Void in
+                        
+                        
+                        })
+                    
                 }
+                
+                
+                if cell is NewsListCell
+                {
+                    
+                    
+                }
+                
+                
+                
             }
   
         }

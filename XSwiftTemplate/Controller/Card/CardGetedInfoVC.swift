@@ -278,7 +278,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
     
     deinit
     {
-        print("CardGetedInfoVC deinit !!!!!!!!!!")
+        //print("CardGetedInfoVC deinit !!!!!!!!!!")
     }
     
     

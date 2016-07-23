@@ -99,7 +99,7 @@ class NewsListCell: UITableViewCell {
     
     deinit
     {
-        print("NewsCell deinit !!!!!!!")
+        //print("NewsCell deinit !!!!!!!")
     }
     
 }

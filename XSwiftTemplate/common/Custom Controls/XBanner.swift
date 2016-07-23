@@ -341,7 +341,7 @@ class XBanner: UIView , UIScrollViewDelegate{
         self.timer?.invalidate()
         self.timer=nil
         
-        print("XBanner deinit !!!!!!!!!")
+        //print("XBanner deinit !!!!!!!!!")
     }
     
 }

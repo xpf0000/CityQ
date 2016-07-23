@@ -78,7 +78,7 @@ class XCamera: NSObject ,UIImagePickerControllerDelegate,UINavigationControllerD
                 
                 let size = CGSizeMake(swidth*screenScale, image.size.height/image.size.width*swidth*screenScale)
                 
-                print(size)
+                //print(size)
                 
                 // 打开图片编辑模式
                 

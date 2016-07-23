@@ -293,13 +293,13 @@ class XImageUtil: NSObject,NSURLSessionDataDelegate {
     private override init() {
         super.init()
         
-        print("System mem: \(NSProcessInfo.processInfo().physicalMemory)")
+        //print("System mem: \(NSProcessInfo.processInfo().physicalMemory)")
         
         
         
         maxCacheSize = Int(Double(NSProcessInfo.processInfo().physicalMemory)*0.1)
         
-        print("maxCacheSize: \(maxCacheSize/1024/1024)")
+        //print("maxCacheSize: \(maxCacheSize/1024/1024)")
         
         memCache.totalCostLimit = maxCacheSize
         

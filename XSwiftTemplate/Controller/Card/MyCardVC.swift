@@ -382,7 +382,7 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     deinit
     {
         NSNotificationCenter.defaultCenter().removeObserver(self)
-        print("MyCardVC deinit !!!!!!!!!!!")
+        //print("MyCardVC deinit !!!!!!!!!!!")
     }
     
 }

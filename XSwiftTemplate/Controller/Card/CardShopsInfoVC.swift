@@ -17,9 +17,8 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
     @IBOutlet var phone: UILabel!
     
     @IBOutlet var address: UILabel!
-    
-    @IBOutlet var info: UILabel!
-    
+
+    @IBOutlet var web: UIWebView!
     
     @IBAction func doCall(sender: AnyObject) {
         
@@ -68,7 +67,7 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
         }
     }
     
-    var harr:[CGFloat] = [swidth/750.0*313.0*screenFlag,42.0*screenFlag,42.0*screenFlag,8.0*screenFlag,42.0*screenFlag,42.0*screenFlag,8.0*screenFlag,37.0*screenFlag,1.0,44.0]
+    var harr:[CGFloat] = [swidth/750.0*313.0*screenFlag,42.0*screenFlag,42.0*screenFlag,8.0*screenFlag,0,42.0*screenFlag,8.0*screenFlag,37.0*screenFlag,1.0,44.0]
     
     func http()
     {
@@ -92,27 +91,39 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
         phone.text = model.tel
         address.text = model.address
         
-        let attributedString1=NSMutableAttributedString(string: model.info)
-        let paragraphStyle1=NSMutableParagraphStyle()
-        paragraphStyle1.lineSpacing=5.0
-        paragraphStyle1.paragraphSpacing=10.0
-        paragraphStyle1.firstLineHeadIndent=10.0
-        attributedString1.addAttributes([NSParagraphStyleAttributeName:paragraphStyle1,NSFontAttributeName:UIFont.systemFontOfSize(18)], range: NSMakeRange(0, (model.info as NSString).length))
+        model.info = BaseHtml.replace("[XHTMLX]", with: model.info)
         
-        info.attributedText = attributedString1
-        info.layoutIfNeeded()
+        web.loadHTMLString(model.info, baseURL: nil)
         
-        let size = info.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-        
-        harr[8] = size.height > 0.0 ? size.height + 16.0 : 0.0
+        web.sizeToFit()
+    
         
         table.reloadData()
+    }
+
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        
+        if(keyPath == "contentSize")
+        {
+            harr[8] = web.scrollView.contentSize.height
+            web.layoutIfNeeded()
+            web.setNeedsLayout()
+            web.scrollView.scrollEnabled = false
+            table.reloadData()
+        }
+        
     }
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
+        
+        web.scrollView.showsHorizontalScrollIndicator = false
+        web.scrollView.showsVerticalScrollIndicator = false
+        
+        web.scrollView.addObserver(self, forKeyPath: "contentSize", options: .New, context: nil)
         
         let view1=UIView()
         view1.backgroundColor=UIColor.clearColor()
@@ -209,6 +220,10 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
         
     }
     
+    deinit
+    {
+        web.scrollView.removeObserver(self, forKeyPath: "contentSize")
+    }
     
     
 }

@@ -90,13 +90,15 @@ class DiscoverVC1: UITableViewController {
             
             if DataCache.Share().userModel.mobile == ""
             {
-//                UIApplication.sharedApplication().keyWindow?.showAlert("请先绑定手机号", block: { (o) -> Void in
-//                    
-//                    let vc:CheckPhoneVC = "CheckPhoneVC".VC("User") as! CheckPhoneVC
-//                    vc.hidesBottomBarWhenPushed = true
-//                    self.navigationController?.pushViewController(vc, animated: true)
-//                    
-//                })
+                UIApplication.sharedApplication().keyWindow?.showAlert("请先绑定手机号", block: { (o) -> Void in
+                    
+                    let vc = "AuthBandPhoneVC".VC("User")
+                    
+                    vc.hidesBottomBarWhenPushed = true
+                    
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    
+                })
                 
                 return
             }

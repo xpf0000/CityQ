@@ -24,7 +24,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
     
     @IBOutlet var address: UILabel!
     
-    @IBOutlet var userContent: UILabel!
+    @IBOutlet var web: UIWebView!
     
     @IBOutlet var num: UILabel!
     
@@ -142,22 +142,26 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
         }
         txtBG.setNeedsDisplay()
         
+        model.info = BaseHtml.replace("[XHTMLX]", with: model.info)
         
-        let attributedString1=NSMutableAttributedString(string: model.info)
-        let paragraphStyle1=NSMutableParagraphStyle()
-        paragraphStyle1.lineSpacing=5.0
-        paragraphStyle1.paragraphSpacing=10.0
-        paragraphStyle1.firstLineHeadIndent=10.0
-        attributedString1.addAttributes([NSParagraphStyleAttributeName:paragraphStyle1,NSFontAttributeName:UIFont.systemFontOfSize(18)], range: NSMakeRange(0, (model.info as NSString).length))
+        web.loadHTMLString(model.info, baseURL: nil)
         
-        userContent.attributedText = attributedString1
-        userContent.layoutIfNeeded()
-        
-        let size = userContent.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-        
-        harr[8] = size.height + 16.0
+        web.sizeToFit()
         
         table.reloadData()
+        
+    }
+    
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        
+        if(keyPath == "contentSize")
+        {
+            harr[8] = web.scrollView.contentSize.height
+            web.layoutIfNeeded()
+            web.setNeedsLayout()
+            web.scrollView.scrollEnabled = false
+            table.reloadData()
+        }
         
     }
     
@@ -165,6 +169,11 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
         super.viewDidLoad()
         self.title = "会员卡详情"
         self.addBackButton()
+        
+        web.scrollView.showsHorizontalScrollIndicator = false
+        web.scrollView.showsVerticalScrollIndicator = false
+        
+        web.scrollView.addObserver(self, forKeyPath: "contentSize", options: .New, context: nil)
         
         let n = 8.0 * screenFlag
         
@@ -186,16 +195,8 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
             // Fallback on earlier versions
         }
         
-        userContent.preferredMaxLayoutWidth = swidth-30
-        
-        let h = userContent.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height+16
-        
-        harr[8] = h+20
-        
         self.table.reloadData()
-        
-        
-        
+   
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -278,6 +279,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
     
     deinit
     {
+        web.scrollView.removeObserver(self, forKeyPath: "contentSize")
         //print("CardGetedInfoVC deinit !!!!!!!!!!")
     }
     

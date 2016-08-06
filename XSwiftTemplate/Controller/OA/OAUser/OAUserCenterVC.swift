@@ -30,8 +30,8 @@ class OAUserCenterVC: UITableViewController,UITextFieldDelegate {
     
     @IBAction func doLogout(sender: AnyObject)
     {
-        DataCache.Share().oaUserModel = OAUserModel()
-        DataCache.Share().oaUserModel.save()
+        DataCache.Share.oaUserModel = OAUserModel()
+        DataCache.Share.oaUserModel.save()
         
         UMessage.removeAllTags({ (obj, remain, error) -> Void in
             
@@ -46,8 +46,8 @@ class OAUserCenterVC: UITableViewController,UITextFieldDelegate {
         self.view.showWaiting()
         
         let url="http://101.201.169.38/apioa/Public/OA/?service=User.userEdit"
-        var body="username="+DataCache.Share().oaUserModel.username
-        body += "&uid="+DataCache.Share().oaUserModel.uid
+        var body="username="+DataCache.Share.oaUserModel.username
+        body += "&uid="+DataCache.Share.oaUserModel.uid
         body += "&tel="+tel.text!.trim()
         body += "&mobile="+mobile.text!.trim()
         body += "&qq="+qq.text!.trim()
@@ -89,8 +89,8 @@ class OAUserCenterVC: UITableViewController,UITextFieldDelegate {
     
     func getUser()
     {
-        let u=DataCache.Share().oaUserModel.username
-        let p=DataCache.Share().oaUserModel.pass
+        let u=DataCache.Share.oaUserModel.username
+        let p=DataCache.Share.oaUserModel.pass
         
         let url="http://101.201.169.38/apioa/Public/OA/?service=User.login&username="+u+"&password="+p
         
@@ -98,9 +98,9 @@ class OAUserCenterVC: UITableViewController,UITextFieldDelegate {
             
             if(o?["data"]["info"].arrayValue.count>0 && o?["data"]["code"].intValue == 0)
             {
-                DataCache.Share().oaUserModel = OAUserModel.parse(json: o!["data"]["info"][0], replace: nil)
-                DataCache.Share().oaUserModel.pass = p
-                DataCache.Share().oaUserModel.save()
+                DataCache.Share.oaUserModel = OAUserModel.parse(json: o!["data"]["info"][0], replace: nil)
+                DataCache.Share.oaUserModel.pass = p
+                DataCache.Share.oaUserModel.save()
 
                 SetUMessageTag()
                 
@@ -130,14 +130,14 @@ class OAUserCenterVC: UITableViewController,UITextFieldDelegate {
         email.delegate = self
         address.delegate = self
         
-        name.text = DataCache.Share().oaUserModel.truename
-        sex.text = DataCache.Share().oaUserModel.sex == "0" ? "女" : "男"
-        unit.text = DataCache.Share().oaUserModel.bm
-        tel.text = DataCache.Share().oaUserModel.tel
-        mobile.text = DataCache.Share().oaUserModel.mobile
-        qq.text = DataCache.Share().oaUserModel.qq
-        email.text = DataCache.Share().oaUserModel.email
-        address.text = DataCache.Share().oaUserModel.address
+        name.text = DataCache.Share.oaUserModel.truename
+        sex.text = DataCache.Share.oaUserModel.sex == "0" ? "女" : "男"
+        unit.text = DataCache.Share.oaUserModel.bm
+        tel.text = DataCache.Share.oaUserModel.tel
+        mobile.text = DataCache.Share.oaUserModel.mobile
+        qq.text = DataCache.Share.oaUserModel.qq
+        email.text = DataCache.Share.oaUserModel.email
+        address.text = DataCache.Share.oaUserModel.address
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {

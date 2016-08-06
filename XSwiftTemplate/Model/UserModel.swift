@@ -10,17 +10,17 @@ import UIKit
 
 var Uid:String
 {
-    return DataCache.Share().userModel.uid
+    return DataCache.Share.userModel.uid
 }
 
 var Uname:String
 {
-    return DataCache.Share().userModel.username
+    return DataCache.Share.userModel.username
 }
 
 var Umobile:String
 {
-    return DataCache.Share().userModel.mobile
+    return DataCache.Share.userModel.mobile
 }
 
 class UserModel: Reflect {
@@ -89,6 +89,15 @@ class UserModel: Reflect {
         
     }
     
+    func getUserMsg()
+    {
+        if uid == "" || username == ""{return}
+        
+        print(Preloading.Share)
+        
+        Preloading.Share.getMessage(uid,username: username)
+    }
+    
     
     override func setValue(value: AnyObject?, forKey key: String) {
         
@@ -99,7 +108,17 @@ class UserModel: Reflect {
         
         super.setValue(value, forKey: key)
         
-        getUserHouse()
+        if key == "uid" || key == "username"
+        {
+            getUserMsg()
+            getUserHouse()
+        }
+        
+        if key == "houseid"
+        {
+            getUserHouse()
+        }
+   
     }
     
     

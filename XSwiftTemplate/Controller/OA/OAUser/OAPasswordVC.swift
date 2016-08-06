@@ -89,7 +89,7 @@ class OAPasswordVC: UIViewController,UITableViewDataSource,UITableViewDelegate,c
         newp=p as String
         
         let url="http://101.201.169.38/apioa/Public/OA/?service=User.updatePass"
-        let body="username="+DataCache.Share().oaUserModel.username+"&password="+(oldp as String)+"&newpassword="+newp
+        let body="username="+DataCache.Share.oaUserModel.username+"&password="+(oldp as String)+"&newpassword="+newp
         
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in
             
@@ -97,8 +97,8 @@ class OAPasswordVC: UIViewController,UITableViewDataSource,UITableViewDelegate,c
             {
                 if(o!["data"]["code"].intValue == 0)
                 {
-                    DataCache.Share().oaUserModel.pass = oldp as String
-                    DataCache.Share().oaUserModel.save()
+                    DataCache.Share.oaUserModel.pass = oldp as String
+                    DataCache.Share.oaUserModel.save()
                     
                     self?.view.showAlert("修改密码成功", block: { (o) -> Void in
                         

@@ -85,7 +85,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
     
     func http()
     {
-        let url = APPURL+"Public/Found/?service=Hyk.getArticleYLQ&username=\(DataCache.Share().userModel.username)&id=\(model.hcmid)"
+        let url = APPURL+"Public/Found/?service=Hyk.getArticleYLQ&username=\(DataCache.Share.userModel.username)&id=\(model.hcmid)"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { [weak self](json) in
             

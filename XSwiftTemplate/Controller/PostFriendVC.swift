@@ -145,12 +145,12 @@ class PostFriendVC: XViewController,UICollectionViewDataSource,UICollectionViewD
         textView.layer.masksToBounds = true
         textView.placeHolder("内容")
         
-        if(DataCache.Share().quanCategory.count > 0 && xiaoquid == "0")
+        if(DataCache.Share.quanCategory.count > 0 && xiaoquid == "0")
         {
            
             var y:CGFloat=0
             var w:CGFloat=0
-            for item in DataCache.Share().quanCategory
+            for item in DataCache.Share.quanCategory
             {
                 let button:ChooseButton = ChooseButton(type: .Custom)
                 button.model = item
@@ -362,7 +362,7 @@ class PostFriendVC: XViewController,UICollectionViewDataSource,UICollectionViewD
         
         let cid = self.choosedB == nil ? "68" : self.choosedB!.model.id
         
-        XHttpPool.upLoadWithMutableName(url, parameters: ["category_id":cid,"username":DataCache.Share().userModel.username,"content":self.textView.text.trim(),"location":locationStr!,"xiaoquid":xiaoquid], file: imgDataArr, name: "file", progress: {[weak self] (p) -> Void in
+        XHttpPool.upLoadWithMutableName(url, parameters: ["category_id":cid,"username":DataCache.Share.userModel.username,"content":self.textView.text.trim(),"location":locationStr!,"xiaoquid":xiaoquid], file: imgDataArr, name: "file", progress: {[weak self] (p) -> Void in
             
             if self == nil {return}
             XProgressView.Share().setAngle(p)

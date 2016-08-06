@@ -25,6 +25,7 @@ enum NoticeWord : String{
     case LogoutSuccess="LogoutSuccess"
     case UpdateUserSuccess="UpdateUserSuccess"
     case CardChanged="CardChanged"
+    case MsgChange="MsgChange"
     
 }
 
@@ -140,17 +141,17 @@ func SetUMessageTag()
         
     })
     
-    UMessage.addTag(DataCache.Share().oaUserModel.uid) { (response, remain, error) -> Void in
+    UMessage.addTag(DataCache.Share.oaUserModel.uid) { (response, remain, error) -> Void in
         
     }
     
-    UMessage.addTag(DataCache.Share().oaUserModel.dwid) { (response, remain, error) -> Void in
+    UMessage.addTag(DataCache.Share.oaUserModel.dwid) { (response, remain, error) -> Void in
     }
     
-    UMessage.addTag(DataCache.Share().oaUserModel.bmid) { (response, remain, error) -> Void in
+    UMessage.addTag(DataCache.Share.oaUserModel.bmid) { (response, remain, error) -> Void in
     }
     
-    UMessage.addTag(DataCache.Share().oaUserModel.jgid) { (response, remain, error) -> Void in
+    UMessage.addTag(DataCache.Share.oaUserModel.jgid) { (response, remain, error) -> Void in
     }
 }
 

@@ -39,7 +39,7 @@ class MyHouseCell: UITableViewCell {
         self.viewController?.view.showWaiting()
         
         let url=APPURL+"Public/Found/?service=User.delHouse"
-        let body="uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&id=\(model.id)"
+        let body="uid=\(DataCache.Share.userModel.uid)&username=\(DataCache.Share.userModel.username)&id=\(model.id)"
 
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in
             
@@ -68,7 +68,7 @@ class MyHouseCell: UITableViewCell {
         self.viewController?.view.showWaiting()
         
         let url=APPURL+"Public/Found/?service=User.updateHouse"
-        let body="uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&houseid=\(model.houseid)&fanghaoid=\(model.fanghaoid)"
+        let body="uid=\(DataCache.Share.userModel.uid)&username=\(DataCache.Share.userModel.username)&houseid=\(model.houseid)&fanghaoid=\(model.fanghaoid)"
 
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in
             
@@ -80,11 +80,11 @@ class MyHouseCell: UITableViewCell {
             {
                 (self?.viewController as? UserHouseVC)?.setDefault(self!)
                 sender.selected = true
-                DataCache.Share().userModel.houseid =  self!.model.houseid
-                DataCache.Share().userModel.fanghaoid =  self!.model.fanghaoid
-                DataCache.Share().userModel.house = self!.model
-                DataCache.Share().userModel.save()
-                DataCache.Share().userModel.house.checkStatus(false)
+                DataCache.Share.userModel.houseid =  self!.model.houseid
+                DataCache.Share.userModel.fanghaoid =  self!.model.fanghaoid
+                DataCache.Share.userModel.house = self!.model
+                DataCache.Share.userModel.save()
+                DataCache.Share.userModel.house.checkStatus(false)
                 return
             }
             
@@ -103,7 +103,7 @@ class MyHouseCell: UITableViewCell {
         {
             self.name.text = m.xiaoqu
             self.address.text = "房屋地址: "+m.louhao+m.danyuan+m.louceng+m.fanghao
-            defaultButton.selected = (DataCache.Share().userModel.fanghaoid == m.fanghaoid)
+            defaultButton.selected = (DataCache.Share.userModel.fanghaoid == m.fanghaoid)
         }
    
     }

@@ -48,7 +48,7 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
         let p = self.phone.text!.trim()
         
         let url=APPURL+"Public/Found/?service=User.openMobileAdd"
-        let body="username="+DataCache.Share().userModel.username+"&mobile="+p+"&password="+pass+"&code="+code
+        let body="username="+DataCache.Share.userModel.username+"&mobile="+p+"&password="+pass+"&code="+code
         let msg="绑定成功"
         
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
@@ -57,9 +57,9 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
             {
                 if(o!["data"]["code"].intValue == 0)
                 {
-                    DataCache.Share().userModel.mobile = p
-                    DataCache.Share().userModel.password = pass
-                    DataCache.Share().userModel.save()
+                    DataCache.Share.userModel.mobile = p
+                    DataCache.Share.userModel.password = pass
+                    DataCache.Share.userModel.save()
                     
                     self.navigationController?.view.showAlert(msg, block: { (o) -> Void in
                         

@@ -27,6 +27,13 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
     
     var block:AnyBlock?
     
+    func toInputNickVC(body:String)
+    {
+        let vc = "".VC("User") as! InputNickNameVC
+        vc.body = body
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     @IBAction func wxLogin(sender: AnyObject) {
         
@@ -43,20 +50,20 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
                     
                     if(o?["data"]["code"].intValue == 1)
                     {
-                        let nick=userInfo.nickname()
+                        //let nick=userInfo.nickname()
                         let sex=userInfo.gender() == 0 ? 1 : 0
                         let headimage=userInfo.profileImage()
-                        let rbody="openid="+uid+"&nickname="+nick+"&sex=\(sex)&headimage="+headimage
+                        let rbody="openid="+uid+"&sex=\(sex)&headimage="+headimage
                         
-                        self?.doRegist(rbody)
+                        self?.toInputNickVC(rbody)
                         return
                     }
                     
                     if(o?["data"]["info"].arrayValue.count > 0)
                     {
-                        DataCache.Share().userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
+                        DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
                         
-                        DataCache.Share().userModel.save()
+                        DataCache.Share.userModel.save()
                         
                         if(self?.block != nil)
                         {
@@ -118,10 +125,10 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
                 if(o!["data"]["code"].intValue == 0 && o?["data"]["info"].arrayValue.count > 0)
                 {
                     
-                    DataCache.Share().userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
-                    DataCache.Share().userModel.password = p
+                    DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
+                    DataCache.Share.userModel.password = p
                     
-                    DataCache.Share().userModel.save()
+                    DataCache.Share.userModel.save()
                     
                     if(self.block != nil)
                     {
@@ -199,20 +206,20 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
                     
                     if(o?["data"]["code"].intValue == 1)
                     {
-                        let nick=userInfo.nickname()
+                        //let nick=userInfo.nickname()
                         let sex=userInfo.gender() == 0 ? 1 : 0
                         let headimage=userInfo.profileImage()
-                        let rbody="openid="+uid+"&nickname="+nick+"&sex=\(sex)&headimage="+headimage
+                        let rbody="openid="+uid+"&sex=\(sex)&headimage="+headimage
                         
-                        self?.doRegist(rbody)
+                        self?.toInputNickVC(rbody)
                         return
                     }
                     
                     if(o?["data"]["info"].arrayValue.count > 0)
                     {
-                        DataCache.Share().userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
+                        DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
                         
-                        DataCache.Share().userModel.save()
+                        DataCache.Share.userModel.save()
                         
                         if(self?.block != nil)
                         {
@@ -258,20 +265,21 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
                     
                     if(o?["data"]["code"].intValue == 1)
                     {
-                        let nick=userInfo.nickname()
+                        //let nick=userInfo.nickname()
                         let sex=userInfo.gender() == 0 ? 1 : 0
                         let headimage=userInfo.profileImage()
-                        let rbody="openid="+uid+"&nickname="+nick+"&sex=\(sex)&headimage="+headimage
+                        let rbody="openid="+uid+"&sex=\(sex)&headimage="+headimage
                         
-                        self?.doRegist(rbody)
+                       self?.toInputNickVC(rbody)
+                    
                         return
                     }
                     
                     if(o?["data"]["info"].arrayValue.count > 0)
                     {
-                        DataCache.Share().userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
+                        DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
                         
-                        DataCache.Share().userModel.save()
+                        DataCache.Share.userModel.save()
                         
                         if(self?.block != nil)
                         {
@@ -302,40 +310,6 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
         
         
     }
-    
-    func doRegist(body:String)
-    {
-        let url=APPURL+"Public/Found/?service=User.openRegister"
-        XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
-            
-            if(o?["data"]["info"].arrayValue.count > 0)
-            {
-                DataCache.Share().userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
-                
-                DataCache.Share().userModel.save()
-                
-                if(self.block != nil)
-                {
-                    self.block!("loginSuccess")
-                }
-                
-                NoticeWord.LoginSuccess.rawValue.postNotice()
-                
-                self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                    
-                    
-                })
-
-            }
-            else
-            {
-                ShowMessage("登录失败")
-            }
-            
-        }
-    }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -21,7 +21,7 @@ class FrientVC: XViewController ,UITableViewDelegate,UITableViewDataSource,commo
         {
             didSet
             {
-                httpHandle.url=APPURL+"Public/Found/?service=Quan.getListAll&page=[page]&perNumber=20&uid="+DataCache.Share().userModel.uid+"&xiaoquid="+xiaoquid
+                httpHandle.url=APPURL+"Public/Found/?service=Quan.getListAll&page=[page]&perNumber=20&uid="+DataCache.Share.userModel.uid+"&xiaoquid="+xiaoquid
                 httpHandle.reSet()
                 httpHandle.handle()
             }
@@ -116,7 +116,7 @@ class FrientVC: XViewController ,UITableViewDelegate,UITableViewDataSource,commo
     {
         self.topModel.reSet()
         
-        let url=APPURL+"Public/Found/?service=Quan.getNewsTop&username="+DataCache.Share().userModel.username
+        let url=APPURL+"Public/Found/?service=Quan.getNewsTop&username="+DataCache.Share.userModel.username
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             
@@ -204,7 +204,7 @@ class FrientVC: XViewController ,UITableViewDelegate,UITableViewDataSource,commo
             }
         }
         
-        httpHandle.url=APPURL+"Public/Found/?service=Quan.getListAll&page=[page]&perNumber=10&uid="+DataCache.Share().userModel.uid+"&xiaoquid="+xiaoquid
+        httpHandle.url=APPURL+"Public/Found/?service=Quan.getListAll&page=[page]&perNumber=10&uid="+DataCache.Share.userModel.uid+"&xiaoquid="+xiaoquid
         httpHandle.autoReload = false
         httpHandle.pageSize = 10
         httpHandle.pageStr="[page]"
@@ -534,7 +534,7 @@ class FrientVC: XViewController ,UITableViewDelegate,UITableViewDataSource,commo
             let id = o!["id"] as! String
             let i = o!["index"] as! Int
             
-            let url=APPURL+"Public/Found/?service=Quan.getArticle&id=\(id)&uid="+DataCache.Share().userModel.uid
+            let url=APPURL+"Public/Found/?service=Quan.getArticle&id=\(id)&uid="+DataCache.Share.userModel.uid
             
             XHttpPool.requestJson(url, body: nil, method: .GET) {[weak self] (o) -> Void in
                 if(self == nil)
@@ -563,7 +563,7 @@ class FrientVC: XViewController ,UITableViewDelegate,UITableViewDataSource,commo
         {
             let cell = o as! FrientQCell
             
-            let url=APPURL+"Public/Found/?service=Quan.getArticle&id=\(cell.model.id)&uid="+DataCache.Share().userModel.uid
+            let url=APPURL+"Public/Found/?service=Quan.getArticle&id=\(cell.model.id)&uid="+DataCache.Share.userModel.uid
             
             XHttpPool.requestJson(url, body: nil, method: .GET) {[weak self] (o) -> Void in
                 if(self == nil)

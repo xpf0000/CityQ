@@ -23,7 +23,7 @@ class PropertyPhoneVC: UIViewController {
         
         table.registerNib("PropertyPhoneCell".Nib, forCellReuseIdentifier: "PropertyPhoneCell")
         
-        table.httpHandle.url = APPURL+"Public/Found/?service=Wuye.getTelList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&houseid=\(DataCache.Share().userModel.house.houseid)"
+        table.httpHandle.url = APPURL+"Public/Found/?service=Wuye.getTelList&uid=\(DataCache.Share.userModel.uid)&username=\(DataCache.Share.userModel.username)&houseid=\(DataCache.Share.userModel.house.houseid)"
         
         self.table.httpHandle.pageStr = "[page]"
         self.table.httpHandle.keys = ["data","info"]

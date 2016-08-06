@@ -31,7 +31,7 @@ class MyWalletVC: UIViewController {
         
         let url = APPURL + "Public/Found/?service=Hyk.getUserMoneys&username=\(Uname)&page=[page]&perNumber=20&id=\(id)"
         
-//        let url = APPURL + "Public/Found/?service=Hyk.getUserMoneys&username=\(DataCache.Share().userModel.username)&page=[page]&perNumber=20"
+//        let url = APPURL + "Public/Found/?service=Hyk.getUserMoneys&username=\(DataCache.Share.userModel.username)&page=[page]&perNumber=20"
         
         table.frame = CGRectMake(0, 0, swidth, sheight-64.0)
         

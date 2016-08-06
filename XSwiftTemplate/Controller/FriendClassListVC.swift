@@ -58,7 +58,7 @@ class FriendClassListVC: XViewController ,UITableViewDelegate,UITableViewDataSou
             }
         }
         
-        httpHandle.url=APPURL+"Public/Found/?service=Quan.getList&page=[page]&perNumber=20&category_id="+classModel.id+"&uid="+DataCache.Share().userModel.uid
+        httpHandle.url=APPURL+"Public/Found/?service=Quan.getList&page=[page]&perNumber=20&category_id="+classModel.id+"&uid="+DataCache.Share.userModel.uid
         
         httpHandle.autoReload = false
         httpHandle.pageStr="[page]"
@@ -387,7 +387,7 @@ class FriendClassListVC: XViewController ,UITableViewDelegate,UITableViewDataSou
             let id = o!["id"] as! String
             let i = o!["index"] as! Int
             
-            let url=APPURL+"Public/Found/?service=Quan.getArticle&id=\(id)&uid="+DataCache.Share().userModel.uid
+            let url=APPURL+"Public/Found/?service=Quan.getArticle&id=\(id)&uid="+DataCache.Share.userModel.uid
             
             XHttpPool.requestJson(url, body: nil, method: .GET) {[weak self] (o) -> Void in
                 if(self == nil)
@@ -416,7 +416,7 @@ class FriendClassListVC: XViewController ,UITableViewDelegate,UITableViewDataSou
         {
             let cell = o as! FrientQCell
             
-            let url=APPURL+"Public/Found/?service=Quan.getArticle&id=\(cell.model.id)&uid="+DataCache.Share().userModel.uid
+            let url=APPURL+"Public/Found/?service=Quan.getArticle&id=\(cell.model.id)&uid="+DataCache.Share.userModel.uid
             
             XHttpPool.requestJson(url, body: nil, method: .GET) {[weak self] (o) -> Void in
                 if(self == nil)

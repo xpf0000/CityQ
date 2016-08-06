@@ -42,12 +42,12 @@ class ChooseHouseVC: XViewController,UITableViewDelegate,UITableViewDataSource {
         head.layer.borderWidth = 1.8
         head.layer.masksToBounds = true
         head.placeholder = "userHeader.png".image
-        head.url = DataCache.Share().userModel.headimage
+        head.url = DataCache.Share.userModel.headimage
         
-        name.text = "业主"+DataCache.Share().userModel.nickname
-        var txt = DataCache.Share().userModel.mobile
+        name.text = "业主"+DataCache.Share.userModel.nickname
+        var txt = DataCache.Share.userModel.mobile
         
-        if(DataCache.Share().userModel.uid == "")
+        if(DataCache.Share.userModel.uid == "")
         {
             txt = "请先登录"
         }
@@ -84,7 +84,7 @@ class ChooseHouseVC: XViewController,UITableViewDelegate,UITableViewDataSource {
         table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         
-        httpHandle.url = APPURL+"Public/Found/?service=User.getHouseList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
+        httpHandle.url = APPURL+"Public/Found/?service=User.getHouseList&uid=\(DataCache.Share.userModel.uid)&username=\(DataCache.Share.userModel.username)"
         httpHandle.pageStr = "[page]"
         httpHandle.keys = ["data","info"]
         httpHandle.modelClass = MyHouseModel.self
@@ -165,7 +165,7 @@ class ChooseHouseVC: XViewController,UITableViewDelegate,UITableViewDataSource {
         
         MainDo { (o) -> Void in
             
-            DataCache.Share().userModel.house = self.httpHandle.listArr[indexPath.row] as! MyHouseModel
+            DataCache.Share.userModel.house = self.httpHandle.listArr[indexPath.row] as! MyHouseModel
             
             self.dismissViewControllerAnimated(true) { () -> Void in
                 

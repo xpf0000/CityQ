@@ -39,14 +39,14 @@ class OAAddressBookInfoVC: UITableViewController,UIActionSheetDelegate {
         var i = 0
         var has = -1
         
-        if(DataCache.Share().oaAddress.collect[DataCache.Share().oaUserModel.uid] == nil)
+        if(DataCache.Share.oaAddress.collect[DataCache.Share.oaUserModel.uid] == nil)
         {
-            DataCache.Share().oaAddress.collect[DataCache.Share().oaUserModel.uid] = []
-            DataCache.Share().oaAddress.collect[DataCache.Share().oaUserModel.uid]?.append(self.model)
+            DataCache.Share.oaAddress.collect[DataCache.Share.oaUserModel.uid] = []
+            DataCache.Share.oaAddress.collect[DataCache.Share.oaUserModel.uid]?.append(self.model)
         }
         else
         {
-            for item in DataCache.Share().oaAddress.collect[DataCache.Share().oaUserModel.uid]!
+            for item in DataCache.Share.oaAddress.collect[DataCache.Share.oaUserModel.uid]!
             {
                 if(item.id == self.model.id)
                 {
@@ -58,17 +58,17 @@ class OAAddressBookInfoVC: UITableViewController,UIActionSheetDelegate {
             
             if(has>=0)
             {
-                DataCache.Share().oaAddress.collect[DataCache.Share().oaUserModel.uid]!.removeAtIndex(has)
+                DataCache.Share.oaAddress.collect[DataCache.Share.oaUserModel.uid]!.removeAtIndex(has)
             }
             else
             {
-                DataCache.Share().oaAddress.collect[DataCache.Share().oaUserModel.uid]!.append(self.model)
+                DataCache.Share.oaAddress.collect[DataCache.Share.oaUserModel.uid]!.append(self.model)
             }
         }
         
         
         
-        DataCache.Share().oaAddress.save()
+        DataCache.Share.oaAddress.save()
         
     }
     
@@ -156,10 +156,10 @@ class OAAddressBookInfoVC: UITableViewController,UIActionSheetDelegate {
         tel.text = model.tel
         address.text = model.address
         
-        if(DataCache.Share().oaAddress.collect[DataCache.Share().oaUserModel.uid] != nil)
+        if(DataCache.Share.oaAddress.collect[DataCache.Share.oaUserModel.uid] != nil)
         {
             var has = false
-            for item in DataCache.Share().oaAddress.collect[DataCache.Share().oaUserModel.uid]!
+            for item in DataCache.Share.oaAddress.collect[DataCache.Share.oaUserModel.uid]!
             {
                 if(item.id == self.model.id)
                 {

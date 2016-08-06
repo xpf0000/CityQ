@@ -75,7 +75,7 @@ class DiscoverVC1: UITableViewController {
                 return
             }
             
-            if DataCache.Share().userModel.truename == ""
+            if DataCache.Share.userModel.truename == ""
             {
                  UIApplication.sharedApplication().keyWindow?.showAlert("请先设置你的真实姓名", block: { (o) -> Void in
                     
@@ -88,7 +88,7 @@ class DiscoverVC1: UITableViewController {
                 return
             }
             
-            if DataCache.Share().userModel.mobile == ""
+            if DataCache.Share.userModel.mobile == ""
             {
                 UIApplication.sharedApplication().keyWindow?.showAlert("请先绑定手机号", block: { (o) -> Void in
                     
@@ -103,7 +103,7 @@ class DiscoverVC1: UITableViewController {
                 return
             }
 
-            DataCache.Share().userModel.house.checkStatus(false)
+            DataCache.Share.userModel.house.checkStatus(false)
             let vc = PropertyIndexVC()
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
@@ -113,7 +113,7 @@ class DiscoverVC1: UITableViewController {
         }
         else if(indexPath.row == 4)
         {
-            if(DataCache.Share().oaUserModel.uid == "")
+            if(DataCache.Share.oaUserModel.uid == "")
             {
                 let vc:OALoginVC = OALoginVC()
                 let nv:XNavigationController = XNavigationController(rootViewController: vc)
@@ -122,7 +122,7 @@ class DiscoverVC1: UITableViewController {
                     [weak self]
                     (o)->Void in
                     
-                    if(DataCache.Share().oaUserModel.uid != "")
+                    if(DataCache.Share.oaUserModel.uid != "")
                     {
                         let vc:WorksVC = WorksVC()
                         vc.hidesBottomBarWhenPushed=true

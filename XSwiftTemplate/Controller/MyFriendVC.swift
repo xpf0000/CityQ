@@ -48,11 +48,11 @@ class MyFriendVC: XViewController,UITableViewDelegate,UITableViewDataSource {
             {
             case 0:
                 ""
-                url = APPURL+"Public/Found/?service=Quan.getUserList&uid=\(DataCache.Share().userModel.uid)&page=[page]&perNumber=20"
+                url = APPURL+"Public/Found/?service=Quan.getUserList&uid=\(DataCache.Share.userModel.uid)&page=[page]&perNumber=20"
 
             case 1:
                 ""
-                url = APPURL+"Public/Found/?service=Quan.getUserComment&uid=\(DataCache.Share().userModel.uid)&page=[page]&perNumber=20"
+                url = APPURL+"Public/Found/?service=Quan.getUserComment&uid=\(DataCache.Share.userModel.uid)&page=[page]&perNumber=20"
 
             default:
                 ""
@@ -104,7 +104,7 @@ class MyFriendVC: XViewController,UITableViewDelegate,UITableViewDataSource {
             let cell:MyPostFriendCell = tableView.cellForRowAtIndexPath(indexPath) as! MyPostFriendCell
             
             let id=cell.model.id
-            let user=DataCache.Share().userModel.username
+            let user=DataCache.Share.userModel.username
             var url=""
             if(tableView.tag == 20)
             {

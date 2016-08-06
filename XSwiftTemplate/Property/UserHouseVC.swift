@@ -20,7 +20,7 @@ class UserHouseVC: UIViewController {
 
         self.addBackButton()
     
-        let url = APPURL+"Public/Found/?service=User.getHouseList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
+        let url = APPURL+"Public/Found/?service=User.getHouseList&uid=\(DataCache.Share.userModel.uid)&username=\(DataCache.Share.userModel.username)"
         
         table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: MyHouseModel.self, CellIdentifier: "MyHouseCell")
         
@@ -45,7 +45,7 @@ class UserHouseVC: UIViewController {
                 if(self!.table.httpHandle.listArr.count == 1)
                 {
                     
-                    if(DataCache.Share().userModel.house.houseid.numberValue.intValue == 0)
+                    if(DataCache.Share.userModel.house.houseid.numberValue.intValue == 0)
                     {
                         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
                         var temp = self?.table.cellForRowAtIndexPath(indexPath) as? MyHouseCell
@@ -59,7 +59,7 @@ class UserHouseVC: UIViewController {
                         temp?.defaultClick(temp!.defaultButton)
                     }
                     
-                    DataCache.Share().userModel.house = self!.table.httpHandle.listArr[0] as! MyHouseModel
+                    DataCache.Share.userModel.house = self!.table.httpHandle.listArr[0] as! MyHouseModel
                     
                     
                 }
@@ -85,10 +85,10 @@ class UserHouseVC: UIViewController {
         
         if self.table.httpHandle.listArr.count == 0
         {
-            DataCache.Share().userModel.house = MyHouseModel()
-            DataCache.Share().userModel.houseid =  ""
-            DataCache.Share().userModel.fanghaoid =  ""
-            DataCache.Share().userModel.save()
+            DataCache.Share.userModel.house = MyHouseModel()
+            DataCache.Share.userModel.houseid =  ""
+            DataCache.Share.userModel.fanghaoid =  ""
+            DataCache.Share.userModel.save()
             self.clearnDefault()
             return
         }
@@ -96,24 +96,24 @@ class UserHouseVC: UIViewController {
         indexPath = NSIndexPath(forRow: 0, inSection: 0)
         let temp = self.table.cellForRowAtIndexPath(indexPath!) as? MyHouseCell
 
-        if DataCache.Share().userModel.house.fanghaoid == model.fanghaoid
+        if DataCache.Share.userModel.house.fanghaoid == model.fanghaoid
         {
             if temp != nil{
-                DataCache.Share().userModel.house = temp!.model
+                DataCache.Share.userModel.house = temp!.model
             }
             else{
 
-                DataCache.Share().userModel.house = MyHouseModel()
+                DataCache.Share.userModel.house = MyHouseModel()
                 
             }
             
             temp?.defaultClick(temp!.defaultButton)
         }
         
-        DataCache.Share().userModel.houseid =  DataCache.Share().userModel.house.houseid
-        DataCache.Share().userModel.fanghaoid =  DataCache.Share().userModel.house.fanghaoid
+        DataCache.Share.userModel.houseid =  DataCache.Share.userModel.house.houseid
+        DataCache.Share.userModel.fanghaoid =  DataCache.Share.userModel.house.fanghaoid
         
-        DataCache.Share().userModel.save()
+        DataCache.Share.userModel.save()
         
         
     }
@@ -121,7 +121,7 @@ class UserHouseVC: UIViewController {
     func clearnDefault()
     {
         let url=APPURL+"Public/Found/?service=User.updateHouse"
-        let body="uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&houseid=&fanghaoid="
+        let body="uid=\(DataCache.Share.userModel.uid)&username=\(DataCache.Share.userModel.username)&houseid=&fanghaoid="
         
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
             

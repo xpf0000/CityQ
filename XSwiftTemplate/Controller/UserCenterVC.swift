@@ -27,7 +27,7 @@ class UserCenterVC: UITableViewController {
     
     func toEdit() {
         
-        if(DataCache.Share().userModel.uid != "")
+        if(DataCache.Share.userModel.uid != "")
         {
             
             let vc:EditUserInfoVC = "EditUserInfoVC".VC("User") as! EditUserInfoVC
@@ -62,13 +62,13 @@ class UserCenterVC: UITableViewController {
     
     func showInfo()
     {
-        if(DataCache.Share().userModel.uid != "")
+        if(DataCache.Share.userModel.uid != "")
         {
-            self.headPic.url = DataCache.Share().userModel.headimage
-            self.userName.text = DataCache.Share().userModel.mobile
-            self.nickName.text = DataCache.Share().userModel.nickname
+            self.headPic.url = DataCache.Share.userModel.headimage
+            self.userName.text = DataCache.Share.userModel.mobile
+            self.nickName.text = DataCache.Share.userModel.nickname
             
-            if(DataCache.Share().userModel.mobile == "")
+            if(DataCache.Share.userModel.mobile == "")
             {
                 self.userName.text = "尚未绑定手机号"
                 self.pass.text = "绑定手机号"
@@ -230,7 +230,7 @@ class UserCenterVC: UITableViewController {
 
         case 7:
             
-            if(DataCache.Share().userModel.mobile == "")
+            if(DataCache.Share.userModel.mobile == "")
             {
                 let vc = "AuthBandPhoneVC".VC("User")
                 

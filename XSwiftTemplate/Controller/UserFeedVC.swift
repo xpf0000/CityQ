@@ -34,7 +34,7 @@ class UserFeedVC: UIViewController {
         
         sender.enabled = false
         
-        let url=APPURL+"Public/Found/?service=User.feedAdd&user="+DataCache.Share().userModel.username+"&content="+self.textView.text.trim()
+        let url=APPURL+"Public/Found/?service=User.feedAdd&user="+DataCache.Share.userModel.username+"&content="+self.textView.text.trim()
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { (o) -> Void in
             

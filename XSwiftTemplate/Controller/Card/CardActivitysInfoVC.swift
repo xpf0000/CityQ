@@ -159,7 +159,7 @@ class CardActivitysInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelega
     
     @IBAction func collect(sender: AnyObject) {
         
-        let url=APPURL+"Public/Found/?service=Discount.collectAdd&did="+model.id+"&username="+DataCache.Share().userModel.username
+        let url=APPURL+"Public/Found/?service=Discount.collectAdd&did="+model.id+"&username="+DataCache.Share.userModel.username
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { (o) -> Void in
             

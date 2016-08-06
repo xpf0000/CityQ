@@ -23,7 +23,7 @@ class OAFileModel: Reflect {
     {
         return arr.filter{ item in
             
-            return item.open || item.uid==DataCache.Share().oaUserModel.uid
+            return item.open || item.uid==DataCache.Share.oaUserModel.uid
             
         }
     }

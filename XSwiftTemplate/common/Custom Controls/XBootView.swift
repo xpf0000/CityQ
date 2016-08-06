@@ -64,11 +64,11 @@ class XBootView: UIView,UIScrollViewDelegate {
                 self.page.currentPage = nowIndex
             }
             
-            if(x > swidth * CGFloat(DataCache.Share().welcom.info.count-1))
+            if(x > swidth * CGFloat(DataCache.Share.welcom.info.count-1))
             {
                 self.scrollView.removeObserver(self, forKeyPath: "contentOffset")
                 
-                DataCache.Share().welcom.reSet()
+                DataCache.Share.welcom.reSet()
                 self.block?(true)
                 self.block=nil
                 self.removeFromSuperview()
@@ -82,12 +82,12 @@ class XBootView: UIView,UIScrollViewDelegate {
     {
         self.scrollView.addObserver(self, forKeyPath: "contentOffset", options: .New, context: nil)
         
-        self.contentW.constant = swidth * CGFloat(DataCache.Share().welcom.info.count)
-        self.page.numberOfPages = DataCache.Share().welcom.info.count
+        self.contentW.constant = swidth * CGFloat(DataCache.Share.welcom.info.count)
+        self.page.numberOfPages = DataCache.Share.welcom.info.count
         self.page.currentPage = 0
         
         var i:CGFloat=0
-        for item in DataCache.Share().welcom.info
+        for item in DataCache.Share.welcom.info
         {
             let imageView:UIImageView = UIImageView()
             imageView.image = item.image

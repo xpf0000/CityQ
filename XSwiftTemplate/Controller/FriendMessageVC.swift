@@ -22,7 +22,7 @@ class FriendMessageVC: UITableViewController {
     {
         showMore = true
         httpHandle.reSet()
-        httpHandle.url=APPURL+"Public/Found/?service=Quan.getNewsMore&username="+DataCache.Share().userModel.username+"&page=[page]&perNumber=20"
+        httpHandle.url=APPURL+"Public/Found/?service=Quan.getNewsMore&username="+DataCache.Share.userModel.username+"&page=[page]&perNumber=20"
         
         self.table.setFooterRefresh { () -> Void in
             
@@ -48,7 +48,7 @@ class FriendMessageVC: UITableViewController {
         
         self.table.registerNib("FriendMessageCell".Nib, forCellReuseIdentifier: "FriendMessageCell")
         
-        httpHandle.url=APPURL+"Public/Found/?service=Quan.getNews&username="+DataCache.Share().userModel.username
+        httpHandle.url=APPURL+"Public/Found/?service=Quan.getNews&username="+DataCache.Share.userModel.username
         httpHandle.pageStr="[page]"
         httpHandle.scrollView=self.table
         httpHandle.replace=nil

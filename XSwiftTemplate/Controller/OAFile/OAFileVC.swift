@@ -47,7 +47,7 @@ class OAFileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISea
     
     func http()
     {
-        let url="http://101.201.169.38/apioa/Public/OA/?service=Files.getList&uid="+DataCache.Share().oaUserModel.uid+"&username="+DataCache.Share().oaUserModel.username
+        let url="http://101.201.169.38/apioa/Public/OA/?service=Files.getList&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
         
         XHttpPool.requestJson(url, body: nil, method: .POST) {[weak self] (o) -> Void in
             
@@ -71,7 +71,7 @@ class OAFileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISea
         
         
         
-        let url1="http://101.201.169.38/apioa/Public/OA/?service=Files.getUserList&uid="+DataCache.Share().oaUserModel.uid+"&username="+DataCache.Share().oaUserModel.username
+        let url1="http://101.201.169.38/apioa/Public/OA/?service=Files.getUserList&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
         
         XHttpPool.requestJson(url1, body: nil, method: .POST) {[weak self] (o) -> Void in
             
@@ -81,7 +81,7 @@ class OAFileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISea
                 {
                     let model:OAFileModel = OAFileModel.parse(json: item, replace: nil)
                     model.open = false
-                    model.uid = DataCache.Share().oaUserModel.uid
+                    model.uid = DataCache.Share.oaUserModel.uid
                     self?.privateArr.append(model)
                 }
                 
@@ -180,7 +180,7 @@ class OAFileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISea
         }
         else if(type==2)
         {
-            return DataCache.Share().oaFile.userArr().count
+            return DataCache.Share.oaFile.userArr().count
         }
         
         return 0
@@ -211,7 +211,7 @@ class OAFileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISea
         }
         else if(type==2)
         {
-            user = DataCache.Share().oaFile.userArr()[indexPath.row]
+            user = DataCache.Share.oaFile.userArr()[indexPath.row]
         }
         
         let img = UIImageView()
@@ -276,7 +276,7 @@ class OAFileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISea
             }
             else if(type==2)
             {
-                user = DataCache.Share().oaFile.userArr()[indexPath.row]
+                user = DataCache.Share.oaFile.userArr()[indexPath.row]
             }
             
             let vc:OAFileInfoVC = OAFileInfoVC()
@@ -306,9 +306,9 @@ class OAFileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISea
         if(editingStyle==UITableViewCellEditingStyle.Delete)
         {
             
-            let model:OAFileModel=DataCache.Share().oaFile.userArr()[indexPath.row]
+            let model:OAFileModel=DataCache.Share.oaFile.userArr()[indexPath.row]
 
-            DataCache.Share().oaFile.del(model)
+            DataCache.Share.oaFile.del(model)
 
             table.reloadData()
             

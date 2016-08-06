@@ -37,16 +37,7 @@ class DataCache: NSObject {
     
     lazy var jigouViewRecord:UserViewRecordModel = UserViewRecordModel()
     
-    class func Share() ->DataCache! {
-        struct Once {
-            static var token:dispatch_once_t = 0
-            static var dataCenterObj:DataCache! = nil
-        }
-        dispatch_once(&Once.token, {
-            Once.dataCenterObj = DataCache()
-        })
-        return Once.dataCenterObj
-    }
+    static let Share = DataCache()
     
     private override init() {
         super.init()
@@ -148,7 +139,7 @@ class DataCache: NSObject {
                     self.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
                     self.userModel.password = p
                     self.userModel.house = h
-                    DataCache.Share().userModel.save()
+                    DataCache.Share.userModel.save()
                     NoticeWord.UpdateUserSuccess.rawValue.postNotice()
                 }
                 

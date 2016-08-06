@@ -84,7 +84,7 @@ class FrientQCell: UITableViewCell {
     
     func delSelfComment(cmodel:FriendCommentModel) {
         
-        let delU=APPURL+"Public/Found/?service=Quan.commentDel&id="+cmodel.id+"&username="+DataCache.Share().userModel.username
+        let delU=APPURL+"Public/Found/?service=Quan.commentDel&id="+cmodel.id+"&username="+DataCache.Share.userModel.username
         
         XHttpPool.requestJson(delU, body: nil, method: .POST, block: {[weak self] (o) -> Void in
             
@@ -141,7 +141,7 @@ class FrientQCell: UITableViewCell {
                     return
                 }
                 
-                if(cmodel.uid == DataCache.Share().userModel.uid)
+                if(cmodel.uid == DataCache.Share.userModel.uid)
                 {
                     self!.viewController!.navigationController?.view.window?.addSubview(XDeleteAlert.Share())
                     
@@ -182,7 +182,7 @@ class FrientQCell: UITableViewCell {
                 view.show {[weak self] (txt) -> Void in
                     
                     let url=APPURL+"Public/Found/?service=Quan.addComment"
-                    let body="did="+self!.model.id+"&username="+DataCache.Share().userModel.username+"&content="+(txt as! String)+"&tuid="+cmodel.uid+"&dpic="+self!.model.picList[0].url+"&type=1"
+                    let body="did="+self!.model.id+"&username="+DataCache.Share.userModel.username+"&content="+(txt as! String)+"&tuid="+cmodel.uid+"&dpic="+self!.model.picList[0].url+"&type=1"
                     
                     XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
                         
@@ -447,7 +447,7 @@ class FrientQCell: UITableViewCell {
         view.show { (txt) -> Void in
             
             let url=APPURL+"Public/Found/?service=Quan.addComment"
-            let body="did="+self.model.id+"&username="+DataCache.Share().userModel.username+"&content="+(txt as! String)+"&tuid="+self.model.uid+"&dpic="+self.model.picList[0].url+"&type=0"
+            let body="did="+self.model.id+"&username="+DataCache.Share.userModel.username+"&content="+(txt as! String)+"&tuid="+self.model.uid+"&dpic="+self.model.picList[0].url+"&type=0"
             
             XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
                 
@@ -484,7 +484,7 @@ class FrientQCell: UITableViewCell {
         }
         
         let url=APPURL+"Public/Found/?service=Quan.addZan"
-        let body="did="+self.model.id+"&username="+DataCache.Share().userModel.username+"&tuid="+self.model.uid+"&dpic="+self.model.picList[0].url
+        let body="did="+self.model.id+"&username="+DataCache.Share.userModel.username+"&tuid="+self.model.uid+"&dpic="+self.model.picList[0].url
         
         XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
             

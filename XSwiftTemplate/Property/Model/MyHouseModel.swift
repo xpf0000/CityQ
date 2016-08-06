@@ -32,7 +32,7 @@ class MyHouseModel: Reflect {
         
         if status == 1 {return true}
         
-        let url = APPURL+"Public/Found/?service=wuye.getshenhe&fanghaoid=\(fanghaoid)&uid=\(DataCache.Share().userModel.uid)"
+        let url = APPURL+"Public/Found/?service=wuye.getshenhe&fanghaoid=\(fanghaoid)&uid=\(DataCache.Share.userModel.uid)"
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             

@@ -52,7 +52,7 @@ class OADocVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISear
     func http()
     {
         let url="http://101.201.169.38/apioa/Public/OA/?service=Document.getList"
-        let body="dwid="+DataCache.Share().oaUserModel.dwid+"&bmid="+DataCache.Share().oaUserModel.bmid+"&uid="+DataCache.Share().oaUserModel.uid+"&username="+DataCache.Share().oaUserModel.username
+        let body="dwid="+DataCache.Share.oaUserModel.dwid+"&bmid="+DataCache.Share.oaUserModel.bmid+"&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
 
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in
 
@@ -76,18 +76,18 @@ class OADocVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISear
                         let model:OADocModel = OADocModel.parse(json: item, replace: nil)
                         
                         
-                        if(DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid] == nil)
+                        if(DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid] == nil)
                         {
-                            DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid]=[]
+                            DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid]=[]
                         }
                         
                         list.append(model)
                         
                     }
                     
-                    DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid]! = list+DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid]!
+                    DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid]! = list+DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid]!
                     
-                    DataCache.Share().oaDoc.save()
+                    DataCache.Share.oaDoc.save()
                 }
                 
 //                if(self?.canAdd == 0)
@@ -192,12 +192,12 @@ class OADocVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISear
             return self.searchArr.count
         }
         
-        if(DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid] == nil)
+        if(DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid] == nil)
         {
             return 0
         }
         
-        return DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid]!.count
+        return DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid]!.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -223,7 +223,7 @@ class OADocVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISear
         }
         else
         {
-            model=DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid]![indexPath.row]
+            model=DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid]![indexPath.row]
         }
         
         
@@ -270,7 +270,7 @@ class OADocVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISear
         }
         else
         {
-            model=DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid]![indexPath.row]
+            model=DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid]![indexPath.row]
         }
         
         let infoVC=OADocInfoVC()
@@ -292,10 +292,10 @@ class OADocVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISear
             if(self.searchIng)
             {
                 let model = self.searchArr[indexPath.row]
-                let index = DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid]!.indexOf(model)
+                let index = DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid]!.indexOf(model)
                 if(index != nil)
                 {
-                    DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid]!.removeAtIndex(index!)
+                    DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid]!.removeAtIndex(index!)
                 }
                 self.searchArr.removeAtIndex(indexPath.row)
                 table.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
@@ -303,8 +303,8 @@ class OADocVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISear
             }
             else
             {
-                DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid]!.removeAtIndex(indexPath.row)
-                DataCache.Share().oaDoc.save()
+                DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid]!.removeAtIndex(indexPath.row)
+                DataCache.Share.oaDoc.save()
                 table.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
             }
             
@@ -321,9 +321,9 @@ class OADocVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISear
             self.searchArr.removeAll(keepCapacity: false)
             self.searchIng = true
             
-            if(DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid] != nil)
+            if(DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid] != nil)
             {
-                for item in DataCache.Share().oaDoc.arr[DataCache.Share().oaUserModel.uid]!
+                for item in DataCache.Share.oaDoc.arr[DataCache.Share.oaUserModel.uid]!
                 {
                     let time=NSDate(timeIntervalSince1970: NSTimeInterval(item.create_time)!).str
                     

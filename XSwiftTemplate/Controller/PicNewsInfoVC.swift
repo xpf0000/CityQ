@@ -58,7 +58,7 @@ class PicNewsInfoVC: XViewController,UIScrollViewDelegate,UITextViewDelegate {
             self?.cacheComment = txt as! String
             
             let url = APPURL+"Public/Found/?service=Comment.insert"
-            let body="did=\(self!.model.id)&username="+DataCache.Share().userModel.username+"&content="+self!.cacheComment
+            let body="did=\(self!.model.id)&username="+DataCache.Share.userModel.username+"&content="+self!.cacheComment
             
             XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
                 

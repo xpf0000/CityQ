@@ -23,7 +23,7 @@ extension UIViewController{
     
     func checkIsLogin()->Bool
     {
-        if(DataCache.Share().userModel.uid == "")
+        if(DataCache.Share.userModel.uid == "")
         {
             if(self is XViewController)
             {

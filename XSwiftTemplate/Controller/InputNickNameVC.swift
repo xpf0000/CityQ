@@ -1,5 +1,5 @@
 //
-//  ChangePassVC.swift
+//  InputNickNameVC.swift
 //  chengshi
 //
 //  Created by X on 15/12/1.
@@ -8,15 +8,11 @@
 
 import UIKit
 
-class ChangePassVC: UITableViewController {
+class InputNickNameVC: UITableViewController {
     
     @IBOutlet var table: UITableView!
     
     @IBOutlet var pass: UITextField!
-    
-    @IBOutlet var pass1: UITextField!
-    
-    @IBOutlet var pass2: UITextField!
     
     @IBOutlet var button: UIButton!
     
@@ -24,73 +20,85 @@ class ChangePassVC: UITableViewController {
     
     @IBOutlet var hideView: UIView!
     
+    var body = ""
+    
     @IBAction func submit(sender: UIButton) {
-
+        
         self.view.endEditing(true)
-        
-        if pass2.text!.trim() != pass1.text!.trim()
+
+        if(!pass.checkNull())
         {
-            ShowMessage("新密码和确认密码不一致!")
             return
         }
         
-        let old = self.pass.text!.trim()
-        let new = self.pass1.text!.trim()
-        
-        if old == new
+        if(!pass.checkLength(2, max: 15))
         {
-            ShowMessage("新密码和旧密码一样!")
+            UIApplication.sharedApplication().keyWindow?.showAlert("昵称为2-15位", block: nil)
+            
             return
         }
+
+        
+        let nick = self.pass.text!.trim()
+        
+        self.body += "&nickname="+nick
         
         sender.enabled = false
         sender.titleLabel?.alpha = 0.0
         waitActiv.hidden = false
         waitActiv.startAnimating()
         
+        doRegist()
         
-        
-        let url=APPURL+"Public/Found/?service=User.updatePass2"
-        let body="mobile="+DataCache.Share.userModel.mobile+"&newpass="+new+"&oldpass="+old
-        let msg="密码修改成功"
-        
+    }
+    
+    func doRegist()
+    {
+        let url=APPURL+"Public/Found/?service=User.openRegister"
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
             
-            if(o?["data"].dictionaryValue.count > 0)
+            if let code = o?["data"]["code"].int
             {
-                if(o!["data"]["code"].intValue == 0)
+                if code == 0
                 {
-                    self.navigationController?.view.showAlert(msg, block: { (o) -> Void in
-                        
-                        self.navigationController?.popToRootViewControllerAnimated(true)
+                    DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
+                    
+                    DataCache.Share.userModel.save()
+                    
+                    NoticeWord.LoginSuccess.rawValue.postNotice()
+                    
+                    self.navigationController?.popToRootViewControllerAnimated(false)
+                    self.dismissViewControllerAnimated(true, completion: { () -> Void in
                         
                     })
                     
                     return
+
                 }
                 else
                 {
-                    self.navigationController?.view.showAlert(o!["data"]["msg"].stringValue, block: nil)
-                    self.reSetButton()
-                    return
+                    ShowMessage(o!["data"]["msg"].stringValue)
                 }
+                
             }
             else
             {
-                self.reSetButton()
-                self.navigationController?.view.showAlert("修改失败", block: nil)
+                ShowMessage("注册失败")
             }
             
+            self.reSetButton()
+            
         }
-        
     }
+
     
     func reSetButton()
     {
         self.waitActiv.hidden = true
+        self.waitActiv.stopAnimating()
         button.titleLabel?.alpha = 1.0
         
-        if(!self.pass.checkLength(6, max: 15) || !self.pass1.checkLength(6, max: 15) || !self.pass2.checkLength(6, max: 15))
+        if(!self.pass.checkLength(2, max: 15) )
         {
             if(self.waitActiv.hidden)
             {

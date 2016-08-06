@@ -36,7 +36,7 @@ class OADocInfoVC: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     func getContent()
     {
-        let url="http://101.201.169.38/apioa/Public/OA/?service=Document.getArticle&id=\(info.id)&uid=\(DataCache.Share().oaUserModel.uid)&username=\(DataCache.Share().oaUserModel.username)"
+        let url="http://101.201.169.38/apioa/Public/OA/?service=Document.getArticle&id=\(info.id)&uid=\(DataCache.Share.oaUserModel.uid)&username=\(DataCache.Share.oaUserModel.username)"
         
         
         XHttpPool.requestJson(url, body: nil, method: .GET) {[weak self] (o) -> Void in

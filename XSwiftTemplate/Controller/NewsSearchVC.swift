@@ -212,9 +212,9 @@ class NewsSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate,UIT
         
         if cell is NewsListCell
         {
-            if(!DataCache.Share().newsViewedModel.has(vc.model.id))
+            if(!DataCache.Share.newsViewedModel.has(vc.model.id))
             {
-                DataCache.Share().newsViewedModel.add(vc.model.id)
+                DataCache.Share.newsViewedModel.add(vc.model.id)
                 
                 (cell as! NewsListCell).setHasSee()
                 

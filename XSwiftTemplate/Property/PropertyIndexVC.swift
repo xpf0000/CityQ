@@ -32,7 +32,7 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
     func getMsgCount()
     {
         
-        let url = APPURL+"Public/Found/?service=Wuye.getUserNewsCount&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
+        let url = APPURL+"Public/Found/?service=Wuye.getUserNewsCount&uid=\(DataCache.Share.userModel.uid)&username=\(DataCache.Share.userModel.username)"
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](o) -> Void in
            
@@ -237,7 +237,7 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
         case 1:
             ""
             if !self.checkDefaultHouse(){return}
-            if !DataCache.Share().userModel.house.checkStatus(true){return}
+            if !DataCache.Share.userModel.house.checkStatus(true){return}
             
             vc = PropertyNoticVC()
             
@@ -246,7 +246,7 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
             ""
             
             if !self.checkDefaultHouse(){return}
-            if !DataCache.Share().userModel.house.checkStatus(true){return}
+            if !DataCache.Share.userModel.house.checkStatus(true){return}
             
             vc = "PropertyPaymentVC".VC("Wuye")
             
@@ -255,14 +255,14 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
             ""
             
             if !self.checkDefaultHouse(){return}
-            if !DataCache.Share().userModel.house.checkStatus(true){return}
+            if !DataCache.Share.userModel.house.checkStatus(true){return}
             
             vc = PropertyPhotoVC()
             
 //        case 4:
 //            ""
 //            if !self.checkDefaultHouse(){return}
-//            if !DataCache.Share().userModel.house.checkStatus(true){return}
+//            if !DataCache.Share.userModel.house.checkStatus(true){return}
 //            
 //            vc = PropertyMsgVC()
 //            
@@ -272,17 +272,17 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
         case 4:
             ""
             if !self.checkDefaultHouse(){return}
-            if !DataCache.Share().userModel.house.checkStatus(true){return}
+            if !DataCache.Share.userModel.house.checkStatus(true){return}
             
             vc = PropertyPhoneVC()
             
         case 5:
             ""
             if !self.checkDefaultHouse(){return}
-            if !DataCache.Share().userModel.house.checkStatus(true){return}
+            if !DataCache.Share.userModel.house.checkStatus(true){return}
             
             vc = "FriendHomeVC".VC
-            (vc as? FriendHomeVC)?.xiaoquid = DataCache.Share().userModel.house.houseid
+            (vc as? FriendHomeVC)?.xiaoquid = DataCache.Share.userModel.house.houseid
             
         default :
             ""
@@ -298,7 +298,7 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
     
     func checkDefaultHouse()->Bool
     {
-        if(DataCache.Share().userModel.house.houseid.numberValue.intValue == 0)
+        if(DataCache.Share.userModel.house.houseid.numberValue.intValue == 0)
         {
             let vc = "UserHouseVC".VC("Wuye")
             self.navigationController?.pushViewController(vc, animated: true)
@@ -315,7 +315,7 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.title = DataCache.Share().userModel.house.xiaoqu
+        self.title = DataCache.Share.userModel.house.xiaoqu
         self.title = (self.title == nil || self.title == "") ? "尚未绑定房屋" : self.title
         
         (self.navigationController as? XNavigationController)?.setRecognizer()

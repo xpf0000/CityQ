@@ -23,7 +23,7 @@ class PropertyMsgVC: UIViewController {
         
         table.registerNib("PropertyMsgCell".Nib, forCellReuseIdentifier: "PropertyMsgCell")
         
-        table.httpHandle.url = APPURL+"Public/Found/?service=Wuye.getUserNewsList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
+        table.httpHandle.url = APPURL+"Public/Found/?service=Wuye.getUserNewsList&uid=\(DataCache.Share.userModel.uid)&username=\(DataCache.Share.userModel.username)"
         
         self.table.httpHandle.pageStr = "[page]"
         self.table.httpHandle.keys = ["data","info"]

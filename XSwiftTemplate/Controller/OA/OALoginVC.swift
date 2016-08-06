@@ -205,9 +205,9 @@ class OALoginVC: UIViewController,UITextFieldDelegate{
         
             if(o?["data"]["info"].arrayValue.count>0 && o?["data"]["code"].intValue == 0)
             {
-                DataCache.Share().oaUserModel = OAUserModel.parse(json: o!["data"]["info"][0], replace: nil)
-                DataCache.Share().oaUserModel.pass = p
-                DataCache.Share().oaUserModel.save()
+                DataCache.Share.oaUserModel = OAUserModel.parse(json: o!["data"]["info"][0], replace: nil)
+                DataCache.Share.oaUserModel.pass = p
+                DataCache.Share.oaUserModel.save()
                 
                 SetUMessageTag()
                 

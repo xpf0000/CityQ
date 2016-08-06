@@ -75,7 +75,7 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     func http()
     {
         table.httpHandle.reSet()
-        table.httpHandle.url = APPURL+"Public/Found/?service=Hyk.getUserList&category_id="+category_id+"&typeid="+typeid+"&page=[page]&perNumber=20&username=\(DataCache.Share().userModel.username)"
+        table.httpHandle.url = APPURL+"Public/Found/?service=Hyk.getUserList&category_id="+category_id+"&typeid="+typeid+"&page=[page]&perNumber=20&username=\(DataCache.Share.userModel.username)"
         table.httpHandle.handle()
     }
     
@@ -196,7 +196,7 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     
     func getCardCategory()
     {
-        if DataCache.Share().cardCategory.count > 0
+        if DataCache.Share.cardCategory.count > 0
         {
             self.setLeft()
             return
@@ -212,7 +212,7 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
                     
                     let model = CategoryModel.parse(json: item, replace: nil)
                     
-                    DataCache.Share().cardCategory.append(model)
+                    DataCache.Share.cardCategory.append(model)
                 }
                 
                 self?.setLeft()
@@ -225,7 +225,7 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         var arr:[ReactionMenuItemModel] = []
         
         var i = 0
-        for item in DataCache.Share().cardCategory
+        for item in DataCache.Share.cardCategory
         {
             let model = ReactionMenuItemModel()
             model.id = item.id.numberValue.integerValue

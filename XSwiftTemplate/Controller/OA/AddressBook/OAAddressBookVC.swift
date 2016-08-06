@@ -42,7 +42,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
     func http()
     {
         let url="http://101.201.169.38/apioa/Public/OA/?service=Tel.getList"
-        let body="dwid="+DataCache.Share().oaUserModel.dwid+"&uid="+DataCache.Share().oaUserModel.uid+"&username="+DataCache.Share().oaUserModel.username
+        let body="dwid="+DataCache.Share.oaUserModel.dwid+"&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
         
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in
             
@@ -77,7 +77,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
         
         
         let url1="http://101.201.169.38/apioa/Public/OA/?service=Tel.getListBybm"
-        let body1="dwid="+DataCache.Share().oaUserModel.dwid+"&uid="+DataCache.Share().oaUserModel.uid+"&username="+DataCache.Share().oaUserModel.username
+        let body1="dwid="+DataCache.Share.oaUserModel.dwid+"&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
         
         XHttpPool.requestJson(url1, body: body1, method: .POST) {[weak self] (o) -> Void in
             
@@ -369,11 +369,11 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
         }
         else if(type==2)
         {
-            if(DataCache.Share().oaAddress.collect[DataCache.Share().oaUserModel.uid] == nil)
+            if(DataCache.Share.oaAddress.collect[DataCache.Share.oaUserModel.uid] == nil)
             {
                 return 0
             }
-            return DataCache.Share().oaAddress.collect[DataCache.Share().oaUserModel.uid]!.count
+            return DataCache.Share.oaAddress.collect[DataCache.Share.oaUserModel.uid]!.count
         }
         else if(type==3)
         {
@@ -422,7 +422,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
         }
         else if(type==2)
         {
-            user = DataCache.Share().oaAddress.collect[DataCache.Share().oaUserModel.uid]![indexPath.row]
+            user = DataCache.Share.oaAddress.collect[DataCache.Share.oaUserModel.uid]![indexPath.row]
         }
         else if(type==3)
         {
@@ -481,7 +481,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
         }
         else if(type==2)
         {
-            user = DataCache.Share().oaAddress.collect[DataCache.Share().oaUserModel.uid]![indexPath.row]
+            user = DataCache.Share.oaAddress.collect[DataCache.Share.oaUserModel.uid]![indexPath.row]
         }
         else if(type==3)
         {

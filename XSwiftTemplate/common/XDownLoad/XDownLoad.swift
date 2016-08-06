@@ -434,8 +434,8 @@ class XDownLoad: Reflect {
         {
             if let o:OAFileModel = self.customObj as? OAFileModel
             {
-                DataCache.Share().oaFile.arr.append(o)
-                DataCache.Share().oaFile.save()
+                DataCache.Share.oaFile.arr.append(o)
+                DataCache.Share.oaFile.save()
             }
             
             customObj=nil

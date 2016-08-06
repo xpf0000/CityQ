@@ -30,7 +30,7 @@ class NewsListCell: UITableViewCell {
     
     func setHasSee()
     {
-        if(DataCache.Share().newsViewedModel.has(model.id))
+        if(DataCache.Share.newsViewedModel.has(model.id))
         {
             ntitle.textColor = UIColor(red: 142.0/255.0, green: 142.0/255.0, blue: 142.0/255.0, alpha: 1.0)
         }

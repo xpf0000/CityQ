@@ -22,7 +22,7 @@ class WorksVC: UIViewController,UICollectionViewDataSource,UICollectionViewDeleg
     
     func http()
     {
-        let url="http://101.201.169.38/apioa/Public/OA/?service=user.getncount&jgid="+DataCache.Share().oaUserModel.jgid+"&dwid="+DataCache.Share().oaUserModel.dwid+"&bmid="+DataCache.Share().oaUserModel.bmid+"&username="+DataCache.Share().oaUserModel.username+"&uid="+DataCache.Share().oaUserModel.uid
+        let url="http://101.201.169.38/apioa/Public/OA/?service=user.getncount&jgid="+DataCache.Share.oaUserModel.jgid+"&dwid="+DataCache.Share.oaUserModel.dwid+"&bmid="+DataCache.Share.oaUserModel.bmid+"&username="+DataCache.Share.oaUserModel.username+"&uid="+DataCache.Share.oaUserModel.uid
 
         XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](o) -> Void in
 
@@ -223,7 +223,7 @@ class WorksVC: UIViewController,UICollectionViewDataSource,UICollectionViewDeleg
         
         if(keyPath == "headerPic")
         {
-            //headImg?.requestURL=DataCache.Share().userInfo.headerPic
+            //headImg?.requestURL=DataCache.Share.userInfo.headerPic
             //headImg?.refreshImage()
         }
         
@@ -237,7 +237,7 @@ class WorksVC: UIViewController,UICollectionViewDataSource,UICollectionViewDeleg
     
     deinit
     {
-        //DataCache.Share().userInfo.removeObserver(self, forKeyPath: "headerPic")
+        //DataCache.Share.userInfo.removeObserver(self, forKeyPath: "headerPic")
     }
     
     override func didReceiveMemoryWarning() {

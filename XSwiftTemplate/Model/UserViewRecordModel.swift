@@ -18,7 +18,7 @@ class UserViewRecordModel: Reflect {
     func add(id:String)
     {
         let model = UserViewRecordModel()
-        model.uid = DataCache.Share().userModel.uid
+        model.uid = DataCache.Share.userModel.uid
         model.id = id
         self.arr.append(model)
         self.save()
@@ -28,7 +28,7 @@ class UserViewRecordModel: Reflect {
     {
         for item in self.arr
         {
-            if item.id == id && item.uid == DataCache.Share().userModel.uid
+            if item.id == id && item.uid == DataCache.Share.userModel.uid
             {
                 return true
             }

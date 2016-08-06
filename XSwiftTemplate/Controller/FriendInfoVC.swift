@@ -88,7 +88,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
     
     func http()
     {
-        let url=APPURL+"Public/Found/?service=Quan.getArticle&id=\(fmodel.id)&uid="+DataCache.Share().userModel.uid
+        let url=APPURL+"Public/Found/?service=Quan.getArticle&id=\(fmodel.id)&uid="+DataCache.Share.userModel.uid
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
             if(o?["data"].dictionaryValue.count > 0)
@@ -268,7 +268,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
             return
         }
 
-        if(m.uid == DataCache.Share().userModel.uid)
+        if(m.uid == DataCache.Share.userModel.uid)
         {
             self.navigationController?.view.window?.addSubview(XDeleteAlert.Share())
             
@@ -277,7 +277,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
                     [weak self]
                     (o)->Void in
                     
-                    let delU=APPURL+"Public/Found/?service=Quan.commentDel&id="+m.id+"&username="+DataCache.Share().userModel.username
+                    let delU=APPURL+"Public/Found/?service=Quan.commentDel&id="+m.id+"&username="+DataCache.Share.userModel.username
                     
                     XHttpPool.requestJson(delU, body: nil, method: .POST, block: {[weak self] (o) -> Void in
                         
@@ -329,7 +329,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
         view.show { (txt) -> Void in
             
             let url=APPURL+"Public/Found/?service=Quan.addComment"
-            let body="did="+self.fmodel.id+"&username="+DataCache.Share().userModel.username+"&content="+(txt as! String)+"&tuid="+m.uid+"&dpic="+self.fmodel.picList[0].url+"&type=1"
+            let body="did="+self.fmodel.id+"&username="+DataCache.Share.userModel.username+"&content="+(txt as! String)+"&tuid="+m.uid+"&dpic="+self.fmodel.picList[0].url+"&type=1"
             
             XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
                 
@@ -597,7 +597,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
         view.show { (txt) -> Void in
             
             let url=APPURL+"Public/Found/?service=Quan.addComment"
-            let body="did="+self.fmodel.id+"&username="+DataCache.Share().userModel.username+"&content="+(txt as! String)+"&tuid="+self.fmodel.uid+"&dpic="+self.fmodel.picList[0].url+"&type=0"
+            let body="did="+self.fmodel.id+"&username="+DataCache.Share.userModel.username+"&content="+(txt as! String)+"&tuid="+self.fmodel.uid+"&dpic="+self.fmodel.picList[0].url+"&type=0"
             
             XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
                 
@@ -636,7 +636,7 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
         self.zanIcon.bounceAnimation(0.5, delegate: nil)
         
         let url=APPURL+"Public/Found/?service=Quan.addZan"
-        let body="did="+self.fmodel.id+"&username="+DataCache.Share().userModel.username+"&tuid="+self.fmodel.uid+"&dpic="+self.fmodel.picList[0].url
+        let body="did="+self.fmodel.id+"&username="+DataCache.Share.userModel.username+"&tuid="+self.fmodel.uid+"&dpic="+self.fmodel.picList[0].url
         
         XHttpPool.requestJson(url, body: body, method: .POST, block: { [weak self](o) -> Void in
             

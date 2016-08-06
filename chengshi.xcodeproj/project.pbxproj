@@ -462,6 +462,7 @@
 		178F98471B9D6C9600B86E60 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 178F980E1B9D6C9500B86E60 /* Images.xcassets */; };
 		178F98481B9D6C9600B86E60 /* ShopsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F98101B9D6C9500B86E60 /* ShopsListModel.swift */; };
 		178F984C1B9D6C9600B86E60 /* main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 178F98151B9D6C9500B86E60 /* main.storyboard */; };
+		179DB9141D563C7E00F40A67 /* InputNickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179DB9131D563C7E00F40A67 /* InputNickNameVC.swift */; };
 		179F5E411BA40FD100F8208B /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179F5E401BA40FD100F8208B /* WeatherModel.swift */; };
 		17A433C51D211AAA00FB2876 /* CardSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A433C41D211AAA00FB2876 /* CardSearchVC.swift */; };
 		17A433C71D21255D00FB2876 /* NewsSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A433C61D21255D00FB2876 /* NewsSearchVC.swift */; };
@@ -1213,6 +1214,7 @@
 		178F980E1B9D6C9500B86E60 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		178F98101B9D6C9500B86E60 /* ShopsListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopsListModel.swift; sourceTree = "<group>"; };
 		178F98151B9D6C9500B86E60 /* main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = main.storyboard; sourceTree = "<group>"; };
+		179DB9131D563C7E00F40A67 /* InputNickNameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputNickNameVC.swift; sourceTree = "<group>"; };
 		179F5E401BA40FD100F8208B /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 		17A433C41D211AAA00FB2876 /* CardSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardSearchVC.swift; path = XSwiftTemplate/Controller/Card/CardSearchVC.swift; sourceTree = SOURCE_ROOT; };
 		17A433C61D21255D00FB2876 /* NewsSearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsSearchVC.swift; sourceTree = "<group>"; };
@@ -1611,6 +1613,7 @@
 				17A8DD3B1D0FAC6000D8B70B /* FindBackPassVC.swift */,
 				17258D1A1D1ACEAA00341C05 /* AuthBandPhoneVC.swift */,
 				17A8DD391D0FA5C500D8B70B /* ChangePassVC.swift */,
+				179DB9131D563C7E00F40A67 /* InputNickNameVC.swift */,
 				17DEAAF01C0BDFA100038B82 /* RegistVC.swift */,
 				17DEAB3B1C0C319B00038B82 /* MyCollectVC.swift */,
 				17DEAB481C0C445500038B82 /* MyFriendVC.swift */,
@@ -3777,6 +3780,7 @@
 				17F2034A1C23A516000D1B4B /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
 				177E86971D16C91200EE20CF /* Reflect+Class.swift in Sources */,
 				17269DD91C9F932900E7AC28 /* XImageDownLoader.swift in Sources */,
+				179DB9141D563C7E00F40A67 /* InputNickNameVC.swift in Sources */,
 				178186D81CE57F9B0030837A /* ConstraintAttributes.swift in Sources */,
 				17ECF9C71C07DAAD001243E4 /* AGImagePickerController+Helper.m in Sources */,
 				17E85E101BFD550C00AC0FC9 /* GoodsAnimation.swift in Sources */,

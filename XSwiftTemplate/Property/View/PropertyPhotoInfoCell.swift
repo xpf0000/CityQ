@@ -41,7 +41,7 @@ class PropertyPhotoInfoCell: UITableViewCell {
         time.text = model.create_time.replace(NSDate().toStr("yyyy")!+"-", with: "")
         label.text = ""
         leftLabel.text = ""
-        if(model.uid == DataCache.Share().userModel.uid)
+        if(model.uid == DataCache.Share.userModel.uid)
         {
             leftPic.hidden = true
             leftReplyView.hidden = true
@@ -105,7 +105,7 @@ class PropertyPhotoInfoCell: UITableViewCell {
         pic.placeholder = "tx.jpg".image
         pic.layer.cornerRadius = 3.0
         pic.layer.masksToBounds = true
-        pic.url = DataCache.Share().userModel.headimage
+        pic.url = DataCache.Share.userModel.headimage
         replyView.layer.cornerRadius = 10.0
         replyView.layer.masksToBounds = true
         

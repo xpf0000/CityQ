@@ -66,7 +66,7 @@ class ConfigVC: UITableViewController ,UIAlertViewDelegate{
         
         self.addBackButton()
         
-        logoutButton.hidden = (DataCache.Share().userModel.uid != "") ? false : true
+        logoutButton.hidden = (DataCache.Share.userModel.uid != "") ? false : true
 
         allowPutNoticy.setOn("ReceiveNotice".UserDefaultsValue() as! Bool, animated: false)
         allowPutNoticy.addTarget(self, action: #selector(noticeState(_:)), forControlEvents: UIControlEvents.ValueChanged)
@@ -161,7 +161,7 @@ class ConfigVC: UITableViewController ,UIAlertViewDelegate{
             //ShareSDK.cancelAuthWithType(ShareTypeWeixiSession)
             ShareSDK.cancelAuthWithType(ShareTypeWeixiTimeline)
             
-            DataCache.Share().userModel.reSet()
+            DataCache.Share.userModel.reSet()
             logoutButton.hidden = true
             NSUserDefaults.standardUserDefaults().removeObjectForKey("userID")
             NSUserDefaults.standardUserDefaults().removeObjectForKey("bbsID")
@@ -177,7 +177,7 @@ class ConfigVC: UITableViewController ,UIAlertViewDelegate{
         {
             XImageUtil.removeAllFile()
             self.cacheNum.text = "0.00M"
-            DataCache.Share().welcom.reSet()
+            DataCache.Share.welcom.reSet()
         }
     }
     

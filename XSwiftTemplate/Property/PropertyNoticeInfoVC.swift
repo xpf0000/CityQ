@@ -24,7 +24,7 @@ class PropertyNoticeInfoVC: XViewController {
  
         self.view.addSubview(htmlView)
         
-        self.url="http://101.201.169.38/city/wuyeNotice.html?uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&id=\(model.id)"
+        self.url="http://101.201.169.38/city/wuyeNotice.html?uid=\(DataCache.Share.userModel.uid)&username=\(DataCache.Share.userModel.username)&id=\(model.id)"
         
         htmlView.url = self.url
         htmlView.show()

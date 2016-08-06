@@ -57,7 +57,7 @@ class PropertyPhotoInfoVC: UIViewController,UITextFieldDelegate {
             
             let url = APPURL+"Public/Found/?service=Wuye.addFeedBack"
             
-            let body="uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&fid=\(model.id)&content="+txt!
+            let body="uid=\(DataCache.Share.userModel.uid)&username=\(DataCache.Share.userModel.username)&fid=\(model.id)&content="+txt!
             
             XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
                 

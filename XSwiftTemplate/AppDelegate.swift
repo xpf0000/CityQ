@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        Preloading.Share().getAdvImage()
+        Preloading.Share.getAdvImage()
         AdvImage?.clipsToBounds = true
         AdvImage?.layer.masksToBounds = true
         AdvImage?.contentMode = .ScaleAspectFill
@@ -48,13 +48,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
             
             RegistUMessage()
             
-            DataCache.Share().welcom.show = true
+            DataCache.Share.welcom.show = true
             
             let w = Int(sheight * UIScreen.mainScreen().scale)
             
-            DataCache.Share().welcom.info = ["\(w)_1.jpg","\(w)_2.jpg","\(w)_3.jpg"]
+            DataCache.Share.welcom.info = ["\(w)_1.jpg","\(w)_2.jpg","\(w)_3.jpg"]
             
-            DataCache.Share().welcom.save()
+            DataCache.Share.welcom.save()
             
         }
         else
@@ -63,9 +63,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
             NSUserDefaults.standardUserDefaults().setInteger(times+1, forKey: "appRunTimes")
             NSUserDefaults.standardUserDefaults().synchronize()
 
-            if(!DataCache.Share().welcom.show)
+            if(!DataCache.Share.welcom.show)
             {
-                Preloading.Share().getWelcomePic()
+                Preloading.Share.getWelcomePic()
             }
             
             if("ReceiveNotice".UserDefaultsValue() as! Bool)
@@ -94,10 +94,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
 
         XVerifyButton.Share().initSelf()
         
-        DataCache.Share().readUrlDataCacheFromSandBox()
+        DataCache.Share.readUrlDataCacheFromSandBox()
         
-        Preloading.Share().getQuanCategory()
-        Preloading.Share().getOAUser()
+        Preloading.Share.getQuanCategory()
+        Preloading.Share.getOAUser()
         
         application.setStatusBarHidden(true, withAnimation: .None)
         application.statusBarStyle = UIStatusBarStyle.LightContent
@@ -159,7 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         str=str.stringByReplacingOccurrencesOfString(">", withString: "")
         str=str.stringByReplacingOccurrencesOfString(" ", withString: "")
         
-        DataCache.Share().deviceToken=(str as String).md5
+        DataCache.Share.deviceToken=(str as String).md5
         
         UMessage.registerDeviceToken(deviceToken)
     }
@@ -210,7 +210,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     func applicationDidEnterBackground(application: UIApplication) {
         
         self.beingBackgroundUpdateTask()
-        DataCache.Share().writeToSandBox()
+        DataCache.Share.writeToSandBox()
         //print("后台运行中")
     }
 

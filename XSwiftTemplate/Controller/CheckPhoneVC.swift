@@ -24,9 +24,9 @@ class CheckPhoneVC: UITableViewController,UITextFieldDelegate {
         
         XVerifyButton.Share().type = 2
         
-        self.phone.text = DataCache.Share().userModel.mobile
+        self.phone.text = DataCache.Share.userModel.mobile
         
-        XVerifyButton.Share().Phone(DataCache.Share().userModel.mobile)
+        XVerifyButton.Share().Phone(DataCache.Share.userModel.mobile)
         
         self.cellContent.addSubview(XVerifyButton.Share())
         

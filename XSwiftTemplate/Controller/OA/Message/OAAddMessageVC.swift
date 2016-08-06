@@ -61,8 +61,8 @@ class OAAddMessageVC: UIViewController,commonDelegate,UITableViewDataSource,UITa
         self.view.showWaiting()
         
         let url="http://101.201.169.38/apioa/Public/OA/?service=News.sendGroupcast"
-        var body="username="+DataCache.Share().oaUserModel.username
-        body += "&uid="+DataCache.Share().oaUserModel.uid
+        var body="username="+DataCache.Share.oaUserModel.username
+        body += "&uid="+DataCache.Share.oaUserModel.uid
         body += "&apptype=1"
         body += "&tag="+self.unitMsg
         body += "&title="+title

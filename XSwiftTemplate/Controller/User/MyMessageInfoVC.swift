@@ -14,51 +14,6 @@ class MyMessageInfoVC: UIViewController {
     
     var type = 1
     
-    func http()
-    {
-        let url = APPURL + "Public/Found/?service=User.getMessagesList&uid=\(Uid)&username=\(Uname)&type=\(type)"
-        
-        XHttpPool.requestJson(url, body: nil, method: .POST) { (json) in
-            
-            if DataCache.Share().userMsg.users[Uid] == nil
-            {
-                DataCache.Share().userMsg.users[Uid]  = UserMsgModel()
-            }
-
-            
-            if let arr = json?["data"]["info"].array
-            {
-                for item in arr
-                {
-                    let model =  MessageModel.parse(json: item, replace: nil)
-                    
-                    switch self.type {
-                    case 1:
-                        ""
-                        DataCache.Share().userMsg.users[Uid]!.type1.append(model)
-                    case 2:
-                        ""
-                        DataCache.Share().userMsg.users[Uid]!.type2.append(model)
-                    case 3:
-                        ""
-                        DataCache.Share().userMsg.users[Uid]!.type3.append(model)
-                    default:
-                        ""
-                    }
-                    
-                }
-                
-                DataCache.Share().userMsg.save()
-                
-                
-                self.setData()
-                
-            }
-            
-        }
-    }
-    
-    
     func setData()
     {
         self.table.httpHandle.listArr.removeAll(keepCapacity: false)
@@ -66,7 +21,7 @@ class MyMessageInfoVC: UIViewController {
         switch self.type {
         case 1:
             ""
-            if let arr = DataCache.Share().userMsg.users[Uid]?.type1
+            if let arr = DataCache.Share.userMsg.users[Uid]?.type1
             {
                 self.table.httpHandle.listArr = arr
             }
@@ -74,14 +29,14 @@ class MyMessageInfoVC: UIViewController {
             
         case 2:
             ""
-            if let arr = DataCache.Share().userMsg.users[Uid]?.type2
+            if let arr = DataCache.Share.userMsg.users[Uid]?.type2
             {
                 self.table.httpHandle.listArr = arr
             }
             
         case 3:
             ""
-            if let arr = DataCache.Share().userMsg.users[Uid]?.type3
+            if let arr = DataCache.Share.userMsg.users[Uid]?.type3
             {
                 self.table.httpHandle.listArr = arr
             }
@@ -125,9 +80,6 @@ class MyMessageInfoVC: UIViewController {
         
         setData()
         
-        http()
-
-
     }
 
     override func didReceiveMemoryWarning() {

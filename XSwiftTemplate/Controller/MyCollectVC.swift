@@ -19,7 +19,7 @@ class MyCollectVC: UITableViewController {
         
         table.registerNib("MyCollectCell".Nib, forCellReuseIdentifier: "MyCollectCell")
         
-        let url = APPURL+"Public/Found/?service=News.getCollectList&uid=\(DataCache.Share().userModel.uid)&page=[page]&perNumber=20"
+        let url = APPURL+"Public/Found/?service=News.getCollectList&uid=\(DataCache.Share.userModel.uid)&page=[page]&perNumber=20"
         
         table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: MyCollectModel.self, CellIdentifier: "MyCollectCell")
         
@@ -48,7 +48,7 @@ class MyCollectVC: UITableViewController {
         {
             
             let id=(self.table.httpHandle.listArr[indexPath.row] as! MyCollectModel).id
-            let user=DataCache.Share().userModel.username
+            let user=DataCache.Share.userModel.username
             
             let url=APPURL+"Public/Found/?service=News.collectDel&id="+id+"&username="+user
             
@@ -58,8 +58,8 @@ class MyCollectVC: UITableViewController {
                 {
                     if status == 0
                     {
-                        DataCache.Share().newsCollect.dict.removeValueForKey(id)
-                        DataCache.Share().newsCollect.save()
+                        DataCache.Share.newsCollect.dict.removeValueForKey(id)
+                        DataCache.Share.newsCollect.save()
                         
                         self.table.httpHandle.listArr.removeAtIndex(indexPath.row)
                         

@@ -27,14 +27,14 @@ class PropertyCheckPhoneVC: UITableViewController,UITextFieldDelegate {
         
         XVerifyButton.Share().type = 2
         
-        if(DataCache.Share().userModel.uid == "" || DataCache.Share().userModel.mobile == "")
+        if(DataCache.Share.userModel.uid == "" || DataCache.Share.userModel.mobile == "")
         {
             self.phone.enabled = true
             XVerifyButton.Share().type = 1
         }
         
-        self.phone.text = DataCache.Share().userModel.mobile
-        XVerifyButton.Share().Phone(DataCache.Share().userModel.mobile)
+        self.phone.text = DataCache.Share.userModel.mobile
+        XVerifyButton.Share().Phone(DataCache.Share.userModel.mobile)
         
         self.cellContent.addSubview(XVerifyButton.Share())
         

@@ -33,10 +33,10 @@ class PropertyPaymentVC: UITableViewController {
         pic.layer.borderWidth = 3.0
         pic.layer.masksToBounds = true
         pic.placeholder = "defaultTx.png".image
-        pic.url = DataCache.Share().userModel.headimage
+        pic.url = DataCache.Share.userModel.headimage
 
-        xiaoqu.text = "小区:  "+DataCache.Share().userModel.house.xiaoqu
-        dizhi.text = "地址:  "+DataCache.Share().userModel.house.louhao+DataCache.Share().userModel.house.danyuan+DataCache.Share().userModel.house.louceng+DataCache.Share().userModel.house.fanghao
+        xiaoqu.text = "小区:  "+DataCache.Share.userModel.house.xiaoqu
+        dizhi.text = "地址:  "+DataCache.Share.userModel.house.louhao+DataCache.Share.userModel.house.danyuan+DataCache.Share.userModel.house.louceng+DataCache.Share.userModel.house.fanghao
         
         
     }

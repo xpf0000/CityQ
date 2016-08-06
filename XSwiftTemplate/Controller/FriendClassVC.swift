@@ -65,14 +65,14 @@ class FriendClassVC: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return DataCache.Share().quanCategory.count
+        return DataCache.Share.quanCategory.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:FriendClassCell=tableView.dequeueReusableCellWithIdentifier("FriendClassCell") as! FriendClassCell
         
-        cell.model = DataCache.Share().quanCategory[indexPath.row]
+        cell.model = DataCache.Share.quanCategory[indexPath.row]
         
         cell.show()
         
@@ -85,7 +85,7 @@ class FriendClassVC: UITableViewController {
         
         let vc:FriendClassListVC = "FriendClassListVC".VC("Friend") as! FriendClassListVC
         
-        vc.classModel = DataCache.Share().quanCategory[indexPath.row]
+        vc.classModel = DataCache.Share.quanCategory[indexPath.row]
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

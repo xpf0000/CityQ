@@ -60,12 +60,12 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
             {
                 if(o!["data"]["code"].intValue == 0)
                 {
-                    DataCache.Share().userModel.nickname = nick
-                    DataCache.Share().userModel.sex = "\(sexN)"
-                    DataCache.Share().userModel.truename = truename
-                    DataCache.Share().userModel.birthday = birthday
-                    DataCache.Share().userModel.address = address
-                    DataCache.Share().userModel.save()
+                    DataCache.Share.userModel.nickname = nick
+                    DataCache.Share.userModel.sex = "\(sexN)"
+                    DataCache.Share.userModel.truename = truename
+                    DataCache.Share.userModel.birthday = birthday
+                    DataCache.Share.userModel.address = address
+                    DataCache.Share.userModel.save()
                     UIApplication.sharedApplication().keyWindow?.showAlert("设置成功", block: { (o) -> Void in
                         
                         self.navigationController?.popViewControllerAnimated(true)
@@ -102,9 +102,9 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         super.viewDidLoad()
         self.addBackButton()
 
-        self.headPic.url=DataCache.Share().userModel.headimage
-        self.nickName.text = DataCache.Share().userModel.nickname
-        self.name.text = DataCache.Share().userModel.truename
+        self.headPic.url=DataCache.Share.userModel.headimage
+        self.nickName.text = DataCache.Share.userModel.nickname
+        self.name.text = DataCache.Share.userModel.truename
         
         if self.name.text != ""
         {
@@ -118,10 +118,10 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         }
         
         phone.text = Umobile
-        birthday.text = DataCache.Share().userModel.birthday
-        address.text = DataCache.Share().userModel.address
+        birthday.text = DataCache.Share.userModel.birthday
+        address.text = DataCache.Share.userModel.address
         
-        if(DataCache.Share().userModel.sex == "0")
+        if(DataCache.Share.userModel.sex == "0")
         {
             self.sex.text = "女"
         }
@@ -304,13 +304,13 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         let imgDataArr:Array<NSData> = [self.headImage!.data(0.5)!]
         let url=APPURL+"Public/Found/?service=User.headEdit"
         
-        XHttpPool.upLoadWithMutableName(url, parameters: ["username":DataCache.Share().userModel.username], file: imgDataArr, name: "file", progress: nil) { [weak self](o) -> Void in
+        XHttpPool.upLoadWithMutableName(url, parameters: ["username":DataCache.Share.userModel.username], file: imgDataArr, name: "file", progress: nil) { [weak self](o) -> Void in
                 
                 if(o?["data"].dictionaryValue.count > 0)
                 {
                     if(o!["data"]["code"].intValue == 0)
                     {
-                        DataCache.Share().userModel.headimage = o!["data"]["msg"].stringValue
+                        DataCache.Share.userModel.headimage = o!["data"]["msg"].stringValue
                         
                         return
                     }

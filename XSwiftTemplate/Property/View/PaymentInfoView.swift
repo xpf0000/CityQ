@@ -59,7 +59,7 @@ class PaymentInfoView: UIView {
         }
         
         self.table.postDict = ["type":type]
-        self.table.httpHandle.url = APPURL+"Public/Found/?service=Wuye.getPayList&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)&fanghaoid="+DataCache.Share().userModel.house.fanghaoid+"&type=\(type)&status=\(status)"
+        self.table.httpHandle.url = APPURL+"Public/Found/?service=Wuye.getPayList&uid=\(DataCache.Share.userModel.uid)&username=\(DataCache.Share.userModel.username)&fanghaoid="+DataCache.Share.userModel.house.fanghaoid+"&type=\(type)&status=\(status)"
         
         self.table.show()
         self.table.headRefresh?.block = nil

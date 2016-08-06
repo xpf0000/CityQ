@@ -24,12 +24,12 @@ class WelcomVC: XViewController ,UIScrollViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.width.constant = swidth * CGFloat(DataCache.Share().welcom.info.count)
-        self.page.numberOfPages = DataCache.Share().welcom.info.count
+        self.width.constant = swidth * CGFloat(DataCache.Share.welcom.info.count)
+        self.page.numberOfPages = DataCache.Share.welcom.info.count
         self.page.currentPage = 0
         
         var i:CGFloat=0
-        for item in DataCache.Share().welcom.info
+        for item in DataCache.Share.welcom.info
         {
             let imageView:UIImageView = UIImageView()
             imageView.image = item.image
@@ -60,11 +60,11 @@ class WelcomVC: XViewController ,UIScrollViewDelegate{
             self.page.currentPage = nowIndex
         }
         
-        if(scrollView.contentOffset.x > swidth * CGFloat(DataCache.Share().welcom.info.count-1))
+        if(scrollView.contentOffset.x > swidth * CGFloat(DataCache.Share.welcom.info.count-1))
         {
             self.dismissViewControllerAnimated(false, completion: { () -> Void in
 
-                DataCache.Share().welcom.reSet()
+                DataCache.Share.welcom.reSet()
                 
                 if(self.block != nil)
                 {

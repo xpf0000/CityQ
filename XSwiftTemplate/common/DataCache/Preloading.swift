@@ -10,19 +10,12 @@ import Foundation
 
 class Preloading: NSObject{
     
+    static let Share = Preloading()
     var picCount=0
     var picArr:Array<String>=[]
     
-    class func Share() ->Preloading! {
-        
-        struct Once {
-            static var token:dispatch_once_t = 0
-            static var dataCenterObj:Preloading! = nil
-        }
-        dispatch_once(&Once.token, {
-            Once.dataCenterObj = Preloading()
-        })
-        return Once.dataCenterObj
+    private override init() {
+        super.init()
     }
     
     func getWelcomePic()
@@ -40,7 +33,7 @@ class Preloading: NSObject{
 //                for item in o!["data"]["info"].arrayValue
 //                {
 //                    let PicUrl=item["url"].stringValue
-//                    DataCache.Share().welcom.info.append(PicUrl)
+//                    DataCache.Share.welcom.info.append(PicUrl)
 //                    let downLoad:CacheItem = HttpPool.Share().cacheItem(PicUrl)
 //                    downLoad.block = {
 //                        (o)->Void in
@@ -49,8 +42,8 @@ class Preloading: NSObject{
 //                            fileArr.append(PicUrl)
 //                            if(fileArr.count == count)
 //                            {
-//                                DataCache.Share().welcom.show = true
-//                                DataCache.Share().welcom.save()
+//                                DataCache.Share.welcom.show = true
+//                                DataCache.Share.welcom.save()
 //                            }
 //                            
 //                        }
@@ -65,8 +58,8 @@ class Preloading: NSObject{
 //                        fileArr.append(PicUrl)
 //                        if(fileArr.count == count && has != count)
 //                        {
-//                            DataCache.Share().welcom.show = true
-//                            DataCache.Share().welcom.save()
+//                            DataCache.Share.welcom.show = true
+//                            DataCache.Share.welcom.save()
 //                        }
 //                        
 //                    }
@@ -81,7 +74,7 @@ class Preloading: NSObject{
     
     func getQuanCategory()
     {
-        DataCache.Share().quanCategory.removeAll(keepCapacity: false)
+        DataCache.Share.quanCategory.removeAll(keepCapacity: false)
         let url=APPURL+"Public/Found/?service=Quan.getCategory"
         
         XHttpPool.requestJsonAutoConnect(url, body: nil, method: .GET) { (o) -> Void in
@@ -92,7 +85,7 @@ class Preloading: NSObject{
                 for item in o!["data"]["info"].arrayValue
                 {
                     let model:CategoryModel = CategoryModel.parse(json: item, replace: nil)
-                    DataCache.Share().quanCategory.append(model)
+                    DataCache.Share.quanCategory.append(model)
                     
                 }
             }
@@ -103,18 +96,18 @@ class Preloading: NSObject{
     
     func getOAUser()
     {
-        if(DataCache.Share().oaUserModel.uid == "")
+        if(DataCache.Share.oaUserModel.uid == "")
         {
             return
         }
         
-        let u=DataCache.Share().oaUserModel.username
-        let p=DataCache.Share().oaUserModel.pass
+        let u=DataCache.Share.oaUserModel.username
+        let p=DataCache.Share.oaUserModel.pass
         
         if(u == "" || p == "")
         {
-            DataCache.Share().oaUserModel = OAUserModel()
-            DataCache.Share().oaUserModel.save()
+            DataCache.Share.oaUserModel = OAUserModel()
+            DataCache.Share.oaUserModel.save()
             UMessage.removeAllTags({ (obj, remain, error) -> Void in
                 
             })
@@ -127,17 +120,17 @@ class Preloading: NSObject{
             
             if(o?["data"]["info"].arrayValue.count>0 && o?["data"]["code"].intValue == 0)
             {
-                DataCache.Share().oaUserModel = OAUserModel.parse(json: o!["data"]["info"][0], replace: nil)
-                DataCache.Share().oaUserModel.pass = p
-                DataCache.Share().oaUserModel.save()
+                DataCache.Share.oaUserModel = OAUserModel.parse(json: o!["data"]["info"][0], replace: nil)
+                DataCache.Share.oaUserModel.pass = p
+                DataCache.Share.oaUserModel.save()
                 
                 SetUMessageTag()
 
                 return
             }
             
-            DataCache.Share().oaUserModel = OAUserModel()
-            DataCache.Share().oaUserModel.save()
+            DataCache.Share.oaUserModel = OAUserModel()
+            DataCache.Share.oaUserModel.save()
             
             UMessage.removeAllTags({ (obj, remain, error) -> Void in
                 
@@ -240,6 +233,87 @@ class Preloading: NSObject{
                 downloader.createTask()
                 downloader.startDownLoad()
                 
+            }
+            
+        }
+    }
+    
+    
+    func getMessage(uid:String,username:String)
+    {
+
+        let url = APPURL + "Public/Found/?service=User.getMessagesCount&uid=\(uid)&username=\(username)"
+        
+        XHttpPool.requestJson(url, body: nil, method: .POST) { (json) in
+            
+            if let count = json?["data"]["info"]["count1"].string?.numberValue.integerValue
+            {
+                if count > 0
+                {
+                    DataCache.Share.userMsg.users[Uid]!.count1 += count
+                    self.getMsgList(1)
+                }
+            }
+            
+            if let count = json?["data"]["info"]["count2"].string?.numberValue.integerValue
+            {
+                if count > 0
+                {
+                    DataCache.Share.userMsg.users[Uid]!.count2 += count
+                    self.getMsgList(2)
+                }
+            }
+            
+            if let count = json?["data"]["info"]["count3"].string?.numberValue.integerValue
+            {
+                if count > 0
+                {
+                    DataCache.Share.userMsg.users[Uid]!.count3 += count
+                    self.getMsgList(3)
+                }
+            }
+            
+            "MsgChange".postNotice()
+            
+            
+        }
+    }
+    
+    private func getMsgList(type:Int)
+    {
+        let url = APPURL + "Public/Found/?service=User.getMessagesList&uid=\(Uid)&username=\(Uname)&type=\(type)"
+        
+        XHttpPool.requestJson(url, body: nil, method: .POST) { (json) in
+            
+            if DataCache.Share.userMsg.users[Uid] == nil
+            {
+                DataCache.Share.userMsg.users[Uid]  = UserMsgModel()
+            }
+  
+            if let arr = json?["data"]["info"].array
+            {
+                for item in arr
+                {
+                    let model =  MessageModel.parse(json: item, replace: nil)
+                    
+                    switch type {
+                    case 1:
+                        ""
+                        DataCache.Share.userMsg.users[Uid]!.type1.append(model)
+                    case 2:
+                        ""
+                        DataCache.Share.userMsg.users[Uid]!.type2.append(model)
+                    case 3:
+                        ""
+                        DataCache.Share.userMsg.users[Uid]!.type3.append(model)
+                    default:
+                        ""
+                    }
+                    
+                }
+                
+                DataCache.Share.userMsg.save()
+
             }
             
         }

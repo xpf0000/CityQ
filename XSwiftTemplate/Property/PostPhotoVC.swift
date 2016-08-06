@@ -252,7 +252,7 @@ class PostPhotoVC: XViewController,UICollectionViewDataSource,UICollectionViewDe
 
         let url=APPURL+"Public/Found/?service=Wuye.addfeed"
 
-        let dict:[String:AnyObject] = ["uid":DataCache.Share().userModel.uid,"username":DataCache.Share().userModel.username,"houseid":DataCache.Share().userModel.house.houseid,"content":self.textView.text.trim(),"type":Int(fabs(Double(segment.selectedSegmentIndex)-2.0))]
+        let dict:[String:AnyObject] = ["uid":DataCache.Share.userModel.uid,"username":DataCache.Share.userModel.username,"houseid":DataCache.Share.userModel.house.houseid,"content":self.textView.text.trim(),"type":Int(fabs(Double(segment.selectedSegmentIndex)-2.0))]
 
         XHttpPool.upLoadWithMutableName(url, parameters: dict, file: imgDataArr, name: "file", progress: { [weak self](p) -> Void in
             

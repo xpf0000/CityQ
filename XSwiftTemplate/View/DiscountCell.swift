@@ -54,9 +54,9 @@ class DiscountCell: UITableViewCell {
             vc.model = self.model
             self.viewController?.navigationController?.pushViewController(vc, animated: true)
             
-            if(!DataCache.Share().jigouViewRecord.has(vc.model.id))
+            if(!DataCache.Share.jigouViewRecord.has(vc.model.id))
             {
-                DataCache.Share().jigouViewRecord.add(vc.model.id)
+                DataCache.Share.jigouViewRecord.add(vc.model.id)
 
                 let url = APPURL+"Public/Found/?service=News.addView&id="+vc.model.id
                 

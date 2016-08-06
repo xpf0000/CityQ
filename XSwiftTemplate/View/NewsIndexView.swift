@@ -398,9 +398,9 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 
                 let cell=tableView.cellForRowAtIndexPath(indexPath)
                 
-                if(!DataCache.Share().newsViewedModel.has(vc.model.id))
+                if(!DataCache.Share.newsViewedModel.has(vc.model.id))
                 {
-                    DataCache.Share().newsViewedModel.add(vc.model.id)
+                    DataCache.Share.newsViewedModel.add(vc.model.id)
                     
                     if let cell = tableView.cellForRowAtIndexPath(indexPath) as? NewsListCell
                     {

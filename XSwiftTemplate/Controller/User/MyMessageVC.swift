@@ -21,74 +21,44 @@ class MyMessageVC: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
-        http()
+
     }
     
     func http()
     {
+        let c1 = UMsgCount1
+        let c2 = UMsgCount2
+        let c3 = UMsgCount3
         
-        
-        let url = APPURL + "Public/Found/?service=User.getMessagesCount&uid=\(DataCache.Share().userModel.uid)&username=\(DataCache.Share().userModel.username)"
-        
-        XHttpPool.requestJson(url, body: nil, method: .POST) { (json) in
-            
-            if let count = json?["data"]["info"]["count1"].string?.numberValue.integerValue
-            {
-                if count > 0
-                {
-                    self.txt1.text = "\(count)"
-                    self.txt1.superview?.hidden = false
-                }
-                else
-                {
-                    self.txt1.superview?.hidden = true
-                }
-            }
-            else
-            {
-                self.txt1.superview?.hidden = true
-            }
-            
-            
-            
-            if let count = json?["data"]["info"]["count2"].string?.numberValue.integerValue
-            {
-                if count > 0
-                {
-                    self.txt2.text = "\(count)"
-                    self.txt2.superview?.hidden = false
-                }
-                else
-                {
-                    self.txt2.superview?.hidden = true
-                }
-            }
-            else
-            {
-                self.txt2.superview?.hidden = true
-            }
-            
-            
-            if let count = json?["data"]["info"]["count3"].string?.numberValue.integerValue
-            {
-                if count > 0
-                {
-                    self.txt3.text = "\(count)"
-                    self.txt3.superview?.hidden = false
-                }
-                else
-                {
-                    self.txt3.superview?.hidden = true
-                }
-            }
-            else
-            {
-                self.txt3.superview?.hidden = true
-            }
-            
+        if c1 > 0
+        {
+            self.txt1.text = "\(c1)"
+            self.txt1.superview?.hidden = false
         }
-
+        else
+        {
+            self.txt1.superview?.hidden = true
+        }
+        
+        if c2 > 0
+        {
+            self.txt1.text = "\(c2)"
+            self.txt1.superview?.hidden = false
+        }
+        else
+        {
+            self.txt1.superview?.hidden = true
+        }
+        
+        if c3 > 0
+        {
+            self.txt1.text = "\(c3)"
+            self.txt1.superview?.hidden = false
+        }
+        else
+        {
+            self.txt1.superview?.hidden = true
+        }
         
     }
     
@@ -100,6 +70,8 @@ class MyMessageVC: UITableViewController {
         self.txt1.superview?.hidden = true
         self.txt2.superview?.hidden = true
         self.txt3.superview?.hidden = true
+        
+        http()
 
         let view1=UIView()
         view1.backgroundColor=UIColor.clearColor()

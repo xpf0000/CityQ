@@ -36,7 +36,7 @@ class MyMessageInfoCell: UITableViewCell {
         didSet
         {
                 let date=NSDate(timeIntervalSince1970: model.create_time.doubleValue!)
-                time.text = date.toStr("yyyy年MM月dd号")!
+                time.text = date.toStr("yyyy-MM-dd HH:mm")!
             
                 mtitle.text = model.title
                 mcontent.text = model.content
@@ -65,7 +65,6 @@ class MyMessageInfoCell: UITableViewCell {
         if selected
         {
             self.selected = false
-        
             toInfoVC()
         }
         

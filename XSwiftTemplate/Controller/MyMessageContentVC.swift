@@ -34,7 +34,7 @@ class MyMessageContentVC: UIViewController {
         content.preferredMaxLayoutWidth = swidth - 30
         
         let date=NSDate(timeIntervalSince1970: model.create_time.doubleValue!)
-        let time = date.toStr("yyyy-MM-dd")!
+        let time = date.toStr("yyyy-MM-dd HH:mm")!
         
         ntitle.text = model.title
         self.time.text = time

@@ -153,6 +153,10 @@
 	<array>
 		<string>HYQH.ttf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>main</string>
 	<key>UIRequiredDeviceCapabilities</key>

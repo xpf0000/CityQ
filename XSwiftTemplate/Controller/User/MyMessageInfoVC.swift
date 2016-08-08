@@ -52,6 +52,8 @@ class MyMessageInfoVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         super.viewDidLoad()
         self.addBackButton()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setData), name: NoticeWord.MsgChange.rawValue, object: nil)
+        
         self.addNvButton(false, img: nil, title: "清空") {[weak self] (btn) in
             if self == nil {return}
             DataCache.Share.userMsg.clear(self!.type)
@@ -137,5 +139,9 @@ class MyMessageInfoVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
        
     }
     
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 
 }

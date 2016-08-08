@@ -56,7 +56,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         httpHandle.reSet()
         httpHandle.handle()
     }
-
+    
     func initSelf()
     {
         banner.click
@@ -310,6 +310,9 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
 
             cell.contentView.addSubview(banner)
             
+            cell.selectedBackgroundView = nil
+            cell.selectionStyle = .None
+
             return cell
         }
         else
@@ -324,6 +327,9 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                     
                     cell.model = model
                     
+                    cell.selectedBackgroundView = nil
+                    cell.selectionStyle = .None
+                    
                     return cell
                 }
                 
@@ -333,6 +339,9 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 let cell:ActivitysCell = tableView.dequeueReusableCellWithIdentifier("ActivitysCell", forIndexPath: indexPath) as! ActivitysCell
                 
                 cell.model = model
+                
+                cell.selectedBackgroundView = nil
+                cell.selectionStyle = .None
                 
                 return cell
 
@@ -344,6 +353,9 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 
                 cell.model = model
                 
+                cell.selectedBackgroundView = nil
+                cell.selectionStyle = .None
+                
                 return cell
             }
             else
@@ -351,6 +363,9 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 let cell:NewsListCell = tableView.dequeueReusableCellWithIdentifier("NewsListCell", forIndexPath: indexPath) as! NewsListCell
                 
                 cell.model = model
+                
+                cell.selectedBackgroundView = nil
+                cell.selectionStyle = .None
                 
                 return cell
             }
@@ -361,7 +376,8 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         if(indexPath.row > 0)

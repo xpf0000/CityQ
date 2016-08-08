@@ -46,18 +46,18 @@ class DataCache: NSObject {
         cityID = "cityID".UserDefaultsValue()==nil ? "" : "cityID".UserDefaultsValue() as! String
         cityName = "cityName".UserDefaultsValue()==nil ? "" : "cityName".UserDefaultsValue() as! String
         
+        if let model = UserMsgModel.read(name: "UserMsgModel") as? UserMsgModel
+        {
+            userMsg = model
+        }
+        
         let model = UserModel.read(name: "userModel")
         if(model != nil)
         {
             userModel = model as! UserModel
             self.getUserInfo()
         }
-        
-       if let model = UserMsgModel.read(name: "UserMsgModel") as? UserMsgModel
-       {
-            userMsg = model
-        }
-  
+
         let model1 = NewsSeeModel.read(name: "NewsViewed")
         if(model1 != nil)
         {

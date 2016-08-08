@@ -140,19 +140,40 @@ func SetUMessageTag()
     UMessage.removeAllTags({ (obj, remain, error) -> Void in
         
     })
-    
-    UMessage.addTag(DataCache.Share.oaUserModel.uid) { (response, remain, error) -> Void in
-        
+    if DataCache.Share.oaUserModel.uid != ""
+    {
+        UMessage.addTag(DataCache.Share.oaUserModel.uid) { (response, remain, error) -> Void in
+        }
     }
     
-    UMessage.addTag(DataCache.Share.oaUserModel.dwid) { (response, remain, error) -> Void in
+    if DataCache.Share.oaUserModel.dwid != ""
+    {
+        UMessage.addTag(DataCache.Share.oaUserModel.dwid) { (response, remain, error) -> Void in
+        }
     }
     
-    UMessage.addTag(DataCache.Share.oaUserModel.bmid) { (response, remain, error) -> Void in
+    if DataCache.Share.oaUserModel.bmid != ""
+    {
+        UMessage.addTag(DataCache.Share.oaUserModel.bmid) { (response, remain, error) -> Void in
+        }
     }
     
-    UMessage.addTag(DataCache.Share.oaUserModel.jgid) { (response, remain, error) -> Void in
+    if DataCache.Share.oaUserModel.jgid != ""
+    {
+        UMessage.addTag(DataCache.Share.oaUserModel.jgid) { (response, remain, error) -> Void in
+        }
     }
+
+    UMessage.addTag("all") { (response, remain, error) -> Void in
+    }
+    
+    if Uid != ""
+    {
+        UMessage.addTag(Uid) { (response, remain, error) -> Void in
+            
+        }
+    }
+    
 }
 
 var ContentMaxHeight:CGFloat = 0.0

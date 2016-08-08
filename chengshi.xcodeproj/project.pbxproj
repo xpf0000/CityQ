@@ -3103,6 +3103,11 @@
 					17BE5A111B9D68FC00C8958A = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 24AVM954YM;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					17BE5A261B9D68FC00C8958A = {
 						CreatedOnToolsVersion = 6.4;

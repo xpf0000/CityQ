@@ -242,10 +242,17 @@ class Preloading: NSObject{
     func getMessage(uid:String,username:String)
     {
 
+        if uid == "" || username == "" {return}
+        
         let url = APPURL + "Public/Found/?service=User.getMessagesCount&uid=\(uid)&username=\(username)"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { (json) in
  
+            if DataCache.Share.userMsg.users[Uid] == nil
+            {
+                DataCache.Share.userMsg.users[Uid] = UserMsgModel()
+            }
+            
             if let count = json?["data"]["info"]["count1"].string?.numberValue.integerValue
             {
                 if count > 0

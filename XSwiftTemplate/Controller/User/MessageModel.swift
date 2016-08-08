@@ -14,6 +14,8 @@ var UMsgCount : String?
     
     c = UMsgCount1 + UMsgCount2 + UMsgCount3
     
+    UIApplication.sharedApplication().applicationIconBadgeNumber = c
+    
     return c == 0 ? nil : "\(c)"
 }
 

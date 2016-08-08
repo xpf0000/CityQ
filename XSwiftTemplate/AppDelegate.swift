@@ -31,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
 
         UMessage.startWithAppkey(UMAppKey, launchOptions: launchOptions)
         
-        UMessage.setLogEnabled(false)
+        UMessage.setLogEnabled(true)
+        UMessage.setAutoAlert(false)
         
         let cacheSizeMemory = 64*1024*1024; // 64MB
         let cacheSizeDisk = 256*1024*1024; // 256MB
@@ -172,32 +173,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         
         print(userInfo)
         
-       // let alertView = UIAlertView()
+       Preloading.Share.getMessage(Uid, username: Uname)
         
-       // print(userInfo)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
-//        let type=userInfo["type"] as! String
-//        switch type
-//        {
-//        case "0" :
-//            alertView.title = "新公文"
-//            //Preloading.ShareCache().getDocument()
-//        case "1" :
-//            alertView.title = "新信息"
-//            //Preloading.ShareCache().getMessage()
-//        case "2" :
-//            alertView.title = "新日程"
-//            //Preloading.ShareCache().getPlan()
-//        case "3" :
-//            alertView.title = "新会议"
-//            //Preloading.ShareCache().getMeeting()
-//        default:
-//            ""
-//        }
-//        
-//        alertView.message = userInfo["title"]! as? String
-//        alertView.addButtonWithTitle("确定")
-//        alertView.show()
+        UMessage.didReceiveRemoteNotification(userInfo)
+        
+        Preloading.Share.getMessage(Uid, username: Uname)
         
     }
     
@@ -217,13 +201,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         DataCache.Share.writeToSandBox()
         //print("后台运行中")
     }
+    
+    
 
     func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+       
+        
+        
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        Preloading.Share.getMessage(Uid, username: Uname)
+        
     }
 
     func applicationWillTerminate(application: UIApplication) {

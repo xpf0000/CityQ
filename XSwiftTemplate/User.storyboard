@@ -923,7 +923,7 @@
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="13" id="ecR-X1-5aG"/>
                                                                 <constraint firstAttribute="height" constant="13" id="wMK-Ut-LTc"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -1001,7 +1001,7 @@
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="13" id="TIu-9n-O7w"/>
                                                                 <constraint firstAttribute="height" constant="13" id="XrK-qE-1dP"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -1079,7 +1079,7 @@
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="13" id="Ani-xm-WWD"/>
                                                                 <constraint firstAttribute="height" constant="13" id="wxG-py-ip5"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>

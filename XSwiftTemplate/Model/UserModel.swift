@@ -29,11 +29,6 @@ class UserModel: Reflect {
     {
         didSet
         {
-            if DataCache.Share.userMsg.users[uid] == nil
-            {
-                DataCache.Share.userMsg.users[uid] = UserMsgModel()
-            }
-            
             setUMessageTag()
         }
     }
@@ -105,8 +100,6 @@ class UserModel: Reflect {
     func getUserMsg()
     {
         if uid == "" || username == ""{return}
-        
-        print(Preloading.Share)
         
         Preloading.Share.getMessage(uid,username: username)
     }

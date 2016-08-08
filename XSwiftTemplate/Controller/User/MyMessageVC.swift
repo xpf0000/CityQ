@@ -67,6 +67,8 @@ class MyMessageVC: UITableViewController {
         self.title = "我的消息"
         self.addBackButton()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(http), name: NoticeWord.MsgChange.rawValue, object: nil)
+        
         self.txt1.superview?.hidden = true
         self.txt2.superview?.hidden = true
         self.txt3.superview?.hidden = true

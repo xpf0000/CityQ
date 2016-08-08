@@ -289,7 +289,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
                         NoticeWord.LoginSuccess.rawValue.postNotice()
                         
                         self?.dismissViewControllerAnimated(true, completion: { () -> Void in
-                            
+                        
                             
                         })
                         

@@ -42,22 +42,22 @@ class MyMessageVC: UITableViewController {
         
         if c2 > 0
         {
-            self.txt1.text = "\(c2)"
-            self.txt1.superview?.hidden = false
+            self.txt2.text = "\(c2)"
+            self.txt2.superview?.hidden = false
         }
         else
         {
-            self.txt1.superview?.hidden = true
+            self.txt2.superview?.hidden = true
         }
         
         if c3 > 0
         {
-            self.txt1.text = "\(c3)"
-            self.txt1.superview?.hidden = false
+            self.txt3.text = "\(c3)"
+            self.txt3.superview?.hidden = false
         }
         else
         {
-            self.txt1.superview?.hidden = true
+            self.txt3.superview?.hidden = true
         }
         
     }
@@ -108,16 +108,6 @@ class MyMessageVC: UITableViewController {
             }
         }
         
-        let h = txt1.superview!.frame.size.height / 2.0
-        
-        txt1.superview!.layer.masksToBounds = true
-        txt1.superview!.layer.cornerRadius = h
-        
-        txt2.superview!.layer.masksToBounds = true
-        txt2.superview!.layer.cornerRadius = h
-        
-        txt3.superview!.layer.masksToBounds = true
-        txt3.superview!.layer.cornerRadius = h
     }
     
     let arr = ["系统消息","小区消息","会员卡消息"]
@@ -132,36 +122,23 @@ class MyMessageVC: UITableViewController {
         vc.type = indexPath.row+1
         
         self.navigationController?.pushViewController(vc, animated: true)
-        
-        switch indexPath.row {
-        case 0:
-            ""
-            self.txt1.superview?.hidden = true
-            //self.txt2.superview?.hidden = true
-            //self.txt3.superview?.hidden = true
-            
-        case 1:
-            ""
-            //self.txt1.superview?.hidden = true
-            self.txt2.superview?.hidden = true
-            //self.txt3.superview?.hidden = true
-            
-        case 2:
-            ""
-            //self.txt1.superview?.hidden = true
-            //self.txt2.superview?.hidden = true
-            self.txt3.superview?.hidden = true
-            
-        default:
-            ""
-        }
-        
 
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        http()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
+    }
+    
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
 }

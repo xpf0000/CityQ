@@ -1262,12 +1262,43 @@
                                                     <color key="textColor" red="0.13725490200000001" green="0.13725490200000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRA-wP-9CH">
+                                                    <rect key="frame" x="25" y="12" width="18" height="18"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKk-VN-FjX">
+                                                            <rect key="frame" x="3" y="3" width="13" height="13"/>
+                                                            <color key="backgroundColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="13" id="egz-kN-tTd"/>
+                                                                <constraint firstAttribute="height" constant="13" id="g6d-ff-4yi"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="OKk-VN-FjX" firstAttribute="centerY" secondItem="RRA-wP-9CH" secondAttribute="centerY" id="S0u-mo-j1c"/>
+                                                        <constraint firstAttribute="width" secondItem="OKk-VN-FjX" secondAttribute="width" constant="5" id="bya-iO-SH0"/>
+                                                        <constraint firstAttribute="height" secondItem="OKk-VN-FjX" secondAttribute="height" constant="5" id="c9X-bj-523"/>
+                                                        <constraint firstItem="OKk-VN-FjX" firstAttribute="centerX" secondItem="RRA-wP-9CH" secondAttribute="centerX" id="yk1-Ul-a83"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Ri7-aL-1Ac" firstAttribute="leading" secondItem="4gy-23-ypF" secondAttribute="leading" constant="15" id="Af7-wM-IxM"/>
                                                 <constraint firstItem="EBc-fc-oz5" firstAttribute="leading" secondItem="Ri7-aL-1Ac" secondAttribute="trailing" constant="15" id="PpI-7J-Gak"/>
+                                                <constraint firstItem="RRA-wP-9CH" firstAttribute="top" secondItem="Ri7-aL-1Ac" secondAttribute="top" constant="-2" id="SeP-zs-FeB"/>
                                                 <constraint firstItem="EBc-fc-oz5" firstAttribute="centerY" secondItem="Ri7-aL-1Ac" secondAttribute="centerY" id="U4S-pQ-FEP"/>
                                                 <constraint firstAttribute="centerY" secondItem="Ri7-aL-1Ac" secondAttribute="centerY" id="u7K-ZS-HA7"/>
+                                                <constraint firstItem="RRA-wP-9CH" firstAttribute="trailing" secondItem="Ri7-aL-1Ac" secondAttribute="trailing" constant="2" id="wOg-QB-6NQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1389,6 +1420,8 @@
                         <outlet property="headH" destination="67j-OA-8jJ" id="LCA-kw-ljU"/>
                         <outlet property="headPic" destination="uWZ-4D-rsJ" id="fE6-pY-ffa"/>
                         <outlet property="headW" destination="PG4-ps-7kY" id="Avy-9J-uVd"/>
+                        <outlet property="msg" destination="OKk-VN-FjX" id="mLB-IN-bAl"/>
+                        <outlet property="msgBG" destination="RRA-wP-9CH" id="WZJ-Co-yMv"/>
                         <outlet property="nickName" destination="9xA-hc-02F" id="SMZ-h7-dCp"/>
                         <outlet property="pass" destination="6zJ-RF-ck4" id="7Uj-Ux-NiN"/>
                         <outlet property="table" destination="gJD-Ox-Wjh" id="pmb-di-MyG"/>

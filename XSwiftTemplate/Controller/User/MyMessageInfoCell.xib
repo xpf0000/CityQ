@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -41,6 +41,20 @@
                                     <action selector="toSee:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kod-lU-xVM"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NEp-Yu-YRD">
+                                <rect key="frame" x="80" y="136" width="10" height="10"/>
+                                <color key="backgroundColor" red="0.12941176469999999" green="0.67843137249999996" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="10" id="3aM-Mp-gWB"/>
+                                    <constraint firstAttribute="height" constant="10" id="oJy-gO-QB7"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -48,11 +62,13 @@
                             <constraint firstItem="uSH-Ky-So5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="e8W-ee-MG1" secondAttribute="bottom" constant="10" id="7Le-u1-00e"/>
                             <constraint firstItem="e8W-ee-MG1" firstAttribute="top" secondItem="cEd-el-9DP" secondAttribute="bottom" constant="10" id="93d-QV-ImP"/>
                             <constraint firstAttribute="bottom" secondItem="uSH-Ky-So5" secondAttribute="bottom" constant="12" id="BxH-DE-TjV"/>
+                            <constraint firstItem="NEp-Yu-YRD" firstAttribute="leading" secondItem="uSH-Ky-So5" secondAttribute="trailing" id="K0E-L0-xRM"/>
                             <constraint firstItem="e8W-ee-MG1" firstAttribute="leading" secondItem="cEd-el-9DP" secondAttribute="leading" id="OB3-NN-vIn"/>
                             <constraint firstItem="cEd-el-9DP" firstAttribute="top" secondItem="CHw-ak-ZdN" secondAttribute="top" constant="12" id="STa-hb-hDR"/>
                             <constraint firstItem="uSH-Ky-So5" firstAttribute="leading" secondItem="cEd-el-9DP" secondAttribute="leading" id="fAJ-Rs-ucr"/>
                             <constraint firstItem="e8W-ee-MG1" firstAttribute="trailing" secondItem="cEd-el-9DP" secondAttribute="trailing" id="fs4-6z-gmf"/>
                             <constraint firstItem="cEd-el-9DP" firstAttribute="leading" secondItem="CHw-ak-ZdN" secondAttribute="leading" constant="8" id="iJk-wi-gUp"/>
+                            <constraint firstItem="NEp-Yu-YRD" firstAttribute="centerY" secondItem="uSH-Ky-So5" secondAttribute="centerY" constant="3" id="lvW-e2-tHC"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年03月31号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mQ-pO-FWq">
@@ -80,6 +96,7 @@
                 <outlet property="mainView" destination="CHw-ak-ZdN" id="DuI-hh-3G0"/>
                 <outlet property="mcontent" destination="e8W-ee-MG1" id="Mo1-kd-CGN"/>
                 <outlet property="mtitle" destination="cEd-el-9DP" id="8dZ-Cb-QRV"/>
+                <outlet property="see" destination="NEp-Yu-YRD" id="i0Q-Ai-Mdz"/>
                 <outlet property="time" destination="3mQ-pO-FWq" id="azF-tM-sk7"/>
             </connections>
             <point key="canvasLocation" x="320.5" y="303.5"/>

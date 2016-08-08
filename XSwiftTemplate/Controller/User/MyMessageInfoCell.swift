@@ -10,6 +10,8 @@ import UIKit
 
 class MyMessageInfoCell: UITableViewCell {
     
+    @IBOutlet var see: UIView!
+    
     @IBOutlet var mainView: UIView!
     
     @IBOutlet var time: UILabel!
@@ -25,6 +27,8 @@ class MyMessageInfoCell: UITableViewCell {
     
     func toInfoVC()
     {
+        DataCache.Share.userMsg.addViewed(model)
+        see.hidden = true
         let vc = "MyMessageContentVC".VC("User") as! MyMessageContentVC
         vc.model = model
         vc.hidesBottomBarWhenPushed = true
@@ -40,6 +44,9 @@ class MyMessageInfoCell: UITableViewCell {
             
                 mtitle.text = model.title
                 mcontent.text = model.content
+            
+                see.hidden = DataCache.Share.userMsg.checkViewed(model)
+            
         }
     }
     
@@ -66,6 +73,7 @@ class MyMessageInfoCell: UITableViewCell {
         {
             self.selected = false
             toInfoVC()
+            
         }
         
     }

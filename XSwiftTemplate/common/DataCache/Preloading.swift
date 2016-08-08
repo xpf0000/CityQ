@@ -245,7 +245,7 @@ class Preloading: NSObject{
         let url = APPURL + "Public/Found/?service=User.getMessagesCount&uid=\(uid)&username=\(username)"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { (json) in
-            
+ 
             if let count = json?["data"]["info"]["count1"].string?.numberValue.integerValue
             {
                 if count > 0
@@ -273,7 +273,7 @@ class Preloading: NSObject{
                 }
             }
             
-            "MsgChange".postNotice()
+            
             
             
         }
@@ -290,26 +290,29 @@ class Preloading: NSObject{
                 DataCache.Share.userMsg.users[Uid]  = UserMsgModel()
             }
   
+            var tarr:[MessageModel] = []
+            
             if let arr = json?["data"]["info"].array
             {
                 for item in arr
                 {
                     let model =  MessageModel.parse(json: item, replace: nil)
                     
-                    switch type {
-                    case 1:
-                        ""
-                        DataCache.Share.userMsg.users[Uid]!.type1.append(model)
-                    case 2:
-                        ""
-                        DataCache.Share.userMsg.users[Uid]!.type2.append(model)
-                    case 3:
-                        ""
-                        DataCache.Share.userMsg.users[Uid]!.type3.append(model)
-                    default:
-                        ""
-                    }
-                    
+                    tarr.append(model)
+                }
+                
+                switch type {
+                case 1:
+                    ""
+                    DataCache.Share.userMsg.users[Uid]!.type1 = tarr + DataCache.Share.userMsg.users[Uid]!.type1
+                case 2:
+                    ""
+                    DataCache.Share.userMsg.users[Uid]!.type2 = tarr + DataCache.Share.userMsg.users[Uid]!.type2
+                case 3:
+                    ""
+                    DataCache.Share.userMsg.users[Uid]!.type3 = tarr + DataCache.Share.userMsg.users[Uid]!.type3
+                default:
+                    ""
                 }
                 
                 DataCache.Share.userMsg.save()

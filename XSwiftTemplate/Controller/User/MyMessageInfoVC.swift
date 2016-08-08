@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyMessageInfoVC: UIViewController {
+class MyMessageInfoVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     let table = XTableView()
     
@@ -51,6 +51,14 @@ class MyMessageInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
+        
+        self.addNvButton(false, img: nil, title: "清空") {[weak self] (btn) in
+            if self == nil {return}
+            DataCache.Share.userMsg.clear(self!.type)
+            self?.table.httpHandle.listArr.removeAll(keepCapacity: false)
+            self?.table.reloadData()
+        }
+        
         let bgColor = "F3F5F7".color
         self.view.backgroundColor = bgColor
         self.table.backgroundColor = bgColor
@@ -68,6 +76,9 @@ class MyMessageInfoVC: UIViewController {
         table.showsVerticalScrollIndicator = false
         table.showsHorizontalScrollIndicator = false
         
+        table.Delegate(self)
+        table.DataSource(self)
+        
         let v = UIView()
         v.backgroundColor = UIColor.clearColor()
         v.frame = CGRectMake(0, 0, swidth, 20)
@@ -80,6 +91,45 @@ class MyMessageInfoVC: UIViewController {
         
         setData()
         
+        
+        
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        return UITableViewCell()
+    }
+    
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if(editingStyle == UITableViewCellEditingStyle.Delete)
+        {
+            DataCache.Share.userMsg.remove(table.httpHandle.listArr[indexPath.row] as! MessageModel)
+            table.httpHandle.listArr.removeAtIndex(indexPath.row)
+            
+            table.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        (self.navigationController as? XNavigationController)?.removeRecognizer()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        (self.navigationController as? XNavigationController)?.setRecognizer()
     }
 
     override func didReceiveMemoryWarning() {

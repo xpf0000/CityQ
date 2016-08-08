@@ -105,6 +105,41 @@ extension UIViewController{
         return button
     }
     
+    func addNvButton(left:Bool,img:String?,title:String?,block:XButtonBlock)->UIButton
+    {
+        let button=UIButton(type: UIButtonType.Custom)
+        button.click(block)
+        button.frame=CGRectMake(0, 0, 21, 21);
+        
+        if let str = img
+        {
+            button.setBackgroundImage(str.image, forState: UIControlState.Normal)
+        }
+        
+        if let str = title
+        {
+            button.setTitle(str, forState: .Normal)
+            button.sizeToFit()
+        }
+        
+        button.showsTouchWhenHighlighted = true
+        button.exclusiveTouch = true
+        if left
+        {
+            let leftItem=UIBarButtonItem(customView: button)
+            self.navigationItem.leftBarButtonItem=leftItem;
+        }
+        else
+        {
+            let rightItem=UIBarButtonItem(customView: button)
+            self.navigationItem.rightBarButtonItem=rightItem;
+        }
+        
+        
+        return button
+    }
+
+    
     
     func getCamera(block:AnyBlock)
     {

@@ -12,20 +12,7 @@ var UMsgCount : String?
 {
     var c = 0
     
-   if let count = DataCache.Share.userMsg.users[Uid]?.count1
-   {
-        c += count
-    }
-    
-    if let count = DataCache.Share.userMsg.users[Uid]?.count2
-    {
-        c += count
-    }
-    
-    if let count = DataCache.Share.userMsg.users[Uid]?.count3
-    {
-        c += count
-    }
+    c = UMsgCount1 + UMsgCount2 + UMsgCount3
     
     return c == 0 ? nil : "\(c)"
 }
@@ -69,10 +56,134 @@ class UserMsgModel:Reflect
     var type2:[MessageModel] = []
     var type3:[MessageModel] = []
     
+    var viewed:[String] = []
+    
     var users:[String:UserMsgModel] = [:]
+    
+    func removeViewed(o:MessageModel)->Bool
+    {
+        if let index = users[Uid]?.viewed.indexOf(o.id)
+        {
+           users[Uid]?.viewed.removeAtIndex(index)
+            
+            return true
+        }
+        
+        return false
+    }
+    
+    func addViewed(o:MessageModel)
+    {
+        if Uid == "" {return}
+        if users[Uid]?.viewed.contains(o.id) == true {return}
+        users[Uid]?.viewed.append(o.id)
+        
+        if users[Uid]?.type1.contains(o) == true
+        {
+            users[Uid]?.count1 -= 1
+        }
+        
+        if users[Uid]?.type2.contains(o) == true
+        {
+            users[Uid]?.count2 -= 1
+        }
+        
+        if users[Uid]?.type3.contains(o) == true
+        {
+            users[Uid]?.count3 -= 1
+        }
+        
+        save()
+    }
+    
+    func checkViewed(o:MessageModel)->Bool
+    {
+        if Uid == "" {return false}
+        return users[Uid]!.viewed.contains(o.id)
+    }
+    
+    func clear(type:Int)
+    {
+        if Uid == "" {return}
+        
+        if type == 1
+        {
+            for item in users[Uid]!.type1
+            {
+                removeViewed(item)
+            }
+            users[Uid]?.type1.removeAll(keepCapacity: false)
+            
+            users[Uid]?.count1 = 0
+        }
+        
+        if type == 2
+        {
+            for item in users[Uid]!.type2
+            {
+                removeViewed(item)
+            }
+            users[Uid]?.type2.removeAll(keepCapacity: false)
+            
+            users[Uid]?.count2 = 0
+        }
+        
+        if type == 3
+        {
+            for item in users[Uid]!.type3
+            {
+                removeViewed(item)
+            }
+            users[Uid]?.type3.removeAll(keepCapacity: false)
+            
+            users[Uid]?.count3 = 0
+        }
+        
+        save()
+        
+    }
+    
+    func remove(o:MessageModel)
+    {
+        if Uid == "" {return}
+        
+        if let index = users[Uid]?.type1.indexOf(o)
+        {
+            users[Uid]?.type1.removeAtIndex(index)
+            if !removeViewed(o)
+            {
+                users[Uid]?.count1 -= 1
+            }
+        }
+        
+        if let index = users[Uid]?.type2.indexOf(o)
+        {
+            users[Uid]?.type2.removeAtIndex(index)
+            
+            if !removeViewed(o)
+            {
+                users[Uid]?.count2 -= 1
+            }
+        }
+        
+        if let index = users[Uid]?.type3.indexOf(o)
+        {
+            users[Uid]?.type3.removeAtIndex(index)
+            
+            if !removeViewed(o)
+            {
+                users[Uid]?.count3 -= 1
+            }
+        }
+        
+        save()
+        
+       
+    }
     
     func save()
     {
+        "MsgChange".postNotice()
         UserMsgModel.save(obj: self, name: "UserMsgModel")
     }
     

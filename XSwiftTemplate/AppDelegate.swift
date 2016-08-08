@@ -22,7 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        DataCache.Share
         Preloading.Share.getAdvImage()
+        
         AdvImage?.clipsToBounds = true
         AdvImage?.layer.masksToBounds = true
         AdvImage?.contentMode = .ScaleAspectFill
@@ -166,7 +168,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         
-        //UMessage.didReceiveRemoteNotification(userInfo)
+        UMessage.didReceiveRemoteNotification(userInfo)
+        
+        print(userInfo)
         
        // let alertView = UIAlertView()
         

@@ -9,7 +9,11 @@
 import UIKit
 
 class UserCenterVC: UITableViewController {
-
+    
+    @IBOutlet var msgBG: UIView!
+    
+    @IBOutlet var msg: UILabel!
+    
     @IBOutlet var pass: UILabel!
     
     @IBOutlet var table: UITableView!
@@ -78,9 +82,22 @@ class UserCenterVC: UITableViewController {
                 self.pass.text = "修改密码"
             }
             
+            if let txt = UMsgCount
+            {
+                msgBG.hidden = false
+                msg.text = txt
+            }
+            else
+            {
+                msgBG.hidden = true
+            }
+            
+            
         }
         else
         {
+            msgBG.hidden = true
+            
             self.headPic.url = ""
             self.headPic.image = "tx.jpg".image
             self.userName.text = "点击登录"
@@ -91,10 +108,24 @@ class UserCenterVC: UITableViewController {
         
     }
     
+    func msgCountChange()
+    {
+        if let txt = UMsgCount
+        {
+            msgBG.hidden = false
+            msg.text = txt
+        }
+        else
+        {
+            msgBG.hidden = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.MsgChange.rawValue, object: nil)
+        
         let button=UIButton(type: UIButtonType.Custom)
         button.frame=CGRectMake(0, 0, 40, 21);
         button.setTitle("设置", forState: .Normal)
@@ -130,6 +161,7 @@ class UserCenterVC: UITableViewController {
         self.headPic.layer.borderColor="#bfbfbf".color?.CGColor
         self.headPic.layer.masksToBounds=true
         self.headPic.placeholder = "tx.jpg".image
+        
         
     }
     
@@ -265,6 +297,7 @@ class UserCenterVC: UITableViewController {
         
         self.showInfo()
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -26,6 +26,18 @@ var Umobile:String
 class UserModel: Reflect {
     
     var uid=""
+    {
+        didSet
+        {
+            if DataCache.Share.userMsg.users[uid] == nil
+            {
+                DataCache.Share.userMsg.users[uid] = UserMsgModel()
+            }
+            
+            setUMessageTag()
+        }
+    }
+    
     var nickname=""
     var sex=""
     var username=""
@@ -63,6 +75,7 @@ class UserModel: Reflect {
         house=MyHouseModel()
         truename=""
         self.save()
+        
     }
     
     func getUserHouse()
@@ -96,6 +109,26 @@ class UserModel: Reflect {
         print(Preloading.Share)
         
         Preloading.Share.getMessage(uid,username: username)
+    }
+    
+    func setUMessageTag()
+    {
+        UMessage.removeAllTags({ (obj, remain, error) -> Void in
+            
+        })
+        
+        UMessage.addTag("all") { (response, remain, error) -> Void in
+            
+        }
+        
+        if uid != ""
+        {
+            UMessage.addTag(uid) { (response, remain, error) -> Void in
+                
+            }
+        }
+        
+        
     }
     
     

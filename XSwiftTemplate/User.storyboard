@@ -914,14 +914,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdN-wf-YFm">
-                                                    <rect key="frame" x="51" y="6" width="15" height="15"/>
+                                                    <rect key="frame" x="48" y="6" width="18" height="18"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jpN-zN-7pp">
-                                                            <rect key="frame" x="3" y="3" width="10" height="10"/>
+                                                            <rect key="frame" x="3" y="3" width="13" height="13"/>
                                                             <color key="backgroundColor" red="1" green="0.32549019610000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="ecR-X1-5aG"/>
-                                                                <constraint firstAttribute="height" constant="10" id="wMK-Ut-LTc"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="13" id="ecR-X1-5aG"/>
+                                                                <constraint firstAttribute="height" constant="13" id="wMK-Ut-LTc"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -935,6 +935,12 @@
                                                         <constraint firstAttribute="width" secondItem="jpN-zN-7pp" secondAttribute="width" constant="5" id="m6q-fN-jSf"/>
                                                         <constraint firstItem="jpN-zN-7pp" firstAttribute="centerY" secondItem="bdN-wf-YFm" secondAttribute="centerY" id="tPd-tD-PSt"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.95294117649999999" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -986,14 +992,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUh-Ar-Scv">
-                                                    <rect key="frame" x="51" y="6" width="15" height="15"/>
+                                                    <rect key="frame" x="48" y="6" width="18" height="18"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RE2-iQ-EG1">
-                                                            <rect key="frame" x="3" y="3" width="10" height="10"/>
+                                                            <rect key="frame" x="3" y="3" width="13" height="13"/>
                                                             <color key="backgroundColor" red="1" green="0.32549019610000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="TIu-9n-O7w"/>
-                                                                <constraint firstAttribute="height" constant="10" id="XrK-qE-1dP"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="13" id="TIu-9n-O7w"/>
+                                                                <constraint firstAttribute="height" constant="13" id="XrK-qE-1dP"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1007,6 +1013,12 @@
                                                         <constraint firstItem="RE2-iQ-EG1" firstAttribute="centerY" secondItem="IUh-Ar-Scv" secondAttribute="centerY" id="QTf-hP-iZV"/>
                                                         <constraint firstAttribute="height" secondItem="RE2-iQ-EG1" secondAttribute="height" constant="5" id="fGu-vS-Cgi"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.95294117649999999" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -1058,14 +1070,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZK-xr-JRC">
-                                                    <rect key="frame" x="51" y="6" width="15" height="15"/>
+                                                    <rect key="frame" x="48" y="6" width="18" height="18"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zya-c0-ThD">
-                                                            <rect key="frame" x="3" y="3" width="10" height="10"/>
+                                                            <rect key="frame" x="3" y="3" width="13" height="13"/>
                                                             <color key="backgroundColor" red="1" green="0.32549019610000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="Ani-xm-WWD"/>
-                                                                <constraint firstAttribute="height" constant="10" id="wxG-py-ip5"/>
+                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="13" id="Ani-xm-WWD"/>
+                                                                <constraint firstAttribute="height" constant="13" id="wxG-py-ip5"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1079,6 +1091,12 @@
                                                         <constraint firstItem="zya-c0-ThD" firstAttribute="centerY" secondItem="IZK-xr-JRC" secondAttribute="centerY" id="eQr-Ut-143"/>
                                                         <constraint firstItem="zya-c0-ThD" firstAttribute="centerX" secondItem="IZK-xr-JRC" secondAttribute="centerX" id="hKw-hP-UMz"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="9"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.95294117649999999" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>

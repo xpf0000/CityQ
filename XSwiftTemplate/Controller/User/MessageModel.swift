@@ -197,5 +197,7 @@ class MessageModel: Reflect {
     var title=""
     var content=""
     var create_time=""
+    var xqname=""
+    var shopname=""
 
 }

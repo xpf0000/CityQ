@@ -98,6 +98,8 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.MsgChange.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.LoginSuccess.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.LogoutSuccess.rawValue, object: nil)
         
         menu.frame = CGRectMake(swidth/6.0, 0, swidth/3.0*2.0, 42.0*screenFlag)
         

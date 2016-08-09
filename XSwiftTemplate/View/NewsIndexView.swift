@@ -404,6 +404,28 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 vc.model.id = model.id
                 vc.hidesBottomBarWhenPushed = true
                 self.viewController?.navigationController?.pushViewController(vc, animated: true)
+ 
+                if(!DataCache.Share.newsViewedModel.has(vc.model.id))
+                {
+                    DataCache.Share.newsViewedModel.add(vc.model.id)
+                    
+                    if let cell = tableView.cellForRowAtIndexPath(indexPath) as? NewsActivitysCell
+                    {
+                        cell.setHasSee()
+                    }
+                    
+                    if let cell = tableView.cellForRowAtIndexPath(indexPath) as? ActivitysCell
+                    {
+                        cell.setHasSee()
+                    }
+                    
+                    let url = APPURL+"Public/Found/?service=News.addView&id="+vc.model.id
+                    
+                    XHttpPool.requestJson(url, body: nil, method: .GET, block: {[weak self] (o) -> Void in
+                        
+                    })
+                    
+                }
             }
             else
             {
@@ -411,8 +433,6 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 vc.model = model
                 vc.hidesBottomBarWhenPushed = true
                 self.viewController?.navigationController?.pushViewController(vc, animated: true)
-                
-                let cell=tableView.cellForRowAtIndexPath(indexPath)
                 
                 if(!DataCache.Share.newsViewedModel.has(vc.model.id))
                 {
@@ -436,16 +456,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                         })
                     
                 }
-                
-                
-                if cell is NewsListCell
-                {
-                    
-                    
-                }
-                
-                
-                
+   
             }
   
         }

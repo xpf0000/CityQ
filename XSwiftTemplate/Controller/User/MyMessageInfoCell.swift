@@ -10,6 +10,8 @@ import UIKit
 
 class MyMessageInfoCell: UITableViewCell {
     
+    @IBOutlet var from: UILabel!
+    
     @IBOutlet var see: UIView!
     
     @IBOutlet var mainView: UIView!
@@ -46,6 +48,8 @@ class MyMessageInfoCell: UITableViewCell {
                 mcontent.text = model.content
             
                 see.hidden = DataCache.Share.userMsg.checkViewed(model)
+            
+                from.text = model.xqname == "" ? model.shopname : model.xqname
             
         }
     }

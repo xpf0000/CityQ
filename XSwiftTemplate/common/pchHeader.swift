@@ -98,7 +98,6 @@ enum 腾讯颜色 : String{
 
 var serverPath="http://101.201.169.38/test"
 
-
 func ShowMessage(str:String)
 {
     UIApplication.sharedApplication().keyWindow?.addSubview(XMessage.Share())
@@ -124,13 +123,13 @@ func RemoveWaiting()
 func RegistUMessage()
 {
     if #available(iOS 8.0, *) {
-        let settings:UIUserNotificationSettings=UIUserNotificationSettings(forTypes: [.Badge,.Alert,.Sound], categories: nil)
+        let settings:UIUserNotificationSettings=UIUserNotificationSettings(forTypes: [.Alert,.Sound], categories: nil)
     
         UMessage.registerRemoteNotificationAndUserNotificationSettings(settings)
         
     } else {
         
-        UMessage.registerForRemoteNotificationTypes([.Badge,.Alert,.Sound])
+        UMessage.registerForRemoteNotificationTypes([.Alert,.Sound])
     }
 
 }

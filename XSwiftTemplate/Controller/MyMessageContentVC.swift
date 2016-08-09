@@ -37,7 +37,7 @@ class MyMessageContentVC: UIViewController {
         let time = date.toStr("yyyy-MM-dd HH:mm")!
         
         ntitle.text = model.title
-        self.time.text = time
+        self.time.text = time+" "+(model.xqname == "" ? model.shopname : model.xqname)
         
         content.text = model.content
         

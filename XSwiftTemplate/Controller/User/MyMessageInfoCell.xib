@@ -55,6 +55,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFA-jA-EZy">
+                                <rect key="frame" x="419" y="141" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -64,11 +70,13 @@
                             <constraint firstAttribute="bottom" secondItem="uSH-Ky-So5" secondAttribute="bottom" constant="12" id="BxH-DE-TjV"/>
                             <constraint firstItem="NEp-Yu-YRD" firstAttribute="leading" secondItem="uSH-Ky-So5" secondAttribute="trailing" id="K0E-L0-xRM"/>
                             <constraint firstItem="e8W-ee-MG1" firstAttribute="leading" secondItem="cEd-el-9DP" secondAttribute="leading" id="OB3-NN-vIn"/>
+                            <constraint firstAttribute="trailing" secondItem="lFA-jA-EZy" secondAttribute="trailing" constant="12" id="Pwi-J9-0ey"/>
                             <constraint firstItem="cEd-el-9DP" firstAttribute="top" secondItem="CHw-ak-ZdN" secondAttribute="top" constant="12" id="STa-hb-hDR"/>
                             <constraint firstItem="uSH-Ky-So5" firstAttribute="leading" secondItem="cEd-el-9DP" secondAttribute="leading" id="fAJ-Rs-ucr"/>
                             <constraint firstItem="e8W-ee-MG1" firstAttribute="trailing" secondItem="cEd-el-9DP" secondAttribute="trailing" id="fs4-6z-gmf"/>
                             <constraint firstItem="cEd-el-9DP" firstAttribute="leading" secondItem="CHw-ak-ZdN" secondAttribute="leading" constant="8" id="iJk-wi-gUp"/>
                             <constraint firstItem="NEp-Yu-YRD" firstAttribute="centerY" secondItem="uSH-Ky-So5" secondAttribute="centerY" constant="3" id="lvW-e2-tHC"/>
+                            <constraint firstItem="lFA-jA-EZy" firstAttribute="centerY" secondItem="NEp-Yu-YRD" secondAttribute="centerY" id="oes-eU-Myr"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年03月31号" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mQ-pO-FWq">
@@ -93,6 +101,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.95294117649999999" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="from" destination="lFA-jA-EZy" id="gbH-8k-pzJ"/>
                 <outlet property="mainView" destination="CHw-ak-ZdN" id="DuI-hh-3G0"/>
                 <outlet property="mcontent" destination="e8W-ee-MG1" id="Mo1-kd-CGN"/>
                 <outlet property="mtitle" destination="cEd-el-9DP" id="8dZ-Cb-QRV"/>

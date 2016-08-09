@@ -49,6 +49,18 @@ class NewsActivitysCell: UITableViewCell {
     }
     
     
+    func setHasSee()
+    {
+        if(DataCache.Share.newsViewedModel.has(model.id))
+        {
+            ntitle.textColor = UIColor(red: 142.0/255.0, green: 142.0/255.0, blue: 142.0/255.0, alpha: 1.0)
+        }
+        else
+        {
+            ntitle.textColor = UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+        }
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

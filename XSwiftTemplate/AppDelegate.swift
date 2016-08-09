@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         
         UMessage.setLogEnabled(true)
         UMessage.setAutoAlert(false)
+        UMessage.setBadgeClear(false)
         
         let cacheSizeMemory = 64*1024*1024; // 64MB
         let cacheSizeDisk = 256*1024*1024; // 256MB
@@ -169,19 +170,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         
-        UMessage.didReceiveRemoteNotification(userInfo)
-        
-        print(userInfo)
-        
-       Preloading.Share.getMessage(Uid, username: Uname)
+//        UMessage.didReceiveRemoteNotification(userInfo)
+//        
+//        print("userInfo 000: \(userInfo)")
+//        
+//       Preloading.Share.getMessage(Uid, username: Uname)
         
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
-        UMessage.didReceiveRemoteNotification(userInfo)
-        
-        Preloading.Share.getMessage(Uid, username: Uname)
+//        UMessage.didReceiveRemoteNotification(userInfo)
+//        
+//        print("userInfo 111: \(userInfo)")
+//        
+//        Preloading.Share.getMessage(Uid, username: Uname)
         
     }
     
@@ -206,13 +209,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
 
     func applicationWillEnterForeground(application: UIApplication) {
        
-        
-        
+        print("applicationWillEnterForeground !!!!")
+        Preloading.Share.getMessage(Uid, username: Uname)
     }
+  
 
     func applicationDidBecomeActive(application: UIApplication) {
         
-        Preloading.Share.getMessage(Uid, username: Uname)
+        print("applicationDidBecomeActive !!!!")
+        
+        //Preloading.Share.getMessage(Uid, username: Uname)
         
     }
 

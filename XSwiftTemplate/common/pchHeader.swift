@@ -62,6 +62,14 @@ let WhiteDefaultIMG = UIColor.whiteColor().image
 let UMAppKey:String="5693535e67e58e4b8e002114"
 let UMAppMSecret:String="54cgb77veilksfrwqsq4pwj6zgv1p88z"
 
+//test
+//let AliAppKey:String="23429580"
+//let AliAppMSecret:String="d54ea0bf63f6b93de7acf4720e414173"
+
+//
+let AliAppKey:String="23429639"
+let AliAppMSecret:String="3abd9b6d049735de2d72321efb149419"
+
 let board=UIStoryboard(name: "main", bundle: nil)
 
 let jumpAnim:JumpAnimator=JumpAnimator(type: AnimatorType.Default)
@@ -120,58 +128,81 @@ func RemoveWaiting()
     XWaitingView.Share().removeFromSuperview()
 }
 
-func RegistUMessage()
+func RegistPushNotice()
 {
     if #available(iOS 8.0, *) {
         let settings:UIUserNotificationSettings=UIUserNotificationSettings(forTypes: [.Alert,.Sound], categories: nil)
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        UIApplication.sharedApplication().registerForRemoteNotifications()
     
-        UMessage.registerRemoteNotificationAndUserNotificationSettings(settings)
+        //UMessage.registerRemoteNotificationAndUserNotificationSettings(settings)
         
     } else {
-        
-        UMessage.registerForRemoteNotificationTypes([.Alert,.Sound])
+        UIApplication.sharedApplication().registerForRemoteNotificationTypes([.Alert,.Sound])
+        //UMessage.registerForRemoteNotificationTypes([.Alert,.Sound])
     }
 
 }
 
 func SetUMessageTag()
 {
-    UMessage.removeAllTags({ (obj, remain, error) -> Void in
-        
-    })
-    if DataCache.Share.oaUserModel.uid != ""
-    {
-        UMessage.addTag(DataCache.Share.oaUserModel.uid) { (response, remain, error) -> Void in
-        }
+    CloudPushSDK.removeAlias(nil) { (res) in
+        CloudPushSDK.addAlias("all") { (res) in}
     }
     
-    if DataCache.Share.oaUserModel.dwid != ""
-    {
-        UMessage.addTag(DataCache.Share.oaUserModel.dwid) { (response, remain, error) -> Void in
-        }
-    }
-    
-    if DataCache.Share.oaUserModel.bmid != ""
-    {
-        UMessage.addTag(DataCache.Share.oaUserModel.bmid) { (response, remain, error) -> Void in
-        }
-    }
-    
-    if DataCache.Share.oaUserModel.jgid != ""
-    {
-        UMessage.addTag(DataCache.Share.oaUserModel.jgid) { (response, remain, error) -> Void in
-        }
-    }
+//    CloudPushSDK.listTags(1) { (res) in
+//        
+//        if let tag = res.data as? String
+//        {
+//            let arr = tag.split(",")
+//            
+//            CloudPushSDK.unbindTag(1, withTags: arr, withAlias: "", withCallback: { (res) in
+//
+//                CloudPushSDK.unbindTag(1, withTags: ["all"], withAlias: "") { (res) in}
+//                
+//            })
+//        }
+//    }
 
-    UMessage.addTag("all") { (response, remain, error) -> Void in
-    }
+//    UMessage.removeAllTags({ (obj, remain, error) -> Void in
+//        
+//        if DataCache.Share.oaUserModel.uid != ""
+//        {
+//            UMessage.addTag(DataCache.Share.oaUserModel.uid) { (response, remain, error) -> Void in
+//            }
+//        }
+//        
+//        if DataCache.Share.oaUserModel.dwid != ""
+//        {
+//            UMessage.addTag(DataCache.Share.oaUserModel.dwid) { (response, remain, error) -> Void in
+//            }
+//        }
+//        
+//        if DataCache.Share.oaUserModel.bmid != ""
+//        {
+//            UMessage.addTag(DataCache.Share.oaUserModel.bmid) { (response, remain, error) -> Void in
+//            }
+//        }
+//        
+//        if DataCache.Share.oaUserModel.jgid != ""
+//        {
+//            UMessage.addTag(DataCache.Share.oaUserModel.jgid) { (response, remain, error) -> Void in
+//            }
+//        }
+//        
+//        UMessage.addTag("all") { (response, remain, error) -> Void in
+//        }
+//        
+//        if Uid != ""
+//        {
+//            UMessage.addTag(Uid) { (response, remain, error) -> Void in
+//                
+//            }
+//        }
+//        
+//    })
     
-    if Uid != ""
-    {
-        UMessage.addTag(Uid) { (response, remain, error) -> Void in
-            
-        }
-    }
     
 }
 

@@ -314,7 +314,11 @@ class XHttpRequest: NSObject,NSURLConnectionDataDelegate{
         if(self.runing){return}
         runing=true
         
-        print(url)
+        if XHttpPool.Debug
+        {
+            print(url)
+        }
+        //
         
         self.task = XHttpPool.Share.session.dataTaskWithRequest(self.request!)
         

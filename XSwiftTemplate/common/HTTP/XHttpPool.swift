@@ -73,7 +73,7 @@ typealias ProgressBlock = (CGFloat)->Void
 class XHttpPool:NSObject
 {
     static let Share = XHttpPool.init()
-    
+    static var Debug = false
     let config = NSURLSessionConfiguration.defaultSessionConfiguration()
     var session:NSURLSession!
     var serverTimeInterval:NSTimeInterval = 0.0

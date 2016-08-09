@@ -20,7 +20,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     var backgroundUpdateTask:UIBackgroundTaskIdentifier?
     var mapManager:BMKMapManager?
     
+    func onMessageReceived(notification:NSNotification)
+    {
+        print("Message is received !!!!!")
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onMessageReceived(_:)), name: "CCPDidReceiveMessageNotification", object: nil)
         
         DataCache.Share
         Preloading.Share.getAdvImage()
@@ -28,12 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         AdvImage?.clipsToBounds = true
         AdvImage?.layer.masksToBounds = true
         AdvImage?.contentMode = .ScaleAspectFill
-
-        UMessage.startWithAppkey(UMAppKey, launchOptions: launchOptions)
         
-        UMessage.setLogEnabled(true)
-        UMessage.setAutoAlert(false)
-        UMessage.setBadgeClear(false)
+//        //UMessage.startWithAppkey(UMAppKey, launchOptions: launchOptions)
+//        
+//        //UMessage.setLogEnabled(true)
+//        //UMessage.setAutoAlert(false)
+//        //UMessage.setBadgeClear(false)
+        
+        initCloudPush()
         
         let cacheSizeMemory = 64*1024*1024; // 64MB
         let cacheSizeDisk = 256*1024*1024; // 256MB
@@ -50,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
             NSUserDefaults.standardUserDefaults().setInteger(1, forKey: "appRunTimes")
             NSUserDefaults.standardUserDefaults().synchronize()
             
-            RegistUMessage()
+            RegistPushNotice()
             
             DataCache.Share.welcom.show = true
             
@@ -74,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
             
             if("ReceiveNotice".UserDefaultsValue() as! Bool)
             {
-                RegistUMessage()
+                RegistPushNotice()
             }
   
         }
@@ -127,8 +136,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         
         ContentMaxHeight = label.frame.size.height
         
-
+        CloudPushSDK.handleLaunching(launchOptions)
+        
         return true
+    }
+    
+    func initCloudPush()
+    {
+        CloudPushSDK.asyncInit(AliAppKey, appSecret: AliAppMSecret) { (res) in
+            
+            if (res.success) {
+                print("Push SDK init success, deviceId: \(CloudPushSDK.getDeviceId())")
+            } else {
+                print("Push SDK init failed, error: \(res.error)")
+            }
+        }
+        
+        CloudPushSDK.turnOnDebug()
     }
     
     func initShareSDK()
@@ -158,6 +182,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         
+        CloudPushSDK.registerDevice(deviceToken) { (res) in
+            
+            if (res.success) {
+                print("Register deviceToken success.")
+            } else {
+                print("Register deviceToken failed, error: \(res.error)")
+            }
+            
+        }
+        
         var str:NSString=deviceToken.description
         str=str.stringByReplacingOccurrencesOfString("<", withString: "")
         str=str.stringByReplacingOccurrencesOfString(">", withString: "")
@@ -165,32 +199,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         
         DataCache.Share.deviceToken=(str as String).md5
         
-        UMessage.registerDeviceToken(deviceToken)
+        ////UMessage.registerDeviceToken(deviceToken)
     }
+    
+
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         
-//        UMessage.didReceiveRemoteNotification(userInfo)
-//        
-//        print("userInfo 000: \(userInfo)")
-//        
-//       Preloading.Share.getMessage(Uid, username: Uname)
+        CloudPushSDK.handleReceiveRemoteNotification(userInfo)
+        ////UMessage.didReceiveRemoteNotification(userInfo)
+        
+        print("userInfo 000: \(userInfo)")
+        
+        Preloading.Share.getMessage(Uid, username: Uname)
         
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
-//        UMessage.didReceiveRemoteNotification(userInfo)
-//        
-//        print("userInfo 111: \(userInfo)")
-//        
-//        Preloading.Share.getMessage(Uid, username: Uname)
+        ////UMessage.didReceiveRemoteNotification(userInfo)
+        
+        print("userInfo 111: \(userInfo)")
+        
+        Preloading.Share.getMessage(Uid, username: Uname)
         
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        
-        //print(error)
+        print("didFailToRegisterForRemoteNotificationsWithError error: \(error)")
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -257,6 +293,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         self.backgroundUpdateTask = UIBackgroundTaskInvalid
     }
 
-    
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
 }
 

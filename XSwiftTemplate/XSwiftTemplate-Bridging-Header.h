@@ -16,9 +16,11 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
-
+#import <CloudPushSDK/CloudPushSDK.h>
 #import <CommonCrypto/CommonDigest.h>
-#import "UMessage.h"
+
+//#import "//UMessage.h"
+
 #import "SkyRadiusView.h"
 #import "XOC.h"
 #import "FXBlurView.h"

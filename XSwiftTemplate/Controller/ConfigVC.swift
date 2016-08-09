@@ -38,11 +38,12 @@ class ConfigVC: UITableViewController ,UIAlertViewDelegate{
         
         if(!s.on)
         {
-            UMessage.unregisterForRemoteNotifications()
+            UIApplication.sharedApplication().unregisterForRemoteNotifications()
+            ////UMessage.unregisterForRemoteNotifications()
         }
         else
         {
-            RegistUMessage()
+            RegistPushNotice()
         }
         
     }

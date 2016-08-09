@@ -106,20 +106,47 @@ class UserModel: Reflect {
     
     func setUMessageTag()
     {
-        UMessage.removeAllTags({ (obj, remain, error) -> Void in
-            
-        })
-        
-        UMessage.addTag("all") { (response, remain, error) -> Void in
-            
-        }
-        
-        if uid != ""
-        {
-            UMessage.addTag(uid) { (response, remain, error) -> Void in
-                
+        CloudPushSDK.removeAlias(nil) { (res) in
+            CloudPushSDK.addAlias("all") { (res) in}
+            if self.uid != ""
+            {
+                CloudPushSDK.addAlias(self.uid) { (res) in}
             }
         }
+        
+//        CloudPushSDK.listTags(1) { (res) in
+//            
+//            if let tag = res.data as? String
+//            {
+//                let tags = tag.split(",")
+//
+//               CloudPushSDK.unbindTag(1, withTags: tags, withAlias: "", withCallback: { (res) in
+//
+//                let arr = self.uid == "" ? ["all"] : ["all",self.uid]
+//                
+//                CloudPushSDK.bindTag(1, withTags: arr, withAlias: "") { (res) in}
+//               
+//               })
+//            }
+//            
+//        }
+        
+//        UMessage.removeAllTags({ (obj, remain, error) -> Void in
+//            
+//            UMessage.addTag("all") { (response, remain, error) -> Void in
+//                
+//            }
+//            
+//            if self.uid != ""
+//            {
+//                UMessage.addTag(self.uid) { (response, remain, error) -> Void in
+//                    
+//                }
+//            }
+//            
+//        })
+        
+        
         
         
     }

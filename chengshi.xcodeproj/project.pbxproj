@@ -144,6 +144,12 @@
 		1740FAA11D1ECFBE00F24AC6 /* MyMessageContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1740FAA01D1ECFBE00F24AC6 /* MyMessageContentVC.swift */; };
 		174366691CC771CA0040AE17 /* XImageOperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174366681CC771CA0040AE17 /* XImageOperationManager.swift */; };
 		1744CBC81C27CAEB009038EF /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744CBC71C27CAEB009038EF /* AboutVC.swift */; };
+		174BBDAD1D59B27100F7553C /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDAC1D59B27100F7553C /* libresolv.tbd */; };
+		174BBDB31D59CFC800F7553C /* ALBBSessionSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDAE1D59CFC800F7553C /* ALBBSessionSDK.framework */; };
+		174BBDB41D59CFC800F7553C /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDAF1D59CFC800F7553C /* AlicloudUtils.framework */; };
+		174BBDB51D59CFC800F7553C /* CloudPushSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDB01D59CFC800F7553C /* CloudPushSDK.framework */; };
+		174BBDB61D59CFC800F7553C /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDB11D59CFC800F7553C /* UTDID.framework */; };
+		174BBDB71D59CFC800F7553C /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDB21D59CFC800F7553C /* UTMini.framework */; };
 		174E12241CCF7AAB00B89C49 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 174E12231CCF7AAB00B89C49 /* UIImage+WebP.m */; };
 		175BB5671C14198F000C85FE /* DiscoverVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175BB5661C14198F000C85FE /* DiscoverVC1.swift */; };
 		175FAA871BD76BD5000CD531 /* postViewContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175FAA861BD76BD5000CD531 /* postViewContent.xib */; };
@@ -892,6 +898,12 @@
 		1740FAA01D1ECFBE00F24AC6 /* MyMessageContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMessageContentVC.swift; sourceTree = "<group>"; };
 		174366681CC771CA0040AE17 /* XImageOperationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XImageOperationManager.swift; sourceTree = "<group>"; };
 		1744CBC71C27CAEB009038EF /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
+		174BBDAC1D59B27100F7553C /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		174BBDAE1D59CFC800F7553C /* ALBBSessionSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ALBBSessionSDK.framework; sourceTree = "<group>"; };
+		174BBDAF1D59CFC800F7553C /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudUtils.framework; sourceTree = "<group>"; };
+		174BBDB01D59CFC800F7553C /* CloudPushSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CloudPushSDK.framework; sourceTree = "<group>"; };
+		174BBDB11D59CFC800F7553C /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTDID.framework; sourceTree = "<group>"; };
+		174BBDB21D59CFC800F7553C /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
 		174E12221CCF7AAB00B89C49 /* UIImage+WebP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WebP.h"; sourceTree = "<group>"; };
 		174E12231CCF7AAB00B89C49 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
 		175BB5661C14198F000C85FE /* DiscoverVC1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverVC1.swift; sourceTree = "<group>"; };
@@ -1542,6 +1554,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				174BBDAD1D59B27100F7553C /* libresolv.tbd in Frameworks */,
 				17DEAB3A1C0BF88A00038B82 /* libsqlite3.tbd in Frameworks */,
 				17DEAB381C0BF87A00038B82 /* AdSupport.framework in Frameworks */,
 				17DEAB361C0BF87000038B82 /* ImageIO.framework in Frameworks */,
@@ -1553,7 +1566,10 @@
 				17F710EC1C5874BC0080E6F7 /* ShareSDKCoreService.framework in Frameworks */,
 				17BDF1411C0B085600B922D8 /* AddressBookUI.framework in Frameworks */,
 				17BDF13D1C0B084300B922D8 /* libstdc++.tbd in Frameworks */,
+				174BBDB61D59CFC800F7553C /* UTDID.framework in Frameworks */,
 				17C8182B1C44B791001DA70F /* libUMessage_Sdk_1.2.3.a in Frameworks */,
+				174BBDB71D59CFC800F7553C /* UTMini.framework in Frameworks */,
+				174BBDB31D59CFC800F7553C /* ALBBSessionSDK.framework in Frameworks */,
 				17BDF13B1C0B083400B922D8 /* JavaScriptCore.framework in Frameworks */,
 				17F710F61C5874BC0080E6F7 /* ShareSDKShareActionSheet.framework in Frameworks */,
 				17BDF1391C0B082800B922D8 /* MessageUI.framework in Frameworks */,
@@ -1574,6 +1590,7 @@
 				17F710ED1C5874BC0080E6F7 /* TencentOpenAPI.framework in Frameworks */,
 				17C818271C44AD6F001DA70F /* BaiduMapAPI_Location.framework in Frameworks */,
 				178F97851B9D6C0D00B86E60 /* EventKit.framework in Frameworks */,
+				174BBDB41D59CFC800F7553C /* AlicloudUtils.framework in Frameworks */,
 				17F710F31C5874BC0080E6F7 /* ShareSDK.framework in Frameworks */,
 				178F97861B9D6C0D00B86E60 /* CoreLocation.framework in Frameworks */,
 				178F97871B9D6C0D00B86E60 /* QuartzCore.framework in Frameworks */,
@@ -1582,6 +1599,7 @@
 				178F97891B9D6C0D00B86E60 /* Security.framework in Frameworks */,
 				17F710F11C5874BC0080E6F7 /* libWeChatSDK.a in Frameworks */,
 				17F710EF1C5874BC0080E6F7 /* libWeiboSDK.a in Frameworks */,
+				174BBDB51D59CFC800F7553C /* CloudPushSDK.framework in Frameworks */,
 				17C818261C44AD6F001DA70F /* BaiduMapAPI_Base.framework in Frameworks */,
 				17C818281C44AD6F001DA70F /* BaiduMapAPI_Search.framework in Frameworks */,
 				178F976E1B9D6B2D00B86E60 /* MapKit.framework in Frameworks */,
@@ -1866,6 +1884,18 @@
 				17DBB5951D192DAD0090677D /* WalletModel.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		174BBD9F1D59B20200F7553C /* OneSDK */ = {
+			isa = PBXGroup;
+			children = (
+				174BBDAE1D59CFC800F7553C /* ALBBSessionSDK.framework */,
+				174BBDAF1D59CFC800F7553C /* AlicloudUtils.framework */,
+				174BBDB01D59CFC800F7553C /* CloudPushSDK.framework */,
+				174BBDB11D59CFC800F7553C /* UTDID.framework */,
+				174BBDB21D59CFC800F7553C /* UTMini.framework */,
+			);
+			path = OneSDK;
 			sourceTree = "<group>";
 		};
 		174DC4BE1D06A5E500132928 /* Card */ = {
@@ -2317,6 +2347,7 @@
 		178F976B1B9D6AD900B86E60 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				174BBDAC1D59B27100F7553C /* libresolv.tbd */,
 				17DEAB311C0BF84000038B82 /* libz.1.2.5.tbd */,
 				17DEAB391C0BF88A00038B82 /* libsqlite3.tbd */,
 				17DEAB371C0BF87A00038B82 /* AdSupport.framework */,
@@ -2565,6 +2596,7 @@
 		17E85D721BFD550C00AC0FC9 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				174BBD9F1D59B20200F7553C /* OneSDK */,
 				177E86A01D16C98200EE20CF /* XDownLoad */,
 				177E869D1D16C96400EE20CF /* Regex */,
 				177E865A1D16C88500EE20CF /* XEasyListView */,
@@ -3992,6 +4024,7 @@
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ShareSDK",
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ShareSDK/UI",
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ImageUtil",
+					"$(PROJECT_DIR)/XSwiftTemplate/common/OneSDK",
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = XSwiftTemplate/Info.plist;
@@ -4033,6 +4066,7 @@
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ShareSDK",
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ShareSDK/UI",
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ImageUtil",
+					"$(PROJECT_DIR)/XSwiftTemplate/common/OneSDK",
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = XSwiftTemplate/Info.plist;

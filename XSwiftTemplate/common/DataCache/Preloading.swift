@@ -108,9 +108,17 @@ class Preloading: NSObject{
         {
             DataCache.Share.oaUserModel = OAUserModel()
             DataCache.Share.oaUserModel.save()
-            UMessage.removeAllTags({ (obj, remain, error) -> Void in
-                
-            })
+            
+//            UMessage.removeAllTags({ (obj, remain, error) -> Void in
+//                
+//                UMessage.addTag("all", response: { (obj, remain, err) in})
+//                if Uid != ""
+//                {
+//                    UMessage.addTag(Uid, response: { (obj, remain, err) in})
+//                }
+//                
+//            })
+            
             return
         }
         
@@ -132,9 +140,16 @@ class Preloading: NSObject{
             DataCache.Share.oaUserModel = OAUserModel()
             DataCache.Share.oaUserModel.save()
             
-            UMessage.removeAllTags({ (obj, remain, error) -> Void in
-                
-            })
+//            UMessage.removeAllTags({ (obj, remain, error) -> Void in
+//                
+//                UMessage.addTag("all", response: { (obj, remain, err) in})
+//                if Uid != ""
+//                {
+//                    UMessage.addTag(Uid, response: { (obj, remain, err) in})
+//                }
+//                
+//            })
+            
         }
     }
     

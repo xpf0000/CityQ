@@ -18,6 +18,7 @@
 #import "WeiboSDK.h"
 #import <CloudPushSDK/CloudPushSDK.h>
 #import <CommonCrypto/CommonDigest.h>
+#import <AlicloudMobileAnalitics/ALBBMAN.h>
 
 //#import "//UMessage.h"
 

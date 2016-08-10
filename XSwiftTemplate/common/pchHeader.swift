@@ -147,9 +147,6 @@ func RegistPushNotice()
 
 func SetUMessageTag()
 {
-    CloudPushSDK.removeAlias(nil) { (res) in
-        CloudPushSDK.addAlias("all") { (res) in}
-    }
     
 //    CloudPushSDK.listTags(1) { (res) in
 //        

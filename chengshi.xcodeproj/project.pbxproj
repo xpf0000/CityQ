@@ -44,6 +44,12 @@
 		170EEB1F1C3FADF0008FE174 /* add_icon_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 170EEB1E1C3FADF0008FE174 /* add_icon_blue.png */; };
 		170EEB211C3FB6EA008FE174 /* list_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170EEB201C3FB6EA008FE174 /* list_icon.png */; };
 		170EEB231C3FB6FD008FE174 /* b_arrow_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 170EEB221C3FB6FD008FE174 /* b_arrow_icon.png */; };
+		1710189C1D5B317500516482 /* ALBBSessionSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 171018961D5B317500516482 /* ALBBSessionSDK.framework */; };
+		1710189D1D5B317500516482 /* AlicloudMobileAnalitics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 171018971D5B317500516482 /* AlicloudMobileAnalitics.framework */; };
+		1710189E1D5B317500516482 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 171018981D5B317500516482 /* AlicloudUtils.framework */; };
+		1710189F1D5B317500516482 /* CloudPushSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 171018991D5B317500516482 /* CloudPushSDK.framework */; };
+		171018A01D5B317500516482 /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1710189A1D5B317500516482 /* UTDID.framework */; };
+		171018A11D5B317500516482 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1710189B1D5B317500516482 /* UTMini.framework */; };
 		17149C701C7D5E1E005DD9B7 /* PropertyPhotoInfoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17149C6F1C7D5E1E005DD9B7 /* PropertyPhotoInfoTable.swift */; };
 		17149C721C7D5E56005DD9B7 /* PropertyPhotoInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17149C711C7D5E56005DD9B7 /* PropertyPhotoInfoVC.swift */; };
 		171A88AA1C3E39A900F303F6 /* WorksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171A88A91C3E39A900F303F6 /* WorksVC.swift */; };
@@ -145,11 +151,6 @@
 		174366691CC771CA0040AE17 /* XImageOperationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174366681CC771CA0040AE17 /* XImageOperationManager.swift */; };
 		1744CBC81C27CAEB009038EF /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744CBC71C27CAEB009038EF /* AboutVC.swift */; };
 		174BBDAD1D59B27100F7553C /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDAC1D59B27100F7553C /* libresolv.tbd */; };
-		174BBDB31D59CFC800F7553C /* ALBBSessionSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDAE1D59CFC800F7553C /* ALBBSessionSDK.framework */; };
-		174BBDB41D59CFC800F7553C /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDAF1D59CFC800F7553C /* AlicloudUtils.framework */; };
-		174BBDB51D59CFC800F7553C /* CloudPushSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDB01D59CFC800F7553C /* CloudPushSDK.framework */; };
-		174BBDB61D59CFC800F7553C /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDB11D59CFC800F7553C /* UTDID.framework */; };
-		174BBDB71D59CFC800F7553C /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDB21D59CFC800F7553C /* UTMini.framework */; };
 		174E12241CCF7AAB00B89C49 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 174E12231CCF7AAB00B89C49 /* UIImage+WebP.m */; };
 		175BB5671C14198F000C85FE /* DiscoverVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175BB5661C14198F000C85FE /* DiscoverVC1.swift */; };
 		175FAA871BD76BD5000CD531 /* postViewContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175FAA861BD76BD5000CD531 /* postViewContent.xib */; };
@@ -798,6 +799,12 @@
 		170EEB1E1C3FADF0008FE174 /* add_icon_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_icon_blue.png; sourceTree = "<group>"; };
 		170EEB201C3FB6EA008FE174 /* list_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list_icon.png; sourceTree = "<group>"; };
 		170EEB221C3FB6FD008FE174 /* b_arrow_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b_arrow_icon.png; sourceTree = "<group>"; };
+		171018961D5B317500516482 /* ALBBSessionSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ALBBSessionSDK.framework; sourceTree = "<group>"; };
+		171018971D5B317500516482 /* AlicloudMobileAnalitics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudMobileAnalitics.framework; sourceTree = "<group>"; };
+		171018981D5B317500516482 /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudUtils.framework; sourceTree = "<group>"; };
+		171018991D5B317500516482 /* CloudPushSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CloudPushSDK.framework; sourceTree = "<group>"; };
+		1710189A1D5B317500516482 /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTDID.framework; sourceTree = "<group>"; };
+		1710189B1D5B317500516482 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
 		17149C6F1C7D5E1E005DD9B7 /* PropertyPhotoInfoTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyPhotoInfoTable.swift; sourceTree = "<group>"; };
 		17149C711C7D5E56005DD9B7 /* PropertyPhotoInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyPhotoInfoVC.swift; sourceTree = "<group>"; };
 		171A88A91C3E39A900F303F6 /* WorksVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksVC.swift; sourceTree = "<group>"; };
@@ -899,11 +906,6 @@
 		174366681CC771CA0040AE17 /* XImageOperationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XImageOperationManager.swift; sourceTree = "<group>"; };
 		1744CBC71C27CAEB009038EF /* AboutVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutVC.swift; sourceTree = "<group>"; };
 		174BBDAC1D59B27100F7553C /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
-		174BBDAE1D59CFC800F7553C /* ALBBSessionSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ALBBSessionSDK.framework; sourceTree = "<group>"; };
-		174BBDAF1D59CFC800F7553C /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudUtils.framework; sourceTree = "<group>"; };
-		174BBDB01D59CFC800F7553C /* CloudPushSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CloudPushSDK.framework; sourceTree = "<group>"; };
-		174BBDB11D59CFC800F7553C /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTDID.framework; sourceTree = "<group>"; };
-		174BBDB21D59CFC800F7553C /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
 		174E12221CCF7AAB00B89C49 /* UIImage+WebP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WebP.h"; sourceTree = "<group>"; };
 		174E12231CCF7AAB00B89C49 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
 		175BB5661C14198F000C85FE /* DiscoverVC1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverVC1.swift; sourceTree = "<group>"; };
@@ -1556,6 +1558,7 @@
 			files = (
 				174BBDAD1D59B27100F7553C /* libresolv.tbd in Frameworks */,
 				17DEAB3A1C0BF88A00038B82 /* libsqlite3.tbd in Frameworks */,
+				171018A11D5B317500516482 /* UTMini.framework in Frameworks */,
 				17DEAB381C0BF87A00038B82 /* AdSupport.framework in Frameworks */,
 				17DEAB361C0BF87000038B82 /* ImageIO.framework in Frameworks */,
 				17DEAB341C0BF85C00038B82 /* CoreText.framework in Frameworks */,
@@ -1563,15 +1566,15 @@
 				17DEAB321C0BF84000038B82 /* libz.1.2.5.tbd in Frameworks */,
 				17BDF1401C0B085600B922D8 /* AddressBook.framework in Frameworks */,
 				17F710E41C5874BC0080E6F7 /* QQConnection.framework in Frameworks */,
+				1710189D1D5B317500516482 /* AlicloudMobileAnalitics.framework in Frameworks */,
 				17F710EC1C5874BC0080E6F7 /* ShareSDKCoreService.framework in Frameworks */,
 				17BDF1411C0B085600B922D8 /* AddressBookUI.framework in Frameworks */,
 				17BDF13D1C0B084300B922D8 /* libstdc++.tbd in Frameworks */,
-				174BBDB61D59CFC800F7553C /* UTDID.framework in Frameworks */,
 				17C8182B1C44B791001DA70F /* libUMessage_Sdk_1.2.3.a in Frameworks */,
-				174BBDB71D59CFC800F7553C /* UTMini.framework in Frameworks */,
-				174BBDB31D59CFC800F7553C /* ALBBSessionSDK.framework in Frameworks */,
+				1710189C1D5B317500516482 /* ALBBSessionSDK.framework in Frameworks */,
 				17BDF13B1C0B083400B922D8 /* JavaScriptCore.framework in Frameworks */,
 				17F710F61C5874BC0080E6F7 /* ShareSDKShareActionSheet.framework in Frameworks */,
+				1710189E1D5B317500516482 /* AlicloudUtils.framework in Frameworks */,
 				17BDF1391C0B082800B922D8 /* MessageUI.framework in Frameworks */,
 				17BDF1371C0B081C00B922D8 /* libz.tbd in Frameworks */,
 				17BDF1351C0B080900B922D8 /* libicucore.tbd in Frameworks */,
@@ -1579,6 +1582,7 @@
 				17F710E81C5874BC0080E6F7 /* AGCommon.framework in Frameworks */,
 				17E85E871BFD62F800AC0FC9 /* CoreTelephony.framework in Frameworks */,
 				172FF7A41CA2748A005E4A02 /* WebP.framework in Frameworks */,
+				1710189F1D5B317500516482 /* CloudPushSDK.framework in Frameworks */,
 				17F710E61C5874BC0080E6F7 /* SinaWeiboConnection.framework in Frameworks */,
 				17E85E851BFD62E900AC0FC9 /* libsqlite3.0.tbd in Frameworks */,
 				178F97811B9D6C0D00B86E60 /* Accelerate.framework in Frameworks */,
@@ -1586,11 +1590,11 @@
 				178F97821B9D6C0D00B86E60 /* CoreGraphics.framework in Frameworks */,
 				178F97831B9D6C0D00B86E60 /* SystemConfiguration.framework in Frameworks */,
 				17F710EA1C5874BC0080E6F7 /* MOBFoundation.framework in Frameworks */,
+				171018A01D5B317500516482 /* UTDID.framework in Frameworks */,
 				178F97841B9D6C0D00B86E60 /* WebKit.framework in Frameworks */,
 				17F710ED1C5874BC0080E6F7 /* TencentOpenAPI.framework in Frameworks */,
 				17C818271C44AD6F001DA70F /* BaiduMapAPI_Location.framework in Frameworks */,
 				178F97851B9D6C0D00B86E60 /* EventKit.framework in Frameworks */,
-				174BBDB41D59CFC800F7553C /* AlicloudUtils.framework in Frameworks */,
 				17F710F31C5874BC0080E6F7 /* ShareSDK.framework in Frameworks */,
 				178F97861B9D6C0D00B86E60 /* CoreLocation.framework in Frameworks */,
 				178F97871B9D6C0D00B86E60 /* QuartzCore.framework in Frameworks */,
@@ -1599,7 +1603,6 @@
 				178F97891B9D6C0D00B86E60 /* Security.framework in Frameworks */,
 				17F710F11C5874BC0080E6F7 /* libWeChatSDK.a in Frameworks */,
 				17F710EF1C5874BC0080E6F7 /* libWeiboSDK.a in Frameworks */,
-				174BBDB51D59CFC800F7553C /* CloudPushSDK.framework in Frameworks */,
 				17C818261C44AD6F001DA70F /* BaiduMapAPI_Base.framework in Frameworks */,
 				17C818281C44AD6F001DA70F /* BaiduMapAPI_Search.framework in Frameworks */,
 				178F976E1B9D6B2D00B86E60 /* MapKit.framework in Frameworks */,
@@ -1889,11 +1892,12 @@
 		174BBD9F1D59B20200F7553C /* OneSDK */ = {
 			isa = PBXGroup;
 			children = (
-				174BBDAE1D59CFC800F7553C /* ALBBSessionSDK.framework */,
-				174BBDAF1D59CFC800F7553C /* AlicloudUtils.framework */,
-				174BBDB01D59CFC800F7553C /* CloudPushSDK.framework */,
-				174BBDB11D59CFC800F7553C /* UTDID.framework */,
-				174BBDB21D59CFC800F7553C /* UTMini.framework */,
+				171018961D5B317500516482 /* ALBBSessionSDK.framework */,
+				171018971D5B317500516482 /* AlicloudMobileAnalitics.framework */,
+				171018981D5B317500516482 /* AlicloudUtils.framework */,
+				171018991D5B317500516482 /* CloudPushSDK.framework */,
+				1710189A1D5B317500516482 /* UTDID.framework */,
+				1710189B1D5B317500516482 /* UTMini.framework */,
 			);
 			path = OneSDK;
 			sourceTree = "<group>";

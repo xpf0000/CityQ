@@ -23,12 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     func onMessageReceived(notification:NSNotification)
     {
         print("Message is received !!!!!")
+        Preloading.Share.getMessage(Uid, username: Uname)
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onMessageReceived(_:)), name: "CCPDidReceiveMessageNotification", object: nil)
         
+        XHttpPool.Debug = true
         DataCache.Share
         Preloading.Share.getAdvImage()
         
@@ -41,8 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
 //        //UMessage.setLogEnabled(true)
 //        //UMessage.setAutoAlert(false)
 //        //UMessage.setBadgeClear(false)
-        
-        initCloudPush()
         
         let cacheSizeMemory = 64*1024*1024; // 64MB
         let cacheSizeDisk = 256*1024*1024; // 256MB
@@ -88,7 +88,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
   
         }
     
-       
+        initCloudPush()
+        
         mapManager=BMKMapManager()
         let res:Bool=mapManager!.start("wsMGrlpr7TSyESGHSutdPoK8", generalDelegate: nil)
         if(res)
@@ -143,6 +144,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     
     func initCloudPush()
     {
+        
+        let man = ALBBMANAnalytics.getInstance()
+        man.initWithAppKey(AliAppKey, secretKey: AliAppMSecret)
+        
         CloudPushSDK.asyncInit(AliAppKey, appSecret: AliAppMSecret) { (res) in
             
             if (res.success) {
@@ -211,6 +216,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         
         print("userInfo 000: \(userInfo)")
         
+        if let msg = userInfo["aps"]?["alert"] as? String
+        {
+            let alert = UIAlertView(title: "推送通知", message:msg, delegate:nil, cancelButtonTitle: "确定")
+            alert.show()
+        }
+        
         Preloading.Share.getMessage(Uid, username: Uname)
         
     }
@@ -221,6 +232,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         
         print("userInfo 111: \(userInfo)")
         
+        if let msg = userInfo["aps"]?["alert"] as? String
+        {
+            let alert = UIAlertView(title: "推送通知", message:msg, delegate:nil, cancelButtonTitle: "确定")
+            alert.show()
+        }
+
         Preloading.Share.getMessage(Uid, username: Uname)
         
     }

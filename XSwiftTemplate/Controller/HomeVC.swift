@@ -378,7 +378,12 @@ class HomeVC: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+        ALBBMANPageHitHelper.getInstance().pageAppear(self)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        ALBBMANPageHitHelper.getInstance().pageDisAppear(self)
     }
     
     override func viewWillDisappear(animated: Bool) {

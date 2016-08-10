@@ -295,6 +295,7 @@ class XDownLoadManager: NSObject,NSURLSessionDataDelegate {
     func URLSessionDidFinishEventsForBackgroundURLSession(session: NSURLSession) {
 
         backgroundSessionCompletionHandler?()
+
     }
     
     

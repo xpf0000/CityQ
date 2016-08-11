@@ -177,6 +177,13 @@ class CardNoLingVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
             i += 1
         }
         
+        
+        let model = ReactionMenuItemModel()
+        model.id = 0
+        model.title = "全部"
+        model.img = "left_type_0@3x.png"
+        arr.insert(model, atIndex: 0)
+        
         topCellArr[0] = arr
         
         self.top.items = topCellArr
@@ -184,8 +191,8 @@ class CardNoLingVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     
     func setRight()
     {
-        let tarr = ["打折卡","计次卡","充值卡","积分卡"]
-        let idArr = [3,1,2,4]
+        let tarr = ["会员卡分类","打折卡","计次卡","充值卡","积分卡"]
+        let idArr = [0,3,1,2,4]
         
         var arr:[ReactionMenuItemModel] = []
         
@@ -195,7 +202,17 @@ class CardNoLingVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
             let model = ReactionMenuItemModel()
             model.id = idArr[i]
             model.title = item
-            model.img = "right_type_\(i)@2x.png"
+            
+            if i != 0
+            {
+                model.img = "right_type_\(i)@2x.png"
+            }
+            else
+            {
+                model.img = "left_type_0@3x.png"
+            }
+            
+            
             model.sid = "0"
             arr.append(model)
             i += 1
@@ -222,6 +239,8 @@ class CardNoLingVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         {
             table.frame.size.width = swidth*0.5
         }
+        
+        if indexPath.row == 0 {return 0}
 
         return 50.0
     }
@@ -261,7 +280,15 @@ class CardNoLingVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
             }
             else
             {
-               img.url = model.img
+                if indexPath.row == 1
+                {
+                    img.image = model.img.image
+                }
+                else
+                {
+                    img.url = model.img
+                }
+               
             }
 
         }

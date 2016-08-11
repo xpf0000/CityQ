@@ -26,9 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         Preloading.Share.getMessage(Uid, username: Uname)
     }
     
+    func onLogin(notification:NSNotification)
+    {
+        print("User is Login or Update !!!!!")
+        Preloading.Share.getMessage(Uid, username: Uname)
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onMessageReceived(_:)), name: "CCPDidReceiveMessageNotification", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onLogin(_:)), name: NoticeWord.LoginSuccess.rawValue, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onLogin(_:)), name: NoticeWord.UpdateUserSuccess.rawValue, object: nil)
         
         XHttpPool.Debug = true
         DataCache.Share
@@ -216,29 +225,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         
         print("userInfo 000: \(userInfo)")
         
-        if let msg = userInfo["aps"]?["alert"] as? String
-        {
-            let alert = UIAlertView(title: "推送通知", message:msg, delegate:nil, cancelButtonTitle: "确定")
-            alert.show()
-        }
         
-        Preloading.Share.getMessage(Uid, username: Uname)
+        //Preloading.Share.getMessage(Uid, username: Uname)
         
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         
+        CloudPushSDK.handleReceiveRemoteNotification(userInfo)
+        
         ////UMessage.didReceiveRemoteNotification(userInfo)
         
-        print("userInfo 111: \(userInfo)")
-        
-        if let msg = userInfo["aps"]?["alert"] as? String
-        {
-            let alert = UIAlertView(title: "推送通知", message:msg, delegate:nil, cancelButtonTitle: "确定")
-            alert.show()
-        }
 
-        Preloading.Share.getMessage(Uid, username: Uname)
+        //Preloading.Share.getMessage(Uid, username: Uname)
         
     }
     

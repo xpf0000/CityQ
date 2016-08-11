@@ -34,8 +34,6 @@ class AboutModel: Reflect {
 
 
 class AboutVC: UIViewController {
-
-    @IBOutlet var textView: UITextView!
     
     @IBOutlet var version: UILabel!
     
@@ -45,6 +43,15 @@ class AboutVC: UIViewController {
     
     
     @IBAction func toRight(sender: AnyObject) {
+        
+        let vc = HtmlVC()
+        vc.title = "免责声明"
+        vc.url = "http://101.201.169.38/city/news_info.php?id=6243&type=108"
+        
+        vc.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     
@@ -52,35 +59,46 @@ class AboutVC: UIViewController {
     
     func http()
     {
-        let url=APPURL+"Public/Found/?service=News.getAbout"
-        XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](o) -> Void in
-            
-            if(o?["data"]["info"][0]["value"] != nil)
-            {
-                self?.model.value = o!["data"]["info"][0]["value"].stringValue
-                self?.textView.text = self?.model.value
-                AboutModel.save(obj: self!.model, name: "AboutModel")
-            }
-            
-        }
+//        let url=APPURL+"Public/Found/?service=News.getAbout"
+//        XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](o) -> Void in
+//            
+//            if(o?["data"]["info"][0]["value"] != nil)
+//            {
+//                self?.model.value = o!["data"]["info"][0]["value"].stringValue
+//                self?.textView.text = self?.model.value
+//                AboutModel.save(obj: self!.model, name: "AboutModel")
+//            }
+//            
+//        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
         
-        self.textView.editable = false
-        self.textView.selectable = false
+        let infoDictionary = NSBundle.mainBundle().infoDictionary
+   
+        let majorVersion : AnyObject? = infoDictionary! ["CFBundleShortVersionString"]
         
-        let m=AboutModel.read(name: "AboutModel")
-        if(m != nil)
-        {
-            model = m as! AboutModel
-        }
+        //let minorVersion : AnyObject? = infoDictionary! ["CFBundleVersion"]
         
-        self.textView.text = model.value
+        let appversion = majorVersion as! String
         
-        http()
+
+        version.text = "怀府网 V\(appversion)"
+        
+//        self.textView.editable = false
+//        self.textView.selectable = false
+        
+//        let m=AboutModel.read(name: "AboutModel")
+//        if(m != nil)
+//        {
+//            model = m as! AboutModel
+//        }
+        
+//        self.textView.text = model.value
+//        
+//        http()
         
     }
 

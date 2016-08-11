@@ -16,47 +16,6 @@ class HtmlVC: UIViewController,UIWebViewDelegate ,WKNavigationDelegate,WKUIDeleg
     var url=""
     var html:String=""
     
-    func getHtml(u:String)
-    {
-//        XHttpPool.requestJson(u, data: nil, method: .GET) { (o) -> Void in
-//            
-//            if(o?["data"].dictionaryValue.count > 0)
-//            {
-//                self.html = o!["data"]["info"][0]["content"].stringValue
-//                self.handleHtml()
-//                self.show()
-//            }
-//            
-//            
-//            
-//        }
-        
-        XHttpPool.requestDict(u, body: nil, method: .GET) { (o) -> Void in
-            
-            self.html = o["HTML"] as! String
-            
-            self.handleHtml()
-            
-            self.show()
-        }
-        
-    }
-    
-    func handleHtml()
-    {
-        self.html.selfReplace("<header>", with: "<!-- <header>")
-        self.html.selfReplace("</header>", with: "</header> -->")
-        self.html.selfReplace("<input hidden=\"\" id=\"hidden1\"/>", with: "<!-- <input hidden=\"\" id=\"hidden1\"/>")
-        self.html.selfReplace("<input hidden=\"\" id=\"hidden2\"/>", with: "<input hidden=\"\" id=\"hidden2\"/> -->")
-        
-        self.html.selfReplace("<input hidden=\"\" id=\"hidden3\"/>", with: "<!-- <input hidden=\"\" id=\"hidden3\"/>")
-        self.html.selfReplace("<input hidden=\"\" id=\"hidden4\"/>", with: "<input hidden=\"\" id=\"hidden4\"/> -->")
-        
-        self.html.selfReplace("<footer", with: "<!-- <footer")
-        self.html.selfReplace("</footer>", with: "</footer> -->")
-        
-    }
-    
     func show()
     {
         if(webView == nil)
@@ -98,14 +57,14 @@ class HtmlVC: UIViewController,UIWebViewDelegate ,WKNavigationDelegate,WKUIDeleg
             webView = WKWebView()
             (webView as! WKWebView).UIDelegate=self
             (webView as! WKWebView).navigationDelegate=self
-            webView?.frame=CGRectMake(0, 0, swidth, sheight)
+            //webView?.frame=CGRectMake(0, 0, swidth, sheight)
             (webView as! WKWebView).scrollView.showsHorizontalScrollIndicator = false
             (webView as! WKWebView).scrollView.showsVerticalScrollIndicator = false
             
             
         } else {
             webView = UIWebView()
-            webView?.frame=CGRectMake(0, 0, swidth, sheight)
+            //webView?.frame=CGRectMake(0, 0, swidth, sheight)
             (webView as! UIWebView).delegate=self
             (webView as! UIWebView).scrollView.showsHorizontalScrollIndicator = false
             (webView as! UIWebView).scrollView.showsVerticalScrollIndicator = false
@@ -113,6 +72,13 @@ class HtmlVC: UIViewController,UIWebViewDelegate ,WKNavigationDelegate,WKUIDeleg
         
         self.view.addSubview(webView!)
         self.view.addSubview(waiting)
+        
+        webView?.snp_makeConstraints(closure: { (make) in
+            make.top.equalTo(0.0)
+            make.bottom.equalTo(0.0)
+            make.trailing.equalTo(0.0)
+            make.leading.equalTo(0.0)
+        })
         
         self.show()
     }

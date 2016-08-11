@@ -37,13 +37,15 @@ class UserModel: Reflect {
             {
                 CloudPushSDK.unbindAccount({ (res) in})
             }
-            
+
         }
     }
     
     var nickname=""
     var sex=""
+    
     var username=""
+
     var headimage=""
     var password=""
     var openid=""
@@ -63,20 +65,45 @@ class UserModel: Reflect {
         UserModel.save(obj: self, name: "userModel")
     }
     
+    func clone(m:UserModel)
+    {
+        uid = m.uid
+        nickname = m.nickname
+        sex = m.sex
+        username = m.username
+        headimage=m.headimage
+        password=m.password
+        openid=m.openid
+        mobile=m.mobile
+        houseid=m.houseid
+        fanghaoid=m.fanghaoid
+        house=m.house
+        truename=m.truename
+        louhaoid = m.louhaoid
+        danyuanid = m.danyuanid
+        birthday=m.birthday
+        address=m.address
+    }
+    
     func reSet()
     {
-        uid=""
-        nickname=""
-        sex=""
-        username=""
+        uid = ""
+        nickname = ""
+        sex = ""
+        username = ""
         headimage=""
-        password = ""
+        password=""
         openid=""
         mobile=""
         houseid=""
         fanghaoid=""
         house=MyHouseModel()
         truename=""
+        louhaoid = ""
+        danyuanid = ""
+        birthday=""
+        address=""
+        
         self.save()
         
     }
@@ -105,13 +132,6 @@ class UserModel: Reflect {
         
     }
     
-    func getUserMsg()
-    {
-        if uid == "" || username == ""{return}
-        
-        Preloading.Share.getMessage(uid,username: username)
-    }
-    
     override func setValue(value: AnyObject?, forKey key: String) {
         
         if(value == nil)
@@ -123,7 +143,6 @@ class UserModel: Reflect {
         
         if key == "uid" || key == "username"
         {
-            getUserMsg()
             getUserHouse()
         }
         

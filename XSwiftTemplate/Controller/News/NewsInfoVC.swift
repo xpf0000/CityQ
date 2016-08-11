@@ -62,13 +62,18 @@ class NewsInfoVC: XViewController {
             let body="did=\(self!.model.id)&username="+DataCache.Share.userModel.username+"&content="+self!.cacheComment
             
             XHttpPool.requestJson(url, body: body, method: .POST, block: { [weak self](o) -> Void in
-                
+                if self == nil {return}
                 if(o?["data"].dictionaryValue.count > 0)
                 {
                     if(o!["data"]["code"].intValue == 0)
                     {
                         UIApplication.sharedApplication().keyWindow?.showAlert("评论成功", block: nil)
                         self?.cacheComment=""
+                        
+                        self!.model.comment = "\(self!.model.comment.numberValue.integerValue + 1)"
+                    
+                        self?.num?.text = "\(self!.model.comment)"
+                        
                         return
                     }
                     else

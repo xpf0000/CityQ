@@ -261,7 +261,7 @@ class Preloading: NSObject{
         
         let url = APPURL + "Public/Found/?service=User.getMessagesCount&uid=\(uid)&username=\(username)"
         
-        XHttpPool.requestJson(url, body: nil, method: .POST) { (json) in
+        XHttpPool.requestJson(url, body: nil, method: .GET) { (json) in
  
             if DataCache.Share.userMsg.users[Uid] == nil
             {
@@ -305,7 +305,7 @@ class Preloading: NSObject{
     {
         let url = APPURL + "Public/Found/?service=User.getMessagesList&uid=\(Uid)&username=\(Uname)&type=\(type)"
         
-        XHttpPool.requestJson(url, body: nil, method: .POST) { (json) in
+        XHttpPool.requestJson(url, body: nil, method: .GET) { (json) in
             
             if DataCache.Share.userMsg.users[Uid] == nil
             {

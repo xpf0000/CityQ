@@ -136,7 +136,9 @@ class DataCache: NSObject {
             {
                 if(o!["data"]["code"].intValue == 0 && o?["data"]["info"].arrayValue.count > 0)
                 {
+                    
                     self.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
+                    
                     self.userModel.password = p
                     self.userModel.house = h
                     DataCache.Share.userModel.save()

@@ -141,10 +141,11 @@ class HomeVC: UIViewController {
 
         coverImage.frame = CGRectMake(0,0,swidth,sheight)
         coverImage.contentMode = .ScaleAspectFill
-        //coverImage.image = "cover\(Int(sheight * UIScreen.mainScreen().scale)).png".image
-        coverImage.image = UIColor.whiteColor().image
+        coverImage.image = "cover\(Int(sheight * UIScreen.mainScreen().scale)).png".image
+        //coverImage.image = UIColor.whiteColor().image
     
-        AdvImage?.frame = CGRectMake(0,0,swidth,sheight)
+        AdvImage?.frame = CGRectMake(0,0,swidth,sheight - 423.0*swidth/1242.0)
+        //AdvImage?.frame = CGRectMake(0,0,swidth,sheight)
         coverImage.addSubview(AdvImage!)
         
         timeLabel.frame=CGRectMake(swidth-48-16, 22, 44, 24)

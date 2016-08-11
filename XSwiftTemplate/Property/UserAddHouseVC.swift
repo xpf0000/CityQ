@@ -48,7 +48,7 @@ class UserAddHouseVC: UIViewController {
             
             RemoveWaiting()
             
-            if o?["data"].dictionaryValue.count > 0 && o?["data"]["code"].intValue == 0
+            if o?["data"].dictionaryValue.count > 0 && o?["data"]["code"].int == 0
             {
                 self?.view.showAlert("添加成功", block: { (o) -> Void in
                     self?.pushVC?.table.httpHandle.reSet()
@@ -59,10 +59,15 @@ class UserAddHouseVC: UIViewController {
                 return
             }
             
-            var msg = o?["data"]["msg"].stringValue
-            msg = (msg==nil || msg=="") ? "添加失败" : msg
-            
-            self?.view.showAlert(msg!, block: nil)
+            if let msg = o?["data"]["msg"].string
+            {
+                self?.view.showAlert(msg, block: nil)
+            }
+            else
+            {
+                self?.view.showAlert("添加失败", block: nil)
+            }
+        
             sender.enabled = true
         }
     }

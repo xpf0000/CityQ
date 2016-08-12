@@ -1263,14 +1263,14 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRA-wP-9CH">
-                                                    <rect key="frame" x="24" y="12" width="19" height="18"/>
+                                                    <rect key="frame" x="31" y="12" width="12" height="12"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKk-VN-FjX">
-                                                            <rect key="frame" x="3" y="3" width="14" height="13"/>
+                                                            <rect key="frame" x="3" y="3" width="7" height="7"/>
                                                             <color key="backgroundColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="13" id="egz-kN-tTd"/>
-                                                                <constraint firstAttribute="height" constant="13" id="g6d-ff-4yi"/>
+                                                                <constraint firstAttribute="width" constant="7" id="egz-kN-tTd"/>
+                                                                <constraint firstAttribute="height" constant="7" id="g6d-ff-4yi"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1287,7 +1287,7 @@
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="9"/>
+                                                            <integer key="value" value="6"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>

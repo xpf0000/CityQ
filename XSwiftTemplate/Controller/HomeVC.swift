@@ -89,9 +89,49 @@ class HomeVC: UIViewController {
         
     }
     
+    var bview:UIView?
+    
+    func changeBadgeSize(v:UIView)
+    {
+        if bview != nil
+        {
+            return
+        }
+        
+        let s = "\(v)"
+        
+        if s.has("_UIBadgeView")
+        {
+            v.center = CGPointMake(v.center.x-20.0, v.center.y)
+            v.backgroundColor = UIColor.clearColor()
+            v.layer.backgroundColor = UIColor.clearColor().CGColor
+            v.removeAllSubViews()
+            
+            bview = UIView()
+            bview?.backgroundColor = "FF3B30".color
+            bview?.frame = CGRectMake(2, 1, 12.0, 12.0)
+            bview?.layer.masksToBounds = true
+            bview?.layer.cornerRadius = 6.0
+            
+            v.addSubview(bview!)
+            
+        }
+        
+
+        for item in v.subviews
+        {
+            print(item)
+            if item.subviews.count > 0
+            {
+                changeBadgeSize(item)
+            }
+        }
+        
+    }
+    
     func msgCountChange()
     {
-        self.tabBarController!.tabBar.items![4].badgeValue = UMsgCount
+        bview?.hidden = UMsgCount == nil
     }
     
     override func viewDidLoad() {
@@ -234,8 +274,10 @@ class HomeVC: UIViewController {
             i += 1;
         }
         
-        self.tabBarController!.tabBar.items![4].badgeValue = UMsgCount
-
+        self.tabBarController!.tabBar.items![4].badgeValue = "0"
+        changeBadgeSize(self.tabBarController!.tabBar)
+        bview?.hidden = UMsgCount == nil
+        
         //一屏显示的标题的个数
         
         if(topArr.count > 0)

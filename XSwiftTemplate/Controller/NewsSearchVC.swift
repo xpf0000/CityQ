@@ -238,7 +238,11 @@ class NewsSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate,UIT
     
     
     
-    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        searchbar.becomeFirstResponder()
+    }
     
     
     override func viewWillDisappear(animated: Bool) {

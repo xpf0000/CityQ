@@ -430,5 +430,19 @@ extension UIView
     }
     
     
+    static func printAllSubView(v:UIView)
+    {
+        for item in v.subviews
+        {
+            print(item)
+            if item.subviews.count > 0
+            {
+                printAllSubView(item)
+            }
+        }
+        
+    }
+    
+    
     
 }

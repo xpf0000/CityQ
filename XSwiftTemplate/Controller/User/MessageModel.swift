@@ -79,22 +79,6 @@ class UserMsgModel:Reflect
         if Uid == "" {return}
         if users[Uid]?.viewed.contains(o.id) == true {return}
         users[Uid]?.viewed.append(o.id)
-        
-        if users[Uid]?.type1.contains(o) == true
-        {
-            users[Uid]?.count1 -= 1
-        }
-        
-        if users[Uid]?.type2.contains(o) == true
-        {
-            users[Uid]?.count2 -= 1
-        }
-        
-        if users[Uid]?.type3.contains(o) == true
-        {
-            users[Uid]?.count3 -= 1
-        }
-        
         save()
     }
     
@@ -154,7 +138,7 @@ class UserMsgModel:Reflect
             users[Uid]?.type1.removeAtIndex(index)
             if !removeViewed(o)
             {
-                users[Uid]?.count1 -= 1
+                
             }
         }
         
@@ -164,7 +148,7 @@ class UserMsgModel:Reflect
             
             if !removeViewed(o)
             {
-                users[Uid]?.count2 -= 1
+                
             }
         }
         
@@ -174,7 +158,7 @@ class UserMsgModel:Reflect
             
             if !removeViewed(o)
             {
-                users[Uid]?.count3 -= 1
+                
             }
         }
         

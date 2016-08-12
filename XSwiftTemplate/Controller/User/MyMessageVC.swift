@@ -123,6 +123,21 @@ class MyMessageVC: UITableViewController {
         vc.hidesBottomBarWhenPushed = true
         vc.type = indexPath.row+1
         
+        if indexPath.row == 0
+        {
+            DataCache.Share.userMsg.users[Uid]?.count1 = 0
+        }
+        else if indexPath.row == 1
+        {
+            DataCache.Share.userMsg.users[Uid]?.count2 = 0
+        }
+        else
+        {
+            DataCache.Share.userMsg.users[Uid]?.count3 = 0
+        }
+        
+         DataCache.Share.userMsg.save()
+        
         self.navigationController?.pushViewController(vc, animated: true)
 
 

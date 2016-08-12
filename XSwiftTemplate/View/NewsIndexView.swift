@@ -66,15 +66,18 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 
                 if(self != nil)
                 {
-                    let vc = HtmlVC()
-                    
                     let model=o.obj as! NewsModel
-
-                    vc.url = model.url
                     
-                    vc.hidesBottomBarWhenPushed = true
+                    if model.url != ""
+                    {
+                        let vc = HtmlVC()
+                        vc.url = model.url
+                        vc.hidesBottomBarWhenPushed = true
+                        
+                        self?.viewController?.navigationController?.pushViewController(vc, animated: true)
+                    }
                     
-                    self?.viewController?.navigationController?.pushViewController(vc, animated: true)
+                    
                 }
         }
         

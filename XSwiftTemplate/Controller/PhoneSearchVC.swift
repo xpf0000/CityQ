@@ -157,6 +157,11 @@ class PhoneSearchVC: XViewController ,UISearchBarDelegate{
         
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        searchbar.becomeFirstResponder()
+    }
     
     
     deinit

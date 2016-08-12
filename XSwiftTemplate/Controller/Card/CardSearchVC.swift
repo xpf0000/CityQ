@@ -177,6 +177,12 @@ class CardSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate{
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        searchbar.becomeFirstResponder()
+    }
+    
     
     
     deinit

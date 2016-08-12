@@ -22,13 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     
     func onMessageReceived(notification:NSNotification)
     {
-        print("Message is received !!!!!")
         Preloading.Share.getMessage(Uid, username: Uname)
     }
     
     func onLogin(notification:NSNotification)
     {
-        print("User is Login or Update !!!!!")
         Preloading.Share.getMessage(Uid, username: Uname)
     }
     
@@ -39,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onLogin(_:)), name: NoticeWord.LoginSuccess.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onLogin(_:)), name: NoticeWord.UpdateUserSuccess.rawValue, object: nil)
         
-        XHttpPool.Debug = true
+        XHttpPool.Debug = false
         DataCache.Share
         Preloading.Share.getAdvImage()
         
@@ -160,9 +158,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         CloudPushSDK.asyncInit(AliAppKey, appSecret: AliAppMSecret) { (res) in
             
             if (res.success) {
-                print("Push SDK init success, deviceId: \(CloudPushSDK.getDeviceId())")
+                
             } else {
-                print("Push SDK init failed, error: \(res.error)")
+                
             }
         }
         
@@ -199,9 +197,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         CloudPushSDK.registerDevice(deviceToken) { (res) in
             
             if (res.success) {
-                print("Register deviceToken success.")
+                
             } else {
-                print("Register deviceToken failed, error: \(res.error)")
+                
             }
             
         }
@@ -222,10 +220,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         
         CloudPushSDK.handleReceiveRemoteNotification(userInfo)
         ////UMessage.didReceiveRemoteNotification(userInfo)
-        
-        print("userInfo 000: \(userInfo)")
-        
-        
+
         //Preloading.Share.getMessage(Uid, username: Uname)
         
     }
@@ -242,7 +237,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        print("didFailToRegisterForRemoteNotificationsWithError error: \(error)")
+
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -261,14 +256,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
 
     func applicationWillEnterForeground(application: UIApplication) {
        
-        print("applicationWillEnterForeground !!!!")
         Preloading.Share.getMessage(Uid, username: Uname)
     }
   
 
     func applicationDidBecomeActive(application: UIApplication) {
-        
-        print("applicationDidBecomeActive !!!!")
         
         //Preloading.Share.getMessage(Uid, username: Uname)
         

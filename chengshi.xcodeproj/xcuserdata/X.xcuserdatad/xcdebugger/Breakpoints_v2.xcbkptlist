@@ -1177,11 +1177,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XSwiftTemplate/Controller/Card/MyCardVC.swift"
-            timestampString = "490774092.649373"
+            timestampString = "492696943.478491"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "363"
-            endingLineNumber = "363"
+            startingLineNumber = "389"
+            endingLineNumber = "389"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>

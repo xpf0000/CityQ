@@ -205,7 +205,7 @@ class CardNoLingVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
             
             if i != 0
             {
-                model.img = "right_type_\(i)@2x.png"
+                model.img = "right_type_\(i-1)@2x.png"
             }
             else
             {

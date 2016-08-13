@@ -31,6 +31,8 @@ class MyMessageInfoCell: UITableViewCell {
     {
         DataCache.Share.userMsg.addViewed(model)
         see.hidden = true
+        mtitle.textColor = UIColor(red: 142.0/255.0, green: 142.0/255.0, blue: 142.0/255.0, alpha: 1.0)
+        
         let vc = "MyMessageContentVC".VC("User") as! MyMessageContentVC
         vc.model = model
         vc.hidesBottomBarWhenPushed = true
@@ -48,6 +50,16 @@ class MyMessageInfoCell: UITableViewCell {
                 mcontent.text = model.content
             
                 see.hidden = DataCache.Share.userMsg.checkViewed(model)
+            
+                if(see.hidden)
+                {
+                    mtitle.textColor = UIColor(red: 142.0/255.0, green: 142.0/255.0, blue: 142.0/255.0, alpha: 1.0)
+                }
+                else
+                {
+                    mtitle.textColor = UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+                }
+
             
                 from.text = model.xqname == "" ? model.shopname : model.xqname
             

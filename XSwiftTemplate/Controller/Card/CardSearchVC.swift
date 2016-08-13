@@ -198,7 +198,7 @@ class CardSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate{
     
     deinit
     {
-        print("CardSearchVC deinit !!!!!")
+        //print("CardSearchVC deinit !!!!!")
     }
     
     override func didReceiveMemoryWarning() {

@@ -434,7 +434,7 @@ extension UIView
     {
         for item in v.subviews
         {
-            print(item)
+            //print(item)
             if item.subviews.count > 0
             {
                 printAllSubView(item)

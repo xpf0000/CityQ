@@ -22,6 +22,10 @@ class MyMessageInfoCell: UITableViewCell {
     
     @IBOutlet var mcontent: UILabel!
     
+    @IBOutlet var btn: UIButton!
+    
+    
+    
     @IBAction func toSee(sender: AnyObject) {
         
         toInfoVC()
@@ -31,7 +35,14 @@ class MyMessageInfoCell: UITableViewCell {
     {
         DataCache.Share.userMsg.addViewed(model)
         see.hidden = true
-        mtitle.textColor = UIColor(red: 142.0/255.0, green: 142.0/255.0, blue: 142.0/255.0, alpha: 1.0)
+        
+        mtitle.textColor = "8E8E8E".color
+        
+        mcontent.textColor = "8E8E8E".color
+        
+        from.textColor = "8E8E8E".color
+        
+        btn.selected = true
         
         let vc = "MyMessageContentVC".VC("User") as! MyMessageContentVC
         vc.model = model
@@ -53,11 +64,25 @@ class MyMessageInfoCell: UITableViewCell {
             
                 if(see.hidden)
                 {
-                    mtitle.textColor = UIColor(red: 142.0/255.0, green: 142.0/255.0, blue: 142.0/255.0, alpha: 1.0)
+                    mtitle.textColor = "8E8E8E".color
+                    
+                    mcontent.textColor = "8E8E8E".color
+                    
+                    from.textColor = "8E8E8E".color
+                    
+                    btn.selected = true
+                    
                 }
                 else
                 {
-                    mtitle.textColor = UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0)
+                    mtitle.textColor = "333333".color
+                    
+                    mcontent.textColor = "666666".color
+                    
+                    from.textColor = "999999".color
+                    
+                    btn.selected = false
+
                 }
 
             

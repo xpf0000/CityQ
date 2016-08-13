@@ -37,6 +37,9 @@
                                 <state key="normal" title="点击查看">
                                     <color key="titleColor" red="1" green="0.44705882352941173" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="toSee:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="kod-lU-xVM"/>
                                 </connections>
@@ -101,6 +104,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.95294117649999999" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="btn" destination="uSH-Ky-So5" id="j3e-kp-dBB"/>
                 <outlet property="from" destination="lFA-jA-EZy" id="gbH-8k-pzJ"/>
                 <outlet property="mainView" destination="CHw-ak-ZdN" id="DuI-hh-3G0"/>
                 <outlet property="mcontent" destination="e8W-ee-MG1" id="Mo1-kd-CGN"/>

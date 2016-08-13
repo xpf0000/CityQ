@@ -61,16 +61,12 @@ class NewsSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate,UIT
         if(searchbar.respondsToSelector(Selector("barTintColor")))
         {
             if(IOS_Version>=7.1)
-            {
-                //searchbar.searchTextPositionAdjustment
-                searchbar.subviews[0].subviews[0].removeFromSuperview()
+            {searchbar.subviews[0].subviews[0].removeFromSuperview()
                 searchbar.backgroundColor = UIColor.clearColor()
                 
             }
             else
-            {
-                //searchbar.searchTextPositionAdjustment
-                searchbar.subviews[0].subviews[0].removeFromSuperview()
+            {searchbar.subviews[0].subviews[0].removeFromSuperview()
                 searchbar.backgroundColor = UIColor.clearColor()
                 searchbar.barTintColor = UIColor.clearColor()
                 
@@ -81,8 +77,16 @@ class NewsSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate,UIT
         
         searchTable.registerNib("NewsActivitysCell".Nib, forCellReuseIdentifier: "NewsActivitysCell")
         
+        searchTable.registerNib("NewsMorePicCell".Nib, forCellReuseIdentifier: "NewsMorePicCell")
         
         searchTable.setHandle("", pageStr: "[page]", keys: ["data","info"], model: NewsModel.self, CellIdentifier: "NewsListCell")
+        
+        searchTable.httpHandle.autoReload = false
+        
+        searchTable.httpHandle.BeforeBlock { [weak self](o)->Void in
+            
+            self?.searchTable.reloadData()
+        }
         
         searchTable.httpHandle.replace=["descrip":"description"]
         
@@ -166,7 +170,14 @@ class NewsSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate,UIT
         }
         else
         {
-            return 110 * screenFlag
+            if m.picList.count >= 3
+            {
+                return 166.0 * screenFlag
+            }
+            else
+            {
+                return 110.0 * screenFlag
+            }
         }
         
     }
@@ -190,11 +201,28 @@ class NewsSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate,UIT
         }
         else
         {
-            let cell:NewsListCell = tableView.dequeueReusableCellWithIdentifier("NewsListCell", forIndexPath: indexPath) as! NewsListCell
-            
-            cell.model = m
-            
-            return cell
+            if m.picList.count >= 3
+            {
+                let cell:NewsMorePicCell = tableView.dequeueReusableCellWithIdentifier("NewsMorePicCell", forIndexPath: indexPath) as! NewsMorePicCell
+                
+                cell.model = m
+                
+                cell.selectedBackgroundView = nil
+                cell.selectionStyle = .None
+                
+                return cell
+            }
+            else
+            {
+                let cell:NewsListCell = tableView.dequeueReusableCellWithIdentifier("NewsListCell", forIndexPath: indexPath) as! NewsListCell
+                
+                cell.model = m
+                
+                cell.selectedBackgroundView = nil
+                cell.selectionStyle = .None
+                
+                return cell
+            }
             
         }
         
@@ -203,20 +231,64 @@ class NewsSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate,UIT
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let vc:NewsInfoVC = "NewsInfoVC".VC as! NewsInfoVC
-        vc.model = searchTable.httpHandle.listArr[indexPath.row] as! NewsModel
-        vc.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(vc, animated: true)
+        let model = self.searchTable.httpHandle.listArr[indexPath.row] as! NewsModel
         
-        let cell=tableView.cellForRowAtIndexPath(indexPath)
+        var isHuodong = false
         
-        if cell is NewsListCell
+        if model.category_id == "98"
         {
+            isHuodong = true
+        }
+
+        if isHuodong
+        {
+            let vc:CardActivitysInfoVC = "CardActivitysInfoVC".VC("Card") as! CardActivitysInfoVC
+            vc.model.id = model.id
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+            
             if(!DataCache.Share.newsViewedModel.has(vc.model.id))
             {
                 DataCache.Share.newsViewedModel.add(vc.model.id)
                 
-                (cell as! NewsListCell).setHasSee()
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) as? NewsActivitysCell
+                {
+                    cell.setHasSee()
+                }
+                
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) as? ActivitysCell
+                {
+                    cell.setHasSee()
+                }
+                
+                let url = APPURL+"Public/Found/?service=News.addView&id="+vc.model.id
+                
+                XHttpPool.requestJson(url, body: nil, method: .GET, block: {[weak self] (o) -> Void in
+                    
+                    })
+                
+            }
+        }
+        else
+        {
+            let vc:NewsInfoVC = "NewsInfoVC".VC as! NewsInfoVC
+            vc.model = model
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            if(!DataCache.Share.newsViewedModel.has(vc.model.id))
+            {
+                DataCache.Share.newsViewedModel.add(vc.model.id)
+                
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) as? NewsListCell
+                {
+                    cell.setHasSee()
+                }
+                
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) as? NewsMorePicCell
+                {
+                    cell.setHasSee()
+                }
                 
                 let url = APPURL+"Public/Found/?service=News.addView&id="+vc.model.id
                 
@@ -232,27 +304,30 @@ class NewsSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate,UIT
     }
     
     
-    
-    
-    
-    
-    
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         searchbar.becomeFirstResponder()
+        
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        searchbar.delegate = self
+        self.navigationController?.navigationBar.addSubview(searchbar)
+        
+    }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
         searchbar.endEditing(true)
+        searchbar.delegate = nil
         searchbar.removeFromSuperview()
         
+        
     }
-    
     
     
     deinit

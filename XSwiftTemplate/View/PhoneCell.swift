@@ -81,6 +81,14 @@ class PhoneCell: UITableViewCell,UIActionSheetDelegate {
 
         if(selected)
         {
+            if let table = UIView.findTableView(self)
+            {
+                if let index = table.indexPathForCell(self)
+                {
+                    table.deselectRowAtIndexPath(index, animated: true)
+                }
+            }
+
             let vc:PhoneInfoVC = "PhoneInfoVC".VC as! PhoneInfoVC
             vc.hidesBottomBarWhenPushed=true
             vc.model=self.model

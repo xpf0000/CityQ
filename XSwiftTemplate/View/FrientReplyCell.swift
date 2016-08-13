@@ -61,6 +61,14 @@ class FrientReplyCell: UITableViewCell {
 
         if(selected)
         {
+            if let table = UIView.findTableView(self)
+            {
+                if let index = table.indexPathForCell(self)
+                {
+                    table.deselectRowAtIndexPath(index, animated: true)
+                }
+            }
+            
             if(self.replyOtherBlock != nil)
             {
                 self.replyOtherBlock!(self.model)

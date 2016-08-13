@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhoneSearchVC: XViewController ,UISearchBarDelegate{
+class PhoneSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate{
     
     @IBOutlet var searchTable: XTableView!
     
@@ -86,6 +86,8 @@ class PhoneSearchVC: XViewController ,UISearchBarDelegate{
         searchTable.hideHeadRefresh()
         searchTable.keyboardDismissMode = .OnDrag
         
+        searchTable.Delegate(self)
+        
         self.navigationController?.navigationBar.addSubview(searchbar)
         searchbar.becomeFirstResponder()
         self.searchIng = true
@@ -148,19 +150,31 @@ class PhoneSearchVC: XViewController ,UISearchBarDelegate{
         
         self.view.endEdit()
     }
-
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        searchbar.endEditing(true)
-        searchbar.removeFromSuperview()
-        
-    }
+    
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         searchbar.becomeFirstResponder()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        searchbar.delegate = self
+        self.navigationController?.navigationBar.addSubview(searchbar)
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        searchbar.endEditing(true)
+        searchbar.delegate = nil
+        searchbar.removeFromSuperview()
+        
+        
     }
     
     

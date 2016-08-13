@@ -47,7 +47,13 @@ class DiscountCell: UITableViewCell {
 
         if(selected)
         {
-            self.selected = false
+            if let table = UIView.findTableView(self)
+            {
+                if let index = table.indexPathForCell(self)
+                {
+                    table.deselectRowAtIndexPath(index, animated: true)
+                }
+            }
             
             let vc:DiscountInfoVC = "DiscountInfoVC".VC("Discount") as! DiscountInfoVC
             vc.hidesBottomBarWhenPushed=true

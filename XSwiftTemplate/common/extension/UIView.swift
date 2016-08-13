@@ -443,6 +443,24 @@ extension UIView
         
     }
     
+    static func findTableView(v:UIView)->UITableView?
+    {
+        if v is UITableView
+        {
+            return v as! UITableView
+        }
+        
+        if v.superview != nil
+        {
+            return findTableView(v.superview!)
+        }
+        else
+        {
+            return nil
+        }
+        
+    }
+    
     
     
 }

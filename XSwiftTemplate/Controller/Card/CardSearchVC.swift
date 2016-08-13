@@ -169,25 +169,36 @@ class CardSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate{
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        searchbar.endEditing(true)
-        searchbar.removeFromSuperview()
-        
-    }
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
         searchbar.becomeFirstResponder()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        searchbar.delegate = self
+        self.navigationController?.navigationBar.addSubview(searchbar)
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        searchbar.endEditing(true)
+        searchbar.delegate = nil
+        searchbar.removeFromSuperview()
+        
+        
     }
     
     
     
     deinit
     {
-        
+        print("CardSearchVC deinit !!!!!")
     }
     
     override func didReceiveMemoryWarning() {

@@ -62,6 +62,7 @@ class PaymentInfoCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+        
         if let m = self.model
         {
             if type == 3 || type == 2
@@ -69,6 +70,14 @@ class PaymentInfoCell: UITableViewCell {
                 
                 if selected
                 {
+                    if let table = UIView.findTableView(self)
+                    {
+                        if let index = table.indexPathForCell(self)
+                        {
+                            table.deselectRowAtIndexPath(index, animated: true)
+                        }
+                    }
+                    
                     self.selected = false
 
                     let vc = PaymentInfoInfoVC()

@@ -35,7 +35,13 @@ class MyCollectCell: UITableViewCell {
 
         if(selected)
         {
-            self.selected = false
+            if let table = UIView.findTableView(self)
+            {
+                if let index = table.indexPathForCell(self)
+                {
+                    table.deselectRowAtIndexPath(index, animated: true)
+                }
+            }
             
             let vc:NewsInfoVC = "NewsInfoVC".VC as! NewsInfoVC
             vc.model = NewsModel()

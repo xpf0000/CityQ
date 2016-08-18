@@ -75,6 +75,7 @@ class PropertyNoticeModel:Reflect
     var id=""
     var title=""
     var content=""
+    var create_time = ""
     
     override func setValue(value: AnyObject?, forKey key: String) {
         
@@ -83,6 +84,15 @@ class PropertyNoticeModel:Reflect
             return
         }
         
+        if(key == "create_time" && value != nil )
+        {
+            let date=NSDate(timeIntervalSince1970: NSTimeInterval(value as! String)!)
+            
+            self.create_time = date.toStr("yyyy-MM-dd HH:mm")!
+            
+            return
+        }
+
         
         super.setValue(value, forKey: key)
     }

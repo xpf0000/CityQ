@@ -156,11 +156,19 @@ class PropertyNoticVC: UIViewController,UITableViewDataSource,UITableViewDelegat
         cell.contentView.addSubview(rimg)
         
         let title=UILabel()
-        title.frame=CGRectMake(51.0, 0, swidth-66-37, 60.0)
+        title.frame=CGRectMake(51.0, 0, swidth-66-37, 34.0)
         title.font=UIFont.systemFontOfSize(18.0)
         title.text=model.title
         cell.contentView.addSubview(title)
         title.tag=20
+        
+        
+        let time=UILabel()
+        time.frame=CGRectMake(51.0, 34.0, swidth-66-37, 20.0)
+        time.font=UIFont.systemFontOfSize(14.0)
+        time.text=model.create_time
+        time.textColor = "999999".color
+        cell.contentView.addSubview(time)
         
         return cell
     }

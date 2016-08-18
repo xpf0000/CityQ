@@ -150,12 +150,12 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
         
         let model = self.httpHandle.listArr[indexPath.row]
         
-        cell.setValue(model, forKey: "model")
-    
         for (key,val) in self.postDict
         {
             cell.setValue(val, forKey: key)
         }
+        
+        cell.setValue(model, forKey: "model")
         
         return cell
         

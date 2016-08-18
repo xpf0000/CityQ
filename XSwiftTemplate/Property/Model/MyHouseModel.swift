@@ -155,6 +155,7 @@ class PropertyPaymentModel:Reflect
     var yumoney=""  //余额
     var money=""
     var create_time=""
+    var price = ""
     var bak=""
     
     override func setValue(value: AnyObject?, forKey key: String) {

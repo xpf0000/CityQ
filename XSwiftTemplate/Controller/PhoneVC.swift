@@ -40,7 +40,7 @@ class PhoneVC: UIViewController,UITextFieldDelegate {
         
         let m = XHorizontalMenuModel()
         m.id = 0
-        m.title = "热门号码"
+        m.title = "热门"
         
         let table = XTableView()
         

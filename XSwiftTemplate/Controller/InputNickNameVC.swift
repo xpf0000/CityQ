@@ -12,7 +12,7 @@ class InputNickNameVC: UITableViewController {
     
     @IBOutlet var table: UITableView!
     
-    @IBOutlet var pass: UITextField!
+    @IBOutlet var nickName: UITextField!
     
     @IBOutlet var button: UIButton!
     
@@ -26,12 +26,12 @@ class InputNickNameVC: UITableViewController {
         
         self.view.endEditing(true)
 
-        if(!pass.checkNull())
+        if(!nickName.checkNull())
         {
             return
         }
         
-        if(!pass.checkLength(2, max: 15))
+        if(!nickName.checkLength(2, max: 15))
         {
             UIApplication.sharedApplication().keyWindow?.showAlert("昵称为2-15位", block: nil)
             
@@ -39,7 +39,7 @@ class InputNickNameVC: UITableViewController {
         }
 
         
-        let nick = self.pass.text!.trim()
+        let nick = self.nickName.text!.trim()
         
         self.body += "&nickname="+nick
         
@@ -54,6 +54,7 @@ class InputNickNameVC: UITableViewController {
     
     func doRegist()
     {
+        
         let url=APPURL+"Public/Found/?service=User.openRegister"
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
             
@@ -67,7 +68,6 @@ class InputNickNameVC: UITableViewController {
                     
                     NoticeWord.LoginSuccess.rawValue.postNotice()
                     
-                    self.navigationController?.popToRootViewControllerAnimated(false)
                     self.dismissViewControllerAnimated(true, completion: { () -> Void in
                         
                     })
@@ -98,7 +98,7 @@ class InputNickNameVC: UITableViewController {
         self.waitActiv.stopAnimating()
         button.titleLabel?.alpha = 1.0
         
-        if(!self.pass.checkLength(2, max: 15) )
+        if(!self.nickName.checkLength(2, max: 15) )
         {
             if(self.waitActiv.hidden)
             {
@@ -118,11 +118,38 @@ class InputNickNameVC: UITableViewController {
         
     }
     
-    
+    func textChange(notic:NSNotification)
+    {
+        if let t = notic.object as? UITextField
+        {
+            if let _ = t.markedTextRange
+            {
+//                if let _ = t.positionFromPosition(rang.start, offset: 0)
+//                {
+//                    print("nickName000: \(nickName.text)")
+//                    reSetButton()
+//                }
+//                else
+//                {
+//                    print("nickName111: \(nickName.text)")
+//                    reSetButton()
+//                }
+            }
+            else
+            {
+                //print("nickName222: \(nickName.text)")
+                reSetButton()
+            }
+            
+        }
+  
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(textChange(_:)), name: UITextFieldTextDidChangeNotification, object: nil)
         
         waitActiv.hidden = true
         self.button.enabled = false
@@ -139,19 +166,7 @@ class InputNickNameVC: UITableViewController {
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
-        var txt=textField.text!
-        txt=(txt as NSString).stringByReplacingCharactersInRange(range, withString: string)
-        
-        if(txt.length()>15)
-        {
-            return false
-        }
-        
-        textField.text = txt
-        
-        reSetButton()
-        
-        return false
+        return true
         
     }
     
@@ -173,7 +188,7 @@ class InputNickNameVC: UITableViewController {
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if indexPath.row < 3
+        if indexPath.row < 1
         {
             cell.separatorInset=UIEdgeInsetsMake(0, 0, 0, 0)
             if(IOS_Version>=8.0)
@@ -223,6 +238,11 @@ class InputNickNameVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit
+    {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        //print("InputNickNameVC deinit !!!!!!!!!!")
+    }
     
     
 }

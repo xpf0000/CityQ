@@ -31,6 +31,14 @@ class UserCenterVC: UITableViewController {
     
     func toEdit() {
         
+//        let vc = "InputNickNameVC".VC("User") as! InputNickNameVC
+//        vc.body = ""
+//        
+//        self.navigationController?.pushViewController(vc, animated: true)
+//        
+//        return
+        
+        
         if(DataCache.Share.userModel.uid != "")
         {
             

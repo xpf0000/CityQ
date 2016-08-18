@@ -94,17 +94,34 @@ class NewsInfoVC: XViewController {
     
     func share() {
         
+        var imgUrl = ""
+        if model.url != ""
+        {
+            imgUrl = model.url
+        }
+        else
+        {
+            if model.picList.count > 0
+            {
+                imgUrl = model.picList[0].url
+            }
+        }
+        
+        var image:ISSCAttachment!
+        
         let img = model.url.image
         
         if(img == nil)
         {
-            return
+            image = ShareSDK.imageWithUrl(imgUrl)
+        }
+        else
+        {
+            let data = UIImagePNGRepresentation(img!)
+            
+            image = ShareSDK.imageWithData(data, fileName: model.url.md5, mimeType: "png")
         }
 
-        let data = UIImagePNGRepresentation(img!)
-        
-        let image = ShareSDK.imageWithData(data, fileName: model.url.md5, mimeType: "png")
-        
         let publishContent : ISSContent = ShareSDK.content(model.title, defaultContent:model.title,image:image, title:model.title,url:self.url,description:model.title,mediaType:SSPublishContentMediaTypeNews)
         
         

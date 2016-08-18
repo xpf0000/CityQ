@@ -29,7 +29,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
     
     func toInputNickVC(body:String)
     {
-        let vc = "".VC("User") as! InputNickNameVC
+        let vc = "InputNickNameVC".VC("User") as! InputNickNameVC
         vc.body = body
         
         self.navigationController?.pushViewController(vc, animated: true)
@@ -37,56 +37,17 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
     
     @IBAction func wxLogin(sender: AnyObject) {
         
+        self.view.showWaiting()
+        
         ShareSDK.getUserInfoWithType(ShareTypeWeixiTimeline, authOptions: nil) { [weak self](result, userInfo, err) -> Void in
             
             if(result)
             {
-                let uid=userInfo.uid()
-                
-                let url=APPURL+"Public/Found/?service=User.openLogin"
-                let body="openid="+uid
-                
-                XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
-                    
-                    if(o?["data"]["code"].intValue == 1)
-                    {
-                        //let nick=userInfo.nickname()
-                        let sex=userInfo.gender() == 0 ? 1 : 0
-                        let headimage=userInfo.profileImage()
-                        let rbody="openid="+uid+"&sex=\(sex)&headimage="+headimage
-                        
-                        self?.toInputNickVC(rbody)
-                        return
-                    }
-                    
-                    if(o?["data"]["info"].arrayValue.count > 0)
-                    {
-                        DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
-                        
-                        DataCache.Share.userModel.save()
-                        
-                        if(self?.block != nil)
-                        {
-                            self?.block!("loginSuccess")
-                        }
-                        
-                        NoticeWord.LoginSuccess.rawValue.postNotice()
-                        
-                        self?.dismissViewControllerAnimated(true, completion: { () -> Void in
-                            
-                            
-                        })
-                        
-                    }
-                    else
-                    {
-                        ShowMessage("登录失败")
-                    }
-                    
-                    })
+                self?.otherLogin(userInfo)
             }
             else
             {
+                RemoveWaiting()
                 ShowMessage("登录失败")
             }
         }
@@ -193,56 +154,17 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
     
     @IBAction func QQ(sender: AnyObject) {
         
+        self.view.showWaiting()
+        
         ShareSDK.getUserInfoWithType(ShareTypeQQSpace, authOptions: nil) { [weak self](result, userInfo, err) -> Void in
             
             if(result)
             {
-                let uid=userInfo.uid()
-                
-                let url=APPURL+"Public/Found/?service=User.openLogin"
-                let body="openid="+uid
-                
-                XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
-                    
-                    if(o?["data"]["code"].intValue == 1)
-                    {
-                        //let nick=userInfo.nickname()
-                        let sex=userInfo.gender() == 0 ? 1 : 0
-                        let headimage=userInfo.profileImage()
-                        let rbody="openid="+uid+"&sex=\(sex)&headimage="+headimage
-                        
-                        self?.toInputNickVC(rbody)
-                        return
-                    }
-                    
-                    if(o?["data"]["info"].arrayValue.count > 0)
-                    {
-                        DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
-                        
-                        DataCache.Share.userModel.save()
-                        
-                        if(self?.block != nil)
-                        {
-                            self?.block!("loginSuccess")
-                        }
-                        
-                        NoticeWord.LoginSuccess.rawValue.postNotice()
-                        
-                        self?.dismissViewControllerAnimated(true, completion: { () -> Void in
-                            
-                            
-                        })
-                        
-                    }
-                    else
-                    {
-                        ShowMessage("登录失败")
-                    }
-                    
-                })
+                self?.otherLogin(userInfo)
             }
             else
             {
+                RemoveWaiting()
                 ShowMessage("登录失败")
             }
         }
@@ -251,58 +173,17 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
     
     @IBAction func sina(sender: AnyObject) {
         
+        self.view.showWaiting()
         
-        ShareSDK.getUserInfoWithType(ShareTypeSinaWeibo, authOptions: nil) { (result, userInfo, err) -> Void in
+        ShareSDK.getUserInfoWithType(ShareTypeSinaWeibo, authOptions: nil) {[weak self] (result, userInfo, err) -> Void in
             
             if(result)
             {
-                let uid=userInfo.uid()
-                
-                let url=APPURL+"Public/Found/?service=User.openLogin"
-                let body="openid="+uid
-                
-                XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
-                    
-                    if(o?["data"]["code"].intValue == 1)
-                    {
-                        //let nick=userInfo.nickname()
-                        let sex=userInfo.gender() == 0 ? 1 : 0
-                        let headimage=userInfo.profileImage()
-                        let rbody="openid="+uid+"&sex=\(sex)&headimage="+headimage
-                        
-                       self?.toInputNickVC(rbody)
-                    
-                        return
-                    }
-                    
-                    if(o?["data"]["info"].arrayValue.count > 0)
-                    {
-                        DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
-                        
-                        DataCache.Share.userModel.save()
-                        
-                        if(self?.block != nil)
-                        {
-                            self?.block!("loginSuccess")
-                        }
-                        
-                        NoticeWord.LoginSuccess.rawValue.postNotice()
-                        
-                        self?.dismissViewControllerAnimated(true, completion: { () -> Void in
-                        
-                            
-                        })
-                        
-                    }
-                    else
-                    {
-                        ShowMessage("登录失败")
-                    }
-                    
-                    })
+                self?.otherLogin(userInfo)
             }
             else
             {
+                RemoveWaiting()
                 ShowMessage("登录失败")
             }
         }
@@ -310,6 +191,60 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
         
         
     }
+    
+    func otherLogin(userInfo:ISSPlatformUser)
+    {
+        
+        let uid=userInfo.uid()
+        
+        let url=APPURL+"Public/Found/?service=User.openLogin"
+        let body="openid="+uid
+        
+        XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
+            
+            if(o?["data"]["code"].intValue == 1)
+            {
+                RemoveWaiting()
+                //let nick=userInfo.nickname()
+                let sex=userInfo.gender() == 0 ? 1 : 0
+                let headimage=userInfo.profileImage()
+                let rbody="openid="+uid+"&sex=\(sex)&headimage="+headimage
+                
+                self?.toInputNickVC(rbody)
+                
+                return
+            }
+            
+            if(o?["data"]["info"].arrayValue.count > 0)
+            {
+                DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
+                
+                DataCache.Share.userModel.save()
+                
+                if(self?.block != nil)
+                {
+                    self?.block!("loginSuccess")
+                }
+                
+                NoticeWord.LoginSuccess.rawValue.postNotice()
+                
+                RemoveWaiting()
+                self?.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    
+                    
+                })
+                
+            }
+            else
+            {
+                RemoveWaiting()
+                ShowMessage("登录失败")
+            }
+            
+            })
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -423,6 +358,9 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 
-    
+    deinit
+    {
+        //print("LoginVC deinit !!!!!!!!!!")
+    }
 
 }

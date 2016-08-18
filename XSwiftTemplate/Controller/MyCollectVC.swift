@@ -21,6 +21,9 @@ class MyCollectVC: UITableViewController {
         
         let url = APPURL+"Public/Found/?service=News.getCollectList&uid=\(DataCache.Share.userModel.uid)&page=[page]&perNumber=20"
         
+        table.Delegate(self)
+        table.DataSource(self)
+        
         table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: MyCollectModel.self, CellIdentifier: "MyCollectCell")
         
         self.table.cellHeight = 102.5

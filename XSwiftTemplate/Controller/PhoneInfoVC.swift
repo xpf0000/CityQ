@@ -16,21 +16,11 @@ class PhoneInfoVC: XViewController,UIActionSheetDelegate {
     
     @IBOutlet var tel: UILabel!
     
-    @IBOutlet var url: UILabel!
-    
     @IBOutlet var address: UILabel!
-    
-    @IBOutlet var juli: UILabel!
     
     @IBOutlet var button: UIButton!
     
-    @IBOutlet var contentH: NSLayoutConstraint!
-    
     @IBOutlet var imgH: NSLayoutConstraint!
-    
-    @IBOutlet var viewBLine: UIView!
-    
-    @IBOutlet var viewH: NSLayoutConstraint!
     
     @IBAction func callPhone(sender: AnyObject) {
         
@@ -91,7 +81,6 @@ class PhoneInfoVC: XViewController,UIActionSheetDelegate {
     {
         self.img.url = self.model.url
         self.tel.text = self.model.tel
-        self.url.text = self.model.durl
         self.address.text=self.model.address
         
     }
@@ -108,14 +97,8 @@ class PhoneInfoVC: XViewController,UIActionSheetDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(PhoneInfoVC.toUrl))
-        
-        self.url.addGestureRecognizer(tap)
-        
-        self.url.preferredMaxLayoutWidth = self.url.frame.width
         self.address.preferredMaxLayoutWidth = self.address.frame.width
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,39 +107,15 @@ class PhoneInfoVC: XViewController,UIActionSheetDelegate {
         
         self.title="详情"
         
-        var c:String = ""
-        
-        self.viewBLine.addObserver(self, forKeyPath: "center", options: .New, context: &c)
-        
         lineH.constant = 0.34
         imgH.constant = swidth/16.0*7.8
-        
-        self.button.addObserver(self, forKeyPath: "center", options: .New, context: nil)
         
         self.http()
     }
 
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if(keyPath == "center")
-        {
-            if(context == nil)
-            {
-                self.contentH.constant = self.button.center.y+25+20
-            }
-            else
-            {
-                self.viewH.constant = self.viewBLine.center.y
-            }
-            
-            
-        }
-    }
-    
     deinit
     {
-        self.viewBLine.removeObserver(self, forKeyPath: "center")
-        self.button.removeObserver(self, forKeyPath: "center")
     }
     
     override func didReceiveMemoryWarning() {

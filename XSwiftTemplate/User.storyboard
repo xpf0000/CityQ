@@ -2525,38 +2525,37 @@
                         <sections>
                             <tableViewSection id="ntK-Q9-HOi">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="66C-sy-Ztp">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="60" id="2xv-lw-kdF">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="66C-sy-Ztp" id="Gyt-Hv-gvg">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2xv-lw-kdF" id="ux9-IF-ZdT">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_regist_user.png" translatesAutoresizingMaskIntoConstraints="NO" id="7re-4Q-O5a">
-                                                    <rect key="frame" x="15" y="17" width="26" height="26"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="26" id="JQx-4w-UN5"/>
-                                                        <constraint firstAttribute="height" constant="26" id="Pa4-q4-kAk"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入昵称 2-15位 注册后不可修改" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GAO-n1-zzC">
-                                                    <rect key="frame" x="51" y="10" width="534" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="CwO-wb-ivu"/>
-                                                    </constraints>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入昵称 2-15字 提交后不可更改" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yNP-hQ-8dY">
+                                                    <rect key="frame" x="56" y="0.0" width="529" height="59"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="tSG-mK-IU9" id="rXR-gb-1uW"/>
+                                                        <outlet property="delegate" destination="tSG-mK-IU9" id="dIH-ER-iEc"/>
                                                     </connections>
                                                 </textField>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="my_regist_user.png" translatesAutoresizingMaskIntoConstraints="NO" id="yrh-Ch-Rdu">
+                                                    <rect key="frame" x="15" y="17" width="26" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="26" id="M56-sd-IX7"/>
+                                                        <constraint firstAttribute="width" constant="26" id="NmG-nx-zMJ"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="GAO-n1-zzC" firstAttribute="centerY" secondItem="Gyt-Hv-gvg" secondAttribute="centerY" id="D9G-sb-UUd"/>
-                                                <constraint firstItem="7re-4Q-O5a" firstAttribute="leading" secondItem="Gyt-Hv-gvg" secondAttribute="leading" constant="15" id="aY7-Rr-vw2"/>
-                                                <constraint firstAttribute="trailing" secondItem="GAO-n1-zzC" secondAttribute="trailing" constant="15" id="hcF-ec-f3j"/>
-                                                <constraint firstItem="7re-4Q-O5a" firstAttribute="centerY" secondItem="Gyt-Hv-gvg" secondAttribute="centerY" id="lOz-qx-qHQ"/>
-                                                <constraint firstItem="GAO-n1-zzC" firstAttribute="leading" secondItem="7re-4Q-O5a" secondAttribute="trailing" constant="10" id="rVP-rF-46R"/>
+                                                <constraint firstAttribute="bottom" secondItem="yNP-hQ-8dY" secondAttribute="bottom" id="HRT-g9-TsL"/>
+                                                <constraint firstItem="yNP-hQ-8dY" firstAttribute="leading" secondItem="yrh-Ch-Rdu" secondAttribute="trailing" constant="15" id="ayu-HN-3Do"/>
+                                                <constraint firstAttribute="trailing" secondItem="yNP-hQ-8dY" secondAttribute="trailing" constant="15" id="bT7-dB-EEI"/>
+                                                <constraint firstItem="yrh-Ch-Rdu" firstAttribute="centerY" secondItem="ux9-IF-ZdT" secondAttribute="centerY" id="des-K6-sID"/>
+                                                <constraint firstItem="yNP-hQ-8dY" firstAttribute="top" secondItem="ux9-IF-ZdT" secondAttribute="top" id="dhQ-Uz-ao4"/>
+                                                <constraint firstItem="yrh-Ch-Rdu" firstAttribute="leading" secondItem="ux9-IF-ZdT" secondAttribute="leading" constant="15" id="xms-tx-mxs"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2622,7 +2621,7 @@
                     <connections>
                         <outlet property="button" destination="oJw-7g-9di" id="wuU-L8-aPk"/>
                         <outlet property="hideView" destination="GDp-PK-Izn" id="99j-kt-2zj"/>
-                        <outlet property="pass" destination="GAO-n1-zzC" id="Sqf-Ua-Iaz"/>
+                        <outlet property="nickName" destination="yNP-hQ-8dY" id="RPF-8C-q3K"/>
                         <outlet property="table" destination="xaj-ao-S04" id="Kn1-xJ-t2b"/>
                         <outlet property="waitActiv" destination="Xu0-ap-Wy0" id="nA2-Jl-1dm"/>
                     </connections>

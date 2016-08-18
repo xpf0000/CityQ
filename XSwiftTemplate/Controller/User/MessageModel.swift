@@ -136,30 +136,19 @@ class UserMsgModel:Reflect
         if let index = users[Uid]?.type1.indexOf(o)
         {
             users[Uid]?.type1.removeAtIndex(index)
-            if !removeViewed(o)
-            {
-                
-            }
+            removeViewed(o)
         }
         
         if let index = users[Uid]?.type2.indexOf(o)
         {
             users[Uid]?.type2.removeAtIndex(index)
-            
-            if !removeViewed(o)
-            {
-                
-            }
+            removeViewed(o)
         }
         
         if let index = users[Uid]?.type3.indexOf(o)
         {
             users[Uid]?.type3.removeAtIndex(index)
-            
-            if !removeViewed(o)
-            {
-                
-            }
+            removeViewed(o)
         }
         
         save()

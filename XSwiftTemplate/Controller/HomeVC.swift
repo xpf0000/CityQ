@@ -120,7 +120,7 @@ class HomeVC: UIViewController {
 
         for item in v.subviews
         {
-            print(item)
+            //print(item)
             if item.subviews.count > 0
             {
                 changeBadgeSize(item)

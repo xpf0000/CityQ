@@ -8,6 +8,8 @@
 
 import Foundation
 
+let ProjectName:String = NSBundle.mainBundle().infoDictionary![String(kCFBundleExecutableKey)] as! String
+
 class ReflectType {
     
     var typeName: String!
@@ -57,6 +59,7 @@ extension ReflectType{
     func parseTypeName(){
         
         typeName = "\(propertyMirrorType.subjectType)".deleteSpecialStr()
+        
     }
     
     func parseTypeClass(){
@@ -89,6 +92,7 @@ extension ReflectType{
         default: displayStyleDesc = "Other: Collection/Dictionary/Set"
             
         }
+        
         fetchRealType()
     }
 }
@@ -116,12 +120,10 @@ extension ReflectType{
         case Double = "Double"
         case String = "String"
         case Bool = "Bool"
+        case Array = "Array"
         case Class = "Class"
     }
 }
-
-
-
 
 extension ReflectType{
     
@@ -133,8 +135,11 @@ extension ReflectType{
     
     func fetchRealType(){
         
-        if typeName.contain(subStr: "Array") {isArray = true}
-        if typeName.contain(subStr: "Dictionary") {realType = RealType.Class}
+        if typeName.contain(subStr: "Array") {
+            realType = RealType.Class
+            isArray = true
+        }
+        else if typeName.contain(subStr: "Dictionary") {realType = RealType.Class}
         else if typeName.contain(subStr: "Int") {realType = RealType.Int}
         else if typeName.contain(subStr: "Float") {realType = RealType.Float}
         else if typeName.contain(subStr: "Double") {realType = RealType.Double}
@@ -158,7 +163,7 @@ extension ReflectType{
         
         if(cls == nil)
         {
-            cls = NSClassFromString("chengshi."+clsString)
+            cls = NSClassFromString(ProjectName+"."+clsString)
         }
         
         if cls == nil && type.isReflect {

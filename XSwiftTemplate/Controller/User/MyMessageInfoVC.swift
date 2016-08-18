@@ -117,9 +117,6 @@ class MyMessageInfoVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         if(editingStyle == UITableViewCellEditingStyle.Delete)
         {
             DataCache.Share.userMsg.remove(table.httpHandle.listArr[indexPath.row] as! MessageModel)
-            table.httpHandle.listArr.removeAtIndex(indexPath.row)
-            
-            table.reloadData()
         }
     }
     

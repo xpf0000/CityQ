@@ -39,7 +39,7 @@ class PaymentInfoInfoVC: UIViewController {
             make.bottom.equalTo(0.0)
         }
         
-        label.text = "日期: \(model.create_time.subStringToIndex(4))年\(model.create_time.subStringFromIndex(4))月\r\n\r\n 上月抄表数: \(model.snumber)\r\n\r\n 本月抄表数: \(model.bnumber)\r\n\r\n 使用量: \(model.unumber) \r\n\r\n 应缴金额: \(model.ymoney)元\r\n\r\n 实缴金额: \(model.smoney)元\r\n\r\n 余额: \(model.yumoney)元\r\n\r\n 单价: \(model.price)元"
+        label.text = "日期: \(model.create_time.subStringToIndex(4))年\(model.create_time.subStringFromIndex(4))月\r\n\r\n 上月抄表数: \(model.snumber)\r\n\r\n 本月抄表数: \(model.bnumber)\r\n\r\n 使用量: \(model.unumber)\r\n\r\n 单价: \(model.price)元\r\n\r\n 应缴金额: \(model.ymoney)元\r\n\r\n 实缴金额: \(model.smoney)元\r\n\r\n 余额: \(model.yumoney)元"
         
     }
     

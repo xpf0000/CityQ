@@ -49,7 +49,7 @@ class PaymentInfoView: UIView {
     {
         if self.type == 3 || self.type == 2
         {
-            label1.text = "抄表数"
+            label1.text = "使用量"
             label2.text = "应缴金额"
         }
         else

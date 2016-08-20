@@ -158,10 +158,13 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
             
             let b = o.count == 0
             
-            self?.table.hidden = b
-            self?.top.hidden = b
-            self?.noView.hidden = !b
-            
+            if self?.category_id.numberValue.integerValue == 0 || self?.typeid.numberValue.integerValue == 0
+            {
+                self?.table.hidden = b
+                self?.top.hidden = b
+                self?.noView.hidden = !b
+            }
+   
         }
 
         if check()
@@ -222,6 +225,8 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     
     func setLeft()
     {
+        if topCellArr[0].count > 0 {return}
+        
         var arr:[ReactionMenuItemModel] = []
         
         var i = 0

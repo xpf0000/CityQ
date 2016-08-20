@@ -16,7 +16,6 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     
     @IBOutlet var msg: UILabel!
     
-    
     let top = ReactionMenuView()
     var topCellArr:Array<Array<ReactionMenuItemModel>> = [[],[]]
     

@@ -215,7 +215,19 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
                     
                     let model = CategoryModel.parse(json: item, replace: nil)
                     
-                    DataCache.Share.cardCategory.append(model)
+                    var has = false
+                    for item in DataCache.Share.cardCategory
+                    {
+                        if item.id == model.id
+                        {
+                            has = true
+                        }
+                    }
+                    
+                    if !has
+                    {
+                        DataCache.Share.cardCategory.append(model)
+                    }
                 }
                 
                 self?.setLeft()

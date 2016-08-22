@@ -56,7 +56,7 @@ class OAMessageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
     
     func http()
     {
-        let url="http://101.201.169.38/apioa/Public/OA/?service=News.getList"
+        let url=WapUrl+"/apioa/Public/OA/?service=News.getList"
         let body="dwid="+DataCache.Share.oaUserModel.dwid+"&bmid="+DataCache.Share.oaUserModel.bmid+"&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
         
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in

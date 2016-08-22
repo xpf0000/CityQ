@@ -88,7 +88,7 @@ class OAPasswordVC: UIViewController,UITableViewDataSource,UITableViewDelegate,c
         
         newp=p as String
         
-        let url="http://101.201.169.38/apioa/Public/OA/?service=User.updatePass"
+        let url=WapUrl+"/apioa/Public/OA/?service=User.updatePass"
         let body="username="+DataCache.Share.oaUserModel.username+"&password="+(oldp as String)+"&newpassword="+newp
         
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in

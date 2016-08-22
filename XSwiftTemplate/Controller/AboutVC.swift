@@ -46,7 +46,7 @@ class AboutVC: UIViewController {
         
         let vc = HtmlVC()
         vc.title = "免责声明"
-        vc.url = "http://101.201.169.38/city/news_info.php?id=6243&type=108"
+        vc.url = WapUrl+"/city/news_info.php?id=6243&type=108"
         
         vc.hidesBottomBarWhenPushed = true
         

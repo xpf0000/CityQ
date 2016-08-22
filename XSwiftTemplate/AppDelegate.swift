@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onLogin(_:)), name: NoticeWord.LoginSuccess.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onLogin(_:)), name: NoticeWord.UpdateUserSuccess.rawValue, object: nil)
         
-        XHttpPool.Debug = true
+        XHttpPool.Debug = false
         DataCache.Share
         Preloading.Share.getAdvImage()
         

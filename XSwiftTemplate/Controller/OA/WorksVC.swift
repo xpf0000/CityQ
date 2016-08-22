@@ -22,7 +22,7 @@ class WorksVC: UIViewController,UICollectionViewDataSource,UICollectionViewDeleg
     
     func http()
     {
-        let url="http://101.201.169.38/apioa/Public/OA/?service=user.getncount&jgid="+DataCache.Share.oaUserModel.jgid+"&dwid="+DataCache.Share.oaUserModel.dwid+"&bmid="+DataCache.Share.oaUserModel.bmid+"&username="+DataCache.Share.oaUserModel.username+"&uid="+DataCache.Share.oaUserModel.uid
+        let url=WapUrl+"/apioa/Public/OA/?service=user.getncount&jgid="+DataCache.Share.oaUserModel.jgid+"&dwid="+DataCache.Share.oaUserModel.dwid+"&bmid="+DataCache.Share.oaUserModel.bmid+"&username="+DataCache.Share.oaUserModel.username+"&uid="+DataCache.Share.oaUserModel.uid
 
         XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](o) -> Void in
 

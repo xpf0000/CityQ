@@ -262,7 +262,7 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
         
         let url = "\(navigationAction.request.URL!)"
 
-        if(url.has("http://101.201.169.38/city/news_info.php?id="))
+        if(url.has(WapUrl+"/city/news_info.php?id="))
         {
             if(url.has("&type="))
             {
@@ -272,7 +272,7 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
             {
                 decisionHandler(.Cancel)
                 
-                let id:String = url.replace("http://101.201.169.38/city/news_info.php?id=", with: "")
+                let id:String = url.replace(WapUrl+"/city/news_info.php?id=", with: "")
 
                 let model:NewsModel = NewsModel()
                 model.id = id

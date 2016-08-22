@@ -51,7 +51,7 @@ class OADocVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISear
     
     func http()
     {
-        let url="http://101.201.169.38/apioa/Public/OA/?service=Document.getList"
+        let url=WapUrl+"/apioa/Public/OA/?service=Document.getList"
         let body="dwid="+DataCache.Share.oaUserModel.dwid+"&bmid="+DataCache.Share.oaUserModel.bmid+"&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
 
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in

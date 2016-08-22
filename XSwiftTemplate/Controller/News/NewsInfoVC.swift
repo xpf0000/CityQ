@@ -192,7 +192,7 @@ class NewsInfoVC: XViewController {
         self.button.layer.borderWidth = 0.5
         self.button.layer.masksToBounds = true
         
-        self.url="http://101.201.169.38/city/news_info.php?id=\(model.id)&type=1"
+        self.url=WapUrl+"/city/news_info.php?id=\(model.id)&type=1"
 
         htmlView.url = self.url
         htmlView.show()

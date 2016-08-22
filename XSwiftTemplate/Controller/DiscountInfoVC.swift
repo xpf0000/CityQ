@@ -83,7 +83,7 @@ class DiscountInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelegate {
         self.infoWeb.scrollView.backgroundColor = UIColor.whiteColor()
         self.infoWeb.backgroundColor = "#c8c8c8".color
         self.infoWeb.delegate = self
-        self.infoWeb.loadRequest("http://101.201.169.38/city/dis_info_info.php?id=\(self.model.id)".urlRequest!)
+        self.infoWeb.loadRequest((WapUrl+"/city/dis_info_info.php?id=\(self.model.id)").urlRequest!)
         self.infoWeb.sizeToFit()
     }
     

@@ -33,7 +33,7 @@ class NewsCommentVC: UITableViewController {
         self.view.addSubview(html)
 
         
-        let url="http://101.201.169.38/city/news_Comment.php?id=\(self.model.id)&type=1"
+        let url=WapUrl+"/city/news_Comment.php?id=\(self.model.id)&type=1"
         
         html.url = url
         html.show()

@@ -86,7 +86,7 @@ class CardActivitysInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelega
         
         infoWeb.loadHTMLString(model.content, baseURL: nil)
         
-//        self.infoWeb.loadRequest("http://101.201.169.38/city/dis_info_info.php?id=\(self.model.id)".urlRequest!)
+//        self.infoWeb.loadRequest(WapUrl+"/city/dis_info_info.php?id=\(self.model.id)".urlRequest!)
         
         self.infoWeb.sizeToFit()
     }

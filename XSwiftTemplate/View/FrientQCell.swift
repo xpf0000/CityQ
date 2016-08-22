@@ -543,7 +543,7 @@ class FrientQCell: UITableViewCell {
             return
         }
 
-        let url="http://101.201.169.38/city/city_info.html?id=\(model.id)"
+        let url=WapUrl+"/city/city_info.html?id=\(model.id)"
 
         let data = img!.data(0.001)
         

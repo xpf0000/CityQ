@@ -93,7 +93,7 @@ class PicNewsInfoVC: XViewController,UIScrollViewDelegate,UITextViewDelegate {
     
     @IBAction func share(sender: AnyObject) {
         
-        let url="http://101.201.169.38/city/pic_info.html?id=\(model.id)"
+        let url=WapUrl+"/city/pic_info.html?id=\(model.id)"
         
         let publishContent : ISSContent = ShareSDK.content(model.title, defaultContent:model.title,image:ShareSDK.imageWithUrl(model.url), title:model.title,url:url,description:model.descrip,mediaType:SSPublishContentMediaTypeNews)
         

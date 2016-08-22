@@ -197,7 +197,7 @@ class OALoginVC: UIViewController,UITextFieldDelegate{
         
         self.view.showWaiting()
         
-        let url="http://101.201.169.38/apioa/Public/OA/?service=User.login&username="+u+"&password="+p
+        let url=WapUrl+"/apioa/Public/OA/?service=User.login&username="+u+"&password="+p
         
        XHttpPool.requestJson(url, body: nil, method: .GET) {[weak self] (o) -> Void in
         

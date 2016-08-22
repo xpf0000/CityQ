@@ -41,7 +41,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
     
     func http()
     {
-        let url="http://101.201.169.38/apioa/Public/OA/?service=Tel.getList"
+        let url=WapUrl+"/apioa/Public/OA/?service=Tel.getList"
         let body="dwid="+DataCache.Share.oaUserModel.dwid+"&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
         
         XHttpPool.requestJson(url, body: body, method: .POST) {[weak self] (o) -> Void in
@@ -76,7 +76,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
         
         
         
-        let url1="http://101.201.169.38/apioa/Public/OA/?service=Tel.getListBybm"
+        let url1=WapUrl+"/apioa/Public/OA/?service=Tel.getListBybm"
         let body1="dwid="+DataCache.Share.oaUserModel.dwid+"&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
         
         XHttpPool.requestJson(url1, body: body1, method: .POST) {[weak self] (o) -> Void in

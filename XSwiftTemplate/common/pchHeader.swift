@@ -103,8 +103,8 @@ enum 腾讯颜色 : String{
     case 昵称蓝 = "#2f66a8"
 }
 
-
-var serverPath="http://101.201.169.38/test"
+var WapUrl = "http://wap.huaifuwang.com"
+var serverPath=WapUrl+"/test"
 
 func ShowMessage(str:String)
 {
@@ -205,7 +205,7 @@ func SetUMessageTag()
 
 var ContentMaxHeight:CGFloat = 0.0
 
-let APPURL="http://101.201.169.38/hfapi/"
+let APPURL=WapUrl+"/hfapi/"
 
 
 let BaseHtml = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n" +

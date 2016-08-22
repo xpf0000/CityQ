@@ -47,7 +47,7 @@ class OAFileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISea
     
     func http()
     {
-        let url="http://101.201.169.38/apioa/Public/OA/?service=Files.getList&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
+        let url=WapUrl+"/apioa/Public/OA/?service=Files.getList&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
         
         XHttpPool.requestJson(url, body: nil, method: .POST) {[weak self] (o) -> Void in
             
@@ -71,7 +71,7 @@ class OAFileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISea
         
         
         
-        let url1="http://101.201.169.38/apioa/Public/OA/?service=Files.getUserList&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
+        let url1=WapUrl+"/apioa/Public/OA/?service=Files.getUserList&uid="+DataCache.Share.oaUserModel.uid+"&username="+DataCache.Share.oaUserModel.username
         
         XHttpPool.requestJson(url1, body: nil, method: .POST) {[weak self] (o) -> Void in
             

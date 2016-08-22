@@ -53,7 +53,7 @@ class OAUserCenterVC: UITableViewController,UITextFieldDelegate {
         sender.enabled = false
         self.view.showWaiting()
         
-        let url="http://101.201.169.38/apioa/Public/OA/?service=User.userEdit"
+        let url=WapUrl+"/apioa/Public/OA/?service=User.userEdit"
         var body="username="+DataCache.Share.oaUserModel.username
         body += "&uid="+DataCache.Share.oaUserModel.uid
         body += "&tel="+tel.text!.trim()
@@ -100,7 +100,7 @@ class OAUserCenterVC: UITableViewController,UITextFieldDelegate {
         let u=DataCache.Share.oaUserModel.username
         let p=DataCache.Share.oaUserModel.pass
         
-        let url="http://101.201.169.38/apioa/Public/OA/?service=User.login&username="+u+"&password="+p
+        let url=WapUrl+"/apioa/Public/OA/?service=User.login&username="+u+"&password="+p
         
         XHttpPool.requestJson(url, body: nil, method: .GET) {[weak self] (o) -> Void in
             

@@ -12,11 +12,12 @@ class RegistVC: UITableViewController,UITextFieldDelegate {
 
     @IBOutlet var table: UITableView!
     
-    @IBOutlet var phone: UITextField!
-    
     @IBOutlet var nickName: UITextField!
     
     @IBOutlet var pass: UITextField!
+    
+    @IBOutlet var pass1: UITextField!
+    
     
     @IBOutlet var waitActiv: UIActivityIndicatorView!
     
@@ -43,7 +44,14 @@ class RegistVC: UITableViewController,UITextFieldDelegate {
             
             return
         }
-
+        
+        if (self.pass.text!) != (self.pass1.text!)
+        {
+            UIApplication.sharedApplication().keyWindow?.showAlert("密码和确认密码不一致", block: nil)
+            
+            return
+        }
+    
         
         self.view.endEditing(true)
         sender.enabled = false
@@ -126,8 +134,6 @@ class RegistVC: UITableViewController,UITextFieldDelegate {
         
         waitActiv.hidden = true
         self.button.enabled = false
-        
-        self.phone.text = self.registPhone
         
         let view1=UIView()
         view1.backgroundColor=UIColor.clearColor()

@@ -1703,7 +1703,7 @@
                                                         <constraint firstAttribute="width" constant="26" id="rNj-Uv-kpt"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写用户名(一经填写,不得修改)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VVF-Y5-3tW">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="填写昵称(一经填写,不得修改)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VVF-Y5-3tW">
                                                     <rect key="frame" x="51" y="10" width="534" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="brx-MT-ZJX"/>
@@ -1742,7 +1742,7 @@
                                                         <constraint firstAttribute="height" constant="40" id="4fa-bI-gh5"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="sEk-lh-NAj" id="aRH-EM-UN6"/>
                                                     </connections>
@@ -1855,9 +1855,9 @@
                     <connections>
                         <outlet property="button" destination="WhE-aM-2D0" id="Zd7-Me-7yH"/>
                         <outlet property="hideView" destination="eEf-1V-rmC" id="tD7-mw-iGj"/>
-                        <outlet property="nickName" destination="abl-Cn-ihk" id="Ui1-F5-831"/>
-                        <outlet property="pass" destination="Jbc-wZ-qAo" id="kov-IE-9pn"/>
-                        <outlet property="phone" destination="VVF-Y5-3tW" id="ZOP-Oy-VK4"/>
+                        <outlet property="nickName" destination="VVF-Y5-3tW" id="0nv-hl-SbP"/>
+                        <outlet property="pass" destination="abl-Cn-ihk" id="4xG-HD-Il2"/>
+                        <outlet property="pass1" destination="Jbc-wZ-qAo" id="40s-rS-eSd"/>
                         <outlet property="table" destination="61z-bN-6Xg" id="YCN-bQ-uGJ"/>
                         <outlet property="waitActiv" destination="uJr-k9-pdc" id="e3O-uN-h44"/>
                     </connections>

@@ -67,7 +67,7 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
         }
     }
     
-    var harr:[CGFloat] = [swidth/750.0*313.0*screenFlag,42.0*screenFlag,42.0*screenFlag,8.0*screenFlag,0,42.0*screenFlag,8.0*screenFlag,37.0*screenFlag,1.0,44.0]
+    var harr:[CGFloat] = [swidth/16.0*7.0,42.0*screenFlag,42.0*screenFlag,8.0*screenFlag,0,42.0*screenFlag,8.0*screenFlag,37.0*screenFlag,1.0,44.0]
     
     func http()
     {

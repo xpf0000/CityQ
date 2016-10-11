@@ -10,6 +10,7 @@ import UIKit
 
 func MainDo(block:AnyBlock)
 {
+    
     dispatch_async(dispatch_get_main_queue(), { () -> Void in
         block(nil)
     })

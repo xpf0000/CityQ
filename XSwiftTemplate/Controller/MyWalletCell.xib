@@ -13,7 +13,11 @@
             <rect key="frame" x="0.0" y="0.0" width="410" height="156"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+<<<<<<< Updated upstream
                 <frame key="frameInset" width="410" height="155.5"/>
+=======
+                <frame key="frameInset" width="410" height="155"/>
+>>>>>>> Stashed changes
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w8D-Jl-YiB">

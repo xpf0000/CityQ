@@ -23,7 +23,7 @@ class OAFileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISea
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "DownLoadSuccess", name: "DownLoadSuccess", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OAFileVC.DownLoadSuccess), name: "DownLoadSuccess", object: nil)
         
         self.title="文档"
         self.navigationItem.hidesBackButton=true
@@ -120,7 +120,7 @@ class OAFileVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISea
         segmentedControl.setDividerImage("#ffffff".color?.image, forLeftSegmentState: UIControlState.Normal, rightSegmentState: UIControlState.Selected, barMetrics: UIBarMetrics.Default)
         segmentedControl.setDividerImage("#ffffff".color?.image, forLeftSegmentState: UIControlState.Selected, rightSegmentState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
         
-        segmentedControl.addTarget(self, action: "chooseType:", forControlEvents: UIControlEvents.ValueChanged)
+        segmentedControl.addTarget(self, action: #selector(OAFileVC.chooseType(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         self.view.addSubview(segmentedControl)
         

@@ -30,7 +30,7 @@ class OAChooseUnitVC: UIViewController,UITableViewDataSource,UITableViewDelegate
         submitButton.setTitle("确定", forState: UIControlState.Normal)
         submitButton.setTitleColor(腾讯颜色.图标蓝.rawValue.color, forState: UIControlState.Normal)
         submitButton.showsTouchWhenHighlighted = true
-        submitButton.addTarget(self, action: "submit", forControlEvents: UIControlEvents.TouchUpInside)
+        submitButton.addTarget(self, action: #selector(OAChooseUnitVC.submit), forControlEvents: UIControlEvents.TouchUpInside)
         let rightItem=UIBarButtonItem(customView: submitButton)
         self.navigationItem.rightBarButtonItem=rightItem;
         

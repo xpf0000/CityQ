@@ -91,7 +91,7 @@ class CardActivitysInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelega
         self.infoWeb.sizeToFit()
     }
     
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
         
         RemoveWaiting()
         

@@ -92,7 +92,7 @@ class UserHouseChooseVC: UIViewController,UITableViewDataSource,UITableViewDeleg
         let topView:UIToolbar = UIToolbar(frame: CGRectMake(0, 0, swidth, 44))
         topView.barStyle=UIBarStyle.Default
         let btnSpace=UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
-        let doneButton = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Done, target: self, action: "dismissKeyBoard")
+        let doneButton = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Done, target: self, action: #selector(UserHouseChooseVC.dismissKeyBoard))
         topView.setItems([btnSpace,doneButton], animated: true)
         
         searchView.inputAccessoryView=topView

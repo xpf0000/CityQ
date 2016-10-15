@@ -25,7 +25,7 @@ class NatGeoAnimation:NSObject
     
     func animation(transitionContext:UIViewControllerContextTransitioning,fromView:UIView,toView:UIView)
     {
-        let containerView=transitionContext.containerView()!
+        let containerView=transitionContext.containerView()
         containerView.addSubview(toView)
         containerView.addSubview(fromView)
         

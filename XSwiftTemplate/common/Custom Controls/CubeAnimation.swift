@@ -25,7 +25,7 @@ class CubeAnimation:NSObject
     
     func animation(transitionContext:UIViewControllerContextTransitioning,fromView:UIView,toView:UIView)
     {
-        let containerView=transitionContext.containerView()!
+        let containerView=transitionContext.containerView()
         fromView.translatesAutoresizingMaskIntoConstraints = true
         toView.translatesAutoresizingMaskIntoConstraints = true
         

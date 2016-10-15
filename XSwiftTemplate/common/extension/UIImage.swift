@@ -35,7 +35,7 @@ extension UIImage{
         self.drawInRect(CGRectMake(0, 0, size.width, size.height))
         
         
-        let newImage:UIImage=UIGraphicsGetImageFromCurrentImageContext();
+        let newImage:UIImage=UIGraphicsGetImageFromCurrentImageContext()!;
         
         // End the context
         UIGraphicsEndImageContext();
@@ -97,22 +97,22 @@ extension UIImage{
         }
         
         let ctx = CGBitmapContextCreate(nil, Int(self.size.width), Int(self.size.height),
-                                        CGImageGetBitsPerComponent(self.CGImage), 0,
-                                        CGImageGetColorSpace(self.CGImage),
-                                        CGImageGetBitmapInfo(self.CGImage).rawValue)
-        CGContextConcatCTM(ctx, transform)
+                                        CGImageGetBitsPerComponent(self.CGImage!), 0,
+                                        CGImageGetColorSpace(self.CGImage!)!,
+                                        CGImageGetBitmapInfo(self.CGImage!).rawValue)
+        CGContextConcatCTM(ctx!, transform)
         
         
         switch (self.imageOrientation) {
         case .Left, .LeftMirrored, .Right, .RightMirrored:
-            CGContextDrawImage(ctx, CGRectMake(0,0,self.size.height,self.size.width), self.CGImage)
+            CGContextDrawImage(ctx!, CGRectMake(0,0,self.size.height,self.size.width), self.CGImage!)
             break
         default:
-            CGContextDrawImage(ctx, CGRectMake(0,0,self.size.width,self.size.height), self.CGImage)
+            CGContextDrawImage(ctx!, CGRectMake(0,0,self.size.width,self.size.height), self.CGImage!)
             break
         }
         // And now we just create a new UIImage from the drawing context
-        let cgimg = CGBitmapContextCreateImage(ctx)
+        let cgimg = CGBitmapContextCreateImage(ctx!)
         return UIImage(CGImage: cgimg!)
     }
 }

@@ -125,7 +125,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
         let topView:UIToolbar = UIToolbar(frame: CGRectMake(0, 0, swidth, 44))
         topView.barStyle=UIBarStyle.Default
         let btnSpace=UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
-        let doneButton = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Done, target: self, action: "dismissKeyBoard")
+        let doneButton = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Done, target: self, action: #selector(OAAddressBookVC.dismissKeyBoard))
         topView.setItems([btnSpace,doneButton], animated: true)
         
         searchView.inputAccessoryView=topView
@@ -154,7 +154,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
         segmentedControl.setDividerImage("#ffffff".color?.image, forLeftSegmentState: UIControlState.Normal, rightSegmentState: UIControlState.Selected, barMetrics: UIBarMetrics.Default)
         segmentedControl.setDividerImage("#ffffff".color?.image, forLeftSegmentState: UIControlState.Selected, rightSegmentState: UIControlState.Normal, barMetrics: UIBarMetrics.Default)
         
-        segmentedControl.addTarget(self, action: "chooseType:", forControlEvents: UIControlEvents.ValueChanged)
+        segmentedControl.addTarget(self, action: #selector(OAAddressBookVC.chooseType(_:)), forControlEvents: UIControlEvents.ValueChanged)
         
         self.view.addSubview(segmentedControl)
         
@@ -285,7 +285,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
                     str = key
                     break
                 }
-                i++
+                i += 1
             }
            label.text=str
         }
@@ -296,7 +296,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
             let button=UIButton(type: .Custom)
             button.frame = CGRectMake(0, 0, swidth, 38.0)
             button.tag = 200+section
-            button.addTarget(self, action: "chooseUnit:", forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: #selector(OAAddressBookVC.chooseUnit(_:)), forControlEvents: .TouchUpInside)
 
             view.addSubview(button)
             
@@ -350,7 +350,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
                     count = value.count
                     break
                 }
-                i++
+                i += 1
             }
             
             return count
@@ -412,7 +412,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
                     user=value[indexPath.row]
                     break
                 }
-                i++
+                i += 1
             }
 
         }
@@ -471,7 +471,7 @@ class OAAddressBookVC: UIViewController,UITableViewDataSource,UITableViewDelegat
                     user=value[indexPath.row]
                     break
                 }
-                i++
+                i += 1
             }
             
         }

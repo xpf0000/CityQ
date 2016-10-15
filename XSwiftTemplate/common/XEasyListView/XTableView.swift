@@ -235,7 +235,7 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
         xdelegate?.tableView?(tableView, didHighlightRowAtIndexPath: indexPath)
     }
     
-    func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didEndEditingRowAtIndexPath indexPath: NSIndexPath?) {
         
         xdelegate?.tableView?(tableView, didEndEditingRowAtIndexPath: indexPath)
     }

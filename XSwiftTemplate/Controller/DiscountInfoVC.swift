@@ -87,7 +87,7 @@ class DiscountInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelegate {
         self.infoWeb.sizeToFit()
     }
     
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
         
         RemoveWaiting()
         

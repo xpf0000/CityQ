@@ -118,7 +118,7 @@ func DecodedImage(image:UIImage?,size:CGSize?)->UIImage?
 
     let imageRef = image!.CGImage;
     
-    let alpha = CGImageGetAlphaInfo(imageRef);
+    let alpha = CGImageGetAlphaInfo(imageRef!);
     let anyAlpha = (alpha == .First ||
         alpha == .Last ||
         alpha == .PremultipliedFirst ||
@@ -135,8 +135,8 @@ func DecodedImage(image:UIImage?,size:CGSize?)->UIImage?
     
     autoreleasepool { 
         
-        let imageColorSpaceModel = CGColorSpaceGetModel(CGImageGetColorSpace(imageRef));
-        var colorspaceRef = CGImageGetColorSpace(imageRef);
+        let imageColorSpaceModel = CGColorSpaceGetModel(CGImageGetColorSpace(imageRef!)!);
+        var colorspaceRef = CGImageGetColorSpace(imageRef!);
         
         let unsupportedColorSpace = (imageColorSpaceModel == .Unknown || imageColorSpaceModel == .Monochrome || imageColorSpaceModel == .CMYK || imageColorSpaceModel == .Indexed)
         if (unsupportedColorSpace)
@@ -148,12 +148,12 @@ func DecodedImage(image:UIImage?,size:CGSize?)->UIImage?
             Int(height),
             8,
             4*Int(width),
-            colorspaceRef,
+            colorspaceRef!,
             CGBitmapInfo.ByteOrderDefault.rawValue | CGImageAlphaInfo.NoneSkipLast.rawValue);
         
-        CGContextDrawImage(context, CGRectMake(0, 0, CGFloat(width), CGFloat(height)), imageRef);
+        CGContextDrawImage(context!, CGRectMake(0, 0, CGFloat(width), CGFloat(height)), imageRef!);
         
-        let imageRefWithAlpha = CGBitmapContextCreateImage(context);
+        let imageRefWithAlpha = CGBitmapContextCreateImage(context!);
         
         let scale = image!.scale < UIScreen.mainScreen().scale ? UIScreen.mainScreen().scale : image!.scale
         
@@ -543,12 +543,12 @@ class XImageUtil: NSObject,NSURLSessionDataDelegate {
         let rect=CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, color.CGColor);
-        CGContextFillRect(context, rect);
+        CGContextSetFillColorWithColor(context!, color.CGColor);
+        CGContextFillRect(context!, rect);
         let theImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
-        return theImage
+        return theImage!
         
     }
     

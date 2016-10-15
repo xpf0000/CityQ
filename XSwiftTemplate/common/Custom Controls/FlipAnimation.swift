@@ -25,7 +25,7 @@ class FlipAnimation:NSObject
     
     func animation(transitionContext:UIViewControllerContextTransitioning,fromView:UIView,toView:UIView)
     {
-        let containerView=transitionContext.containerView()!
+        let containerView=transitionContext.containerView()
         containerView.addSubview(toView)
         containerView.sendSubviewToBack(toView)
         
@@ -108,12 +108,12 @@ class FlipAnimation:NSObject
     {
         let containerView:UIView=view.superview!
         var snapshotRegion:CGRect = CGRectMake(0, 0, view.frame.size.width / 2, view.frame.size.height)
-        let leftHandView:UIView = view.resizableSnapshotViewFromRect(snapshotRegion, afterScreenUpdates: afterUpdates, withCapInsets: UIEdgeInsetsZero)
+        let leftHandView:UIView = view.resizableSnapshotViewFromRect(snapshotRegion, afterScreenUpdates: afterUpdates, withCapInsets: UIEdgeInsetsZero)!
         leftHandView.frame = snapshotRegion;
         containerView.addSubview(leftHandView)
         
         snapshotRegion = CGRectMake(view.frame.size.width / 2, 0, view.frame.size.width / 2, view.frame.size.height)
-        let rightHandView:UIView = view.resizableSnapshotViewFromRect(snapshotRegion, afterScreenUpdates: afterUpdates, withCapInsets: UIEdgeInsetsZero)
+        let rightHandView:UIView = view.resizableSnapshotViewFromRect(snapshotRegion, afterScreenUpdates: afterUpdates, withCapInsets: UIEdgeInsetsZero)!
         rightHandView.frame = snapshotRegion;
         containerView.addSubview(rightHandView)
         

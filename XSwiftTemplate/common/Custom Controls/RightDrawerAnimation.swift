@@ -30,10 +30,10 @@ class RightDrawerAnimation:NSObject
         
         if(self.reverse)
         {
-            containerView?.removeAllSubViews()
+            containerView.removeAllSubViews()
             
-            containerView?.addSubview(fromView)
-            containerView?.addSubview(toView)
+            containerView.addSubview(fromView)
+            containerView.addSubview(toView)
 
             UIView.animateWithDuration(self.duration, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
                 
@@ -81,10 +81,10 @@ class RightDrawerAnimation:NSObject
             toView.frame = frame
             fromView.frame = transitionContext.initialFrameForViewController(fromVC!)
             
-            containerView!.insertSubview(toView, belowSubview: fromView)
-            containerView!.sendSubviewToBack(toView)
+            containerView.insertSubview(toView, belowSubview: fromView)
+            containerView.sendSubviewToBack(toView)
             
-            containerView!.addSubview(fromView)
+            containerView.addSubview(fromView)
 
             let scale:CATransform3D = CATransform3DMakeTranslation(-swidth*0.55, 0, 0)
             let transform = CATransform3DScale(scale, 0.88, 0.88, 1)

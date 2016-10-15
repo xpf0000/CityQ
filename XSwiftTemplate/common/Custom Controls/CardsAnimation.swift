@@ -36,7 +36,7 @@ class CardsAnimation:NSObject
             toView.layer.transform = CATransform3DScale(scale, 0.6, 0.6, 1)
             toView.alpha = 0.6
             
-            containerView!.insertSubview(toView, belowSubview: fromView)
+            containerView.insertSubview(toView, belowSubview: fromView)
             
             var frameOffScreen: CGRect=frame
             frameOffScreen.origin.y = frameOffScreen.size.height
@@ -62,7 +62,7 @@ class CardsAnimation:NSObject
                     
                     toView.layer.transform = CATransform3DIdentity
                     fromView.layer.transform = CATransform3DIdentity
-                    containerView!.layer.transform = CATransform3DIdentity
+                    containerView.layer.transform = CATransform3DIdentity
                     toView.alpha = 1.0
                     fromView.alpha = 1.0
                     if(transitionContext.transitionWasCancelled())
@@ -86,7 +86,7 @@ class CardsAnimation:NSObject
             offScreenFrame.origin.y = offScreenFrame.size.height
             toView.frame = offScreenFrame
             
-            containerView!.insertSubview(toView, aboveSubview: fromView)
+            containerView.insertSubview(toView, aboveSubview: fromView)
             
             let t1:CATransform3D=self.firstTransform()
             let t2:CATransform3D=self.secondTransformWithView(fromView)
@@ -115,7 +115,7 @@ class CardsAnimation:NSObject
                     
                     toView.layer.transform = CATransform3DIdentity
                     fromView.layer.transform = CATransform3DIdentity
-                    containerView!.layer.transform = CATransform3DIdentity
+                    containerView.layer.transform = CATransform3DIdentity
                     
                     if(transitionContext.transitionWasCancelled())
                     {

@@ -3139,6 +3139,7 @@
 					17BE5A111B9D68FC00C8958A = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = 24AVM954YM;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3147,6 +3148,7 @@
 					};
 					17BE5A261B9D68FC00C8958A = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
 						TestTargetID = 17BE5A111B9D68FC00C8958A;
 					};
 				};
@@ -4110,6 +4112,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HKKJ.lejia;
 				PRODUCT_NAME = chengshi;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chengshi.app/chengshi";
 			};
 			name = Debug;
@@ -4126,6 +4129,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HKKJ.lejia;
 				PRODUCT_NAME = chengshi;
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/chengshi.app/chengshi";
 			};
 			name = Release;

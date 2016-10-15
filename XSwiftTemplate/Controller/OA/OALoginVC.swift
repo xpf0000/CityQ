@@ -113,7 +113,7 @@ class OALoginVC: UIViewController,UITextFieldDelegate{
         submit.titleLabel?.font=UIFont.systemFontOfSize(20)
         submit.layer.cornerRadius=6.0
         
-        submit.addTarget(self, action: "login", forControlEvents: UIControlEvents.TouchUpInside)
+        submit.addTarget(self, action: #selector(OALoginVC.login), forControlEvents: UIControlEvents.TouchUpInside)
         
         self.view.addSubview(submit)
         
@@ -136,10 +136,10 @@ class OALoginVC: UIViewController,UITextFieldDelegate{
     func registerForKeyboardNotifications()
     {
     //使用NSNotificationCenter 鍵盤出現時
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OALoginVC.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
     
     //使用NSNotificationCenter 鍵盤隐藏時
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillBeHidden:", name: UIKeyboardWillHideNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OALoginVC.keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
     
     
     }

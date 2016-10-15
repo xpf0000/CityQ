@@ -61,7 +61,7 @@ class ShareSDKCustomUI: UIView,UIGestureRecognizerDelegate,UICollectionViewDeleg
         
         self.userInteractionEnabled = true
         
-        let recognizer = UITapGestureRecognizer(target: self, action: "hide")
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(ShareSDKCustomUI.hide as (ShareSDKCustomUI) -> () -> ()))
         recognizer.delegate = self
         recognizer.delaysTouchesBegan = true
         self.bgView.addGestureRecognizer(recognizer)

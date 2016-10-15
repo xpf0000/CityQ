@@ -29,20 +29,20 @@ class PortalAnimation:NSObject
            
             let scale:CATransform3D  = CATransform3DIdentity;
             toView.layer.transform = CATransform3DScale(scale, 0.7, 0.7, 0.8)
-            containerView!.addSubview(toView)
+            containerView.addSubview(toView)
          
             let leftSnapshotRegion:CGRect  = CGRectMake(0, 0, fromView.frame.size.width / 2, fromView.frame.size.height)
-            let leftHandView:UIView=fromView.resizableSnapshotViewFromRect(leftSnapshotRegion, afterScreenUpdates: false, withCapInsets: UIEdgeInsetsZero)
+            let leftHandView:UIView=fromView.resizableSnapshotViewFromRect(leftSnapshotRegion, afterScreenUpdates: false, withCapInsets: UIEdgeInsetsZero)!
             
             leftHandView.frame = leftSnapshotRegion
-            containerView!.addSubview(leftHandView)
+            containerView.addSubview(leftHandView)
             
             let rightSnapshotRegion:CGRect  = CGRectMake(fromView.frame.size.width / 2, 0, fromView.frame.size.width / 2, fromView.frame.size.height)
             
-            let rightHandView:UIView=fromView.resizableSnapshotViewFromRect(rightSnapshotRegion, afterScreenUpdates: false, withCapInsets: UIEdgeInsetsZero)
+            let rightHandView:UIView=fromView.resizableSnapshotViewFromRect(rightSnapshotRegion, afterScreenUpdates: false, withCapInsets: UIEdgeInsetsZero)!
             
             rightHandView.frame = rightSnapshotRegion;
-            containerView!.addSubview(rightHandView)
+            containerView.addSubview(rightHandView)
             
             fromView.removeFromSuperview()
             
@@ -62,7 +62,7 @@ class PortalAnimation:NSObject
                     }
                     else
                     {
-                        containerView!.addSubview(toView)
+                        containerView.addSubview(toView)
                         self.removeOtherViews(toView)
                         fromView.removeFromSuperview()
                     }
@@ -73,23 +73,23 @@ class PortalAnimation:NSObject
         }
         else
         {
-            containerView!.addSubview(fromView)
+            containerView.addSubview(fromView)
             toView.frame = CGRectOffset(toView.frame, toView.frame.size.width, 0);
-            containerView!.addSubview(toView)
+            containerView.addSubview(toView)
 
             let leftSnapshotRegion:CGRect = CGRectMake(0, 0, toView.frame.size.width / 2, toView.frame.size.height);
-            let leftHandView:UIView = toView.resizableSnapshotViewFromRect(leftSnapshotRegion, afterScreenUpdates: true, withCapInsets: UIEdgeInsetsZero)
+            let leftHandView:UIView = toView.resizableSnapshotViewFromRect(leftSnapshotRegion, afterScreenUpdates: true, withCapInsets: UIEdgeInsetsZero)!
             leftHandView.frame = leftSnapshotRegion;
             leftHandView.frame = CGRectOffset(leftHandView.frame, -leftHandView.frame.size.width, 0);
-            containerView!.addSubview(leftHandView)
+            containerView.addSubview(leftHandView)
   
             
             // snapshot the right-hand side of the to- view
             let rightSnapshotRegion:CGRect = CGRectMake(toView.frame.size.width / 2, 0, toView.frame.size.width / 2, toView.frame.size.height);
-            let rightHandView:UIView = toView.resizableSnapshotViewFromRect(rightSnapshotRegion, afterScreenUpdates: true, withCapInsets:UIEdgeInsetsZero)
+            let rightHandView:UIView = toView.resizableSnapshotViewFromRect(rightSnapshotRegion, afterScreenUpdates: true, withCapInsets:UIEdgeInsetsZero)!
             rightHandView.frame = rightSnapshotRegion
             rightHandView.frame = CGRectOffset(rightHandView.frame, rightHandView.frame.size.width, 0)
-            containerView!.addSubview(rightHandView)
+            containerView.addSubview(rightHandView)
 
             
             UIView.animateWithDuration(self.duration, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
@@ -110,7 +110,7 @@ class PortalAnimation:NSObject
                     else
                     {
                         self.removeOtherViews(toView)
-                        toView.frame = containerView!.bounds
+                        toView.frame = containerView.bounds
                         fromView.removeFromSuperview()
                     }
                     

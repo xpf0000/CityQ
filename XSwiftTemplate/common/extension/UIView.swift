@@ -286,24 +286,24 @@ extension UIView
             let properRect = UIEdgeInsetsInsetRect(rect, insets)
             
             let c = UIGraphicsGetCurrentContext()
-            CGContextSetShouldAntialias(c, true)
+            CGContextSetShouldAntialias(c!, true)
             
             if m.StrokePath
             {
     
-                CGContextSetLineCap(c, .Round)
-                CGContextSetLineWidth(c, 1.5)
+                CGContextSetLineCap(c!, .Round)
+                CGContextSetLineWidth(c!, 1.5)
                 
-                CGContextSetStrokeColorWithColor(c, m.StrokeColor.CGColor);
-                CGContextSetFillColorWithColor(c, m.FillColor!.CGColor)
-                
-                addPath(c!, rect: properRect,m: m)
-                
-                CGContextFillPath(c);
+                CGContextSetStrokeColorWithColor(c!, m.StrokeColor.CGColor);
+                CGContextSetFillColorWithColor(c!, m.FillColor!.CGColor)
                 
                 addPath(c!, rect: properRect,m: m)
                 
-                CGContextStrokePath(c);
+                CGContextFillPath(c!);
+                
+                addPath(c!, rect: properRect,m: m)
+                
+                CGContextStrokePath(c!);
                 
                 
                 return
@@ -311,11 +311,11 @@ extension UIView
             
             if m.FillPath
             {
-                CGContextSetFillColorWithColor(c, m.FillColor!.CGColor)
+                CGContextSetFillColorWithColor(c!, m.FillColor!.CGColor)
                 
                 addPath(c!, rect: properRect,m: m)
                 
-                CGContextFillPath(c);
+                CGContextFillPath(c!);
             }
             
             

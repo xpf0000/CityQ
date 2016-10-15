@@ -257,7 +257,7 @@ class OAAddMessageVC: UIViewController,commonDelegate,UITableViewDataSource,UITa
             button.titleLabel?.font=UIFont.systemFontOfSize(20)
             button.layer.cornerRadius=6.0
             
-            button.addTarget(self, action: "submit", forControlEvents: UIControlEvents.TouchUpInside)
+            button.addTarget(self, action: #selector(OAAddMessageVC.submit), forControlEvents: UIControlEvents.TouchUpInside)
             
             cell.contentView.addSubview(button)
         }
@@ -294,7 +294,7 @@ class OAAddMessageVC: UIViewController,commonDelegate,UITableViewDataSource,UITa
                             self!.unitMsg = item.value
                             break
                         }
-                        j++
+                        j += 1
                     }
                     
                     

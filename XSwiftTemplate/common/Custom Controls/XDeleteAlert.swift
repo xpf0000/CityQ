@@ -83,7 +83,7 @@ class XDeleteAlert: UIView,UIGestureRecognizerDelegate {
             }
         }
         
-        let recognizer = UITapGestureRecognizer(target: self, action: "hide")
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(XDeleteAlert.hide))
         recognizer.delegate = self
         recognizer.delaysTouchesBegan = true
         self.addGestureRecognizer(recognizer)

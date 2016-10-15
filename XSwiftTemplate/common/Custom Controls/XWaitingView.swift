@@ -86,7 +86,7 @@ class XWaitingView:UIView
         view.stopAnimation()
         view.removeFromSuperview()
         view=nil
-        now++
+        now += 1
         
         if(now==NVActivityIndicatorType.allValues.count)
         {
@@ -105,7 +105,7 @@ class XWaitingView:UIView
                 return
             }
             
-            i++
+            i += 1
         }
     }
     

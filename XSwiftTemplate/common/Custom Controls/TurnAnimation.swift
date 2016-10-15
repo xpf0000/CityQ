@@ -34,11 +34,11 @@ class TurnAnimation:NSObject
     func animation(transitionContext:UIViewControllerContextTransitioning,fromView:UIView,toView:UIView)
     {
         let containerView=transitionContext.containerView()
-        containerView!.addSubview(toView)
+        containerView.addSubview(toView)
 
         var transform:CATransform3D  = CATransform3DIdentity
         transform.m34 = (-0.002)
-        containerView!.layer.sublayerTransform = transform
+        containerView.layer.sublayerTransform = transform
         
         let initialFrame: CGRect = transitionContext.initialFrameForViewController(fromVC!)
         fromView.frame =  initialFrame

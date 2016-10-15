@@ -34,7 +34,7 @@ class NoNewWork: UIView {
         
         if(newSuperview != nil)
         {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("networkStatusChanged:"), name: ReachabilityStatusChangedNotification, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(NoNewWork.networkStatusChanged(_:)), name: ReachabilityStatusChangedNotification, object: nil)
             Reach().monitorReachabilityChanges()
         }
         else

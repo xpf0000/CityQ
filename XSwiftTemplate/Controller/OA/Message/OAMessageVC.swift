@@ -39,7 +39,7 @@ class OAMessageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
         add.frame=CGRectMake(10, 2, 25, 25);
         add.setBackgroundImage("add_icon_blue.png".image, forState: UIControlState.Normal)
         add.showsTouchWhenHighlighted = true
-        add.addTarget(self, action: "addMessage", forControlEvents: UIControlEvents.TouchUpInside)
+        add.addTarget(self, action: #selector(OAMessageVC.addMessage), forControlEvents: UIControlEvents.TouchUpInside)
         let rightitem=UIBarButtonItem(customView: add)
         self.navigationItem.rightBarButtonItem=rightitem;
         
@@ -166,7 +166,7 @@ class OAMessageVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UI
         let topView:UIToolbar = UIToolbar(frame: CGRectMake(0, 0, swidth, 44))
         topView.barStyle=UIBarStyle.Default
         let btnSpace=UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
-        let doneButton = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Done, target: self, action: "dismissKeyBoard")
+        let doneButton = UIBarButtonItem(title: "完成", style: UIBarButtonItemStyle.Done, target: self, action: #selector(OAMessageVC.dismissKeyBoard))
         topView.setItems([btnSpace,doneButton], animated: true)
         
         searchView.inputAccessoryView=topView

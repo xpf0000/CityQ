@@ -75,7 +75,7 @@ class OAFileInfoVC: UIViewController,UIWebViewDelegate{
         RemoveWaiting()
     }
     
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
         
         RemoveWaiting()
         

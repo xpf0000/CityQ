@@ -38,7 +38,7 @@ class XBuyNumView: UIView,UITextFieldDelegate {
             return
         }
         
-        num--
+        num -= 1
         text.text = "\(num)"
         
     }
@@ -50,7 +50,7 @@ class XBuyNumView: UIView,UITextFieldDelegate {
         {
             return
         }
-        num++
+        num += 1
         text.text = "\(num)"
     }
     

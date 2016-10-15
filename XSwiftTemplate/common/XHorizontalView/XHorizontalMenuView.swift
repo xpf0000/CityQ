@@ -24,8 +24,8 @@ extension UIColor
                                             rgbColorSpace,
                                             CGImageAlphaInfo.NoneSkipLast.rawValue)
         
-        CGContextSetFillColorWithColor(context, self.CGColor)
-        CGContextFillRect(context, CGRectMake(0, 0, 1, 1))
+        CGContextSetFillColorWithColor(context!, self.CGColor)
+        CGContextFillRect(context!, CGRectMake(0, 0, 1, 1))
         
         return (CGFloat(resultingPixel[0]),CGFloat(resultingPixel[1]),CGFloat(resultingPixel[2]))
         

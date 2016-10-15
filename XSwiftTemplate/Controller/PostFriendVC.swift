@@ -134,7 +134,7 @@ class PostFriendVC: XViewController,UICollectionViewDataSource,UICollectionViewD
         button.setTitleColor(腾讯颜色.图标蓝.rawValue.color!, forState: .Normal)
         button.showsTouchWhenHighlighted = true
         button.exclusiveTouch = true
-        button.addTarget(self, action: "send", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(PostFriendVC.send), forControlEvents: UIControlEvents.TouchUpInside)
         let rightItem=UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem=rightItem;
         
@@ -167,7 +167,7 @@ class PostFriendVC: XViewController,UICollectionViewDataSource,UICollectionViewD
                     w = button.frame.width+10
                 }
                 
-                button.addTarget(self, action: "choose:", forControlEvents: .TouchUpInside)
+                button.addTarget(self, action: #selector(PostFriendVC.choose(_:)), forControlEvents: .TouchUpInside)
                 
                 self.flagView.addSubview(button)
                 

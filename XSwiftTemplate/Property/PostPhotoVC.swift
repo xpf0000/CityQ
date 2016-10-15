@@ -58,7 +58,7 @@ class PostPhotoVC: XViewController,UICollectionViewDataSource,UICollectionViewDe
         button.setTitleColor(腾讯颜色.图标蓝.rawValue.color!, forState: .Normal)
         button.showsTouchWhenHighlighted = true
         button.exclusiveTouch = true
-        button.addTarget(self, action: "send", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(PostPhotoVC.send), forControlEvents: UIControlEvents.TouchUpInside)
         let rightItem=UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem=rightItem;
         
@@ -71,7 +71,7 @@ class PostPhotoVC: XViewController,UICollectionViewDataSource,UICollectionViewDe
         
         tel.addEndButton()
         
-        segment.addTarget(self, action: "changePage:", forControlEvents: .ValueChanged)
+        segment.addTarget(self, action: #selector(PostPhotoVC.changePage(_:)), forControlEvents: .ValueChanged)
         segment.selectedSegmentIndex = 2
         self.changePage(segment)
     }

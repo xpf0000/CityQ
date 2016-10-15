@@ -83,7 +83,7 @@ class HtmlVC: UIViewController,UIWebViewDelegate ,WKNavigationDelegate,WKUIDeleg
         self.show()
     }
     
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
         waiting.removeFromSuperview()
     }
     

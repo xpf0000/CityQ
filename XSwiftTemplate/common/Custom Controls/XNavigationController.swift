@@ -136,7 +136,7 @@ class XNavigationController: UINavigationController,UINavigationControllerDelega
     }
     
     override func pushViewController(viewController: UIViewController, animated: Bool) {
-        self.screenShotList.append(self.view.snapshotViewAfterScreenUpdates(true))
+        self.screenShotList.append(self.view.snapshotViewAfterScreenUpdates(true)!)
         super.pushViewController(viewController, animated: animated)
     }
 

@@ -150,7 +150,7 @@ extension NSString{
     
     var View:UIView
         {
-            let arr:Array = NSBundle.mainBundle().loadNibNamed(self as String, owner: nil, options: nil)
+            let arr:Array = NSBundle.mainBundle().loadNibNamed(self as String, owner: nil, options: nil)!
             
             return arr[0] as! UIView 
     }

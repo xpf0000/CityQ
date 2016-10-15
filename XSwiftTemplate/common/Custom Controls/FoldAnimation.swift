@@ -24,7 +24,7 @@ class FoldAnimation:NSObject
     
     func animation(transitionContext:UIViewControllerContextTransitioning,fromView:UIView,toView:UIView)
     {
-        let containerView=transitionContext.containerView()!
+        let containerView=transitionContext.containerView()
         self.color=toView.backgroundColor
         toView.frame = CGRectOffset(toView.frame, toView.frame.size.width, 0);
         
@@ -152,7 +152,7 @@ class FoldAnimation:NSObject
 
             let snapshotView2=view.resizableSnapshotViewFromRect(snapshotRegion, afterScreenUpdates: afterUpdates, withCapInsets: UIEdgeInsetsZero)
      
-            snapshotView?.addSubview(snapshotView2)
+            snapshotView?.addSubview(snapshotView2!)
             
         }
         

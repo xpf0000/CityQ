@@ -86,7 +86,7 @@ class XPhotoLib: NSObject,AGImagePickerControllerDelegate {
         cancelButton.setTitle("取消", forState: UIControlState.Normal)
         cancelButton.setTitleColor(blackTXT, forState: UIControlState.Normal)
         
-        cancelButton.addTarget(self, action: "cancel", forControlEvents: UIControlEvents.TouchUpInside)
+        cancelButton.addTarget(self, action: #selector(ISSCRequest.cancel), forControlEvents: UIControlEvents.TouchUpInside)
         
         cancelItem = AGIPCToolbarItem(barButtonItem: UIBarButtonItem(customView: cancelButton), andSelectionBlock: nil)
         
@@ -96,7 +96,7 @@ class XPhotoLib: NSObject,AGImagePickerControllerDelegate {
         finishButton.setTitleColor(blackTXT, forState: UIControlState.Normal)
         finishButton.setTitleColor(UIColor.lightGrayColor(), forState: UIControlState.Disabled)
         
-        finishButton.addTarget(self, action: "finish", forControlEvents: UIControlEvents.TouchUpInside)
+        finishButton.addTarget(self, action: #selector(XPhotoLib.finish), forControlEvents: UIControlEvents.TouchUpInside)
         finishButton.enabled = false
         finishItem = AGIPCToolbarItem(barButtonItem: UIBarButtonItem(customView: finishButton), andSelectionBlock: nil)
 

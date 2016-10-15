@@ -25,7 +25,7 @@ class ReportVC: UIViewController {
         button.setTitle("确定", forState: .Normal)
         button.showsTouchWhenHighlighted = true
         button.exclusiveTouch = true
-        button.addTarget(self, action: "submit:", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(ReportVC.submit(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         let rightItem=UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem=rightItem;
         

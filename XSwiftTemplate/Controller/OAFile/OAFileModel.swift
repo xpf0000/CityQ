@@ -67,7 +67,7 @@ class OAFileModel: Reflect {
                 return
             }
             
-            i++
+            i += 1
         }
     }
     

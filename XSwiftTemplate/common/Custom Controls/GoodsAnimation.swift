@@ -35,7 +35,7 @@ class GoodsAnimation:NSObject
             toView.frame = frame
             toView.alpha = 0.6
             
-            containerView!.insertSubview(toView, belowSubview: fromView)
+            containerView.insertSubview(toView, belowSubview: fromView)
             
             var frameOffScreen: CGRect=frame
             frameOffScreen.origin.y = frameOffScreen.size.height
@@ -64,7 +64,7 @@ class GoodsAnimation:NSObject
                     
                     //toView.layer.transform = CATransform3DIdentity
                     fromView.layer.transform = CATransform3DIdentity
-                    containerView!.layer.transform = CATransform3DIdentity
+                    containerView.layer.transform = CATransform3DIdentity
                     toView.alpha = 1.0
                     fromView.alpha = 1.0
                     if(transitionContext.transitionWasCancelled())
@@ -109,7 +109,7 @@ class GoodsAnimation:NSObject
             offScreenFrame.origin.y = offScreenFrame.size.height
             toView.frame = offScreenFrame
             toView.alpha=1.0
-            containerView!.insertSubview(toView, aboveSubview: fromView)
+            containerView.insertSubview(toView, aboveSubview: fromView)
             
             //fromView.layer.anchorPoint = CGPointMake(0.5, 0.8);
             //toView.layer.anchorPoint = CGPointMake(0.5, 0.8);
@@ -140,7 +140,7 @@ class GoodsAnimation:NSObject
                     
                     toView.layer.transform = CATransform3DIdentity
                     //fromView.layer.transform = CATransform3DIdentity
-                    containerView!.layer.transform = CATransform3DIdentity
+                    containerView.layer.transform = CATransform3DIdentity
                     
                     if(transitionContext.transitionWasCancelled())
                     {

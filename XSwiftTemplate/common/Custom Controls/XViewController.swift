@@ -23,7 +23,7 @@ class XViewController: UIViewController,UIViewControllerTransitioningDelegate{
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "cityChanged", name: "cityChanged", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(XViewController.cityChanged), name: "cityChanged", object: nil)
         
     }
     

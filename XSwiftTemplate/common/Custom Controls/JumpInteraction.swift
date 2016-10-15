@@ -26,7 +26,7 @@ class JumpInteraction : UIPercentDrivenInteractiveTransition
     private override init() {
         super.init()
         
-        recognizer = UIPanGestureRecognizer(target: self, action: "handlePopRecognizer:")
+        recognizer = UIPanGestureRecognizer(target: self, action: #selector(JumpInteraction.handlePopRecognizer(_:)))
         
         //self.completionSpeed = 0.9
         

@@ -10,12 +10,6 @@ import UIKit
 
 class UserCenterVC: UITableViewController {
     
-    @IBOutlet var msgBG: UIView!
-    
-    @IBOutlet var msg: UILabel!
-    
-    @IBOutlet var pass: UILabel!
-    
     @IBOutlet var table: UITableView!
     
     @IBOutlet var headW: NSLayoutConstraint!
@@ -27,6 +21,29 @@ class UserCenterVC: UITableViewController {
     @IBOutlet var userName: UILabel!
     
     @IBOutlet var nickName: UILabel!
+    
+    
+    @IBAction func leftClick(sender: AnyObject) {
+        
+        let url = APPURL + "Public/Found/?service=jifen.addQiandao&uid=\(Uid)&username=\(Uname)"
+        
+        XHttpPool.requestJson(url, body: nil, method: .POST) { (o) in
+            
+            if o?["data"]["code"] == 0
+            {
+                
+            }
+            
+            
+        }
+        
+    }
+    
+    @IBAction func rightClick(sender: AnyObject) {
+        
+        
+        
+    }
     
     
     func toEdit() {
@@ -83,34 +100,15 @@ class UserCenterVC: UITableViewController {
             if(DataCache.Share.userModel.mobile == "")
             {
                 self.userName.text = "尚未绑定手机号"
-                self.pass.text = "绑定手机号"
             }
-            else
-            {
-                self.pass.text = "修改密码"
-            }
-            
-            if let txt = UMsgCount
-            {
-                msgBG.hidden = false
-                msg.text = txt
-            }
-            else
-            {
-                msgBG.hidden = true
-            }
-            
-            
+ 
         }
         else
         {
-            msgBG.hidden = true
-            
             self.headPic.url = ""
             self.headPic.image = "tx.jpg".image
             self.userName.text = "点击登录"
             self.nickName.text = "登录后查看更多"
-            self.pass.text = "修改密码"
         }
         
         
@@ -118,15 +116,15 @@ class UserCenterVC: UITableViewController {
     
     func msgCountChange()
     {
-        if let txt = UMsgCount
-        {
-            msgBG.hidden = false
-            msg.text = txt
-        }
-        else
-        {
-            msgBG.hidden = true
-        }
+//        if let txt = UMsgCount
+//        {
+//            msgBG.hidden = false
+//            msg.text = txt
+//        }
+//        else
+//        {
+//            msgBG.hidden = true
+//        }
     }
     
     override func viewDidLoad() {
@@ -173,17 +171,35 @@ class UserCenterVC: UITableViewController {
         
     }
     
+    let sarr:[Int] = [0,3,4,5,8,9]
+    
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        cell.separatorInset=UIEdgeInsetsMake(0, 0, 0, 0)
-        if(IOS_Version>=8.0)
+        if sarr.contains(indexPath.row)
         {
-            if #available(iOS 8.0, *) {
-                cell.layoutMargins=UIEdgeInsetsMake(0, 0, 0, 0)
-            } else {
-                // Fallback on earlier versions
+            cell.separatorInset=UIEdgeInsetsMake(0, 15, 0, 15)
+            if(IOS_Version>=8.0)
+            {
+                if #available(iOS 8.0, *) {
+                    cell.layoutMargins=UIEdgeInsetsMake(0, 15, 0, 15)
+                } else {
+                    // Fallback on earlier versions
+                }
             }
         }
+        else
+        {
+            cell.separatorInset=UIEdgeInsetsMake(0, 0, 0, 0)
+            if(IOS_Version>=8.0)
+            {
+                if #available(iOS 8.0, *) {
+                    cell.layoutMargins=UIEdgeInsetsMake(0, 0, 0, 0)
+                } else {
+                    // Fallback on earlier versions
+                }
+            }
+        }
+        
+        
         
     }
     
@@ -204,11 +220,13 @@ class UserCenterVC: UITableViewController {
         }
     }
 
+    let tarr:[Int] = [0,1,3,4,5,6,8,9,10]
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if indexPath.row > 1 && indexPath.row < 9 && indexPath.row != 7
+        if tarr.contains(indexPath.row)
         {
             if(!self.checkIsLogin())
             {
@@ -220,7 +238,7 @@ class UserCenterVC: UITableViewController {
         {
         case 0:
             self.toEdit()
-        case 2:
+        case 4:
             
             let vc:MyFriendVC = MyFriendVC()
             
@@ -230,7 +248,7 @@ class UserCenterVC: UITableViewController {
             
             return
             
-        case 3:
+        case 5:
             
             let vc = "MyMessageVC".VC("User")
             
@@ -240,7 +258,7 @@ class UserCenterVC: UITableViewController {
             
             return
             
-        case 4:
+        case 9:
             
             let vc = "MyCardVC".VC("User") as!  MyCardVC
             
@@ -252,7 +270,7 @@ class UserCenterVC: UITableViewController {
             
             return
             
-        case 5:
+        case 6:
             
             let vc:MyCollectVC = "MyCollectVC".VC("User") as! MyCollectVC
             
@@ -260,38 +278,6 @@ class UserCenterVC: UITableViewController {
             
             self.navigationController?.pushViewController(vc, animated: true)
             
-//        case 6:
-//            
-//            let vc:MyWalletVC = MyWalletVC()
-//            
-//            vc.hidesBottomBarWhenPushed = true
-//            
-//            self.navigationController?.pushViewController(vc, animated: true)
-
-        case 7:
-            
-            if(DataCache.Share.userModel.mobile == "")
-            {
-                let vc = "AuthBandPhoneVC".VC("User")
-                
-                vc.hidesBottomBarWhenPushed = true
-                
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            else
-            {
-                let vc = "ChangePassVC".VC("User")
-                
-                vc.hidesBottomBarWhenPushed = true
-                
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
-            
-            return
-            
-        case 8 :
-            ""
-
             
         default :
             ""

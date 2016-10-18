@@ -16,23 +16,25 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
     
     @IBOutlet var name: UILabel!
     
-    @IBOutlet var leftLabel: UILabel!
-    
-    @IBOutlet var rightLabel: UILabel!
-    
     @IBOutlet var phone: UILabel!
     
     @IBOutlet var address: UILabel!
     
     @IBOutlet var web: UIWebView!
     
-    @IBOutlet var num: UILabel!
-    
-    @IBOutlet var typeTxt: UILabel!
-    
     @IBOutlet var imgBG: UIView!
     
-    @IBOutlet var txtBG: UIView!
+    @IBOutlet var cardNum: UILabel!
+    
+    @IBOutlet var cardType: UILabel!
+    
+    @IBOutlet var yue: UILabel!
+    
+    @IBOutlet var yueCell: UITableViewCell!
+    
+    @IBOutlet var addressCell: UITableViewCell!
+    
+    
     
     
     @IBAction func callPhone(sender: AnyObject) {
@@ -66,7 +68,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
     
     
     
-    var harr:[CGFloat] = [133*screenFlag,42*screenFlag,15,42*screenFlag,42*screenFlag,42*screenFlag,15,42*screenFlag,128,0]
+    var harr:[CGFloat] = [160,42.0,42.0,15,42.0,42,42,15,42,128,100]
     
     var model:CardModel!
     {
@@ -103,50 +105,49 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
         switch model.type {
         case "计次卡":
             ""
-            str = "剩余次数: "
+            str = "剩余次数: "+model.values
         case "打折卡":
             ""
-            str = "折扣: "
+            str = "折扣: "+model.values
         case "充值卡":
             ""
-            str = "剩余余额: "
+            str = "剩余金额: "+model.values
         case "积分卡":
             ""
-            str = "剩余积分: "
+            str = "剩余积分: "+model.values+"\r\n当前积分: "+model.values
         default:
             ""
         }
         
-        typeTxt.text = str
         img.url = model.logo
         name.text = model.shopname
-        rightLabel.text = model.type
+        cardType.text = model.type
         
+       
         phone.text = model.tel
         address.text = model.address
         
-        num.text = model.values
+        yue.text = str
         
         imgBG.backgroundColor = model.color.color
-        imgBG.setNeedsDisplay()
-        
-        let (r,g,b) = model.color.color!.getRGB()
-        
-        if r<100 && g<100 && b<100
-        {
-            txtBG.backgroundColor = UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 0.75)
-        }
-        else
-        {
-            txtBG.backgroundColor = UIColor(red: 65.0/255.0, green: 65.0/255.0, blue: 65.0/255.0, alpha: 0.75)
-        }
-        txtBG.setNeedsDisplay()
         
         model.info = BaseHtml.replace("[XHTMLX]", with: model.info)
         
         web.loadHTMLString(model.info, baseURL: nil)
         
         web.sizeToFit()
+        
+        
+        var h = yueCell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
+        h = max(h, 42.0)
+        
+        harr[2] = h
+
+        var h1 = addressCell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
+        h1 = max(h1, 42.0)
+        
+        harr[6] = h1
+        
         
         table.reloadData()
         
@@ -156,7 +157,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
         
         if(keyPath == "contentSize")
         {
-            harr[8] = web.scrollView.contentSize.height
+            harr[9] = web.scrollView.contentSize.height
             web.layoutIfNeeded()
             web.setNeedsLayout()
             web.scrollView.scrollEnabled = false
@@ -170,12 +171,17 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
         self.title = "会员卡详情"
         self.addBackButton()
         
+        address.preferredMaxLayoutWidth = swidth - 105
+        yue.preferredMaxLayoutWidth = swidth - 63
+        
+        harr[0] = swidth * 0.485
+        
         web.scrollView.showsHorizontalScrollIndicator = false
         web.scrollView.showsVerticalScrollIndicator = false
         
         web.scrollView.addObserver(self, forKeyPath: "contentSize", options: .New, context: nil)
         
-        let n = 8.0 * screenFlag
+        let n = 10.0 * screenFlag
         
         imgBG.layer.masksToBounds = true
         imgBG.clipsToBounds = true

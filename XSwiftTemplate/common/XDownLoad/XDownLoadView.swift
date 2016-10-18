@@ -25,7 +25,7 @@ let s6 = "http://dl.ke8u.com/down.php?sid=358"
 
 
 
-class XDownLoadView: UIView {
+class XDownLoadView: UIView,CAAnimationDelegate {
     
     let circlePathLayer = CAShapeLayer()
     let bgPathLayer = CAShapeLayer()
@@ -449,8 +449,8 @@ class XDownLoadView: UIView {
         return path
     }
     
-
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+        
         superview?.layer.mask = nil
     }
     

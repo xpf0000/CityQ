@@ -276,14 +276,14 @@ class JumpAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
     }
     
-    
-  override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-    
-    self.transitionContext?.completeTransition(!self.transitionContext!.transitionWasCancelled())
-    self.transitionContext?.viewControllerForKey(UITransitionContextFromViewControllerKey)?.view.layer.mask = nil
-  }
-    
-
-    
+    func animationEnded(transitionCompleted: Bool) {
+        
+        if transitionCompleted
+        {
+            self.transitionContext?.completeTransition(!self.transitionContext!.transitionWasCancelled())
+            self.transitionContext?.viewControllerForKey(UITransitionContextFromViewControllerKey)?.view.layer.mask = nil
+        }
+        
+    }
     
 }

@@ -103,8 +103,9 @@ enum 腾讯颜色 : String{
     case 昵称蓝 = "#2f66a8"
 }
 
-var WapUrl = "http://wap.huaifuwang.com"
-var serverPath=WapUrl+"/test"
+//let WapUrl = "http://wap.huaifuwang.com"
+let WapUrl = "http://182.92.70.85"
+let serverPath=WapUrl+"/test"
 
 func ShowMessage(str:String)
 {

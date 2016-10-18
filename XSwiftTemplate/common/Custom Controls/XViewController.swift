@@ -133,13 +133,6 @@ class XViewController: UIViewController,UIViewControllerTransitioningDelegate{
         
     }
     
-    override func animationDidStart(anim: CAAnimation) {
-        super.animationDidStart(anim)
-    }
-    
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        super.animationDidStop(anim, finished: flag)
-    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -153,12 +146,6 @@ class XViewController: UIViewController,UIViewControllerTransitioningDelegate{
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
        
-    }
-    
-    override func layoutSublayersOfLayer(layer: CALayer) {
-        super.layoutSublayersOfLayer(layer)
-        
-        
     }
     
     override func didReceiveMemoryWarning() {

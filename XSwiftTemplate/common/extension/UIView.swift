@@ -239,7 +239,7 @@ extension UIView
         values.append(NSValue(CATransform3D: CATransform3DMakeScale(1.0, 1.0, 1.0)))
         animation.values = values;
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animation.delegate = delegate
+        //animation.delegate = delegate
         self.layer.addAnimation(animation, forKey: nil)
      
     }
@@ -261,7 +261,7 @@ extension UIView
         values.append(NSValue(CATransform3D: CATransform3DMakeScale(1.0, 1.0, 1.0)))
         animation.values = values;
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animation.delegate = delegate
+        //animation.delegate = delegate
         self.layer.addAnimation(animation, forKey: nil)
         
     }

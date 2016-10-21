@@ -33,7 +33,6 @@ class XVerifyButton: UIButton {
     var postPhone:String = ""
     var outTime:NSTimeInterval = 300
     var block:AnyBlock?
-    var waiting:XWaitingView=XWaitingView(msg: "发送中...", flag: 0)
     private lazy var timeModel:postTimeModel=postTimeModel()
     var type=1
     
@@ -227,7 +226,7 @@ class XVerifyButton: UIButton {
     
     func doPost(str:String)
     {
-        UIApplication.sharedApplication().keyWindow?.addSubview(self.waiting)
+        XWaitingView.show()
         
         self.postPhone = str
         
@@ -242,7 +241,7 @@ class XVerifyButton: UIButton {
         
         XHttpPool.requestJson(url1, body: body, method: .POST, block: { (o) -> Void in
             
-            self.waiting.removeFromSuperview()
+            XWaitingView.hide()
             
             if(o?["data"]["code"].intValue != 0)
             {

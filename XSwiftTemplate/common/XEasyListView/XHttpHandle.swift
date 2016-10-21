@@ -11,7 +11,7 @@ import UIKit
 typealias XHttpHandleBlock = ([AnyObject])->Void
 
 class XHttpHandle: NSObject {
-
+    
     var autoReload=true
     var pageSize=20
     var page=1
@@ -21,7 +21,13 @@ class XHttpHandle: NSObject {
     var replace:[String:String]?
     var modelClass:AnyClass!
     
+    private var resultBlock:JsonBlock?
     private var beforeBlock:XHttpHandleBlock?
+    
+    func ResultBlock(b:JsonBlock)
+    {
+        resultBlock = b
+    }
     
     func BeforeBlock(b:XHttpHandleBlock)
     {
@@ -41,7 +47,6 @@ class XHttpHandle: NSObject {
     {
         afterBlock = b
     }
-    
     
     lazy var listArr:[AnyObject] = []
     lazy var keys:[String]=[]
@@ -77,7 +82,7 @@ class XHttpHandle: NSObject {
     
     func handle()
     {
-        if(self.end || self.running)
+        if(self.end || self.running || self.url == "")
         {
             return
         }
@@ -89,6 +94,8 @@ class XHttpHandle: NSObject {
         XHttpPool.requestJson(url, body: nil, method: .GET) {[weak self] (o) -> Void in
             
             if(self == nil){return}
+            
+            self?.resultBlock?(o)
             
             if(o != nil)
             {
@@ -109,7 +116,7 @@ class XHttpHandle: NSObject {
                     
                     for item in info!
                     {
-                         let elementModel = elementModelType.parse(json: item,replace: self!.replace)
+                        let elementModel = elementModelType.parse(json: item,replace: self!.replace)
                         
                         temp.append(elementModel)
                     }
@@ -144,13 +151,13 @@ class XHttpHandle: NSObject {
                     {
                         collection.reloadData()
                     }
-                
+                    
                 }
                 
                 self?.afterBlock?(self!.listArr)
                 
                 self!.page += 1
-
+                
                 if(self!.end)
                 {
                     self!.scrollView?.LoadedAll()
@@ -167,11 +174,11 @@ class XHttpHandle: NSObject {
                 self!.scrollView?.endHeaderRefresh()
                 self!.scrollView?.endFooterRefresh()
             }
-          
+            
             self?.running = false
             
         }
- 
+        
     }
     
     deinit

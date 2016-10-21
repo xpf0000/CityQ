@@ -23,25 +23,35 @@ class UserCenterVC: UITableViewController {
     @IBOutlet var nickName: UILabel!
     
     
-    @IBAction func leftClick(sender: AnyObject) {
+    @IBAction func leftClick(sender: UIButton) {
+        
+        let vc = "JifenCenterMainVC".VC("Jifen")
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    @IBAction func rightClick(sender: UIButton) {
+        
+        sender.enabled = false
         
         let url = APPURL + "Public/Found/?service=jifen.addQiandao&uid=\(Uid)&username=\(Uname)"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { (o) in
             
-            if o?["data"]["code"] == 0
+            if o?["data"]["code"].int == 0
             {
-                
+                XAlertView.show("签到成功", block: nil)
+            }
+            else
+            {
+                var msg = o?["data"]["msg"].stringValue
+                msg = msg == "" ? "签到失败" : msg
+                XAlertView.show(msg!, block: nil)
             }
             
-            
+            sender.enabled = true
         }
-        
-    }
-    
-    @IBAction func rightClick(sender: AnyObject) {
-        
-        
         
     }
     

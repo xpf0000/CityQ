@@ -18,11 +18,12 @@
                 <navigationController title="商城nv" id="r0K-d2-axX" customClass="XNavigationController" customModule="chengshi" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="" id="Szr-rK-Nee"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="fxU-nJ-O2y">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="fxU-nJ-O2y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ThT-Jk-tOY">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
@@ -63,7 +64,7 @@
             <objects>
                 <navigationController title="首页NV" id="jtm-u5-R6h" customClass="XNavigationController" customModule="chengshi" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="axH-uH-O0L"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="gs1-Fe-CFy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="gs1-Fe-CFy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -573,7 +574,7 @@
                 <navigationController title="会员卡NV" automaticallyAdjustsScrollViewInsets="NO" id="slG-R1-DVL" customClass="XNavigationController" customModule="chengshi" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="" id="ogn-OL-MGN"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="t7F-pl-SUe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="t7F-pl-SUe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -645,7 +646,7 @@
             <objects>
                 <navigationController title="预约NV" id="6fT-3r-SL1" customClass="XNavigationController" customModule="chengshi" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="o3P-Qu-6BU"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="xai-kC-BNC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="xai-kC-BNC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

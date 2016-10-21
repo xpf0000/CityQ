@@ -82,6 +82,7 @@ let PageBGColor = "f8f8f8".color!
 let APPBlackColor = "333333".color!
 let APPMiddleColor = "666666".color!
 let APPGrayColor = "999999".color!
+let APPOrangeColor = "ff8a00".color!
 
 let grayBGC:UIColor = "#f6f6f6".color!
 let borderBGC:UIColor = "#ebe9e9".color!
@@ -126,7 +127,7 @@ func GetPhoto(delegate:XPhotoDelegate?,vc:UIViewController,maxNum:UInt,block:Any
 
 func RemoveWaiting()
 {
-    XWaitingView.Share().removeFromSuperview()
+    XWaitingView.hide()
 }
 
 func RegistPushNotice()

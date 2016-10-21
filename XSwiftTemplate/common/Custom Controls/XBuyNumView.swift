@@ -129,8 +129,7 @@ class XBuyNumView: UIView,UITextFieldDelegate {
         
         if(num>max)
         {
-            let alert:XAlertView = XAlertView(msg: "超出最大范围", flag: 0)
-            self.viewController?.view.addSubview(alert)
+            XAlertView.show("超出最大范围", block: nil)
             num=max
             self.text.text = "\(num)"
         }

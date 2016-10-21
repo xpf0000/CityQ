@@ -12,7 +12,6 @@ import WebKit
 class HtmlVC: UIViewController,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate{
 
     var webView:UIView?
-    var waiting:XWaitingView=XWaitingView(msg: "加载中...", flag: 0)
     var url=""
     var html:String=""
     
@@ -71,7 +70,7 @@ class HtmlVC: UIViewController,UIWebViewDelegate ,WKNavigationDelegate,WKUIDeleg
         }
         
         self.view.addSubview(webView!)
-        self.view.addSubview(waiting)
+        XWaitingView.show()
         
         webView?.snp_makeConstraints(closure: { (make) in
             make.top.equalTo(0.0)
@@ -84,22 +83,22 @@ class HtmlVC: UIViewController,UIWebViewDelegate ,WKNavigationDelegate,WKUIDeleg
     }
     
     func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
-        waiting.removeFromSuperview()
+        XWaitingView.hide()
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
-        waiting.removeFromSuperview()
+        XWaitingView.hide()
     }
     
     @available(iOS 8.0, *)
     func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
         
-        waiting.removeFromSuperview()
+        XWaitingView.hide()
     }
     
     @available(iOS 8.0, *)
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
-        waiting.removeFromSuperview()
+        XWaitingView.hide()
         
     }
 

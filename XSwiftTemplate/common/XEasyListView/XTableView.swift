@@ -11,8 +11,29 @@ import Foundation
 
 
 class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
-
+    
+    var refreshWord = ""
+        {
+        didSet
+        {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(noticedRefresh), name: refreshWord, object: nil)
+        }
+    }
+    
     var CellIdentifier:String = ""
+        {
+        didSet
+        {
+            if NSClassFromString(ProjectName + "." + CellIdentifier) == nil
+            {
+                self.registerClass(UITableViewCell.self, forCellReuseIdentifier: CellIdentifier)
+            }
+            else
+            {
+                self.registerNib(CellIdentifier.Nib, forCellReuseIdentifier: CellIdentifier)
+            }
+        }
+    }
     var cellHeight:CGFloat = 0.0
     var cellHDict:[NSIndexPath:CGFloat] = [:]
     var postDict:Dictionary<String,AnyObject>=[:]
@@ -76,9 +97,14 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
             
             self?.httpHandle.handle()
         }
-
+        
     }
     
+    func noticedRefresh()
+    {
+        httpHandle.reSet()
+        httpHandle.handle()
+    }
     
     func refresh()
     {
@@ -92,7 +118,7 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
         httpHandle.setHandle(self,url:url, pageStr: pageStr, keys: keys, model: model)
         
         self.CellIdentifier = CellIdentifier
-
+        
     }
     
     func show()
@@ -170,7 +196,7 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
         }
         
         return false
-      
+        
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -205,6 +231,11 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
         return xdataSource?.tableView?(tableView, titleForHeaderInSection: section)
     }
     
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String? {
+        
+        return xdelegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAtIndexPath: indexPath)
+    }
+    
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         
         xdelegate?.tableView?(tableView, didDeselectRowAtIndexPath: indexPath)
@@ -221,7 +252,7 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
- 
+        
         if let h = xdelegate?.tableView?(tableView, heightForHeaderInSection: section)
         {
             return h
@@ -276,6 +307,7 @@ class XTableView: UITableView ,UITableViewDataSource,UITableViewDelegate{
     
     deinit
     {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
         self.delegate = nil
         self.dataSource = nil
         xdelegate = nil

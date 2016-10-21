@@ -29,7 +29,6 @@ class RegistVC: UITableViewController,UITextFieldDelegate {
     var code:String = ""
     weak var rootVC:LoginVC?
     var registPhone=""
-    lazy var waiting:XWaitingView=XWaitingView(msg: "注册中...", flag: 0)
     
     @IBAction func regist(sender: UIButton) {
         

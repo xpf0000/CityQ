@@ -79,8 +79,7 @@ class OAFileInfoVC: UIViewController,UIWebViewDelegate{
         
         RemoveWaiting()
         
-        let alert=XAlertView(msg: "加载失败,请检查文件是否存在", flag: -4)
-        self.view.addSubview(alert)
+        XAlertView.show("加载失败,请检查文件是否存在", block: nil)
     }
     
     deinit

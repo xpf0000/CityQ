@@ -7,38 +7,35 @@ class XWaitingView:UIView
     var now=0
     var view:NVActivityIndicatorView!
     
-    class func Share() ->XWaitingView! {
-        
-        struct Once {
-            static var token:dispatch_once_t = 0
-            static var dataCenterObj:XWaitingView! = nil
-        }
-        dispatch_once(&Once.token, {
-            Once.dataCenterObj = XWaitingView(frame: CGRectMake(0, 0, swidth, sheight))
-        })
-        return Once.dataCenterObj
+    static let Share = XWaitingView(frame: CGRectMake(0, 0, swidth, sheight))
+    
+    class func show()
+    {
+        UIApplication.sharedApplication().keyWindow?.addSubview(Share)
     }
     
-    override init(frame: CGRect) {
+    class func showBlack()
+    {
+        Share.black()
+        UIApplication.sharedApplication().keyWindow?.addSubview(Share)
+    }
+    
+    class func hide()
+    {
+        Share.removeFromSuperview()
+    }
+    
+    override private init(frame: CGRect) {
         super.init(frame: frame)
         
         self.alpha = 1.0
         self.userInteractionEnabled=true
         self.creatView()
-
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-
-    
-    init(msg:String,flag:Int)
-    {
-        super.init(frame: CGRectMake(0, 0, swidth, sheight))
-        self.alpha = 1.0
-        self.userInteractionEnabled=true
-        self.creatView()
     }
     
     func creatView()
@@ -50,13 +47,13 @@ class XWaitingView:UIView
         visualEffectView!.contentMode=UIViewContentMode.Center
         visualEffectView!.layer.masksToBounds=true
         visualEffectView!.layer.cornerRadius=5.0
-
+        
         self.white()
-//        let button = UIButton(type: .Custom)
-//        button.frame = CGRectMake(0, 0, swidth*0.24, swidth*0.24)
-//        button.addTarget(self, action: "change", forControlEvents: UIControlEvents.TouchUpInside)
-//        
-//        visualEffectView?.addSubview(button)
+        //        let button = UIButton(type: .Custom)
+        //        button.frame = CGRectMake(0, 0, swidth*0.24, swidth*0.24)
+        //        button.addTarget(self, action: "change", forControlEvents: UIControlEvents.TouchUpInside)
+        //
+        //        visualEffectView?.addSubview(button)
         
     }
     
@@ -65,7 +62,7 @@ class XWaitingView:UIView
         view?.stopAnimation()
         view?.removeFromSuperview()
         view=nil
-        view = NVActivityIndicatorView(frame: CGRectMake(0, 0, swidth*0.24, swidth*0.24), type: .BallClipRotate, color: 腾讯颜色.图标蓝.rawValue.color!, size: CGSizeMake(swidth*0.24*0.5, swidth*0.24*0.5))
+        view = NVActivityIndicatorView(frame: CGRectMake(0, 0, swidth*0.24, swidth*0.24), type: .BallClipRotate, color: APPBlueColor, size: CGSizeMake(swidth*0.24*0.5, swidth*0.24*0.5))
         visualEffectView?.backgroundColor=UIColor.whiteColor()
         visualEffectView?.addSubview(view)
     }
@@ -78,7 +75,7 @@ class XWaitingView:UIView
         view = NVActivityIndicatorView(frame: CGRectMake(0, 0, swidth*0.24, swidth*0.24), type: .BallClipRotate, color: UIColor.whiteColor(), size: CGSizeMake(swidth*0.24*0.5, swidth*0.24*0.5))
         visualEffectView?.backgroundColor="#333749".color
         visualEffectView?.addSubview(view)
-  
+        
     }
     
     func change()
@@ -98,7 +95,7 @@ class XWaitingView:UIView
         {
             if(i == now)
             {
-                view = NVActivityIndicatorView(frame: CGRectMake(0, 0, swidth*0.24, swidth*0.24), type: item, color: 腾讯颜色.图标蓝.rawValue.color!, size: CGSizeMake(swidth*0.24*0.5, swidth*0.24*0.4))
+                view = NVActivityIndicatorView(frame: CGRectMake(0, 0, swidth*0.24, swidth*0.24), type: item, color: APPBlueColor, size: CGSizeMake(swidth*0.24*0.5, swidth*0.24*0.4))
                 visualEffectView?.addSubview(view)
                 //visualEffectView?.sendSubviewToBack(view)
                 view.startAnimation()
@@ -111,13 +108,13 @@ class XWaitingView:UIView
     
     override func willMoveToSuperview(newSuperview: UIView?) {
         super.willMoveToSuperview(newSuperview)
-    
+        
         if(newSuperview != nil)
         {
             self.visualEffectView!.alpha=0.0
-           self.visualEffectView!.alertAnimation(0.3, delegate: self)
+            self.visualEffectView!.alertAnimation(0.3, delegate: nil)
             UIView.animateWithDuration(0.3, animations: { () -> Void in
-               self.visualEffectView!.alpha=1.0
+                self.visualEffectView!.alpha=1.0
             })
             
         }
@@ -134,9 +131,9 @@ class XWaitingView:UIView
                     {
                         self.white()
                     }
-
+                    
             })
-
+            
         }
     }
     
@@ -155,5 +152,5 @@ class XWaitingView:UIView
     {
         self.visualEffectView=nil
     }
- 
+    
 }

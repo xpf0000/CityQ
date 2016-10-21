@@ -50,6 +50,9 @@
 		1710189F1D5B317500516482 /* CloudPushSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 171018991D5B317500516482 /* CloudPushSDK.framework */; };
 		171018A01D5B317500516482 /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1710189A1D5B317500516482 /* UTDID.framework */; };
 		171018A11D5B317500516482 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1710189B1D5B317500516482 /* UTMini.framework */; };
+		1711082A1DB8BBA000D10F3F /* caifupaihang_640@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 171108271DB8BBA000D10F3F /* caifupaihang_640@2x.jpg */; };
+		1711082B1DB8BBA000D10F3F /* caifupaihang_750@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 171108281DB8BBA000D10F3F /* caifupaihang_750@2x.jpg */; };
+		1711082C1DB8BBA000D10F3F /* caifupaihang_1242@3x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 171108291DB8BBA000D10F3F /* caifupaihang_1242@3x.jpg */; };
 		17149C701C7D5E1E005DD9B7 /* PropertyPhotoInfoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17149C6F1C7D5E1E005DD9B7 /* PropertyPhotoInfoTable.swift */; };
 		17149C721C7D5E56005DD9B7 /* PropertyPhotoInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17149C711C7D5E56005DD9B7 /* PropertyPhotoInfoVC.swift */; };
 		171A88AA1C3E39A900F303F6 /* WorksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171A88A91C3E39A900F303F6 /* WorksVC.swift */; };
@@ -85,6 +88,10 @@
 		171A890E1C3E6F3400F303F6 /* OA.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 171A890D1C3E6F3400F303F6 /* OA.storyboard */; };
 		171A89151C3E6FAB00F303F6 /* OAAddressBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171A89111C3E6FAB00F303F6 /* OAAddressBookModel.swift */; };
 		171A89161C3E6FAB00F303F6 /* OAAddressBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171A89121C3E6FAB00F303F6 /* OAAddressBookVC.swift */; };
+		171E2C311DB9E4070096E6FF /* JifenCaifuListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171E2C301DB9E4070096E6FF /* JifenCaifuListVC.swift */; };
+		171E2C341DB9E58A0096E6FF /* JifenCaifuCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171E2C321DB9E58A0096E6FF /* JifenCaifuCell1.swift */; };
+		171E2C351DB9E58A0096E6FF /* JifenCaifuCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 171E2C331DB9E58A0096E6FF /* JifenCaifuCell1.xib */; };
+		171E2C371DB9F0AB0096E6FF /* home_head.png in Resources */ = {isa = PBXBuildFile; fileRef = 171E2C361DB9F0AB0096E6FF /* home_head.png */; };
 		172098EF1BBB894A00918E91 /* DiscountInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172098EE1BBB894A00918E91 /* DiscountInfoModel.swift */; };
 		1723E2021D0C52F1000A4C7D /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1723E2011D0C52F1000A4C7D /* UIButton.swift */; };
 		1723F1561C76AF6700057CF3 /* Wuye.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1723F1551C76AF6700057CF3 /* Wuye.storyboard */; };
@@ -120,6 +127,17 @@
 		172D0C0A1C0FCF68000EEBFA /* FriendClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172D0C081C0FCF68000EEBFA /* FriendClassCell.swift */; };
 		172D0C0B1C0FCF68000EEBFA /* FriendClassCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 172D0C091C0FCF68000EEBFA /* FriendClassCell.xib */; };
 		172D0C0D1C0FD74B000EEBFA /* FriendClassListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172D0C0C1C0FD74B000EEBFA /* FriendClassListVC.swift */; };
+		172E82981DB856AB0051D67B /* Jifen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172E82971DB856AB0051D67B /* Jifen.storyboard */; };
+		172E829A1DB85BA60051D67B /* go_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 172E82991DB85BA60051D67B /* go_white.png */; };
+		172E829C1DB862310051D67B /* wenhao.png in Resources */ = {isa = PBXBuildFile; fileRef = 172E829B1DB862310051D67B /* wenhao.png */; };
+		172E829E1DB8634C0051D67B /* jinbi.png in Resources */ = {isa = PBXBuildFile; fileRef = 172E829D1DB8634C0051D67B /* jinbi.png */; };
+		172E82A01DB8666D0051D67B /* duihao.png in Resources */ = {isa = PBXBuildFile; fileRef = 172E829F1DB8666D0051D67B /* duihao.png */; };
+		172E82A31DB868120051D67B /* JifenCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E82A21DB868120051D67B /* JifenCenterVC.swift */; };
+		172E82A51DB86CE50051D67B /* JifenCenterMainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E82A41DB86CE50051D67B /* JifenCenterMainVC.swift */; };
+		172E82A71DB872D80051D67B /* JifenDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E82A61DB872D80051D67B /* JifenDetailVC.swift */; };
+		172E82AA1DB872F90051D67B /* JifenDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E82A81DB872F90051D67B /* JifenDetailCell.swift */; };
+		172E82AB1DB872F90051D67B /* JifenDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 172E82A91DB872F90051D67B /* JifenDetailCell.xib */; };
+		172E82AE1DB874D20051D67B /* HFBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172E82AD1DB874D20051D67B /* HFBModel.swift */; };
 		172FF7A41CA2748A005E4A02 /* WebP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172FF7A21CA2748A005E4A02 /* WebP.framework */; };
 		173C9F451D4086DD00C5C566 /* CardNoLingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173C9F441D4086DD00C5C566 /* CardNoLingVC.swift */; };
 		173E16F51D052CF600458FB9 /* XHorizontalMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173E16F21D052CF600458FB9 /* XHorizontalMainView.swift */; };
@@ -805,6 +823,9 @@
 		171018991D5B317500516482 /* CloudPushSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CloudPushSDK.framework; sourceTree = "<group>"; };
 		1710189A1D5B317500516482 /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTDID.framework; sourceTree = "<group>"; };
 		1710189B1D5B317500516482 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UTMini.framework; sourceTree = "<group>"; };
+		171108271DB8BBA000D10F3F /* caifupaihang_640@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "caifupaihang_640@2x.jpg"; sourceTree = "<group>"; };
+		171108281DB8BBA000D10F3F /* caifupaihang_750@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "caifupaihang_750@2x.jpg"; sourceTree = "<group>"; };
+		171108291DB8BBA000D10F3F /* caifupaihang_1242@3x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "caifupaihang_1242@3x.jpg"; sourceTree = "<group>"; };
 		17149C6F1C7D5E1E005DD9B7 /* PropertyPhotoInfoTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyPhotoInfoTable.swift; sourceTree = "<group>"; };
 		17149C711C7D5E56005DD9B7 /* PropertyPhotoInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyPhotoInfoVC.swift; sourceTree = "<group>"; };
 		171A88A91C3E39A900F303F6 /* WorksVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorksVC.swift; sourceTree = "<group>"; };
@@ -840,6 +861,10 @@
 		171A890D1C3E6F3400F303F6 /* OA.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OA.storyboard; sourceTree = "<group>"; };
 		171A89111C3E6FAB00F303F6 /* OAAddressBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAAddressBookModel.swift; sourceTree = "<group>"; };
 		171A89121C3E6FAB00F303F6 /* OAAddressBookVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAAddressBookVC.swift; sourceTree = "<group>"; };
+		171E2C301DB9E4070096E6FF /* JifenCaifuListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JifenCaifuListVC.swift; sourceTree = "<group>"; };
+		171E2C321DB9E58A0096E6FF /* JifenCaifuCell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JifenCaifuCell1.swift; sourceTree = "<group>"; };
+		171E2C331DB9E58A0096E6FF /* JifenCaifuCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JifenCaifuCell1.xib; sourceTree = "<group>"; };
+		171E2C361DB9F0AB0096E6FF /* home_head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_head.png; sourceTree = "<group>"; };
 		172098EE1BBB894A00918E91 /* DiscountInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscountInfoModel.swift; sourceTree = "<group>"; };
 		1723E2011D0C52F1000A4C7D /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		1723F1551C76AF6700057CF3 /* Wuye.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Wuye.storyboard; sourceTree = "<group>"; };
@@ -875,6 +900,17 @@
 		172D0C081C0FCF68000EEBFA /* FriendClassCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendClassCell.swift; sourceTree = "<group>"; };
 		172D0C091C0FCF68000EEBFA /* FriendClassCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendClassCell.xib; sourceTree = "<group>"; };
 		172D0C0C1C0FD74B000EEBFA /* FriendClassListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendClassListVC.swift; sourceTree = "<group>"; };
+		172E82971DB856AB0051D67B /* Jifen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Jifen.storyboard; sourceTree = "<group>"; };
+		172E82991DB85BA60051D67B /* go_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = go_white.png; sourceTree = "<group>"; };
+		172E829B1DB862310051D67B /* wenhao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wenhao.png; sourceTree = "<group>"; };
+		172E829D1DB8634C0051D67B /* jinbi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jinbi.png; sourceTree = "<group>"; };
+		172E829F1DB8666D0051D67B /* duihao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = duihao.png; sourceTree = "<group>"; };
+		172E82A21DB868120051D67B /* JifenCenterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JifenCenterVC.swift; sourceTree = "<group>"; };
+		172E82A41DB86CE50051D67B /* JifenCenterMainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JifenCenterMainVC.swift; sourceTree = "<group>"; };
+		172E82A61DB872D80051D67B /* JifenDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JifenDetailVC.swift; sourceTree = "<group>"; };
+		172E82A81DB872F90051D67B /* JifenDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JifenDetailCell.swift; sourceTree = "<group>"; };
+		172E82A91DB872F90051D67B /* JifenDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JifenDetailCell.xib; sourceTree = "<group>"; };
+		172E82AD1DB874D20051D67B /* HFBModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBModel.swift; sourceTree = "<group>"; };
 		172FF7A21CA2748A005E4A02 /* WebP.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebP.framework; sourceTree = "<group>"; };
 		173C9F441D4086DD00C5C566 /* CardNoLingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardNoLingVC.swift; path = XSwiftTemplate/Controller/Card/CardNoLingVC.swift; sourceTree = SOURCE_ROOT; };
 		173E16F21D052CF600458FB9 /* XHorizontalMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHorizontalMainView.swift; sourceTree = "<group>"; };
@@ -1793,6 +1829,30 @@
 			path = UMessage_Sdk_1.1.0;
 			sourceTree = "<group>";
 		};
+		172E82A11DB867E80051D67B /* Jifen */ = {
+			isa = PBXGroup;
+			children = (
+				172E82AC1DB874BA0051D67B /* model */,
+				172E82A21DB868120051D67B /* JifenCenterVC.swift */,
+				172E82A41DB86CE50051D67B /* JifenCenterMainVC.swift */,
+				172E82A61DB872D80051D67B /* JifenDetailVC.swift */,
+				172E82A81DB872F90051D67B /* JifenDetailCell.swift */,
+				172E82A91DB872F90051D67B /* JifenDetailCell.xib */,
+				171E2C301DB9E4070096E6FF /* JifenCaifuListVC.swift */,
+				171E2C321DB9E58A0096E6FF /* JifenCaifuCell1.swift */,
+				171E2C331DB9E58A0096E6FF /* JifenCaifuCell1.xib */,
+			);
+			name = Jifen;
+			sourceTree = "<group>";
+		};
+		172E82AC1DB874BA0051D67B /* model */ = {
+			isa = PBXGroup;
+			children = (
+				172E82AD1DB874D20051D67B /* HFBModel.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		173DAFE01D0AB618004C7DAA /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1925,6 +1985,14 @@
 		175449C71DB5C1C200DCBE77 /* icon */ = {
 			isa = PBXGroup;
 			children = (
+				171E2C361DB9F0AB0096E6FF /* home_head.png */,
+				171108271DB8BBA000D10F3F /* caifupaihang_640@2x.jpg */,
+				171108281DB8BBA000D10F3F /* caifupaihang_750@2x.jpg */,
+				171108291DB8BBA000D10F3F /* caifupaihang_1242@3x.jpg */,
+				172E829F1DB8666D0051D67B /* duihao.png */,
+				172E829D1DB8634C0051D67B /* jinbi.png */,
+				172E829B1DB862310051D67B /* wenhao.png */,
+				172E82991DB85BA60051D67B /* go_white.png */,
 				175449C81DB5C1C200DCBE77 /* address_icon.png */,
 				175449C91DB5C1C200DCBE77 /* money_icon.png */,
 				175449CA1DB5C1C200DCBE77 /* tel_icon.png */,
@@ -2391,6 +2459,7 @@
 		178F980B1B9D6C9500B86E60 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				172E82A11DB867E80051D67B /* Jifen */,
 				17F51F5E1BD47E83007B6505 /* HomeVC.swift */,
 				17D55E461BFF163F00BC212D /* HtmlVC.swift */,
 				175BB5661C14198F000C85FE /* DiscoverVC1.swift */,
@@ -2526,6 +2595,7 @@
 				171A890D1C3E6F3400F303F6 /* OA.storyboard */,
 				17BE5A201B9D68FC00C8958A /* LaunchScreen.xib */,
 				17247F6A1CA4E940005B1F8C /* LaunchScreen.swift */,
+				172E82971DB856AB0051D67B /* Jifen.storyboard */,
 				17BE5A151B9D68FC00C8958A /* Supporting Files */,
 			);
 			path = XSwiftTemplate;
@@ -3214,6 +3284,7 @@
 				171A88E51C3E3CC700F303F6 /* oa_index_icon01@2x.png in Resources */,
 				17C880E41D251CCC009FCC4B /* 2208_1.jpg in Resources */,
 				17F22A7E1C5C9D8600836059 /* index_icon11.png in Resources */,
+				171E2C371DB9F0AB0096E6FF /* home_head.png in Resources */,
 				17F22A8B1C5CA66B00836059 /* icon_list_ppt.png in Resources */,
 				177E87F71D16CD9400EE20CF /* my_choose_1@2x.png in Resources */,
 				1728A38A1D642A9300FDF48E /* cover2208.png in Resources */,
@@ -3286,6 +3357,7 @@
 				177E88431D16CD9400EE20CF /* btn_reply_normal.png in Resources */,
 				175449DC1DB6080900DCBE77 /* my_icon5.png in Resources */,
 				170EEB211C3FB6EA008FE174 /* list_icon.png in Resources */,
+				1711082B1DB8BBA000D10F3F /* caifupaihang_750@2x.jpg in Resources */,
 				177E883F1D16CD9400EE20CF /* more_icon.png in Resources */,
 				171A88F31C3E3CC700F303F6 /* oa_index_icon06.png in Resources */,
 				17F017C21C7D8E8A002C1B23 /* PropertyPhotoInfoView.xib in Resources */,
@@ -3294,6 +3366,7 @@
 				177E88211D16CD9400EE20CF /* news_sex_0@2x.png in Resources */,
 				177E88481D16CD9400EE20CF /* btn_unlike_pressed.png in Resources */,
 				177E86D91D16CD2A00EE20CF /* NewsActivitysCell.xib in Resources */,
+				172E829A1DB85BA60051D67B /* go_white.png in Resources */,
 				177E88051D16CD9400EE20CF /* my_login_account@2x.png in Resources */,
 				17F2F9161C71B54800AD4321 /* shareIcon1.png in Resources */,
 				177E87D21D16CD9400EE20CF /* card_huodong@3x.png in Resources */,
@@ -3352,9 +3425,11 @@
 				177E882E1D16CD9400EE20CF /* right_type_1@3x.png in Resources */,
 				177E88C51D16D0E300EE20CF /* tarbar3_selected@3x.png in Resources */,
 				17DEAB471C0C381C00038B82 /* MyPostFriendView.xib in Resources */,
+				172E82A01DB8666D0051D67B /* duihao.png in Resources */,
 				177E88C01D16D0E300EE20CF /* tarbar2_selected@2x.png in Resources */,
 				177E881F1D16CD9400EE20CF /* news_collect@2x.png in Resources */,
 				177E87C61D16CD9400EE20CF /* APPLogo.png in Resources */,
+				1711082A1DB8BBA000D10F3F /* caifupaihang_640@2x.jpg in Resources */,
 				177E87F21D16CD9400EE20CF /* more_sanjiao@2x.png in Resources */,
 				1760A6D11D1FBBF0001F8B41 /* news_collect_s2@2x.png in Resources */,
 				177E87D31D16CD9400EE20CF /* card_money@2x.png in Resources */,
@@ -3371,6 +3446,7 @@
 				17F22A881C5CA66B00836059 /* icon_list_doc.png in Resources */,
 				175449CF1DB5C1C200DCBE77 /* yonghuxuzhi.png in Resources */,
 				175449DD1DB6080900DCBE77 /* my_icon6.png in Resources */,
+				172E829E1DB8634C0051D67B /* jinbi.png in Resources */,
 				17F710E91C5874BC0080E6F7 /* ShareSDKLocalizable.strings in Resources */,
 				177E888A1D16CD9400EE20CF /* call_btn.png in Resources */,
 				177E88611D16CD9400EE20CF /* changPass.png in Resources */,
@@ -3433,6 +3509,7 @@
 				177E88581D16CD9400EE20CF /* list_colle_icon.png in Resources */,
 				17E85E161BFD550C00AC0FC9 /* ReactionMenuView.xib in Resources */,
 				177E87F51D16CD9400EE20CF /* my_choose_0@2x.png in Resources */,
+				172E82981DB856AB0051D67B /* Jifen.storyboard in Resources */,
 				171A890E1C3E6F3400F303F6 /* OA.storyboard in Resources */,
 				177E88BE1D16D0E300EE20CF /* tarbar1@2x.png in Resources */,
 				177E88C41D16D0E300EE20CF /* tarbar3_selected@2x.png in Resources */,
@@ -3456,11 +3533,14 @@
 				177E88BD1D16D0E300EE20CF /* tarbar1_selected@3x.png in Resources */,
 				173E6B9A1C0304F7008B14A8 /* DiscountClassCell.xib in Resources */,
 				177E87F01D16CD9400EE20CF /* more@2x.png in Resources */,
+				171E2C351DB9E58A0096E6FF /* JifenCaifuCell1.xib in Resources */,
 				177E87E21D16CD9400EE20CF /* find_phone@2x.png in Resources */,
 				17F342E31C3F455B0035E884 /* oa_call_icon.png in Resources */,
 				177E88C61D16D0E300EE20CF /* tarbar3@2x.png in Resources */,
 				177E880E1D16CD9400EE20CF /* my_login_wx@3x.png in Resources */,
+				172E82AB1DB872F90051D67B /* JifenDetailCell.xib in Resources */,
 				177E883D1D16CD9400EE20CF /* top_search.png in Resources */,
+				1711082C1DB8BBA000D10F3F /* caifupaihang_1242@3x.jpg in Resources */,
 				175449CE1DB5C1C200DCBE77 /* tel_icon.png in Resources */,
 				177E88991D16CD9400EE20CF /* index_icon03@2x.png in Resources */,
 				171A88F11C3E3CC700F303F6 /* oa_index_icon05@2x.png in Resources */,
@@ -3489,6 +3569,7 @@
 				171A88E71C3E3CC700F303F6 /* oa_index_icon02.png in Resources */,
 				171A88F41C3E3CC700F303F6 /* oa_index_icon06@2x.png in Resources */,
 				1760A6D31D1FBBF0001F8B41 /* news_collect_s2@3x.png in Resources */,
+				172E829C1DB862310051D67B /* wenhao.png in Resources */,
 				177E886E1D16CD9400EE20CF /* phone_no_icon.png in Resources */,
 				177E889C1D16CD9400EE20CF /* share_icon.png in Resources */,
 				17F710EE1C5874BC0080E6F7 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
@@ -3582,10 +3663,12 @@
 				17269DDB1C9F932900E7AC28 /* XImageUtil.swift in Sources */,
 				177E86C91D16CCB900EE20CF /* CardInfoVC.swift in Sources */,
 				177E86D31D16CCE500EE20CF /* CardShopsActivitysVC.swift in Sources */,
+				172E82AE1DB874D20051D67B /* HFBModel.swift in Sources */,
 				17E3A3411C228AC70029D0B1 /* UserFeedVC.swift in Sources */,
 				17D8F11A1C755A6200731186 /* OAFileInfoVC.swift in Sources */,
 				17ECF9E11C0857B2001243E4 /* FriendLocationChooseVC.swift in Sources */,
 				17FDBB801C06A053006F04BF /* DDCollectionViewFlowLayout.m in Sources */,
+				172E82AA1DB872F90051D67B /* JifenDetailCell.swift in Sources */,
 				17E2BC7E1CA8C65E007F95DF /* PropertyMsgCell.swift in Sources */,
 				17F9AA381CA677DE00B55085 /* HouseChooseTableVC.swift in Sources */,
 				17E85E181BFD550C00AC0FC9 /* XWaitingView.swift in Sources */,
@@ -3606,6 +3689,7 @@
 				173E6B721C02B12E008B14A8 /* PhoneClassCell.swift in Sources */,
 				17149C701C7D5E1E005DD9B7 /* PropertyPhotoInfoTable.swift in Sources */,
 				17699BD31CD1E66E0032A385 /* XImageCache.swift in Sources */,
+				172E82A51DB86CE50051D67B /* JifenCenterMainVC.swift in Sources */,
 				17A433C71D21255D00FB2876 /* NewsSearchVC.swift in Sources */,
 				17E85E8C1BFD6B9300AC0FC9 /* XBuyNumView.swift in Sources */,
 				173E16F51D052CF600458FB9 /* XHorizontalMainView.swift in Sources */,
@@ -3652,6 +3736,7 @@
 				17BDF1291C0AF05D00B922D8 /* XVerifyButton.swift in Sources */,
 				173E6B891C03044F008B14A8 /* DiscountVC.swift in Sources */,
 				17F203581C23A516000D1B4B /* NVActivityIndicatorAnimationBallSpinFadeLoader.swift in Sources */,
+				172E82A31DB868120051D67B /* JifenCenterVC.swift in Sources */,
 				17E85E2B1BFD550C00AC0FC9 /* array.swift in Sources */,
 				17F203531C23A516000D1B4B /* NVActivityIndicatorAnimationBallRotateChase.swift in Sources */,
 				177E86B01D16CBAD00EE20CF /* MyMessageInfoCell.swift in Sources */,
@@ -3710,6 +3795,7 @@
 				173E6B7C1C02B573008B14A8 /* PhoneCell.swift in Sources */,
 				1703B7361C0951F100858FD2 /* XProgressView.swift in Sources */,
 				17269DD71C9F932900E7AC28 /* Reach.swift in Sources */,
+				172E82A71DB872D80051D67B /* JifenDetailVC.swift in Sources */,
 				17E85E2A1BFD550C00AC0FC9 /* datePicker.swift in Sources */,
 				17D55E471BFF163F00BC212D /* HtmlVC.swift in Sources */,
 				170753BA1C786AFF005552FA /* ChooseHouseVC.swift in Sources */,
@@ -3793,6 +3879,7 @@
 				17F1276F1C40A50000447CE5 /* OADocVC.swift in Sources */,
 				177E869C1D16C91200EE20CF /* SwiftyJSON.swift in Sources */,
 				17DEAB431C0C341500038B82 /* MyCollectModel.swift in Sources */,
+				171E2C311DB9E4070096E6FF /* JifenCaifuListVC.swift in Sources */,
 				177E86B91D16CBEE00EE20CF /* MyCardVC.swift in Sources */,
 				17AA6EBF1D1A92DD00643C3B /* CheckPhoneVC.swift in Sources */,
 				17F203621C23A516000D1B4B /* NVActivityIndicatorAnimationLineSpinFadeLoader.swift in Sources */,
@@ -3889,6 +3976,7 @@
 				17ECF9CF1C07DAAD001243E4 /* AGIPCPreviewController.m in Sources */,
 				17269DD61C9F932900E7AC28 /* MRZoomScrollView.swift in Sources */,
 				177E86AD1D16CB8700EE20CF /* NewsCommentVC.swift in Sources */,
+				171E2C341DB9E58A0096E6FF /* JifenCaifuCell1.swift in Sources */,
 				178F98481B9D6C9600B86E60 /* ShopsListModel.swift in Sources */,
 				1703B74B1C09911F00858FD2 /* UserCenterVC.swift in Sources */,
 				173E16F71D052CF600458FB9 /* XHorizontalView.swift in Sources */,

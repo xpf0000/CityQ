@@ -21,7 +21,7 @@ class XCornerRadiusModel: NSObject {
     var StrokePath:Bool = false
     var FillColor:UIColor?
     var StrokeColor:UIColor = UIColor.clearColor()
-    var BorderLineWidth : CGFloat = 0.0
+    var BorderLineWidth : CGFloat = 1.0
     
 }
 
@@ -32,9 +32,9 @@ struct XBorderSidesType : OptionSetType {
     static var None: XBorderSidesType = XBorderSidesType(rawValue: 0)
     static var Left: XBorderSidesType = XBorderSidesType(rawValue: 1)
     static var Top: XBorderSidesType = XBorderSidesType(rawValue: 2)
-    static var Right: XBorderSidesType = XBorderSidesType(rawValue: 3)
-    static var Bottom: XBorderSidesType = XBorderSidesType(rawValue: 4)
-    static var All: XBorderSidesType = XBorderSidesType(rawValue: 5)
+    static var Right: XBorderSidesType = XBorderSidesType(rawValue: 4)
+    static var Bottom: XBorderSidesType = XBorderSidesType(rawValue: 9)
+    static var All: XBorderSidesType = XBorderSidesType(rawValue: 19)
     
 }
 
@@ -160,16 +160,14 @@ extension UIView
         self.addSubview(containerView)
     }
     
-    func showAlert(str:String, block:AnyBlock?)
+    func showAlert(str:String, block:XNoBlock?)
     {
-        let alert:XAlertView = XAlertView(msg: str, flag: 0)
-        alert.block = block
-        self.addSubview(alert)
+        XAlertView.show(str, block: block)
     }
     
     func showWaiting()
     {
-        self.addSubview(XWaitingView.Share())
+        XWaitingView.show()
     }
 
     //旋转 时间 角度
@@ -273,13 +271,15 @@ extension UIView
         {
             let  halfLineWidth = m.BorderLineWidth / 2.0
             
-            let topInsets = m.BorderSidesType.contains(.Top) || m.BorderSidesType.contains(.All) ? halfLineWidth : 0.0
+            m.BorderSidesType.rawValue
             
-            let leftInsets = m.BorderSidesType.contains(.Left) || m.BorderSidesType.contains(.All) ? halfLineWidth : 0.0
+            let topInsets = (m.BorderSidesType.contains(.Top) || m.BorderSidesType.contains(.All)) ? halfLineWidth : 0.0
             
-            let rightInsets = m.BorderSidesType.contains(.Right) || m.BorderSidesType.contains(.All) ? halfLineWidth : 0.0
+            let leftInsets = (m.BorderSidesType.contains(.Left) || m.BorderSidesType.contains(.All)) ? halfLineWidth : 0.0
             
-            let bottomInsets = m.BorderSidesType.contains(.Bottom) || m.BorderSidesType.contains(.All) ? halfLineWidth : 0.0
+            let rightInsets = (m.BorderSidesType.contains(.Right) || m.BorderSidesType.contains(.All)) ? halfLineWidth : 0.0
+            
+            let bottomInsets = (m.BorderSidesType.contains(.Bottom) || m.BorderSidesType.contains(.All)) ? halfLineWidth : 0.0
             
             let insets = UIEdgeInsetsMake(topInsets, leftInsets, bottomInsets, rightInsets)
             
@@ -292,16 +292,17 @@ extension UIView
             {
     
                 CGContextSetLineCap(c!, .Round)
-                CGContextSetLineWidth(c!, 1.5)
+                CGContextSetLineWidth(c!, m.BorderLineWidth)
                 
                 CGContextSetStrokeColorWithColor(c!, m.StrokeColor.CGColor);
                 CGContextSetFillColorWithColor(c!, m.FillColor!.CGColor)
                 
-                addPath(c!, rect: properRect,m: m)
+                addFillPath(c!, rect: properRect,m: m)
                 
                 CGContextFillPath(c!);
                 
-                addPath(c!, rect: properRect,m: m)
+                
+                addStrokePath(c!, rect: properRect,m: m)
                 
                 CGContextStrokePath(c!);
                 
@@ -313,7 +314,7 @@ extension UIView
             {
                 CGContextSetFillColorWithColor(c!, m.FillColor!.CGColor)
                 
-                addPath(c!, rect: properRect,m: m)
+                addFillPath(c!, rect: properRect,m: m)
                 
                 CGContextFillPath(c!);
             }
@@ -321,58 +322,10 @@ extension UIView
             
         }
 
-
-        
-//        var arr:UIRectCorner = []
-//        if XTopLeftRadius{arr.insert(.TopLeft)}
-//        if XTopRightRadius{arr.insert(.TopRight)}
-//        if XBottomLeftRadius{arr.insert(.BottomLeft)}
-//        if XBottomRightRadius{arr.insert(.BottomRight)}
-//        
-//        let p = UIBezierPath(roundedRect: rect, byRoundingCorners: arr, cornerRadii: CGSizeMake(XCornerRadius, 0.0))
-//
-//        let c = UIGraphicsGetCurrentContext()
-////        CGContextAddPath(c, p.CGPath);
-////        CGContextClosePath(c);
-//        //CGContextClip(c);
-//        //CGContextAddRect(c, rect);
-//        CGContextSetShouldAntialias(c, true)
-//        if XStrokePath
-//        {
-//            
-////            p.lineCapStyle = .Round
-////            p.lineJoinStyle = .Round
-//            
-//            CGContextSetLineCap(c, .Round)
-//            CGContextSetLineWidth(c, 1.5)
-//            
-//            CGContextSetStrokeColorWithColor(c, XStrokeColor.CGColor);
-//            CGContextSetFillColorWithColor(c, XFillColor.CGColor)
-//            
-//            addPath(c!, rect: rect)
-//            
-//            CGContextFillPath(c);
-//            
-//            addPath(c!, rect: rect)
-//
-//            CGContextStrokePath(c);
-//            
-//            
-//            return
-//        }
-//        
-//        if XFillPath
-//        {
-//            CGContextSetFillColorWithColor(c, XFillColor.CGColor)
-//            
-//            addPath(c!, rect: rect)
-//            
-//            CGContextFillPath(c);
-//        }
         
     }
     
-    private func addPath(c:CGContextRef,rect:CGRect,m:XCornerRadiusModel)
+    private func addFillPath(c:CGContextRef,rect:CGRect,m:XCornerRadiusModel)
     {
         let minx = CGRectGetMinX(rect)
         let midx = CGRectGetMidX(rect)
@@ -428,6 +381,97 @@ extension UIView
         CGContextClosePath(c)
             
     }
+    
+    private func addStrokePath(c:CGContextRef,rect:CGRect,m:XCornerRadiusModel)
+    {
+        let minx = CGRectGetMinX(rect)
+        let midx = CGRectGetMidX(rect)
+        let maxx = CGRectGetMaxX(rect)
+        
+        let miny = CGRectGetMinY(rect)
+        let midy = CGRectGetMidY(rect)
+        let maxy = CGRectGetMaxY(rect)
+        
+        
+        if m.CornerRadiusType.contains(.BottomLeft)
+        {
+            CGContextMoveToPoint(c, minx, maxy-m.CornerRadius)
+        }
+        else
+        {
+            CGContextMoveToPoint(c, minx, maxy)
+        }
+        
+        if m.BorderSidesType.contains(.Left)
+        {
+            if (m.CornerRadiusType.contains(.TopLeft))
+            {
+                CGContextAddLineToPoint(c, minx, miny+m.CornerRadius)
+                
+                CGContextAddArc(c, minx+m.CornerRadius, miny+m.CornerRadius, m.CornerRadius, CGFloat(M_PI), 225.0*CGFloat(M_PI/180.0), 0);
+            }
+            else{
+                
+                CGContextAddLineToPoint(c, minx, miny)
+            }
+            
+        }
+        else
+        {
+            if (m.CornerRadiusType.contains(.TopLeft))
+            {
+                
+                CGContextMoveToPoint(c, minx+m.CornerRadius, miny)
+                
+                CGContextAddArc(c, minx+m.CornerRadius, miny+m.CornerRadius, m.CornerRadius, 270*CGFloat(M_PI/180), 225.0*CGFloat(M_PI/180), 1);
+                
+                CGContextMoveToPoint(c, minx+m.CornerRadius, miny)
+            }
+            else{
+                
+                CGContextMoveToPoint(c, minx, miny)
+            }
+
+        }
+        
+        
+        if m.BorderSidesType.contains(.Top)
+        {
+            if (m.CornerRadiusType.contains(.TopRight))
+            {
+                CGContextAddLineToPoint(c, maxx-m.CornerRadius, miny)
+                
+                CGContextAddArc(c, maxx-m.CornerRadius, miny+m.CornerRadius, m.CornerRadius, 270.0*CGFloat(M_PI/180.0), 315.0*CGFloat(M_PI/180.0), 0);
+            }
+            else{
+                
+                CGContextAddLineToPoint(c, maxx, miny)
+            }
+            
+        }
+        else
+        {
+            if (m.CornerRadiusType.contains(.TopLeft))
+            {
+                
+                CGContextMoveToPoint(c, minx+m.CornerRadius, miny)
+                
+                CGContextAddArc(c, minx+m.CornerRadius, miny+m.CornerRadius, m.CornerRadius, 270*CGFloat(M_PI/180), 225.0*CGFloat(M_PI/180), 1);
+                
+                CGContextMoveToPoint(c, minx+m.CornerRadius, miny)
+            }
+            else{
+                
+                CGContextMoveToPoint(c, minx, miny)
+            }
+            
+        }
+        
+        
+        
+        
+    }
+
     
     
     static func printAllSubView(v:UIView)

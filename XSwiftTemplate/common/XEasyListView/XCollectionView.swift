@@ -9,17 +9,31 @@
 import UIKit
 
 class XCollectionView: UICollectionView,UICollectionViewDelegate,UICollectionViewDataSource {
-
+    
     let httpHandle:XHttpHandle=XHttpHandle()
     
     var CellIdentifier:String = ""
+        {
+        didSet
+        {
+            if NSClassFromString(ProjectName + "." + CellIdentifier) == nil
+            {
+                self.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: CellIdentifier)
+            }
+            else
+            {
+                self.registerNib(CellIdentifier.Nib, forCellWithReuseIdentifier: CellIdentifier)
+            }
+            
+        }
+    }
     
     var delegates:[UICollectionViewDelegate] = []
     
     let ViewLayout = UICollectionViewFlowLayout()
     
     var itemSize:CGSize!
-    {
+        {
         didSet
         {
             ViewLayout.itemSize = itemSize
@@ -128,5 +142,5 @@ class XCollectionView: UICollectionView,UICollectionViewDelegate,UICollectionVie
         
         delegates.last?.collectionView?(collectionView, didSelectItemAtIndexPath: indexPath)
     }
-
+    
 }

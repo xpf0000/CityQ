@@ -61,17 +61,41 @@ class JifenCaifuCell1: UITableViewCell {
         cm.StrokeColor = APPOrangeColor
         cm.BorderSidesType = [.Left,.Top]
         cm.BorderLineWidth=1.0
-        cm.CornerRadius=30.0
+        cm.CornerRadius=6.0
         cm.CornerRadiusType = [.TopLeft]
         
         view2.XCornerRadius = cm
+        
+        let cm3 = XCornerRadiusModel()
+        cm3.StrokePath = true
+        cm3.StrokeColor = APPOrangeColor
+        cm3.BorderSidesType = [.Right,.Top]
+        cm3.BorderLineWidth=1.0
+        cm3.CornerRadius=6.0
+        cm3.CornerRadiusType = [.TopRight]
+        
+        view3.XCornerRadius = cm3
+        
+        
+        
+        let cm1 = XCornerRadiusModel()
+        cm1.StrokePath = true
+        cm1.StrokeColor = APPOrangeColor
+        cm1.BorderSidesType = [.Right,.Top,.Left]
+        cm1.BorderLineWidth=1.0
+        cm1.CornerRadius=6.0
+        cm1.CornerRadiusType = [.TopRight,.TopLeft]
+        
+        view1.XCornerRadius = cm1
         
     }
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         
+        view1.drawCornerRadius(view1.frame)
         view2.drawCornerRadius(view2.frame)
+        view3.drawCornerRadius(view3.frame)
         
         header1.layer.cornerRadius = header1.frame.size.width / 2.0
         header2.layer.cornerRadius = header1.frame.size.width / 2.0

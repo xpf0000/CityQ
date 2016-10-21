@@ -417,7 +417,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caifupaihang_750.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hpt-SP-rAz"/>
+                            <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="caifupaihang_640.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="hpt-SP-rAz"/>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ggW-z9-kHO">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -485,6 +485,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
+                        <outlet property="bgImage" destination="hpt-SP-rAz" id="kdN-nC-6pm"/>
                         <outlet property="bview" destination="um5-YG-v97" id="5La-KG-4UM"/>
                         <outlet property="header" destination="gic-Rm-jpF" id="jtz-Pb-uPc"/>
                         <outlet property="name" destination="RQ5-h3-5IY" id="Lpa-F5-kKJ"/>
@@ -499,7 +500,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="caifupaihang_750.jpg" width="375" height="603"/>
+        <image name="caifupaihang_640.jpg" width="320" height="514"/>
         <image name="duihao.png" width="128" height="128"/>
         <image name="go.png" width="45" height="45"/>
         <image name="go_white.png" width="128" height="128"/>

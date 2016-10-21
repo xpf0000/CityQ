@@ -286,6 +286,9 @@ extension UIView
             let properRect = UIEdgeInsetsInsetRect(rect, insets)
             
             let c = UIGraphicsGetCurrentContext()
+            
+            if c == nil {return}
+            
             CGContextSetShouldAntialias(c!, true)
             
             if m.StrokePath
@@ -300,7 +303,6 @@ extension UIView
                 addFillPath(c!, rect: properRect,m: m)
                 
                 CGContextFillPath(c!);
-                
                 
                 addStrokePath(c!, rect: properRect,m: m)
                 
@@ -393,17 +395,23 @@ extension UIView
         let maxy = CGRectGetMaxY(rect)
         
         
-        if m.CornerRadiusType.contains(.BottomLeft)
-        {
-            CGContextMoveToPoint(c, minx, maxy-m.CornerRadius)
-        }
-        else
-        {
-            CGContextMoveToPoint(c, minx, maxy)
-        }
-        
         if m.BorderSidesType.contains(.Left)
         {
+            
+            if (m.CornerRadiusType.contains(.BottomLeft))
+            {
+                CGContextMoveToPoint(c, minx, maxy-m.CornerRadius)
+                
+                CGContextAddArc(c, minx+m.CornerRadius, maxy-m.CornerRadius, m.CornerRadius, CGFloat(M_PI), 135.0*CGFloat(M_PI/180.0), 1);
+                
+                CGContextMoveToPoint(c, minx, maxy-m.CornerRadius)
+            }
+            else
+            {
+                CGContextMoveToPoint(c, minx, maxy)
+            }
+
+            
             if (m.CornerRadiusType.contains(.TopLeft))
             {
                 CGContextAddLineToPoint(c, minx, miny+m.CornerRadius)
@@ -416,27 +424,24 @@ extension UIView
             }
             
         }
-        else
-        {
-            if (m.CornerRadiusType.contains(.TopLeft))
-            {
-                
-                CGContextMoveToPoint(c, minx+m.CornerRadius, miny)
-                
-                CGContextAddArc(c, minx+m.CornerRadius, miny+m.CornerRadius, m.CornerRadius, 270*CGFloat(M_PI/180), 225.0*CGFloat(M_PI/180), 1);
-                
-                CGContextMoveToPoint(c, minx+m.CornerRadius, miny)
-            }
-            else{
-                
-                CGContextMoveToPoint(c, minx, miny)
-            }
-
-        }
         
-        
+    
         if m.BorderSidesType.contains(.Top)
         {
+            
+            if (m.CornerRadiusType.contains(.TopLeft))
+            {
+                CGContextMoveToPoint(c, minx+m.CornerRadius, miny)
+                
+                CGContextAddArc(c, minx+m.CornerRadius, miny+m.CornerRadius, m.CornerRadius, 270.0*CGFloat(M_PI/180.0), 225.0*CGFloat(M_PI/180.0), 1);
+                
+                CGContextMoveToPoint(c, minx+m.CornerRadius, miny)
+            }
+            else
+            {
+                CGContextMoveToPoint(c, minx, miny)
+            }
+            
             if (m.CornerRadiusType.contains(.TopRight))
             {
                 CGContextAddLineToPoint(c, maxx-m.CornerRadius, miny)
@@ -449,23 +454,66 @@ extension UIView
             }
             
         }
-        else
+        
+        
+        if m.BorderSidesType.contains(.Right)
         {
-            if (m.CornerRadiusType.contains(.TopLeft))
+            
+            if (m.CornerRadiusType.contains(.TopRight))
             {
+                CGContextMoveToPoint(c, maxx, miny+m.CornerRadius)
                 
-                CGContextMoveToPoint(c, minx+m.CornerRadius, miny)
+                CGContextAddArc(c, maxx-m.CornerRadius, miny+m.CornerRadius, m.CornerRadius, 360.0*CGFloat(M_PI/180.0), 315.0*CGFloat(M_PI/180.0), 1);
                 
-                CGContextAddArc(c, minx+m.CornerRadius, miny+m.CornerRadius, m.CornerRadius, 270*CGFloat(M_PI/180), 225.0*CGFloat(M_PI/180), 1);
+                CGContextMoveToPoint(c, maxx, miny+m.CornerRadius)
+            }
+            else
+            {
+                CGContextMoveToPoint(c, maxx, miny)
+            }
+
+            if (m.CornerRadiusType.contains(.BottomRight))
+            {
+                CGContextAddLineToPoint(c, maxx, maxy-m.CornerRadius)
                 
-                CGContextMoveToPoint(c, minx+m.CornerRadius, miny)
+                CGContextAddArc(c, maxx-m.CornerRadius, maxy-m.CornerRadius, m.CornerRadius, 0, 45.0*CGFloat(M_PI/180.0), 0);
             }
             else{
                 
-                CGContextMoveToPoint(c, minx, miny)
+                CGContextAddLineToPoint(c, maxx, maxy)
             }
             
         }
+        
+        if m.BorderSidesType.contains(.Bottom)
+        {
+            
+            if (m.CornerRadiusType.contains(.BottomRight))
+            {
+                CGContextMoveToPoint(c, maxx-m.CornerRadius, maxy)
+                
+                CGContextAddArc(c, maxx-m.CornerRadius, maxy-m.CornerRadius, m.CornerRadius, 90.0*CGFloat(M_PI/180.0), 45.0*CGFloat(M_PI/180.0), 1);
+                
+                CGContextMoveToPoint(c, maxx-m.CornerRadius, maxy)
+            }
+            else
+            {
+                CGContextMoveToPoint(c, maxx, maxy)
+            }
+            
+            if (m.CornerRadiusType.contains(.BottomLeft))
+            {
+                CGContextAddLineToPoint(c, minx+m.CornerRadius, maxy)
+                
+                CGContextAddArc(c, minx+m.CornerRadius, maxy-m.CornerRadius, m.CornerRadius, 90.0*CGFloat(M_PI/180.0), 135.0*CGFloat(M_PI/180.0), 0);
+            }
+            else{
+                
+                CGContextAddLineToPoint(c, minx, maxy)
+            }
+            
+        }
+        
         
         
         

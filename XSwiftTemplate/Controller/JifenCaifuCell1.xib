@@ -40,16 +40,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Hor-Tk-v9R" firstAttribute="centerX" secondItem="REc-yO-xym" secondAttribute="centerX" id="8Ix-jd-dmh"/>
                             <constraint firstItem="lgC-ti-ADl" firstAttribute="top" secondItem="Hor-Tk-v9R" secondAttribute="bottom" constant="10" id="Bb9-Mm-ihy"/>
-                            <constraint firstAttribute="bottom" secondItem="8gu-Tm-pSr" secondAttribute="bottom" constant="50" id="CQw-Pp-7u4"/>
+                            <constraint firstAttribute="bottom" secondItem="8gu-Tm-pSr" secondAttribute="bottom" constant="42" id="CQw-Pp-7u4"/>
                             <constraint firstItem="BVO-L5-0fc" firstAttribute="centerX" secondItem="REc-yO-xym" secondAttribute="centerX" id="DQq-L3-Fxu"/>
                             <constraint firstItem="8gu-Tm-pSr" firstAttribute="centerX" secondItem="REc-yO-xym" secondAttribute="centerX" id="Fk1-bH-DXr"/>
-                            <constraint firstItem="Hor-Tk-v9R" firstAttribute="top" secondItem="BVO-L5-0fc" secondAttribute="bottom" constant="5" id="IlL-MY-gVJ"/>
+                            <constraint firstItem="Hor-Tk-v9R" firstAttribute="top" secondItem="BVO-L5-0fc" secondAttribute="bottom" constant="10" id="IlL-MY-gVJ"/>
                             <constraint firstItem="8gu-Tm-pSr" firstAttribute="top" secondItem="lgC-ti-ADl" secondAttribute="bottom" constant="10" id="KDp-9J-Y8m"/>
-                            <constraint firstItem="Hor-Tk-v9R" firstAttribute="width" secondItem="REc-yO-xym" secondAttribute="width" multiplier="0.6" id="MMs-uz-maQ"/>
+                            <constraint firstItem="Hor-Tk-v9R" firstAttribute="width" secondItem="REc-yO-xym" secondAttribute="width" multiplier="0.56" id="MMs-uz-maQ"/>
                             <constraint firstItem="lgC-ti-ADl" firstAttribute="centerX" secondItem="REc-yO-xym" secondAttribute="centerX" id="WXQ-TL-G6d"/>
                             <constraint firstItem="BVO-L5-0fc" firstAttribute="top" secondItem="REc-yO-xym" secondAttribute="top" constant="10" id="ccA-4b-H9i"/>
                         </constraints>
@@ -77,13 +77,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.85490196080000003" green="0.85490196080000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="i6G-Bg-yrx" firstAttribute="centerX" secondItem="KTV-Bu-xWF" secondAttribute="centerX" id="4OX-aC-54N"/>
                             <constraint firstItem="xd9-gB-ptp" firstAttribute="top" secondItem="i6G-Bg-yrx" secondAttribute="bottom" constant="10" id="BJp-fM-msW"/>
                             <constraint firstItem="xd9-gB-ptp" firstAttribute="centerX" secondItem="KTV-Bu-xWF" secondAttribute="centerX" id="RID-NY-KEG"/>
                             <constraint firstItem="bHa-5j-Hoe" firstAttribute="top" secondItem="KTV-Bu-xWF" secondAttribute="top" constant="10" id="U57-LH-PgN"/>
-                            <constraint firstItem="i6G-Bg-yrx" firstAttribute="top" secondItem="bHa-5j-Hoe" secondAttribute="bottom" constant="5" id="VPO-hK-YLD"/>
+                            <constraint firstItem="i6G-Bg-yrx" firstAttribute="top" secondItem="bHa-5j-Hoe" secondAttribute="bottom" constant="10" id="VPO-hK-YLD"/>
                             <constraint firstItem="LRZ-Eb-mLO" firstAttribute="top" secondItem="xd9-gB-ptp" secondAttribute="bottom" constant="10" id="Zor-bG-oBF"/>
                             <constraint firstItem="LRZ-Eb-mLO" firstAttribute="centerX" secondItem="KTV-Bu-xWF" secondAttribute="centerX" id="dON-7T-B5Z"/>
                             <constraint firstAttribute="bottom" secondItem="LRZ-Eb-mLO" secondAttribute="bottom" constant="10" id="gjF-oQ-OKn"/>
@@ -113,12 +113,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.85490196080000003" green="0.85490196080000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LEb-2I-KkV" firstAttribute="top" secondItem="Tak-fn-2Jw" secondAttribute="top" constant="10" id="2jp-l3-On3"/>
                             <constraint firstItem="2Gb-3P-74h" firstAttribute="centerX" secondItem="Tak-fn-2Jw" secondAttribute="centerX" id="GhL-r5-4EU"/>
                             <constraint firstItem="LEb-2I-KkV" firstAttribute="centerX" secondItem="Tak-fn-2Jw" secondAttribute="centerX" id="OTu-eN-tvr"/>
-                            <constraint firstItem="2Gb-3P-74h" firstAttribute="top" secondItem="LEb-2I-KkV" secondAttribute="bottom" constant="5" id="YQm-LS-g4j"/>
+                            <constraint firstItem="2Gb-3P-74h" firstAttribute="top" secondItem="LEb-2I-KkV" secondAttribute="bottom" constant="10" id="YQm-LS-g4j"/>
                             <constraint firstItem="rPa-Yc-2Lf" firstAttribute="top" secondItem="yOF-zB-wdt" secondAttribute="bottom" constant="10" id="ZJx-ss-bOI"/>
                             <constraint firstItem="yOF-zB-wdt" firstAttribute="top" secondItem="2Gb-3P-74h" secondAttribute="bottom" constant="10" id="b14-Gu-NON"/>
                             <constraint firstItem="rPa-Yc-2Lf" firstAttribute="centerX" secondItem="Tak-fn-2Jw" secondAttribute="centerX" id="cHB-tN-wfa"/>
@@ -129,17 +129,17 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="REc-yO-xym" firstAttribute="leading" secondItem="KTV-Bu-xWF" secondAttribute="trailing" id="4Cd-EW-GVY"/>
+                    <constraint firstItem="Tak-fn-2Jw" firstAttribute="width" secondItem="KTV-Bu-xWF" secondAttribute="width" id="1gI-Z1-QWa"/>
+                    <constraint firstItem="REc-yO-xym" firstAttribute="leading" secondItem="KTV-Bu-xWF" secondAttribute="trailing" constant="-1" id="4Cd-EW-GVY"/>
                     <constraint firstAttribute="bottom" secondItem="Tak-fn-2Jw" secondAttribute="bottom" id="Bbj-Va-hrB"/>
                     <constraint firstAttribute="trailing" secondItem="Tak-fn-2Jw" secondAttribute="trailing" id="Cbz-hi-H55"/>
-                    <constraint firstItem="Tak-fn-2Jw" firstAttribute="width" secondItem="REc-yO-xym" secondAttribute="width" id="JfY-5g-keC"/>
                     <constraint firstItem="2Gb-3P-74h" firstAttribute="width" secondItem="Hor-Tk-v9R" secondAttribute="width" id="Odx-Vu-8pA"/>
                     <constraint firstAttribute="bottom" secondItem="KTV-Bu-xWF" secondAttribute="bottom" id="XmH-Dp-wz4"/>
-                    <constraint firstItem="Tak-fn-2Jw" firstAttribute="leading" secondItem="REc-yO-xym" secondAttribute="trailing" id="YWq-hT-DHh"/>
-                    <constraint firstItem="KTV-Bu-xWF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="ayl-Fs-Mjh"/>
+                    <constraint firstItem="Tak-fn-2Jw" firstAttribute="leading" secondItem="REc-yO-xym" secondAttribute="trailing" constant="-1" id="YWq-hT-DHh"/>
+                    <constraint firstItem="KTV-Bu-xWF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="32" id="ayl-Fs-Mjh"/>
                     <constraint firstItem="i6G-Bg-yrx" firstAttribute="width" secondItem="Hor-Tk-v9R" secondAttribute="width" id="dD8-l2-XLh"/>
                     <constraint firstItem="REc-yO-xym" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="g11-19-fuY"/>
-                    <constraint firstItem="Tak-fn-2Jw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="lTW-QG-XAE"/>
+                    <constraint firstItem="Tak-fn-2Jw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="32" id="lTW-QG-XAE"/>
                     <constraint firstAttribute="bottom" secondItem="REc-yO-xym" secondAttribute="bottom" id="mKM-xJ-goa"/>
                     <constraint firstItem="KTV-Bu-xWF" firstAttribute="width" secondItem="REc-yO-xym" secondAttribute="width" id="seg-0j-qEH"/>
                     <constraint firstItem="KTV-Bu-xWF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="yy2-mJ-r5y"/>

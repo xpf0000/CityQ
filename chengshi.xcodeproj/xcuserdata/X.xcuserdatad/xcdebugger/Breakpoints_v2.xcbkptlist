@@ -2118,22 +2118,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "XSwiftTemplate/Controller/JifenCaifuListVC.swift"
-            timestampString = "498754908.798414"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "tableView(_:heightForRowAtIndexPath:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "XSwiftTemplate/common/extension/UIView.swift"
             timestampString = "498729841.973822"
             startingColumnNumber = "9223372036854775807"
@@ -2247,11 +2231,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XSwiftTemplate/Controller/JifenCaifuListVC.swift"
-            timestampString = "498754908.798414"
+            timestampString = "498813586.544513"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "viewDidLayoutSubviews()"
             landmarkType = "7">
          </BreakpointContent>

@@ -16,6 +16,12 @@ class HFBModel: Reflect {
     var name=""
     var create_time=""
     
+    var nickname = ""
+    var headimage=""
+    var pm = ""
+    var nick = ""
+    var qdday = ""
+
     override func setValue(value: AnyObject?, forKey key: String) {
         
         if(key == "create_time" && value != nil)

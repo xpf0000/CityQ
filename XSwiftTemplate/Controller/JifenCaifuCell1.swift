@@ -40,6 +40,49 @@ class JifenCaifuCell1: UITableViewCell {
     
     @IBOutlet var number3: UILabel!
     
+    var dw = ""
+    
+    var model1:HFBModel?
+    {
+        didSet
+        {
+            name1.text = model1?.nickname
+            header1.url = model1?.headimage
+            
+            let str = dw == "天" ? model1!.qdday : model1!.hfb
+            
+            number1.text = "\(str)\(dw)"
+        }
+    }
+    
+    var model2:HFBModel?
+        {
+        didSet
+        {
+            name2.text = model2?.nickname
+            header2.url = model2?.headimage
+            
+            let str = dw == "天" ? model2!.qdday : model2!.hfb
+            
+            number2.text = "\(str)\(dw)"
+        }
+    }
+    
+    var model3:HFBModel?
+        {
+        didSet
+        {
+            name3.text = model3?.nickname
+            header3.url = model3?.headimage
+            
+            let str = dw == "天" ? model3!.qdday : model3!.hfb
+            
+            number3.text = "\(str)\(dw)"
+        }
+    }
+    
+    
+    
     
     
     
@@ -48,9 +91,9 @@ class JifenCaifuCell1: UITableViewCell {
         
         let img = "home_head.png".image
         
-        header1.image = img
-        header2.image = img
-        header3.image = img
+        header1.placeholder = img
+        header2.placeholder = img
+        header3.placeholder = img
         
         header1.layer.masksToBounds = true
         header2.layer.masksToBounds = true
@@ -98,8 +141,8 @@ class JifenCaifuCell1: UITableViewCell {
         view3.drawCornerRadius(view3.frame)
         
         header1.layer.cornerRadius = header1.frame.size.width / 2.0
-        header2.layer.cornerRadius = header1.frame.size.width / 2.0
-        header3.layer.cornerRadius = header1.frame.size.width / 2.0
+        header2.layer.cornerRadius = header2.frame.size.width / 2.0
+        header3.layer.cornerRadius = header3.frame.size.width / 2.0
         
     }
 

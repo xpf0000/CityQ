@@ -1,5 +1,5 @@
 //
-//  JifenCaifuListVC.swift
+//  JifenQiandaoListVC.swift
 //  chengshi
 //
 //  Created by X on 2016/10/21.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class JifenCaifuListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class JifenQiandaoListVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     @IBOutlet weak var bgImage: UIImageView!
-
+    
     @IBOutlet var table: UITableView!
     
     @IBOutlet var bview: UIView!
@@ -29,15 +29,15 @@ class JifenCaifuListVC: UIViewController,UITableViewDelegate,UITableViewDataSour
     var harr:[Int:CGFloat] = [:]
     
     let h = (swidth-20.0)*0.33*0.56+15+22+12.0+10+20+10+20+10+32
-
+    
     var userPH:HFBModel?
-    {
+        {
         didSet
         {
             header.url = userPH?.headimage
             order.text = userPH?.pm
             name.text = userPH?.nick
-            num.text = "\(userPH!.hfb)怀府币"
+            num.text = "\(userPH!.qdday)天"
         }
     }
     
@@ -45,7 +45,7 @@ class JifenCaifuListVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         super.viewDidLoad()
         self.addBackButton()
         
-        bgImage.image = "caifupaihang_\(Int(swidth * screenScale))@2x.jpg".image
+        bgImage.image = "qiandaopaihang_\(Int(swidth * screenScale))@2x.jpg".image
         
         let img = "home_head.png".image
         header.placeholder = img
@@ -55,7 +55,7 @@ class JifenCaifuListVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         let v = UIView()
         v.frame = CGRectMake(0, 0, swidth, 156.0)
         table.tableHeaderView = v
-
+        
         table.registerNib("JifenCaifuCell1".Nib, forCellReuseIdentifier: "JifenCaifuCell1")
         table.registerNib("JifenCaifuCell2".Nib, forCellReuseIdentifier: "JifenCaifuCell2")
         
@@ -66,7 +66,7 @@ class JifenCaifuListVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         bview.layer.shadowOpacity = 1.0
         bview.layer.shadowRadius = 1.0
         
-        let url = "http://182.92.70.85/hfapi/Public/Found/?service=jifen.gethfbpm&uid=5&page=[page]&pernumber=20"
+        let url = "http://182.92.70.85/hfapi/Public/Found/?service=Jifen.getQDPM&page=[page]&pernumber=20&uid=5"
         
         httpHandle.setHandle(table, url: url, pageStr: "[page]", keys: ["data","info"], model: HFBModel.self)
         
@@ -75,7 +75,7 @@ class JifenCaifuListVC: UIViewController,UITableViewDelegate,UITableViewDataSour
             self?.userPH = HFBModel.parse(json: o?["data"]["uinfo"], replace: nil)
         }
         
-        table.setHeaderRefresh { 
+        table.setHeaderRefresh {
             [weak self] in
             
             self?.httpHandle.reSet()
@@ -83,14 +83,14 @@ class JifenCaifuListVC: UIViewController,UITableViewDelegate,UITableViewDataSour
             
         }
         
-        table.setFooterRefresh { 
+        table.setFooterRefresh {
             [weak self] in
             
             self?.httpHandle.handle()
         }
         
         httpHandle.handle()
-
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -103,7 +103,7 @@ class JifenCaifuListVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         
     }
     
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if httpHandle.listArr.count > 0
@@ -129,7 +129,7 @@ class JifenCaifuListVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         {
             return 60.0
         }
-
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -138,35 +138,35 @@ class JifenCaifuListVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("JifenCaifuCell1", forIndexPath: indexPath) as! JifenCaifuCell1
             
-            cell.dw = "怀府币"
+            cell.dw = "天"
             
             let m1 = httpHandle.listArr[0] as! HFBModel
             m1.pm = "1"
-  
+            
             let m2 = httpHandle.listArr[1] as! HFBModel
             m2.pm = "2"
-    
+            
             let m3 = httpHandle.listArr[2] as! HFBModel
             m3.pm = "3"
-    
+            
             cell.model1 = m1
             cell.model2 = m2
             cell.model3 = m3
-
+            
             
             
             return cell
-
+            
         }
         else
         {
             let m = httpHandle.listArr[indexPath.row+2] as! HFBModel
             
             m.pm = "\(indexPath.row+3)"
-            
+
             let cell = tableView.dequeueReusableCellWithIdentifier("JifenCaifuCell2", forIndexPath: indexPath) as! JifenCaifuCell2
             
-            cell.dw = "怀府币"
+            cell.dw = "天"
             cell.model = m
             
             cell.lasted = indexPath.row+3 == httpHandle.listArr.count
@@ -185,5 +185,5 @@ class JifenCaifuListVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
-
+    
 }

@@ -74,6 +74,7 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         {
         didSet
         {
+            line.backgroundColor=menuSelectColor
             reloadData()
         }
     }
@@ -98,7 +99,7 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
     }
     
     var menuFontSize : CGFloat = 16.0
-    {
+        {
         didSet
         {
             reloadData()
@@ -123,7 +124,7 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
             reloadData()
             
             selectItemAtIndexPath(NSIndexPath(forRow: self.selectIndex, inSection: 0), animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
-
+            
             UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
                 
                 self.line.center.x = self.menuWidth*CGFloat(self.selectIndex)+self.menuWidth/2.0
@@ -181,7 +182,7 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
     }
     
     var lineHeight:CGFloat = 2.0
-    {
+        {
         didSet
         {
             line.frame.size.height = lineHeight

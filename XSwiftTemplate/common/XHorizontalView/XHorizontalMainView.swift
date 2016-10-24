@@ -42,13 +42,13 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
     
     
     var menuArr:[XHorizontalMenuModel] = []
-    {
+        {
         didSet
         {
             self.changeUI()
         }
     }
-
+    
     
     var UIChanged:Bool = false
         {
@@ -138,8 +138,6 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
-        
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mainViewCell", forIndexPath: indexPath)
         

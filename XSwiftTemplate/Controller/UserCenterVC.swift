@@ -248,6 +248,17 @@ class UserCenterVC: UITableViewController {
         {
         case 0:
             self.toEdit()
+            
+        case 3:
+            
+            let vc = "MyMinePageVC".VC("User")
+            
+            vc.hidesBottomBarWhenPushed = true
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            return
+            
         case 4:
             
             let vc:MyFriendVC = MyFriendVC()

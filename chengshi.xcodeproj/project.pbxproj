@@ -564,6 +564,8 @@
 		17D5DD921DBDEFD200A5458C /* YouhuiquanCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17D5DD901DBDEFD200A5458C /* YouhuiquanCell.xib */; };
 		17D5DD941DBDF0CE00A5458C /* CardYouhuiquanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D5DD931DBDF0CE00A5458C /* CardYouhuiquanVC.swift */; };
 		17D5DD961DBDF40200A5458C /* YouhuiquanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D5DD951DBDF40200A5458C /* YouhuiquanModel.swift */; };
+		17D5DD9A1DBE074900A5458C /* header_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D5DD991DBE074900A5458C /* header_bg.png */; };
+		17D5DD9C1DBE0A9A00A5458C /* MyMinePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D5DD9B1DBE0A9A00A5458C /* MyMinePageVC.swift */; };
 		17D6D7A71C7BED12007E4CC5 /* userDefaultHead.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D6D7A61C7BED12007E4CC5 /* userDefaultHead.png */; };
 		17D6D7AB1C7C07E9007E4CC5 /* userHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D6D7AA1C7C07E9007E4CC5 /* userHeader.png */; };
 		17D6D7AD1C7C2D83007E4CC5 /* PropertyPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6D7AC1C7C2D83007E4CC5 /* PropertyPhotoVC.swift */; };
@@ -1375,6 +1377,8 @@
 		17D5DD901DBDEFD200A5458C /* YouhuiquanCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = YouhuiquanCell.xib; path = XSwiftTemplate/Controller/YouhuiquanCell.xib; sourceTree = SOURCE_ROOT; };
 		17D5DD931DBDF0CE00A5458C /* CardYouhuiquanVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardYouhuiquanVC.swift; path = XSwiftTemplate/Controller/CardYouhuiquanVC.swift; sourceTree = SOURCE_ROOT; };
 		17D5DD951DBDF40200A5458C /* YouhuiquanModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouhuiquanModel.swift; sourceTree = SOURCE_ROOT; };
+		17D5DD991DBE074900A5458C /* header_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_bg.png; sourceTree = "<group>"; };
+		17D5DD9B1DBE0A9A00A5458C /* MyMinePageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMinePageVC.swift; sourceTree = "<group>"; };
 		17D6D7A61C7BED12007E4CC5 /* userDefaultHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userDefaultHead.png; sourceTree = "<group>"; };
 		17D6D7AA1C7C07E9007E4CC5 /* userHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = userHeader.png; sourceTree = "<group>"; };
 		17D6D7AC1C7C2D83007E4CC5 /* PropertyPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyPhotoVC.swift; sourceTree = "<group>"; };
@@ -1739,6 +1743,7 @@
 				1740FAA01D1ECFBE00F24AC6 /* MyMessageContentVC.swift */,
 				177E86B81D16CBEE00EE20CF /* MyCardVC.swift */,
 				17DBB58F1D192AED0090677D /* MyWalletVC.swift */,
+				17D5DD9B1DBE0A9A00A5458C /* MyMinePageVC.swift */,
 			);
 			name = User;
 			sourceTree = "<group>";
@@ -2071,6 +2076,7 @@
 		175449C71DB5C1C200DCBE77 /* icon */ = {
 			isa = PBXGroup;
 			children = (
+				17D5DD991DBE074900A5458C /* header_bg.png */,
 				17D5DD891DBDE10B00A5458C /* fenge_youhuiquan.png */,
 				17D5DD811DBDB81400A5458C /* renzheng_icon0.png */,
 				17D5DD821DBDB81400A5458C /* renzheng_icon1.png */,
@@ -3418,6 +3424,7 @@
 				17C880E31D251CCC009FCC4B /* 1334_3.jpg in Resources */,
 				17D5DD781DBDAA8A00A5458C /* zuobiao.png in Resources */,
 				177E886F1D16CD9400EE20CF /* qq_login_icon.png in Resources */,
+				17D5DD9A1DBE074900A5458C /* header_bg.png in Resources */,
 				1760A6D21D1FBBF0001F8B41 /* news_collect_s1@3x.png in Resources */,
 				177E88C71D16D0E300EE20CF /* tarbar3@3x.png in Resources */,
 				177E87D71D16CD9400EE20CF /* card_vip@2x.png in Resources */,
@@ -3993,6 +4000,7 @@
 				177E869B1D16C91200EE20CF /* Reflect.swift in Sources */,
 				177E86B71D16CBDB00EE20CF /* MyMessageInfoVC.swift in Sources */,
 				17FDBB821C06A120006F04BF /* FriendNewsVC.swift in Sources */,
+				17D5DD9C1DBE0A9A00A5458C /* MyMinePageVC.swift in Sources */,
 				177E86CB1D16CCC300EE20CF /* CardGetedInfoVC.swift in Sources */,
 				178186DF1CE57F9B0030837A /* LayoutConstraint.swift in Sources */,
 				17DBB5931D192B270090677D /* MyWalletCell.swift in Sources */,

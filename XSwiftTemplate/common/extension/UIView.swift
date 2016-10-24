@@ -520,7 +520,26 @@ extension UIView
         
     }
 
-    
+    func shakeToShow(dur:NSTimeInterval)
+    {
+        let popAnimation = CAKeyframeAnimation(keyPath: "transform")
+        popAnimation.duration = dur
+        
+        let value1 = NSValue(CATransform3D: CATransform3DMakeScale(0.01, 0.01, 1.0))
+        let value2 = NSValue(CATransform3D: CATransform3DMakeScale(1.1, 1.1, 1.0))
+        let value3 = NSValue(CATransform3D: CATransform3DMakeScale(0.9, 0.9, 1.0))
+        let value4 = NSValue(CATransform3D: CATransform3DIdentity)
+        
+        popAnimation.values = [value1,value2,value3,value4]
+        popAnimation.keyTimes = [0.0, 0.5, 0.75, 1.0]
+        
+        let timing1 = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+        popAnimation.timingFunctions = [timing1,timing1,timing1];
+        
+        self.layer.addAnimation(popAnimation, forKey: nil)
+        
+    }
     
     static func printAllSubView(v:UIView)
     {

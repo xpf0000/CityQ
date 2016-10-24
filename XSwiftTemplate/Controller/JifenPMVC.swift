@@ -19,11 +19,14 @@ class JifenPMVC: UIViewController {
         self.title = "财富排行榜"
         self.addBackButton()
         
-        self.view.addSubview(menu)
         self.view.addSubview(main)
+        self.view.addSubview(menu)
+        
         
         menu.frame = CGRectMake(0, 0, swidth, 44.0)
-        main.frame = CGRectMake(0, 44.0, swidth, sheight-64.0-44.0)
+        main.frame = CGRectMake(0, 0.0, swidth, sheight-64.0)
+        
+        main.menu=menu
         
         menu.menuPageNum = 2.0
         menu.line.hidden = true
@@ -38,10 +41,12 @@ class JifenPMVC: UIViewController {
         
         let m = XHorizontalMenuModel()
         m.title = "签到达人"
+        vc.view.frame = CGRectMake(0.0, 0.0, swidth, sheight-64.0)
         m.view = vc.view
         
         let m1 = XHorizontalMenuModel()
         m1.title = "财富达人"
+        vc1.view.frame = CGRectMake(0.0, 0.0, swidth, sheight-64.0)
         m1.view = vc1.view
         
         menu.menuArr = [m,m1]
@@ -49,6 +54,25 @@ class JifenPMVC: UIViewController {
         
         
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let nv=self.navigationController as? XNavigationController
+        {
+            nv.removeRecognizer()
+        }
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let nv=self.navigationController as? XNavigationController
+        {
+            nv.setRecognizer()
+        }
     }
 
     override func didReceiveMemoryWarning() {

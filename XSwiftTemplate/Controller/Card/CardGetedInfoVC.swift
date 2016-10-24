@@ -267,7 +267,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
-        if indexPath.row == 3
+        if indexPath.row == 4 || indexPath.row == 0
         {
             let vc = "CardShopsInfoVC".VC("Card") as! CardShopsInfoVC
             vc.id = model.shopid

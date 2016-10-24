@@ -45,7 +45,7 @@ class JifenCaifuCell2: UITableViewCell {
             
                 XCornerRadius?.BorderSidesType = [.Left,.Right,.Bottom]
                 
-                self.drawCornerRadius(self.bounds)
+                self.drawCornerRadius(self.frame)
             }
             else
             {
@@ -53,7 +53,7 @@ class JifenCaifuCell2: UITableViewCell {
                 
                 XCornerRadius?.BorderSidesType = [.Left,.Right]
                 
-                self.drawCornerRadius(self.bounds)
+                self.drawCornerRadius(self.frame)
             }
         }
     }
@@ -73,6 +73,12 @@ class JifenCaifuCell2: UITableViewCell {
         cm.FillColor = UIColor.whiteColor()
         self.XCornerRadius = cm
 
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.setHighlighted(false, animated: false)
     }
     
     override func drawRect(rect: CGRect) {

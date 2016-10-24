@@ -219,7 +219,7 @@ let BaseHtml = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n" +
     "<meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\r\n" +
     "<title>活动简介</title>\r\n" +
     "<style>\r\n" +
-    "body {background-color: #ffffff}\r\n" +
+    "body {background-color: #FFFFFF}\r\n" +
     "table {border-right:1px dashed #D2D2D2;border-bottom:1px dashed #D2D2D2}\r\n" +
     "table td{border-left:1px dashed #D2D2D2;border-top:1px dashed #D2D2D2}\r\n" +
     "img {width:100%;height: auto}\r\n" +

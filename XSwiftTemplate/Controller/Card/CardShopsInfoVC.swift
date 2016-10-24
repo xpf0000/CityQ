@@ -20,7 +20,9 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
 
     @IBOutlet var web: UIWebView!
     
-    @IBAction func doCall(sender: AnyObject) {
+    @IBOutlet var addressCell: UITableViewCell!
+    
+    func doCall() {
         
         if(self.model.tel == "")
         {
@@ -67,7 +69,7 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
         }
     }
     
-    var harr:[CGFloat] = [swidth/16.0*7.0,42.0*screenFlag,42.0*screenFlag,8.0*screenFlag,0,42.0*screenFlag,8.0*screenFlag,37.0*screenFlag,1.0,44.0]
+    var harr:[CGFloat] = [swidth/16.0*7.0,44.0,44.0,10.0,44.0,44.0,10.0,44.0,10.0,50.0,0.0]
     
     func http()
     {
@@ -86,10 +88,22 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
     
     func show()
     {
+        if model.orvip != "1"
+        {
+            harr[7] = 0.0
+            harr[8] = 0.0
+        }
+        
         img.url = model.logo
         
         phone.text = model.tel
         address.text = model.address
+        
+        var h = addressCell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
+        
+        h = max(44.0,h)
+        
+        harr[2] = h
         
         model.info = BaseHtml.replace("[XHTMLX]", with: model.info)
         
@@ -97,7 +111,6 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
         
         web.sizeToFit()
     
-        
         table.reloadData()
     }
 
@@ -106,7 +119,7 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
         
         if(keyPath == "contentSize")
         {
-            harr[8] = web.scrollView.contentSize.height
+            harr[10] = web.scrollView.contentSize.height
             web.layoutIfNeeded()
             web.setNeedsLayout()
             web.scrollView.scrollEnabled = false
@@ -119,6 +132,8 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
+        
+        address.preferredMaxLayoutWidth = swidth - 105
         
         web.scrollView.showsHorizontalScrollIndicator = false
         web.scrollView.showsVerticalScrollIndicator = false
@@ -141,16 +156,27 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
         
     }
     
-    
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if(indexPath.row < 7 || indexPath.row == 8)
+        if(indexPath.row == 4)
         {
             cell.separatorInset=UIEdgeInsetsMake(0, 0, 0, 0)
             if(IOS_Version>=8.0)
             {
                 if #available(iOS 8.0, *) {
                     cell.layoutMargins=UIEdgeInsetsMake(0, 0, 0, 0)
+                } else {
+                    // Fallback on earlier versions
+                }
+            }
+        }
+        else if(indexPath.row == 1 || indexPath.row == 9)
+        {
+            cell.separatorInset=UIEdgeInsetsMake(0, 15, 0, 15)
+            if(IOS_Version>=8.0)
+            {
+                if #available(iOS 8.0, *) {
+                    cell.layoutMargins=UIEdgeInsetsMake(0, 15, 0, 15)
                 } else {
                     // Fallback on earlier versions
                 }
@@ -194,9 +220,14 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
+        if indexPath.row == 1
+        {
+            doCall()
+        }
+        
         if indexPath.row == 4
         {
-            let vc = CardShopsCardVC()
+            let vc = CardShopsActivitysVC()
             vc.id = id
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)
@@ -204,7 +235,15 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
         
         if indexPath.row == 5
         {
-            let vc = CardShopsActivitysVC()
+            let vc = CardYouhuiquanVC()
+            vc.id = id
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        if indexPath.row == 7
+        {
+            let vc = "CardRenzhengVC".VC("Card") as! CardRenzhengVC
             vc.id = id
             vc.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(vc, animated: true)

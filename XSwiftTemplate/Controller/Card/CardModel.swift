@@ -23,10 +23,7 @@ class CardModel: Reflect {
     var values = ""
     var hcmid = ""
     var cardnumber = ""
-    
-    override func setValue(value: AnyObject?, forUndefinedKey key: String) {
-        
-    }
+    var orvip = ""
 
 }
 

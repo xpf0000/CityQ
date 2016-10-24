@@ -133,6 +133,12 @@ class JifenCaifuCell1: UITableViewCell {
         
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.setHighlighted(false, animated: false)
+    }
+    
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         

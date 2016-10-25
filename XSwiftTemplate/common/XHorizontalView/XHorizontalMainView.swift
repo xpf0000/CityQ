@@ -10,6 +10,8 @@ import UIKit
 
 class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectionViewDataSource,UIScrollViewDelegate {
     
+    let mainLayout = UICollectionViewFlowLayout()
+    
     weak var menu:XHorizontalMenuView?
         {
         didSet
@@ -17,10 +19,19 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
             if menu?.main != self
             {
                 menu?.main = self
-                reloadData()
+                doRefresh()
             }
         }
     }
+    
+    func doRefresh()
+    {
+        dispatch_async(dispatch_get_main_queue()) {
+            
+            self.reloadData()
+        }
+    }
+    
     
     private var block:XHorizontalMenuBlock?
     
@@ -80,13 +91,13 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
             (self.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = CGSizeMake(frame.size.width, frame.size.height)
         }
         
-        reloadData()
+        doRefresh()
         
     }
     
     func initSelf()
     {
-        let mainLayout = UICollectionViewFlowLayout()
+        
         mainLayout.scrollDirection = .Horizontal
         mainLayout.minimumLineSpacing = 0.0
         mainLayout.minimumInteritemSpacing = 0.0
@@ -139,6 +150,8 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
+        
+        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("mainViewCell", forIndexPath: indexPath)
         
         for item in cell.contentView.subviews
@@ -175,46 +188,8 @@ class XHorizontalMainView: UICollectionView,UICollectionViewDelegate,UICollectio
     func scrollViewDidScroll(scrollView: UIScrollView) {
         
         if menu == nil {return}
-        
-        let currentPage : Int = Int(floor((scrollView.contentOffset.x - frame.size.width/2)/frame.size.width))+1;
-        
-        var i : CGFloat = scrollView.contentOffset.x/(frame.size.width*CGFloat(menuArr.count))
-        
-        menu?.line.center.x = menu!.menuWidth*CGFloat(menuArr.count)*i+menu!.menuWidth/2.0
-        
-        var nextIndex=0
-        
-        if(scrollView.contentOffset.x>CGFloat(currentPage)*frame.size.width)
-        {
-            nextIndex=currentPage+1
-            i=(scrollView.contentOffset.x-CGFloat(currentPage)*frame.size.width)/frame.size.width
-        }
-        else
-        {
-            nextIndex=currentPage-1
-            i=(CGFloat(currentPage)*frame.size.width-scrollView.contentOffset.x)/frame.size.width
-        }
-        
-        var r ,g ,b : CGFloat
-        var r1,g1,b1:CGFloat
-        
-        if(nextIndex>=0 && nextIndex<menuArr.count)
-        {
-            (r,g,b) = menu!.menuTextColor.getRGB()
-            (r1,g1,b1) = menu!.menuSelectColor.getRGB()
-            
-            let nowLabel=menu!.viewWithTag(30+currentPage)
-            let nextLabel=menu!.viewWithTag(30+nextIndex)
-            
-            (nowLabel as? UILabel)?.textColor=UIColor(red: (r1+((r-r1)*i))/255.0, green: (g1-((g1-g)*i))/255.0, blue: (b1-((b1-b)*i))/255.0, alpha: 1.0)
-            
-            (nextLabel as? UILabel)?.textColor=UIColor(red: (r-((r-r1)*i))/255.0, green: (g+((g1-g)*i))/255.0, blue: (b+((b1-b)*i))/255.0, alpha: 1.0)
-            
-            let p = menu!.menuMaxScale - 1.0
-            nowLabel?.transform = CGAffineTransformMakeScale(menu!.menuMaxScale-(p*i), menu!.menuMaxScale-(p*i))
-            nextLabel?.transform = CGAffineTransformMakeScale(1.0+(p*i), 1.0+(p*i))
-            
-        }
+        let t = scrollView.contentOffset.x / frame.size.width
+        menu?.offy = t
         
     }
     

@@ -51,7 +51,15 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
     
     let line:UIView = UIView()
     
+    let menuLayout = UICollectionViewFlowLayout()
+    
     var mutableMenuWidth = false
+        {
+        didSet
+        {
+            changeUI()
+        }
+    }
     
     private var block:XHorizontalMenuBlock?
     
@@ -60,13 +68,29 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         self.block = b
     }
     
-    lazy var menuWidthArr:[NSIndexPath:CGSize] = [:]
+    var menuWidthArr:[NSIndexPath:CGSize] = [:]
+        {
+        willSet
+        {
+            if(mutableMenuWidth && selectIndex == 0)
+            {
+                let index = NSIndexPath(forRow: 0, inSection: 0)
+                if self.menuWidthArr[index] == nil && newValue[index] != nil
+                {
+                    line.frame.size.width = newValue[index]!.width-10
+                    line.center.x = newValue[index]!.width / 2.0 + menuLayout.sectionInset.left
+                }
+            }
+            
+        }
+        
+    }
     
     var menuTextColor : UIColor = UIColor(red: 86.0/255.0, green: 86.0/255.0, blue: 86.0/255.0, alpha: 1.0)
         {
         didSet
         {
-            reloadData()
+            doRefresh()
         }
     }
     
@@ -75,7 +99,7 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         didSet
         {
             line.backgroundColor=menuSelectColor
-            reloadData()
+            doRefresh()
         }
     }
     
@@ -84,16 +108,16 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         didSet
         {
             backgroundColor = menuBGColor
-            reloadData()
+            doRefresh()
         }
     }
     
-    var menuMaxScale : CGFloat = 1.3
+    var menuMaxScale : CGFloat = 1.0
         {
         didSet
         {
             if menuMaxScale < 1.0 {menuMaxScale = 1.0}
-            reloadData()
+            doRefresh()
         }
         
     }
@@ -102,13 +126,103 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         {
         didSet
         {
-            reloadData()
+            doRefresh()
         }
     }
     
     var menuWidth:CGFloat
     {
         return frame.size.width/self.menuPageNum
+    }
+    
+    func doRefresh()
+    {
+        dispatch_async(dispatch_get_main_queue()) {
+            
+            self.reloadData()
+        }
+    }
+    
+    var offy:CGFloat = 0.0
+        {
+        didSet
+        {
+            var a = Int(floor(offy))
+            var a1 = Int(ceil(offy))
+            
+            a = a < 0 ? 0 : a
+            a1 = a1 < 0 ? 0 : a1
+            
+            a = a >= menuArr.count ? menuArr.count-1 : a
+            
+            a1 = a1 >= menuArr.count ? menuArr.count-1 : a1
+            
+            var rp = offy - CGFloat(a)
+            
+            let nowW = menuWidthArr[NSIndexPath.init(forRow: a, inSection: 0)]!.width
+            
+            let nextW = menuWidthArr[NSIndexPath.init(forRow: a1, inSection: 0)]!.width
+            
+            let p = nextW - nowW
+            
+            let addw = rp*p
+            let addx = rp*(nextW + nowW) / 2.0
+            
+            if mutableMenuWidth
+            {
+                line.frame.size.width = (nowW + addw)-10
+            }
+            
+            var sum:CGFloat = 0.0
+            for i in 0...a
+            {
+                if i < a
+                {
+                    sum += menuWidthArr[NSIndexPath.init(forRow: i, inSection: 0)]!.width
+                }
+                else
+                {
+                    sum += menuWidthArr[NSIndexPath.init(forRow: i, inSection: 0)]!.width / 2.0
+                }
+                
+            }
+            
+            line.center.x = sum + addx + menuLayout.sectionInset.left
+            
+            rp = fabs(rp)
+            if a == a1
+            {
+                if a == 0
+                {
+                    a1 = -1
+                }
+                else
+                {
+                    a1 = menuWidthArr.count
+                }
+                
+            }
+            
+            var r ,g ,b : CGFloat
+            var r1,g1,b1:CGFloat
+            
+            (r,g,b) = menuTextColor.getRGB()
+            (r1,g1,b1) = menuSelectColor.getRGB()
+            
+            let nowLabel=viewWithTag(30+a)
+            let nextLabel=viewWithTag(30+a1)
+            
+            (nowLabel as? UILabel)?.textColor=UIColor(red: (r1+((r-r1)*rp))/255.0, green: (g1-((g1-g)*rp))/255.0, blue: (b1-((b1-b)*rp))/255.0, alpha: 1.0)
+            
+            (nextLabel as? UILabel)?.textColor=UIColor(red: (r-((r-r1)*rp))/255.0, green: (g+((g1-g)*rp))/255.0, blue: (b+((b1-b)*rp))/255.0, alpha: 1.0)
+            
+            let s = menuMaxScale - 1.0
+            
+            nowLabel?.transform = CGAffineTransformMakeScale(menuMaxScale-(s*rp), menuMaxScale-(s*rp))
+            nextLabel?.transform = CGAffineTransformMakeScale(1.0+(s*rp), 1.0+(s*rp))
+            
+            
+        }
     }
     
     var taped = false
@@ -121,13 +235,41 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
             
             block?(selectIndex)
             
-            reloadData()
+            doRefresh()
             
             selectItemAtIndexPath(NSIndexPath(forRow: self.selectIndex, inSection: 0), animated: true, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
             
             UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
                 
-                self.line.center.x = self.menuWidth*CGFloat(self.selectIndex)+self.menuWidth/2.0
+                if(self.mutableMenuWidth)
+                {
+                    self.line.frame.size.width = self.menuWidthArr[NSIndexPath.init(forRow: self.selectIndex, inSection: 0)]!.width-10
+                    
+                    var sum:CGFloat = 0.0
+                    
+                    for (key,value) in self.menuWidthArr
+                    {
+                        let i = key.row
+                        if i < self.selectIndex
+                        {
+                            sum += value.width
+                        }
+                        else if(i == self.selectIndex)
+                        {
+                            sum += value.width / 2.0
+                        }
+                        
+                    }
+                    
+                    self.line.center.x = sum + self.menuLayout.sectionInset.left
+                    
+                }
+                else
+                {
+                    self.line.center.x = self.menuWidth*CGFloat(self.selectIndex)+self.menuWidth/2.0 + self.menuLayout.sectionInset.left
+                }
+                
+                
                 
                 self.main?.contentOffset=CGPointMake(self.main!.frame.size.width*CGFloat(self.selectIndex), 0);
                 
@@ -138,6 +280,8 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         }
     }
     
+    
+    
     var lastIndex = 0
     
     weak var main:XHorizontalMainView?
@@ -147,7 +291,7 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
             if main?.menu != self
             {
                 main?.menu = self
-                reloadData()
+                doRefresh()
             }
         }
     }
@@ -158,12 +302,15 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         {
         didSet
         {
+            menuWidthArr.removeAll(keepCapacity: false)
             self.changeUI()
             self.main?.menuArr = menuArr
             if selectIndex >= menuArr.count
             {
                 selectIndex = menuArr.count-1
             }
+            
+            
         }
         
     }
@@ -190,46 +337,54 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         }
     }
     
-    
-    
-    
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         setValue(true, forKey: "UIChanged")
         
     }
     
+    func UINeedChange()
+    {
+        UIChanged = false
+    }
+    
     func changeUI()
     {
+        
         let size = (self.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize
         
-        if size?.width != menuWidth || size?.height != frame.size.height
+        if !mutableMenuWidth && (size?.width != menuWidth || size?.height != frame.size.height)
         {
-            (self.collectionViewLayout as? UICollectionViewFlowLayout)?.itemSize = CGSizeMake(menuWidth, frame.size.height)
-            line.frame.size.width = self.menuWidth*0.8
-            line.center.x = self.menuWidth*CGFloat(self.selectIndex)+self.menuWidth/2.0
+            menuWidthArr.removeAll(keepCapacity: false)
+            for i in 0...menuArr.count-1
+            {
+                menuWidthArr[NSIndexPath.init(forRow: i, inSection: 0)] = CGSizeMake(menuWidth, frame.size.height)
+            }
             
-            line.frame.size.height = lineHeight
-            line.frame.origin.y = self.frame.size.height - lineHeight
+            line.frame.size.width = self.menuWidth*0.8
+            line.center.x = self.menuWidth*CGFloat(self.selectIndex)+self.menuWidth/2.0 + self.menuLayout.sectionInset.left
+            
+            
         }
         
-        reloadData()
+        line.frame.size.height = lineHeight
+        line.frame.origin.y = self.frame.size.height - lineHeight
+        
+        doRefresh()
+        
         
     }
     
     func initSelf()
     {
+        menuLayout.scrollDirection = .Horizontal
+        menuLayout.minimumLineSpacing = 0.0
+        menuLayout.minimumInteritemSpacing = 0.0
+        menuLayout.itemSize = CGSizeMake(frame.size.width, frame.size.height)
         
-        let menulayout = UICollectionViewFlowLayout()
-        menulayout.scrollDirection = .Horizontal
-        menulayout.minimumLineSpacing = 0.0
-        menulayout.minimumInteritemSpacing = 0.0
-        menulayout.itemSize = CGSizeMake(frame.size.width, frame.size.height)
+        collectionViewLayout = menuLayout
         
-        collectionViewLayout = menulayout
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeUI), name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UINeedChange), name: UIApplicationDidChangeStatusBarFrameNotification, object: nil)
         
         showsVerticalScrollIndicator = false
         showsHorizontalScrollIndicator = false
@@ -243,7 +398,7 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         
         line.backgroundColor=menuSelectColor
         line.frame=CGRectMake(0, frame.size.height-lineHeight, self.menuWidth*0.8, lineHeight);
-        line.center.x = frame.size.width/menuPageNum/2.0
+        line.center.x = frame.size.width/menuPageNum/2.0 + self.menuLayout.sectionInset.left
         addSubview(line)
         
         
@@ -281,13 +436,14 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        if mutableMenuWidth
+        if let size = menuWidthArr[indexPath]
         {
-            if let size = menuWidthArr[indexPath]
-            {
-                return size
-            }
-            else
+            return size
+        }
+        else
+        {
+            
+            if mutableMenuWidth
             {
                 let label = UILabel()
                 label.frame = CGRectMake(0,0,10,frame.size.height)
@@ -298,10 +454,14 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
                 
                 return size
             }
-        }
-        else
-        {
-            return CGSizeMake(menuWidth, frame.size.height)
+            else
+            {
+                let size = CGSizeMake(menuWidth, frame.size.height)
+                menuWidthArr[indexPath] = size
+                
+                return size
+            }
+            
         }
         
     }

@@ -348,6 +348,19 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         UIChanged = false
     }
     
+    var lineWidthScale:CGFloat = 0.8
+    {
+        didSet
+        {
+            if !mutableMenuWidth
+            {
+                line.frame.size.width = self.menuWidth*lineWidthScale
+                line.center.x = self.menuWidth*CGFloat(self.selectIndex)+self.menuWidth/2.0 + self.menuLayout.sectionInset.left
+            }
+            
+        }
+    }
+    
     func changeUI()
     {
         
@@ -361,7 +374,7 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
                 menuWidthArr[NSIndexPath.init(forRow: i, inSection: 0)] = CGSizeMake(menuWidth, frame.size.height)
             }
             
-            line.frame.size.width = self.menuWidth*0.8
+            line.frame.size.width = self.menuWidth*lineWidthScale
             line.center.x = self.menuWidth*CGFloat(self.selectIndex)+self.menuWidth/2.0 + self.menuLayout.sectionInset.left
             
             
@@ -397,7 +410,7 @@ class XHorizontalMenuView: UICollectionView,UICollectionViewDelegate,UICollectio
         dataSource = self
         
         line.backgroundColor=menuSelectColor
-        line.frame=CGRectMake(0, frame.size.height-lineHeight, self.menuWidth*0.8, lineHeight);
+        line.frame=CGRectMake(0, frame.size.height-lineHeight, self.menuWidth*lineWidthScale, lineHeight);
         line.center.x = frame.size.width/menuPageNum/2.0 + self.menuLayout.sectionInset.left
         addSubview(line)
         

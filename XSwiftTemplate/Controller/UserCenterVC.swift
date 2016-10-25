@@ -279,6 +279,14 @@ class UserCenterVC: UITableViewController {
             
             return
             
+        case 8:
+            
+            let vc = "GoodsCenterVC".VC("Jifen")
+            
+            vc.hidesBottomBarWhenPushed = true
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
         case 9:
             
             let vc = "MyCardVC".VC("User") as!  MyCardVC

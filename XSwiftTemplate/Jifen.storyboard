@@ -609,14 +609,16 @@
                                             <frame key="frameInset" width="375" height="152"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gyM-F7-nTU"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Bw-p2-6zY" customClass="XBanner" customModule="chengshi" customModuleProvider="target">
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="gyM-F7-nTU" secondAttribute="trailing" id="DWR-d7-j7o"/>
-                                                <constraint firstItem="gyM-F7-nTU" firstAttribute="leading" secondItem="pMW-1n-nvz" secondAttribute="leading" id="aAc-fC-Ro4"/>
-                                                <constraint firstItem="gyM-F7-nTU" firstAttribute="top" secondItem="pMW-1n-nvz" secondAttribute="top" id="l0k-ni-e75"/>
-                                                <constraint firstAttribute="bottom" secondItem="gyM-F7-nTU" secondAttribute="bottom" id="u6P-Ef-NsV"/>
+                                                <constraint firstItem="6Bw-p2-6zY" firstAttribute="top" secondItem="pMW-1n-nvz" secondAttribute="top" id="4rW-fh-VOE"/>
+                                                <constraint firstAttribute="trailing" secondItem="6Bw-p2-6zY" secondAttribute="trailing" id="M5o-Wz-vHP"/>
+                                                <constraint firstAttribute="bottom" secondItem="6Bw-p2-6zY" secondAttribute="bottom" id="Vfk-LM-qeI"/>
+                                                <constraint firstItem="6Bw-p2-6zY" firstAttribute="leading" secondItem="pMW-1n-nvz" secondAttribute="leading" id="fe0-Nx-i1Y"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -806,8 +808,8 @@
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
+                        <outlet property="banner" destination="6Bw-p2-6zY" id="uef-hp-i2a"/>
                         <outlet property="collect" destination="Ql5-1Z-QFm" id="CKF-EK-Ter"/>
-                        <outlet property="img" destination="gyM-F7-nTU" id="d8z-Bv-E31"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjb-LM-QYh" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -63,6 +63,7 @@ class XNavigationController: UINavigationController,UINavigationControllerDelega
 //        self.view.insertSubview(alphaView, belowSubview: self.navigationBar)
         
         recognizer = UIPanGestureRecognizer(target: self, action: #selector(paningGestureReceive(_:)))
+        //recognizer?.delegate = self
         recognizer?.delaysTouchesBegan
         self.view.addGestureRecognizer(recognizer!)
         
@@ -356,7 +357,7 @@ class XNavigationController: UINavigationController,UINavigationControllerDelega
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         
-        if(touch.view is XBanner)
+        if(touch.view is XBanner || touch.view is XHorizontalMainView || touch.view is XHorizontalMenuView)
         {
             return false
         }

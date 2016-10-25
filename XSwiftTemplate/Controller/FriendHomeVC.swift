@@ -31,7 +31,7 @@ class FriendHomeVC: XViewController ,UIScrollViewDelegate,XPhotoDelegate{
         childVC0 = self.childViewControllers[0] as! FrientVC
         childVC1 = self.childViewControllers[1] as! FriendNewsVC
         childVC0.table.scrollsToTop = true
-        childVC0.banner.scrollView.scrollsToTop = false
+        childVC0.banner.scrollsToTop = false
         childVC1.collectionView.scrollsToTop = false
         
         self.navigationController?.view.window?.addSubview(XPhotoChoose.Share())

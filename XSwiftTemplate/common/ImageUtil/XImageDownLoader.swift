@@ -35,6 +35,11 @@ class XImageDownLoader: NSOperation {
         }
         else
         {
+            if size?.width == 1.0 && size?.height == 1.0
+            {
+                return "\(self.url.hash)"
+            }
+            
             return "\(self.url.hash)\(Int(size!.width))\(Int(size!.height))"
         }
         
@@ -285,9 +290,14 @@ class XImageDownLoader: NSOperation {
         var data:NSData?
         var saveObj:AnyObject?
         
-        let size = view?.bounds.size
-        
         let b = XImageUtil.Share.memCache.objectForKey(key) == nil
+        var size = view?.bounds.size
+        if size?.width == 1.0 && size?.height == 1.0
+        {
+            size = nil
+        }
+        
+        print("size: \(size)")
         
         let type = ImageTypeForData(d)
         

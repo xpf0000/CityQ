@@ -16,7 +16,7 @@ class FrientVC: XViewController ,UITableViewDelegate,UITableViewDataSource,commo
     var baseW=swidth-62
     lazy var bannerArr:Array<XBannerModel> = []
     lazy var topModel:FriendTopModel = FriendTopModel()
-    var banner:XBanner = XBanner(frame: CGRectMake(0, 0, swidth, swidth / 16.0 * 6.0))
+    var banner:XBanner = XBanner(frame: CGRectMake(0, 0, swidth, swidth / 16.0 * 6.0), collectionViewLayout: UICollectionViewLayout())
     var xiaoquid = "0"
         {
             didSet
@@ -47,12 +47,12 @@ class FrientVC: XViewController ,UITableViewDelegate,UITableViewDataSource,commo
             {
                 let model:XBannerModel=XBannerModel()
                 model.obj = item["url"].stringValue
-                model.imageURL =  item["picurl"].stringValue
+                model.image =  item["picurl"].stringValue
                 self.bannerArr.append(model)
                 
             }
             
-            self.banner.arr = self.bannerArr
+            self.banner.bannerArr = self.bannerArr
             self.table.beginUpdates()
             self.table.endUpdates()
             
@@ -147,14 +147,13 @@ class FrientVC: XViewController ,UITableViewDelegate,UITableViewDataSource,commo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.banner.hiddenTitle = true
-        self.banner.page.removeConstraints(self.banner.page.constraints)
-        self.banner.page.snp_makeConstraints { (make) -> Void in
-            make.bottom.equalTo(-8.0)
-            make.centerX.equalTo(self.banner)
-        }
-        banner.page.pageIndicatorTintColor = UIColor.lightGrayColor()
-        banner.page.currentPageIndicatorTintColor = APPBlueColor
+//        self.banner.page.removeConstraints(self.banner.page.constraints)
+//        self.banner.page.snp_makeConstraints { (make) -> Void in
+//            make.bottom.equalTo(-8.0)
+//            make.centerX.equalTo(self.banner)
+//        }
+//        banner.page.pageIndicatorTintColor = UIColor.lightGrayColor()
+//        banner.page.currentPageIndicatorTintColor = APPBlueColor
         
         banner.click
             {

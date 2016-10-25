@@ -109,7 +109,6 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
                 {
                     self.block?(dic)
                 }
-                
             }
             catch
             {

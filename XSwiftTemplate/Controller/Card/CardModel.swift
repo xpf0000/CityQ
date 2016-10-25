@@ -24,6 +24,7 @@ class CardModel: Reflect {
     var hcmid = ""
     var cardnumber = ""
     var orvip = ""
+    var jifen = ""
 
 }
 

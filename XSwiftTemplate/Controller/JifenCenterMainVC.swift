@@ -13,7 +13,11 @@ class JifenCenterMainVC: UIViewController {
     
     @IBAction func leftClick(sender: UIButton) {
         
+        let vc = "GoodsCenterVC".VC("Jifen")
         
+        vc.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     

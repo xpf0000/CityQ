@@ -40,7 +40,8 @@ class MyMinePageVC: UIViewController {
         }
         
         menu.main = main
-        
+        menu.menuBGColor = "f6f6f6".color!
+        menu.lineWidthScale = 0.4
         menu.menuPageNum = 2.0
         menu.menuSelectColor = APPBlueColor
         
@@ -49,6 +50,10 @@ class MyMinePageVC: UIViewController {
         
         let m1 = XHorizontalMenuModel()
         m1.title = "资料"
+        
+        let vc = "MyMinePageRightVC".VC("User")
+        self.addChildViewController(vc)
+        m1.view = vc.view
         
         menu.menuArr = [m,m1]
         
@@ -63,6 +68,9 @@ class MyMinePageVC: UIViewController {
         header.layer.cornerRadius = header.frame.size.width * 0.5
         
     }
+    
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

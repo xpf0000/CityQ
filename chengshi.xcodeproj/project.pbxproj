@@ -32,6 +32,12 @@
 		17077C131CC2216100655363 /* shuifei.png in Resources */ = {isa = PBXBuildFile; fileRef = 17077C111CC2216100655363 /* shuifei.png */; };
 		17077C141CC2216100655363 /* tingche.png in Resources */ = {isa = PBXBuildFile; fileRef = 17077C121CC2216100655363 /* tingche.png */; };
 		17077C161CC230B200655363 /* PaymentInfoInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17077C151CC230B200655363 /* PaymentInfoInfoVC.swift */; };
+		170B78EC1DBF543B00700568 /* JifenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B78EB1DBF543B00700568 /* JifenModel.swift */; };
+		170B78EF1DBF549A00700568 /* MyJifenRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B78ED1DBF549A00700568 /* MyJifenRecordCell.swift */; };
+		170B78F01DBF549A00700568 /* MyJifenRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 170B78EE1DBF549A00700568 /* MyJifenRecordCell.xib */; };
+		170B78F21DBF562B00700568 /* CardJifenRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B78F11DBF562B00700568 /* CardJifenRecordVC.swift */; };
+		170B78F41DBF572300700568 /* CardRecordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B78F31DBF572300700568 /* CardRecordVC.swift */; };
+		170B78F71DBF5AE300700568 /* XBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B78F61DBF5AE300700568 /* XBanner.swift */; };
 		170C6B1D1C17F27B002D7406 /* FriendTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170C6B1B1C17F27B002D7406 /* FriendTopCell.swift */; };
 		170C6B1E1C17F27B002D7406 /* FriendTopCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 170C6B1C1C17F27B002D7406 /* FriendTopCell.xib */; };
 		170C6B201C180468002D7406 /* FriendMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170C6B1F1C180468002D7406 /* FriendMessageVC.swift */; };
@@ -183,6 +189,7 @@
 		1744CBC81C27CAEB009038EF /* AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1744CBC71C27CAEB009038EF /* AboutVC.swift */; };
 		174BBDAD1D59B27100F7553C /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 174BBDAC1D59B27100F7553C /* libresolv.tbd */; };
 		174E12241CCF7AAB00B89C49 /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 174E12231CCF7AAB00B89C49 /* UIImage+WebP.m */; };
+		175385881DBEF7EB001D2B89 /* MyMinePageRightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175385871DBEF7EB001D2B89 /* MyMinePageRightVC.swift */; };
 		175449CC1DB5C1C200DCBE77 /* address_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 175449C81DB5C1C200DCBE77 /* address_icon.png */; };
 		175449CD1DB5C1C200DCBE77 /* money_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 175449C91DB5C1C200DCBE77 /* money_icon.png */; };
 		175449CE1DB5C1C200DCBE77 /* tel_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 175449CA1DB5C1C200DCBE77 /* tel_icon.png */; };
@@ -211,7 +218,6 @@
 		17700A671BFDA18600F43B7D /* NewsListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17700A651BFDA18600F43B7D /* NewsListCell.xib */; };
 		17700A691BFDA22C00F43B7D /* HYQH.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17700A681BFDA22C00F43B7D /* HYQH.ttf */; };
 		17700A6B1BFDA3AC00F43B7D /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17700A6A1BFDA3AC00F43B7D /* NewsModel.swift */; };
-		17700A6E1BFDEBD900F43B7D /* XBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17700A6C1BFDEBD900F43B7D /* XBanner.swift */; };
 		1771B2881C2E576600A88E65 /* WelcomVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1771B2871C2E576600A88E65 /* WelcomVC.swift */; };
 		1771B2A31C2E591700A88E65 /* WelcomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1771B2A21C2E591700A88E65 /* WelcomeModel.swift */; };
 		1771B2A51C2E65C200A88E65 /* XBootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1771B2A41C2E65C200A88E65 /* XBootView.swift */; };
@@ -530,7 +536,6 @@
 		17C818271C44AD6F001DA70F /* BaiduMapAPI_Location.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C818241C44AD6F001DA70F /* BaiduMapAPI_Location.framework */; };
 		17C818281C44AD6F001DA70F /* BaiduMapAPI_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C818251C44AD6F001DA70F /* BaiduMapAPI_Search.framework */; };
 		17C8182B1C44B791001DA70F /* libUMessage_Sdk_1.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 17C818291C44B791001DA70F /* libUMessage_Sdk_1.2.3.a */; };
-		17C880CE1D24E918009FCC4B /* XBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C880CD1D24E918009FCC4B /* XBanner.xib */; };
 		17C880DB1D251CCC009FCC4B /* 960_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C880CF1D251CCC009FCC4B /* 960_1.jpg */; };
 		17C880DC1D251CCC009FCC4B /* 960_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C880D01D251CCC009FCC4B /* 960_2.jpg */; };
 		17C880DD1D251CCC009FCC4B /* 960_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17C880D11D251CCC009FCC4B /* 960_3.jpg */; };
@@ -836,6 +841,12 @@
 		17077C111CC2216100655363 /* shuifei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuifei.png; sourceTree = "<group>"; };
 		17077C121CC2216100655363 /* tingche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tingche.png; sourceTree = "<group>"; };
 		17077C151CC230B200655363 /* PaymentInfoInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentInfoInfoVC.swift; sourceTree = "<group>"; };
+		170B78EB1DBF543B00700568 /* JifenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JifenModel.swift; sourceTree = "<group>"; };
+		170B78ED1DBF549A00700568 /* MyJifenRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyJifenRecordCell.swift; sourceTree = "<group>"; };
+		170B78EE1DBF549A00700568 /* MyJifenRecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyJifenRecordCell.xib; sourceTree = "<group>"; };
+		170B78F11DBF562B00700568 /* CardJifenRecordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardJifenRecordVC.swift; path = XSwiftTemplate/Controller/CardJifenRecordVC.swift; sourceTree = SOURCE_ROOT; };
+		170B78F31DBF572300700568 /* CardRecordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardRecordVC.swift; path = XSwiftTemplate/Controller/CardRecordVC.swift; sourceTree = SOURCE_ROOT; };
+		170B78F61DBF5AE300700568 /* XBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBanner.swift; sourceTree = "<group>"; };
 		170C6B1B1C17F27B002D7406 /* FriendTopCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTopCell.swift; sourceTree = "<group>"; };
 		170C6B1C1C17F27B002D7406 /* FriendTopCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendTopCell.xib; sourceTree = "<group>"; };
 		170C6B1F1C180468002D7406 /* FriendMessageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendMessageVC.swift; sourceTree = "<group>"; };
@@ -988,6 +999,7 @@
 		174BBDAC1D59B27100F7553C /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		174E12221CCF7AAB00B89C49 /* UIImage+WebP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WebP.h"; sourceTree = "<group>"; };
 		174E12231CCF7AAB00B89C49 /* UIImage+WebP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WebP.m"; sourceTree = "<group>"; };
+		175385871DBEF7EB001D2B89 /* MyMinePageRightVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMinePageRightVC.swift; sourceTree = "<group>"; };
 		175449C81DB5C1C200DCBE77 /* address_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = address_icon.png; sourceTree = "<group>"; };
 		175449C91DB5C1C200DCBE77 /* money_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money_icon.png; sourceTree = "<group>"; };
 		175449CA1DB5C1C200DCBE77 /* tel_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tel_icon.png; sourceTree = "<group>"; };
@@ -1017,7 +1029,6 @@
 		17700A651BFDA18600F43B7D /* NewsListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsListCell.xib; sourceTree = "<group>"; };
 		17700A681BFDA22C00F43B7D /* HYQH.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HYQH.ttf; sourceTree = "<group>"; };
 		17700A6A1BFDA3AC00F43B7D /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
-		17700A6C1BFDEBD900F43B7D /* XBanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBanner.swift; sourceTree = "<group>"; };
 		1771B2871C2E576600A88E65 /* WelcomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomVC.swift; sourceTree = "<group>"; };
 		1771B2A21C2E591700A88E65 /* WelcomeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeModel.swift; sourceTree = "<group>"; };
 		1771B2A41C2E65C200A88E65 /* XBootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XBootView.swift; sourceTree = "<group>"; };
@@ -1343,7 +1354,6 @@
 		17C818251C44AD6F001DA70F /* BaiduMapAPI_Search.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = BaiduMapAPI_Search.framework; sourceTree = "<group>"; };
 		17C818291C44B791001DA70F /* libUMessage_Sdk_1.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMessage_Sdk_1.2.3.a; sourceTree = "<group>"; };
 		17C8182A1C44B791001DA70F /* UMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMessage.h; sourceTree = "<group>"; };
-		17C880CD1D24E918009FCC4B /* XBanner.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBanner.xib; sourceTree = "<group>"; };
 		17C880CF1D251CCC009FCC4B /* 960_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 960_1.jpg; sourceTree = "<group>"; };
 		17C880D01D251CCC009FCC4B /* 960_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 960_2.jpg; sourceTree = "<group>"; };
 		17C880D11D251CCC009FCC4B /* 960_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 960_3.jpg; sourceTree = "<group>"; };
@@ -1744,8 +1754,17 @@
 				177E86B81D16CBEE00EE20CF /* MyCardVC.swift */,
 				17DBB58F1D192AED0090677D /* MyWalletVC.swift */,
 				17D5DD9B1DBE0A9A00A5458C /* MyMinePageVC.swift */,
+				175385871DBEF7EB001D2B89 /* MyMinePageRightVC.swift */,
 			);
 			name = User;
+			sourceTree = "<group>";
+		};
+		170B78F51DBF5AE300700568 /* XBanner */ = {
+			isa = PBXGroup;
+			children = (
+				170B78F61DBF5AE300700568 /* XBanner.swift */,
+			);
+			path = XBanner;
 			sourceTree = "<group>";
 		};
 		171A88A81C3E399F00F303F6 /* OA */ = {
@@ -2023,6 +2042,8 @@
 				177E86AF1D16CBAD00EE20CF /* MyMessageInfoCell.xib */,
 				17DBB5911D192B270090677D /* MyWalletCell.swift */,
 				17DBB5921D192B270090677D /* MyWalletCell.xib */,
+				170B78ED1DBF549A00700568 /* MyJifenRecordCell.swift */,
+				170B78EE1DBF549A00700568 /* MyJifenRecordCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -2032,6 +2053,7 @@
 			children = (
 				177E86B21D16CBBE00EE20CF /* MessageModel.swift */,
 				17DBB5951D192DAD0090677D /* WalletModel.swift */,
+				170B78EB1DBF543B00700568 /* JifenModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -2059,6 +2081,8 @@
 				17A433C41D211AAA00FB2876 /* CardSearchVC.swift */,
 				177E86C81D16CCB900EE20CF /* CardInfoVC.swift */,
 				177E86CA1D16CCC300EE20CF /* CardGetedInfoVC.swift */,
+				170B78F11DBF562B00700568 /* CardJifenRecordVC.swift */,
+				170B78F31DBF572300700568 /* CardRecordVC.swift */,
 				177E86CE1D16CCD700EE20CF /* CardShopsInfoVC.swift */,
 				177E86D01D16CCDE00EE20CF /* CardShopsCardVC.swift */,
 				177E86D21D16CCE500EE20CF /* CardShopsActivitysVC.swift */,
@@ -2786,6 +2810,7 @@
 		17E85D721BFD550C00AC0FC9 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				170B78F51DBF5AE300700568 /* XBanner */,
 				174BBD9F1D59B20200F7553C /* OneSDK */,
 				177E86A01D16C98200EE20CF /* XDownLoad */,
 				177E869D1D16C96400EE20CF /* Regex */,
@@ -3030,8 +3055,6 @@
 				17E85D8F1BFD550C00AC0FC9 /* XActivityView.swift */,
 				17E85D901BFD550C00AC0FC9 /* XAlertView.swift */,
 				1703B7351C0951F100858FD2 /* XProgressView.swift */,
-				17700A6C1BFDEBD900F43B7D /* XBanner.swift */,
-				17C880CD1D24E918009FCC4B /* XBanner.xib */,
 				17E85E8A1BFD6B9300AC0FC9 /* XBuyNumView.swift */,
 				17E85E8B1BFD6B9300AC0FC9 /* XBuyNumView.xib */,
 				176F26AC1BFFFA3800C8F277 /* HtmlView.swift */,
@@ -3552,6 +3575,7 @@
 				1760A6D11D1FBBF0001F8B41 /* news_collect_s2@2x.png in Resources */,
 				177E87D31D16CD9400EE20CF /* card_money@2x.png in Resources */,
 				177E87DA1D16CD9400EE20CF /* del_icon.png in Resources */,
+				170B78F01DBF549A00700568 /* MyJifenRecordCell.xib in Resources */,
 				177E88B91D16D0E300EE20CF /* tarbar0_selected@3x.png in Resources */,
 				177E88341D16CD9400EE20CF /* search@3x.png in Resources */,
 				17DBB5941D192B270090677D /* MyWalletCell.xib in Resources */,
@@ -3700,7 +3724,6 @@
 				17F710EB1C5874BC0080E6F7 /* Resource.bundle in Resources */,
 				17C880DD1D251CCC009FCC4B /* 960_3.jpg in Resources */,
 				177E87F11D16CD9400EE20CF /* more@3x.png in Resources */,
-				17C880CE1D24E918009FCC4B /* XBanner.xib in Resources */,
 				177E88531D16CD9400EE20CF /* heart_icon02.png in Resources */,
 				177E88751D16CD9400EE20CF /* ture_icon.png in Resources */,
 				172BEBF71C0594110005E24D /* Friend.storyboard in Resources */,
@@ -3873,8 +3896,10 @@
 				177E86B01D16CBAD00EE20CF /* MyMessageInfoCell.swift in Sources */,
 				1726F47E1BCBA9B5000482E2 /* ForumListModel.swift in Sources */,
 				17F127731C40A58800447CE5 /* OADocInfoVC.swift in Sources */,
+				170B78F41DBF572300700568 /* CardRecordVC.swift in Sources */,
 				17FDBB8B1C06DF98006F04BF /* XPhotoChoose.swift in Sources */,
 				17E85E131BFD550C00AC0FC9 /* NatGeoAnimation.swift in Sources */,
+				170B78F71DBF5AE300700568 /* XBanner.swift in Sources */,
 				17F203601C23A516000D1B4B /* NVActivityIndicatorAnimationLineScalePulseOut.swift in Sources */,
 				177E865E1D16C88500EE20CF /* XCollectionView.swift in Sources */,
 				17F22A801C5CA02600836059 /* OAFileModel.swift in Sources */,
@@ -3905,6 +3930,7 @@
 				17ECF9CE1C07DAAD001243E4 /* AGIPCGridItem.m in Sources */,
 				17E85E561BFD550C00AC0FC9 /* XOC.m in Sources */,
 				17E85E0E1BFD550C00AC0FC9 /* FlipAnimation.swift in Sources */,
+				170B78EF1DBF549A00700568 /* MyJifenRecordCell.swift in Sources */,
 				17BDF1261C0AEB9400B922D8 /* BandPhoneVC.swift in Sources */,
 				17F2035C1C23A516000D1B4B /* NVActivityIndicatorAnimationBlank.swift in Sources */,
 				17F203641C23A516000D1B4B /* NVActivityIndicatorAnimationSemiCircleSpin.swift in Sources */,
@@ -3950,10 +3976,10 @@
 				17E3A33E1C22473E0029D0B1 /* FriendInfoCommentCell.swift in Sources */,
 				172F22771DBB473D003EBFB3 /* UITableViewCell.swift in Sources */,
 				173E6B851C02FD85008B14A8 /* PhoneInfoVC.swift in Sources */,
-				17700A6E1BFDEBD900F43B7D /* XBanner.swift in Sources */,
 				178186DD1CE57F9B0030837A /* Debugging.swift in Sources */,
 				17ECF9D21C07DAAD001243E4 /* ALAsset+AGIPC.m in Sources */,
 				17F127711C40A52400447CE5 /* OADocModel.swift in Sources */,
+				170B78F21DBF562B00700568 /* CardJifenRecordVC.swift in Sources */,
 				177E86C71D16CCB000EE20CF /* CardIndexVC.swift in Sources */,
 				17CE91201BD0818D004E0A53 /* ForumInfoModel.swift in Sources */,
 				171A890C1C3E4CD400F303F6 /* OAMessageModel.swift in Sources */,
@@ -3982,9 +4008,11 @@
 				17F203511C23A516000D1B4B /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 				171A89161C3E6FAB00F303F6 /* OAAddressBookVC.swift in Sources */,
 				17F203551C23A516000D1B4B /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
+				170B78EC1DBF543B00700568 /* JifenModel.swift in Sources */,
 				17E85E591BFD550C00AC0FC9 /* UIString.swift in Sources */,
 				17F203521C23A516000D1B4B /* NVActivityIndicatorAnimationBallRotate.swift in Sources */,
 				17F2035E1C23A516000D1B4B /* NVActivityIndicatorAnimationLineScale.swift in Sources */,
+				175385881DBEF7EB001D2B89 /* MyMinePageRightVC.swift in Sources */,
 				17E2E9641BCDE13900A3A3EB /* ForumColumnModel.swift in Sources */,
 				173E6B991C0304F7008B14A8 /* DiscountClassCell.swift in Sources */,
 				17077C0C1CC1C6BB00655363 /* PropertyCheckPhoneVC.swift in Sources */,

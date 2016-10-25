@@ -1,5 +1,5 @@
 //
-//  MyWalletVC.swift
+//  CardJifenRecordVC.swift
 //  chengshi
 //
 //  Created by X on 16/6/21.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class MyWalletVC: UIViewController {
-
+class CardJifenRecordVC: UIViewController {
+    
     let table = XTableView()
     
     var id = "0"
@@ -29,23 +29,21 @@ class MyWalletVC: UIViewController {
         self.view.addSubview(table)
         
         
-        let url = APPURL + "Public/Found/?service=Hyk.getUserMoneys&username=\(Uname)&page=[page]&perNumber=20&id=\(id)"
+        let url = APPURL + "Public/Found/?service=hyk.getCardjf&username=\(Uname)&page=[page]&perNumber=20&id=\(id)"
         
         table.frame = CGRectMake(0, 0, swidth, sheight-64.0)
         
-        table.registerNib("MyWalletCell".Nib, forCellReuseIdentifier: "MyWalletCell")
-        
-        table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: WalletModel.self, CellIdentifier: "MyWalletCell")
+        table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: JifenRecordModel.self, CellIdentifier: "MyJifenRecordCell")
         
         table.show()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
         
         
     }
-
+    
 }

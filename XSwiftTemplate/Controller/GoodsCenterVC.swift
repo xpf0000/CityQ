@@ -9,8 +9,9 @@
 import UIKit
 
 class GoodsCenterVC: UITableViewController {
-
-    @IBOutlet var img: UIImageView!
+    
+    
+    @IBOutlet var banner: XBanner!
     
     @IBOutlet var collect: XCollectionView!
     
@@ -27,6 +28,13 @@ class GoodsCenterVC: UITableViewController {
     
     var harr:[CGFloat] = [swidth*9.0/16.0,48.0,12,44,100]
     
+    
+    func getBanner()
+    {
+        
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

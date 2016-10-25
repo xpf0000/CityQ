@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
+class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDelegate    {
     
     @IBOutlet var table: UITableView!
     
@@ -68,7 +68,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
     
     
     
-    var harr:[CGFloat] = [160,42.0,42.0,15,42.0,42,42,15,42,128,100]
+    var harr:[CGFloat] = [160,42.0,42.0,10,42.0,42,42,10,42,128,100]
     
     var model:CardModel!
     {
@@ -105,16 +105,17 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
         switch model.type {
         case "计次卡":
             ""
-            str = "剩余次数: "+model.values
+            str = "剩余次数: "+model.values+"\r\n当前积分: "+model.jifen
         case "打折卡":
             ""
-            str = "折扣: "+model.values
+            str = "当前折扣: "+model.values+"\r\n当前积分: "+model.jifen
         case "充值卡":
             ""
-            str = "剩余金额: "+model.values
+            str = "剩余金额: ￥"+model.values+"\r\n当前积分: "+model.jifen
         case "积分卡":
             ""
-            str = "剩余积分: "+model.values+"\r\n当前积分: "+model.values
+            str = "当前积分: "+model.values
+            
         default:
             ""
         }
@@ -126,12 +127,35 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
        
         phone.text = model.tel
         address.text = model.address
+       
         
-        yue.text = str
+        let rang=(str as NSString).rangeOfString("\(model.jifen)", options: NSStringCompareOptions.BackwardsSearch)
+        
+        let rang1=(str as NSString).rangeOfString("\(model.values)")
+        
+        let attributedString1 = NSMutableAttributedString(string: str)
+        let paragraphStyle1:NSMutableParagraphStyle = NSMutableParagraphStyle()
+        paragraphStyle1.lineSpacing = 3.0
+        
+        attributedString1.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle1, range: NSMakeRange(0, str.length()))
+        
+        attributedString1.addAttribute(NSForegroundColorAttributeName, value: APPBlueColor, range: rang)
+        attributedString1.addAttribute(NSForegroundColorAttributeName, value: APPBlueColor, range: rang1)
+        
+        if model.type == "充值卡"
+        {
+            let rang2=(str as NSString).rangeOfString("￥")
+            attributedString1.addAttribute(NSForegroundColorAttributeName, value: APPBlueColor, range: rang2)
+        }
+        
+        yue.attributedText = attributedString1
+        yue.layoutIfNeeded()
+        
+        //yue.text = str
         
         imgBG.backgroundColor = model.color.color
         
-        model.info = BaseHtml.replace("[XHTMLX]", with: model.info)
+        model.info = BaseHtml.replace("[XHTMLX]", with: model.info).replace("#FFFFFF", with: "#F3F5F7")
         
         web.loadHTMLString(model.info, baseURL: nil)
         
@@ -153,16 +177,16 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
         
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    func webViewDidFinishLoad(webView: UIWebView) {
         
-        if(keyPath == "contentSize")
-        {
-            harr[9] = web.scrollView.contentSize.height
-            web.layoutIfNeeded()
-            web.setNeedsLayout()
-            web.scrollView.scrollEnabled = false
-            table.reloadData()
-        }
+        webView.frame.size.height = 1
+        let size = webView.sizeThatFits(CGSizeZero)
+        
+        harr[9] = size.height
+        web.layoutIfNeeded()
+        web.setNeedsLayout()
+        web.scrollView.scrollEnabled = false
+        table.reloadData()
         
     }
     
@@ -179,7 +203,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
         web.scrollView.showsHorizontalScrollIndicator = false
         web.scrollView.showsVerticalScrollIndicator = false
         
-        web.scrollView.addObserver(self, forKeyPath: "contentSize", options: .New, context: nil)
+        web.delegate = self
         
         let n = 10.0 * screenFlag
         
@@ -207,7 +231,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if(indexPath.row < 8)
+        if(indexPath.row < 9)
         {
             cell.separatorInset=UIEdgeInsetsMake(0, 0, 0, 0)
             if(IOS_Version>=8.0)
@@ -260,10 +284,9 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
         
         if indexPath.row == 1
         {
-            let vc:MyWalletVC = MyWalletVC()
+            let vc:CardRecordVC = "CardRecordVC".VC("Card") as! CardRecordVC
             vc.id = model.id
             vc.hidesBottomBarWhenPushed = true
-            vc.ctitle = "消费详情"
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -285,7 +308,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate {
     
     deinit
     {
-        web.scrollView.removeObserver(self, forKeyPath: "contentSize")
+        
         //print("CardGetedInfoVC deinit !!!!!!!!!!")
     }
     

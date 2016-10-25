@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 import ImageIO
 
-var testD:XImageDownLoader?
-
 class XImgProgressModel: NSObject {
     
     weak var imgView:UIImageView?
@@ -41,6 +39,8 @@ private var XImageControllBtnKey:CChar = 0
 private var XImageGroupDelegateKey:CChar = 0
 private var XImageIsGroupKey:CChar = 0
 private var XImageHasLayouted:CChar = 0
+
+private var XImageUseAnimationKey:CChar = 0
 
 let IOQueue:dispatch_queue_t = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 
@@ -124,6 +124,23 @@ extension UIImageView
                 self.btnLabelHidden(true)
             }
             
+        }
+    }
+    
+    var useAnimation:Bool
+        {
+        get
+        {
+            let r = objc_getAssociatedObject(self, &XImageUseAnimationKey) as? Bool
+            
+            return r == nil ? true : r!
+        }
+        set {
+            
+            self.willChangeValueForKey("XImageUseAnimationKey")
+            objc_setAssociatedObject(self, &XImageUseAnimationKey, newValue,
+                                     .OBJC_ASSOCIATION_RETAIN)
+            self.didChangeValueForKey("XImageUseAnimationKey")
         }
     }
     
@@ -242,7 +259,7 @@ extension UIImageView
             self.clipsToBounds = true
             self.layer.masksToBounds = true
             self.image = placeholder
-            self.contentMode = .ScaleAspectFill
+            
             
             self.progressLayer?.removeFromSuperlayer()
             self.progressLayer?.strokeEnd = 0.0
@@ -329,11 +346,15 @@ extension UIImageView
                 if image != nil
                 {
                     self?.image = image
-                    self?.alpha = 0.0
                     
-                    UIView.animateWithDuration(0.2, animations: { () -> Void in
-                        self?.alpha = 1.0
-                    })
+                    if self?.useAnimation == true
+                    {
+                        self?.alpha = 0.0
+                        UIView.animateWithDuration(0.2, animations: { () -> Void in
+                            self?.alpha = 1.0
+                        })
+                    }
+                    
                     
                     if self?.isGroup == true
                     {

@@ -10,7 +10,7 @@ import UIKit
 
 class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
 
-    var banner:XBanner = XBanner(frame: CGRectMake(0, 0, swidth, swidth * 433.0 / 750.0 * screenFlag))
+    var banner:XBanner = XBanner(frame: CGRectMake(0, 0, swidth, swidth * 433.0 / 750.0 * screenFlag), collectionViewLayout: UICollectionViewLayout())
     
     var httpHandle:XHttpHandle=XHttpHandle()
     
@@ -201,7 +201,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
             for item in o!["data"]["info"].arrayValue
             {
                 let model:XBannerModel=XBannerModel()
-                model.imageURL =  item["picurl"].stringValue
+                model.image =  item["picurl"].stringValue
                 model.title=item["title"].stringValue
                 
                 let m = NewsModel()
@@ -215,7 +215,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
                 
             }
             
-            self.banner.arr = self.bannerArr
+            self.banner.bannerArr = self.bannerArr
             self.beginUpdates()
             self.endUpdates()
             

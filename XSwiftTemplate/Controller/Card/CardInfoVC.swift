@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardInfoVC: UITableViewController ,UIActionSheetDelegate {
+class CardInfoVC: UITableViewController ,UIActionSheetDelegate,UIWebViewDelegate {
 
     @IBOutlet var imgBG: UIView!
     
@@ -34,8 +34,10 @@ class CardInfoVC: UITableViewController ,UIActionSheetDelegate {
     
     var block:XNoBlock?
     
+    @IBOutlet var addressCell: UITableViewCell!
     
-    @IBAction func callPhone(sender: AnyObject) {
+    
+    func callPhone() {
         
         if(self.model.tel == "")
         {
@@ -71,7 +73,7 @@ class CardInfoVC: UITableViewController ,UIActionSheetDelegate {
         self.block = b
     }
     
-    var harr:[CGFloat] = [133*screenFlag,42*screenFlag,42*screenFlag,42*screenFlag,12*screenFlag,42*screenFlag,128,100]
+    var harr:[CGFloat] = [140*screenFlag,42,42,42,10,42,128,100]
     
     private var model:CardModel!
     {
@@ -115,6 +117,14 @@ class CardInfoVC: UITableViewController ,UIActionSheetDelegate {
         
         phone.text = model.tel
         address.text = model.address
+        
+        
+        var h1 = addressCell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
+        h1 = max(h1, 42.0)
+        
+        harr[3] = h1
+
+        
         
         let (r,g,b) = model.color.color!.getRGB()
         
@@ -192,29 +202,31 @@ class CardInfoVC: UITableViewController ,UIActionSheetDelegate {
         
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    func webViewDidFinishLoad(webView: UIWebView) {
         
-        if(keyPath == "contentSize")
-        {
-            harr[6] = web.scrollView.contentSize.height
-            web.layoutIfNeeded()
-            web.setNeedsLayout()
-            web.scrollView.scrollEnabled = false
-            table.reloadData()
-        }
+        webView.frame.size.height = 1
+        let size = webView.sizeThatFits(CGSizeZero)
+        
+        harr[6] = size.height
+        web.layoutIfNeeded()
+        web.setNeedsLayout()
+        web.scrollView.scrollEnabled = false
+        table.reloadData()
         
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "会员卡详情"
         self.addBackButton()
         
+        address.preferredMaxLayoutWidth = swidth - 105
+        
         web.scrollView.showsHorizontalScrollIndicator = false
         web.scrollView.showsVerticalScrollIndicator = false
         
-        web.scrollView.addObserver(self, forKeyPath: "contentSize", options: .New, context: nil)
+        web.delegate = self
         
         let n = 8.0 * screenFlag
         
@@ -305,6 +317,12 @@ class CardInfoVC: UITableViewController ,UIActionSheetDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
+        if indexPath.row == 2
+        {
+            callPhone()
+        }
+
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -315,7 +333,6 @@ class CardInfoVC: UITableViewController ,UIActionSheetDelegate {
 
     deinit
     {
-        web.scrollView.removeObserver(self, forKeyPath: "contentSize")
         //print("CardInfoVC deinit !!!!!!!!")
     }
 

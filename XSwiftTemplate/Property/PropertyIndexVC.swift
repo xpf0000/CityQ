@@ -15,7 +15,7 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
     var picArr=["wuye_index_3.png","wuye_index_0.png","wuye_index_1.png","wuye_index_2.png","wuye_index_5.png"]
     var txtArr=["房屋信息","小区公告","物业缴费","物业报修","电话黄页"]
     
-    var banner:XBanner = XBanner(frame: CGRectMake(0, 0, swidth, swidth / 16.0 * 6.0))
+    var banner:XBanner = XBanner(frame: CGRectMake(0, 0, swidth, swidth / 16.0 * 6.0), collectionViewLayout: UICollectionViewLayout())
     
     let num=UIButton(type: .Custom)
     
@@ -74,12 +74,12 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
             {
                 let model:XBannerModel=XBannerModel()
                 model.obj = item["url"].stringValue
-                model.imageURL =  item["picurl"].stringValue
+                model.image =  item["picurl"].stringValue
                 bannerArr.append(model)
                 
             }
             
-            self.banner.arr = bannerArr
+            self.banner.bannerArr = bannerArr
             //self.table.beginUpdates()
             //self.table.endUpdates()
             
@@ -90,16 +90,15 @@ class PropertyIndexVC: XViewController,UICollectionViewDataSource,UICollectionVi
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.whiteColor()
         
-        self.banner.AutoScroll=true
-        self.banner.scrollTime = 5.0
-        self.banner.hiddenTitle = true
-        self.banner.page.removeConstraints(self.banner.page.constraints)
-        self.banner.page.snp_makeConstraints { (make) -> Void in
-            make.bottom.equalTo(-8.0)
-            make.centerX.equalTo(self.banner)
-        }
-        banner.page.pageIndicatorTintColor = UIColor.lightGrayColor()
-        banner.page.currentPageIndicatorTintColor = APPBlueColor
+        self.banner.scrollInterval = 5.0
+//        self.banner.hiddenTitle = true
+//        self.banner.page.removeConstraints(self.banner.page.constraints)
+//        self.banner.page.snp_makeConstraints { (make) -> Void in
+//            make.bottom.equalTo(-8.0)
+//            make.centerX.equalTo(self.banner)
+//        }
+//        banner.page.pageIndicatorTintColor = UIColor.lightGrayColor()
+//        banner.page.currentPageIndicatorTintColor = APPBlueColor
         
         banner.click
             {

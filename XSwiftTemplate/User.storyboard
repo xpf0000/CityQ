@@ -2593,6 +2593,97 @@
             </objects>
             <point key="canvasLocation" x="-2903.1999999999998" y="3706.5967016491759"/>
         </scene>
+        <!--My Mine Page RightVC-->
+        <scene sceneID="OM9-xd-NbN">
+            <objects>
+                <viewController storyboardIdentifier="MyMinePageRightVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FGy-bP-iRB" customClass="MyMinePageRightVC" customModule="chengshi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZGj-ee-4cz"/>
+                        <viewControllerLayoutGuide type="bottom" id="9zm-fG-uzb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kid-aP-UbN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkP-T6-8a1">
+                                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="qdW-IT-bfO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="资料编辑">
+                                    <color key="titleColor" red="0.12941176469999999" green="0.67843137249999996" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="btnClick:" destination="FGy-bP-iRB" eventType="touchUpInside" id="wUj-YQ-zYy"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YGG-wa-9Rm">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.12941176469999999" green="0.67843137249999996" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="女" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLg-kE-qhY">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="生日" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKk-HJ-Rgl">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.12941176469999999" green="0.67843137249999996" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1995-03-04" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUX-BK-ZrG">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电话" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOS-1M-N1c">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.12941176469999999" green="0.67843137249999996" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="135****4545" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dN-UY-g4x">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="fLg-kE-qhY" secondAttribute="trailing" id="8MK-M2-m54"/>
+                            <constraint firstItem="fLg-kE-qhY" firstAttribute="centerY" secondItem="YGG-wa-9Rm" secondAttribute="centerY" id="BWH-Td-wJi"/>
+                            <constraint firstItem="YGG-wa-9Rm" firstAttribute="width" secondItem="Kid-aP-UbN" secondAttribute="width" multiplier="0.3" id="GZM-ui-JwU"/>
+                            <constraint firstItem="jOS-1M-N1c" firstAttribute="width" secondItem="GKk-HJ-Rgl" secondAttribute="width" id="Imk-Ue-K2Y"/>
+                            <constraint firstItem="jOS-1M-N1c" firstAttribute="top" secondItem="GKk-HJ-Rgl" secondAttribute="bottom" constant="20" id="VYV-VC-qrb"/>
+                            <constraint firstItem="9zm-fG-uzb" firstAttribute="top" secondItem="mkP-T6-8a1" secondAttribute="bottom" id="XmN-iK-RQn"/>
+                            <constraint firstItem="9dN-UY-g4x" firstAttribute="centerY" secondItem="jOS-1M-N1c" secondAttribute="centerY" id="YZu-cb-1Hl"/>
+                            <constraint firstItem="9dN-UY-g4x" firstAttribute="leading" secondItem="fLg-kE-qhY" secondAttribute="leading" id="Zsi-GX-kkG"/>
+                            <constraint firstItem="GKk-HJ-Rgl" firstAttribute="width" secondItem="YGG-wa-9Rm" secondAttribute="width" id="a0J-aV-j12"/>
+                            <constraint firstItem="GKk-HJ-Rgl" firstAttribute="leading" secondItem="Kid-aP-UbN" secondAttribute="leading" id="bHK-cc-eKR"/>
+                            <constraint firstItem="jOS-1M-N1c" firstAttribute="leading" secondItem="Kid-aP-UbN" secondAttribute="leading" id="eL8-hd-Gbq"/>
+                            <constraint firstItem="YGG-wa-9Rm" firstAttribute="top" secondItem="Kid-aP-UbN" secondAttribute="top" constant="20" id="f9w-OQ-gEY"/>
+                            <constraint firstItem="GKk-HJ-Rgl" firstAttribute="top" secondItem="YGG-wa-9Rm" secondAttribute="bottom" constant="20" id="lA6-kw-dZu"/>
+                            <constraint firstItem="YGG-wa-9Rm" firstAttribute="leading" secondItem="Kid-aP-UbN" secondAttribute="leading" id="lQX-hy-ZHw"/>
+                            <constraint firstItem="mkP-T6-8a1" firstAttribute="leading" secondItem="Kid-aP-UbN" secondAttribute="leading" id="nDf-cD-Syi"/>
+                            <constraint firstItem="LUX-BK-ZrG" firstAttribute="centerY" secondItem="GKk-HJ-Rgl" secondAttribute="centerY" id="qIQ-3b-0p8"/>
+                            <constraint firstItem="LUX-BK-ZrG" firstAttribute="leading" secondItem="fLg-kE-qhY" secondAttribute="leading" id="riO-4V-51M"/>
+                            <constraint firstAttribute="trailing" secondItem="LUX-BK-ZrG" secondAttribute="trailing" id="s0z-tC-fr8"/>
+                            <constraint firstAttribute="trailing" secondItem="9dN-UY-g4x" secondAttribute="trailing" id="suN-DV-Y5e"/>
+                            <constraint firstItem="fLg-kE-qhY" firstAttribute="width" secondItem="Kid-aP-UbN" secondAttribute="width" multiplier="0.5" id="y3l-nn-f0p"/>
+                            <constraint firstAttribute="trailing" secondItem="mkP-T6-8a1" secondAttribute="trailing" id="z4C-dK-kOg"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="birthday" destination="LUX-BK-ZrG" id="VNA-mw-fCg"/>
+                        <outlet property="sex" destination="fLg-kE-qhY" id="Za9-Ah-fAJ"/>
+                        <outlet property="tel" destination="9dN-UY-g4x" id="4uC-FC-t9P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ufb-hy-FFx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2247.1999999999998" y="3706.5967016491759"/>
+        </scene>
     </scenes>
     <resources>
         <image name="go_arrow_icon.png" width="54" height="54"/>

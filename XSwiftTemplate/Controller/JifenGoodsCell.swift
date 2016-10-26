@@ -16,6 +16,8 @@ class JifenGoodsCell: UICollectionViewCell {
     
     @IBOutlet var price: UILabel!
     
+    var type = 0
+    
     var model:GoodsModel?
     {
         didSet
@@ -25,6 +27,11 @@ class JifenGoodsCell: UICollectionViewCell {
             if let str = model?.hfb
             {
                 price.text = str+"怀府币"
+            }
+            
+            if type > 0
+            {
+                price.textColor = "F45C2B".color
             }
             
         }

@@ -11,6 +11,7 @@ import UIKit
 class XCollectionView: UICollectionView,UICollectionViewDelegate,UICollectionViewDataSource {
     
     let httpHandle:XHttpHandle=XHttpHandle()
+    var postDict:[String:AnyObject]=[:]
     
     var CellIdentifier:String = ""
         {
@@ -131,6 +132,11 @@ class XCollectionView: UICollectionView,UICollectionViewDelegate,UICollectionVie
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdentifier, forIndexPath: indexPath)
         
         let model = httpHandle.listArr[indexPath.row]
+        
+        for (key,val) in self.postDict
+        {
+            cell.setValue(val, forKey: key)
+        }
         
         cell.setValue(model, forKey: "model")
         

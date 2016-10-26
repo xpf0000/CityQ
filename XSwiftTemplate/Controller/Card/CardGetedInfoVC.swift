@@ -36,6 +36,27 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
     
     
     
+    @IBAction func doChongzhi(sender: AnyObject) {
+        
+        if model.type == "充值卡"
+        {
+            let vc:CardChongzhiVC = "CardChongzhiVC".VC("Card") as! CardChongzhiVC
+            vc.model = model
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        else
+        {
+            let vc:CardTimesChongzhiVC = "CardTimesChongzhiVC".VC("Card") as! CardTimesChongzhiVC
+            vc.model = model
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        
+        
+    }
+    
     
     @IBAction func callPhone(sender: AnyObject) {
         if(self.model.tel == "")
@@ -108,12 +129,14 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
             str = "剩余次数: "+model.values+"\r\n当前积分: "+model.jifen
         case "打折卡":
             ""
+            harr[10] = 0.0
             str = "当前折扣: "+model.values+"\r\n当前积分: "+model.jifen
         case "充值卡":
             ""
             str = "剩余金额: ￥"+model.values+"\r\n当前积分: "+model.jifen
         case "积分卡":
             ""
+            harr[10] = 0.0
             str = "当前积分: "+model.values
             
         default:

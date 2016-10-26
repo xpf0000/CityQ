@@ -55,6 +55,14 @@ class MyMinePageVC: UIViewController {
         self.addChildViewController(vc)
         m1.view = vc.view
         
+        
+        let vc1 = "FriendMineListVC".VC("Friend")
+        self.addChildViewController(vc1)
+        m.view = vc1.view
+        
+        
+        
+        
         menu.menuArr = [m,m1]
         
 

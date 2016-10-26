@@ -89,49 +89,40 @@ class HomeVC: UIViewController {
         
     }
     
-    var bview:UIView?
-    
-    func changeBadgeSize(v:UIView)
-    {
-        if bview != nil
-        {
-            return
-        }
-        
-        let s = "\(v)"
-        
-        if s.has("_UIBadgeView")
-        {
-            v.center = CGPointMake(v.center.x-20.0, v.center.y)
-            v.backgroundColor = UIColor.clearColor()
-            v.layer.backgroundColor = UIColor.clearColor().CGColor
-            v.removeAllSubViews()
-            
-            bview = UIView()
-            bview?.backgroundColor = "FF3B30".color
-            bview?.frame = CGRectMake(2, 1, 12.0, 12.0)
-            bview?.layer.masksToBounds = true
-            bview?.layer.cornerRadius = 6.0
-            
-            v.addSubview(bview!)
-            
-        }
-        
-
-        for item in v.subviews
-        {
-            //print(item)
-            if item.subviews.count > 0
-            {
-                changeBadgeSize(item)
-            }
-        }
-        
-    }
-    
     func msgCountChange()
     {
-        bview?.hidden = UMsgCount == nil
+        if let item = self.tabBarController?.tabBar.items?[4]
+        {
+            if screenScale == 3.0
+            {
+                if UMsgCount != nil
+                {
+                    item.image="tarbar4_1@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                    item.selectedImage="tarbar4_selected_1@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                }
+                else
+                {
+                    item.image="tarbar4@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                    item.selectedImage="tarbar4_selected@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                }
+            }
+            else
+            {
+                if UMsgCount != nil
+                {
+                    item.image="tarbar4_1@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                    item.selectedImage="tarbar4_selected_1@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                }
+                else
+                {
+                    item.image="tarbar4@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                    item.selectedImage="tarbar4_selected@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                }
+            }
+
+        }
+        
+        
     }
     
     func showBannerImage()
@@ -239,17 +230,29 @@ class HomeVC: UIViewController {
         let arr:Array<UITabBarItem> = (self.tabBarController?.tabBar.items)!
         
         var i=0
-        for item in arr
+        for (index,item) in arr.enumerate()
         {
             if screenScale == 3.0
             {
                 item.image="tarbar\(i)@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                 item.selectedImage="tarbar\(i)_selected@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                
+                if UMsgCount != nil && index == 4
+                {
+                    item.image="tarbar\(i)_1@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                    item.selectedImage="tarbar\(i)_selected_1@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                }
             }
             else
             {
                 item.image="tarbar\(i)@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                 item.selectedImage="tarbar\(i)_selected@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                
+                if UMsgCount != nil && index == 4
+                {
+                    item.image="tarbar\(i)_1@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                    item.selectedImage="tarbar\(i)_selected_1@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
+                }
             }
             
             
@@ -278,10 +281,6 @@ class HomeVC: UIViewController {
             
             i += 1;
         }
-        
-        self.tabBarController!.tabBar.items![4].badgeValue = "0"
-        changeBadgeSize(self.tabBarController!.tabBar)
-        bview?.hidden = UMsgCount == nil
         
         //一屏显示的标题的个数
         

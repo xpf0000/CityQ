@@ -20,6 +20,8 @@ class YouhuiquanCell: UICollectionViewCell {
     
     @IBOutlet var state: UIButton!
     
+    var type = 0
+    
     var model:YouhuiquanModel?
     {
         didSet
@@ -60,7 +62,15 @@ class YouhuiquanCell: UICollectionViewCell {
                     
             }
             
-            state.selected = model?.orlq == 1
+            if type == 0
+            {
+                state.selected = model?.orlq == 1
+            }
+            else
+            {
+                state.selected = true
+            }
+            
             
         }
     }
@@ -68,6 +78,7 @@ class YouhuiquanCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        state.userInteractionEnabled = false
         state.titleLabel?.numberOfLines = 0
     }
 

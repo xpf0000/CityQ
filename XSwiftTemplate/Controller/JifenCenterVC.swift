@@ -24,7 +24,7 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
     
     func getTJGoods()
     {
-        let url = "http://182.92.70.85/hfapi/Public/Found/?service=jifen.getproductList"
+        let url = "http://182.92.70.85/hfapi/Public/Found/?service=jifen.getproductList&page=1&perNumber=4"
         
         XHttpPool.requestJson(url, body: nil, method: .GET) {[weak self] (o) in
             
@@ -48,11 +48,8 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
                     
                     self?.collect.reloadData()
                     
-//                    self?.tableView.reloadRowsAtIndexPaths([NSIndexPath.init(forRow: 8, inSection: 0)], withRowAnimation: .Automatic)
                 })
-                
-                
-                
+
             }
         }
         
@@ -84,6 +81,8 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
         collect.Delegate(self)
         
         getTJGoods()
+        
+        tatle.text = DataCache.Share.userModel.hfb
  
     }
     
@@ -138,6 +137,40 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
         }
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        if indexPath.row == 4 && stateIcon.hidden
+        {
+            self.doQD()
+        }
+        
+    }
+    
+    func doQD()
+    {
+        let url = APPURL + "Public/Found/?service=jifen.addQiandao&uid=\(Uid)&username=\(Uname)"
+        
+        XHttpPool.requestJson(url, body: nil, method: .POST) {[weak self] (o) in
+            
+            if o?["data"]["code"].int == 0
+            {
+                XAlertView.show("签到成功", block: nil)
+                self?.stateIcon.hidden = false
+                self?.state.text = "已完成"
+                self?.state.textColor = APPBlueColor
+            }
+            else
+            {
+                var msg = o?["data"]["msg"].stringValue
+                msg = msg == "" ? "签到失败" : msg
+                XAlertView.show(msg!, block: nil)
+            }
+            
+        }
+    }
+    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         let m = collect.httpHandle.listArr[indexPath.row] as! GoodsModel
@@ -182,6 +215,29 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
         }
         
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        DataCache.Share.userModel.OnValueChange {[weak self] (key, value) in
+            
+            if key == "orqd"
+            {
+                let orqd = value as! Int
+                
+                if orqd == 0
+                {
+                    self?.stateIcon.hidden = true
+                    self?.state.text = "还未签到"
+                    self?.state.textColor = "333333".color
+                }
+            
+            }
+            
+        }
+        
+        DataCache.Share.userModel.getHFB()
     }
     
 

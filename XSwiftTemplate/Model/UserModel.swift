@@ -59,6 +59,49 @@ class UserModel: Reflect {
     var birthday=""
     var address=""
     
+    var hfb = ""
+    var qdday = ""
+    var wqd = ""
+    var orqd = 0
+    
+    func getHFB()
+    {
+        if uid == "" || username == "" {
+            valueChangeBlock?("hfb","0")
+            valueChangeBlock?("wqd","0")
+            return
+        }
+        
+        let url = "http://182.92.70.85/hfapi/Public/Found/?service=jifen.getUinfo&uid=\(uid)&username=\(username)"
+        
+        XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](o) in
+            
+            if let str = o?["data"]["info"][0]["hfb"].string
+            {
+                self?.hfb = str
+                self?.valueChangeBlock?("hfb",str)
+            }
+            
+            if let str = o?["data"]["info"][0]["qdday"].string
+            {
+                self?.qdday = str
+            }
+            
+            if let str = o?["data"]["info"][0]["wqd"].string
+            {
+                self?.wqd = str
+                self?.valueChangeBlock?("wqd",str)
+            }
+            
+            if let str = o?["data"]["info"][0]["orqd"].int
+            {
+                self?.orqd = str
+                self?.valueChangeBlock?("orqd",str)
+            }
+    
+        }
+    }
+    
     func save()
     {
         UserModel.delete(name: "userModel")

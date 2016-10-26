@@ -22,8 +22,16 @@ class UserCenterVC: UITableViewController {
     
     @IBOutlet var nickName: UILabel!
     
+    @IBOutlet var leftnum: UILabel!
+    
+    @IBOutlet var rightnum: UILabel!
     
     @IBAction func leftClick(sender: UIButton) {
+        
+        if(!self.checkIsLogin())
+        {
+            return
+        }
         
         let vc = "JifenCenterMainVC".VC("Jifen")
         vc.hidesBottomBarWhenPushed = true
@@ -32,6 +40,11 @@ class UserCenterVC: UITableViewController {
     }
     
     @IBAction func rightClick(sender: UIButton) {
+        
+        if(!self.checkIsLogin())
+        {
+            return
+        }
         
         sender.enabled = false
         
@@ -139,7 +152,7 @@ class UserCenterVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.MsgChange.rawValue, object: nil)
         
         let button=UIButton(type: UIButtonType.Custom)
@@ -307,6 +320,14 @@ class UserCenterVC: UITableViewController {
             
             self.navigationController?.pushViewController(vc, animated: true)
             
+        case 10:
+            
+            let vc = MyYouhuiquanVC()
+            
+            vc.hidesBottomBarWhenPushed = true
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
             
         default :
             ""
@@ -319,8 +340,24 @@ class UserCenterVC: UITableViewController {
         super.viewWillAppear(animated)
         
         self.showInfo()
+        
+        DataCache.Share.userModel.OnValueChange {[weak self] (key, value) in
+            
+            if key == "hfb"
+            {
+                self?.leftnum.text = value as? String
+            }
+            else if key == "wqd"
+            {
+                self?.rightnum.text = "\(value as! String)/7"
+            }
+            
+        }
+        
+        DataCache.Share.userModel.getHFB()
+        
+
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

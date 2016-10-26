@@ -8,7 +8,16 @@
 
 import Foundation
 
+typealias ReflectValueChangeBlock = (String,AnyObject)->Void
+
 class Reflect: NSObject, NSCoding{
+    
+    var valueChangeBlock:ReflectValueChangeBlock?
+    
+    func OnValueChange(b:ReflectValueChangeBlock)
+    {
+        self.valueChangeBlock = b
+    }
     
     lazy var mirror: Mirror = {Mirror(reflecting: self)}()
     
@@ -159,7 +168,6 @@ class Reflect: NSObject, NSCoding{
         {
             return
         }
-        
         
         super.setValue(value, forKey: key)
     }

@@ -31,7 +31,7 @@ class JifenCenterMainVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.addBackButton()
     }
 
     override func didReceiveMemoryWarning() {

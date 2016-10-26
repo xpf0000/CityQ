@@ -18,6 +18,8 @@ class JifenDetailCell: UITableViewCell {
     
     @IBOutlet var price: UILabel!
     
+    var type = 0
+    
     var model:HFBModel?
     {
         didSet
@@ -31,7 +33,15 @@ class JifenDetailCell: UITableViewCell {
             
             if let n = model?.hfb
             {
-                price.text = "+\(n)"
+                if type == 0
+                {
+                    price.text = "+\(n)"
+                }
+                else
+                {
+                    price.text = "-\(n)"
+                }
+                
             }
             
             

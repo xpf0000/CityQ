@@ -219,7 +219,7 @@ class HomeVC: UIViewController {
             
         }
 
-        //showBannerImage()
+        showBannerImage()
 
         menu.menuMaxScale = 1.0
         menu.menuPageNum = 4

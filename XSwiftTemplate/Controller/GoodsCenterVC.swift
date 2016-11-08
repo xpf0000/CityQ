@@ -34,7 +34,6 @@ class GoodsCenterVC: UITableViewController,UICollectionViewDelegate {
     let gh:CGFloat = (swidth*0.5-16)*0.75+65
     var harr:[CGFloat] = [swidth*9.0/16.0,48.0,12,44,100]
     
-    
     func getBanner()
     {
         var barr:[XBannerModel] = []

@@ -64,6 +64,25 @@ class UserModel: Reflect {
     var wqd = ""
     var orqd = 0
     
+    var token = ""
+    
+    func registNotice()
+    {
+        if token != ""
+        {
+            CloudPushSDK.addAlias(token, withCallback: { (res) in
+                
+            })
+            
+        }
+    }
+    
+    func unRegistNotice()
+    {
+        CloudPushSDK.removeAlias(token) { (res) in}
+    }
+
+    
     func getHFB()
     {
         if uid == "" || username == "" {
@@ -126,6 +145,7 @@ class UserModel: Reflect {
         danyuanid = m.danyuanid
         birthday=m.birthday
         address=m.address
+        token=m.token
     }
     
     func reSet()
@@ -146,6 +166,7 @@ class UserModel: Reflect {
         danyuanid = ""
         birthday=""
         address=""
+        token=""
         
         self.save()
         

@@ -174,8 +174,41 @@ class HomeVC: UIViewController {
         UIApplication.sharedApplication().keyWindow?.addSubview(coverImage)
     }
     
+    
+    func showAccountLogout()
+    {
+        //DataCache.Share.userMsg = UserMsgModel()
+//        UIApplication.sharedApplication().keyWindow?.removeAllSubViews()
+        
+        for item in UIApplication.sharedApplication().keyWindow!.subviews
+        {
+            if "\(item)".has("<UILayoutContainerView:")
+            {
+                
+            }
+            else
+            {
+                item.removeFromSuperview()
+            }
+            print("view: \(item)")
+        }
+        
+        
+        DataCache.Share.userModel.unRegistNotice()
+        DataCache.Share.userModel.reSet()
+        msgCountChange()
+        
+        let alert = UIAlertView(title: "提醒", message: "您的账户已在其他设备登录", delegate: nil, cancelButtonTitle: "确定")
+        
+        alert.show()
+    }
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BackToRootViewController), name: "AccountLogout", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.MsgChange.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.LoginSuccess.rawValue, object: nil)
@@ -224,7 +257,8 @@ class HomeVC: UIViewController {
         menu.menuMaxScale = 1.0
         menu.menuPageNum = 4
         menu.menuTextColor = "666666".color!
-        menu.menuSelectColor = "333333".color!
+        menu.menuSelectColor = APPBlueColor
+        menu.line.backgroundColor = APPBlueColor
         menu.menuBGColor = PageBGColor
         
         let arr:Array<UITabBarItem> = (self.tabBarController?.tabBar.items)!
@@ -258,23 +292,23 @@ class HomeVC: UIViewController {
             
             if i == 0
             {
-                item.imageInsets = UIEdgeInsetsMake(4.0, -13.0*screenFlag, -4.0, 13.0*screenFlag)
+                item.imageInsets = UIEdgeInsetsMake(6.0, -13.0*screenFlag, -6.0, 13.0*screenFlag)
             }
             else if i == 1
             {
-                item.imageInsets = UIEdgeInsetsMake(4.0, -8.0*screenFlag, -4.0, 8.0*screenFlag)
+                item.imageInsets = UIEdgeInsetsMake(6.0, -8.0*screenFlag, -6.0, 8.0*screenFlag)
             }
             else if i==2
             {
-                item.imageInsets = UIEdgeInsetsMake(4.0, 2.0*screenFlag, -4.0, -2.0*screenFlag)
+                item.imageInsets = UIEdgeInsetsMake(6.0, 2.0*screenFlag, -6.0, -2.0*screenFlag)
             }
             else if i == 3
             {
-                item.imageInsets = UIEdgeInsetsMake(4.0, 14.0*screenFlag, -4.0, -14.0*screenFlag)
+                item.imageInsets = UIEdgeInsetsMake(6.0, 14.0*screenFlag, -6.0, -14.0*screenFlag)
             }
             else
             {
-                item.imageInsets = UIEdgeInsetsMake(4.0, 13.0*screenFlag, -4.0, -13.0*screenFlag)
+                item.imageInsets = UIEdgeInsetsMake(6.0, 13.0*screenFlag, -6.0, -13.0*screenFlag)
             }
             
             item.setTitleTextAttributes([NSForegroundColorAttributeName:APPBlueColor,NSFontAttributeName:UIFont.systemFontOfSize(16.0)], forState: UIControlState.Selected)
@@ -355,66 +389,7 @@ class HomeVC: UIViewController {
         }
         
         self.menu.menuArr = self.topArr
-        
-//        let url=APPURL+"Public/Found/?service=News.getCategory";
-//        
-//        XHttpPool.requestJson(url, body: nil, method: .GET) { (o) -> Void in
-//            
-//            if(o == nil)
-//            {
-//                
-//                self.view.addSubview(self.noNet)
-//                
-//                self.noNet.block =
-//                    {
-//                        [weak self]
-//                        (o)->Void in
-//                        
-//                        if(self != nil)
-//                        {
-//                            self!.getCategory()
-//                        }
-//                        
-//                }
-//                
-//                self.noNet.connectFail()
-//                return;
-//            }
-//            
-//            self.noNet.removeFromSuperview()
-// 
-//            for item in o!["data"]["info"].arrayValue
-//            {
-//
-//                let model:XHorizontalMenuModel = XHorizontalMenuModel()
-//                model.title = item["title"].stringValue
-//                model.id = item["id"].intValue
-//                
-//                
-//                if(model.id != 42)
-//                {
-//                    let view:NewsIndexView = "NewsIndexView".View as! NewsIndexView
-//                    view.nid = model.id
-//                    view.show()
-//                    model.view = view
-//                    
-//                    //model.view=UIView()
-//                }
-//                else
-//                {
-//                    let view:PicNewsIndexView = "PicNewsIndexView".View as! PicNewsIndexView
-//                    view.nid = model.id
-//                    view.show()
-//                    model.view = view
-//                }
-//                
-//                
-//                self.topArr.append(model)
-//            }
-//            
-//            self.menu.menuArr = self.topArr
-//            
-//        }
+    
         
     }
     
@@ -442,6 +417,59 @@ class HomeVC: UIViewController {
         super.didReceiveMemoryWarning()
 
     }
+    
+    
+    func BackToRootViewController()
+    {
+        MainDo { (nil) in
+            
+            var vc = self.tabBarController?.selectedViewController
+            
+            if(vc is UINavigationController)
+            {
+                vc = (vc as! UINavigationController).visibleViewController
+            }
+            else
+            {
+                vc = vc?.navigationController?.visibleViewController
+            }
+            
+            if(vc == nil)
+            {
+                return
+            }
+            
+            print("vc: \(vc)")
+            print("vc!.presentingViewController: \(vc!.presentingViewController)")
+            
+            let home = (self.tabBarController?.selectedViewController as? UINavigationController)?.viewControllers[0]
+            
+            if(vc == home)
+            {
+                self.tabBarController?.selectedIndex = 0
+                self.showAccountLogout()
+                return
+            }
+            
+            if(vc!.presentingViewController != nil)
+            {
+                vc!.dismissViewControllerAnimated(false, completion: { () -> Void in
+                    
+                    self.BackToRootViewController()
+                    
+                })
+            }
+            else
+            {
+                vc?.navigationController?.popToRootViewControllerAnimated(false)
+                self.BackToRootViewController()
+            }
+            
+        }
+        
+    }
+
+    
     
     deinit
     {

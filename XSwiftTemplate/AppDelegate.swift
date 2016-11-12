@@ -22,7 +22,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     
     func onMessageReceived(notification:NSNotification)
     {
-        Preloading.Share.getMessage(Uid, username: Uname)
+        if let message = notification.object as? CCPSysMessage
+        {
+            let title = String.init(data: message.title, encoding: NSUTF8StringEncoding)
+            
+            let body = String.init(data: message.body, encoding: NSUTF8StringEncoding)
+            
+            print("Receive message title: \(title) | content: \(body)")
+            
+            if let str = title
+            {
+                if str == "账号在其它设备已登陆"
+                {
+                    NSNotificationCenter.defaultCenter().postNotificationName("AccountLogout", object: nil)
+                }
+                else
+                {
+                    Preloading.Share.getMessage(Uid, username: Uname)
+                }
+            }
+            
+            
+        }
+        
+        
     }
     
     func onLogin(notification:NSNotification)
@@ -265,6 +288,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
   
 
     func applicationDidBecomeActive(application: UIApplication) {
+        
+        Preloading.Share.CheckToken()
         
         //Preloading.Share.getMessage(Uid, username: Uname)
         

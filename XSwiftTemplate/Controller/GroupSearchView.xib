@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GroupSearchView" customModule="chengshi" customModuleProvider="target">
+            <connections>
+                <outlet property="btn" destination="EGB-tp-yEy" id="haf-VA-clZ"/>
+                <outlet property="mainView" destination="Mw7-XV-cT1" id="uPA-OR-ooq"/>
+                <outlet property="txtfield" destination="XA6-rt-Ada" id="oeC-Ab-dMQ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="487" height="47"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mw7-XV-cT1">
+                    <rect key="frame" x="8" y="6" width="471" height="35"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XA6-rt-Ada">
+                            <rect key="frame" x="10" y="5" width="367" height="25"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EGB-tp-yEy">
+                            <rect key="frame" x="387" y="2" width="82" height="31"/>
+                            <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
+                            <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                            <state key="normal" title="搜 索">
+                                <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="click:" destination="-1" eventType="touchUpInside" id="uCf-VI-Pzi"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bg9-46-viV">
+                            <rect key="frame" x="377" y="0.0" width="13" height="35"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="XA6-rt-Ada" secondAttribute="bottom" constant="5" id="1Ro-KC-GA8"/>
+                        <constraint firstItem="EGB-tp-yEy" firstAttribute="leading" secondItem="XA6-rt-Ada" secondAttribute="trailing" constant="10" id="IHK-Kl-byZ"/>
+                        <constraint firstItem="XA6-rt-Ada" firstAttribute="top" secondItem="Mw7-XV-cT1" secondAttribute="top" constant="5" id="Ic8-4V-Aws"/>
+                        <constraint firstItem="XA6-rt-Ada" firstAttribute="leading" secondItem="Mw7-XV-cT1" secondAttribute="leading" constant="10" id="JwS-Xi-aXl"/>
+                        <constraint firstItem="bg9-46-viV" firstAttribute="leading" secondItem="XA6-rt-Ada" secondAttribute="trailing" id="Q7V-Rq-EIP"/>
+                        <constraint firstItem="EGB-tp-yEy" firstAttribute="top" secondItem="Mw7-XV-cT1" secondAttribute="top" constant="2" id="SLG-Mw-aXl"/>
+                        <constraint firstItem="bg9-46-viV" firstAttribute="top" secondItem="Mw7-XV-cT1" secondAttribute="top" id="SOX-BE-jXD"/>
+                        <constraint firstAttribute="bottom" secondItem="EGB-tp-yEy" secondAttribute="bottom" constant="2" id="TF9-6U-Y3F"/>
+                        <constraint firstAttribute="bottom" secondItem="bg9-46-viV" secondAttribute="bottom" id="j3E-8q-alw"/>
+                        <constraint firstAttribute="trailing" secondItem="EGB-tp-yEy" secondAttribute="trailing" constant="2" id="qnP-2l-GHY"/>
+                        <constraint firstItem="EGB-tp-yEy" firstAttribute="leading" secondItem="bg9-46-viV" secondAttribute="trailing" constant="-3" id="tAH-Ob-guo"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Mw7-XV-cT1" secondAttribute="trailing" constant="8" id="31N-ss-W3Y"/>
+                <constraint firstAttribute="bottom" secondItem="Mw7-XV-cT1" secondAttribute="bottom" constant="6" id="JAW-hq-PGL"/>
+                <constraint firstItem="Mw7-XV-cT1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="hef-Mr-Egs"/>
+                <constraint firstItem="Mw7-XV-cT1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="ngy-dr-yps"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="40.5" y="356.5"/>
+        </view>
+    </objects>
+</document>

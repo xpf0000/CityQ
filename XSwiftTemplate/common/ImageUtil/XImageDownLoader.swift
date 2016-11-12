@@ -297,8 +297,6 @@ class XImageDownLoader: NSOperation {
             size = nil
         }
         
-        print("size: \(size)")
-        
         let type = ImageTypeForData(d)
         
         if type == .GIF

@@ -17,6 +17,7 @@
 #import "WXApi.h"
 #import "WeiboSDK.h"
 #import <CloudPushSDK/CloudPushSDK.h>
+#import <CloudPushSDK/CCPSysMessage.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <AlicloudMobileAnalitics/ALBBMAN.h>
 

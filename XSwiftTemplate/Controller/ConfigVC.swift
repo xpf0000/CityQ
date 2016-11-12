@@ -162,6 +162,7 @@ class ConfigVC: UITableViewController ,UIAlertViewDelegate{
             //ShareSDK.cancelAuthWithType(ShareTypeWeixiSession)
             ShareSDK.cancelAuthWithType(ShareTypeWeixiTimeline)
             
+            DataCache.Share.userModel.unRegistNotice()
             DataCache.Share.userModel.reSet()
             logoutButton.hidden = true
             NSUserDefaults.standardUserDefaults().removeObjectForKey("userID")

@@ -344,6 +344,25 @@ class Preloading: NSObject{
         }
     }
     
+    
+    func CheckToken()
+    {
+        if DataCache.Share.userModel.token == "" {return}
+        
+        let url = APPURL+"Public/Found/?service=user.getOrLine&token="+DataCache.Share.userModel.token
+        
+        XHttpPool.requestJson(url, body: nil, method: .GET) { (res) in
+            
+            if res?["data"]["code"].int == 1
+            {
+                NSNotificationCenter.defaultCenter().postNotificationName("AccountLogout", object: nil)
+            }
+            
+        }
+        
+        
+    }
+    
 
 }
 

@@ -49,7 +49,7 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.addBackButton()
         self.view.addSubview(main)
 
         self.view.backgroundColor = APPBGColor

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -21,7 +21,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="APPLogoBlue.png" translatesAutoresizingMaskIntoConstraints="NO" id="xHY-UV-UVp">
-                        <rect key="frame" x="189" y="31" width="161" height="38"/>
+                        <rect key="frame" x="189" y="35" width="161" height="38"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="xHY-UV-UVp" secondAttribute="height" multiplier="204:48" id="qHf-og-PCP"/>
                         </constraints>
@@ -30,7 +30,7 @@
                 <constraints>
                     <constraint firstItem="xHY-UV-UVp" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.3" id="EXK-n6-QVz"/>
                     <constraint firstItem="xHY-UV-UVp" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="X3C-hP-oZR"/>
-                    <constraint firstItem="xHY-UV-UVp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="nXF-2t-6PT"/>
+                    <constraint firstItem="xHY-UV-UVp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="4" id="nXF-2t-6PT"/>
                 </constraints>
             </tableViewCellContentView>
             <point key="canvasLocation" x="100" y="48"/>

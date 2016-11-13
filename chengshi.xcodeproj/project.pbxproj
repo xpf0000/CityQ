@@ -491,6 +491,11 @@
 		177E88C91D16D0E300EE20CF /* tarbar4_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177E88B51D16D0E300EE20CF /* tarbar4_selected@3x.png */; };
 		177E88CA1D16D0E300EE20CF /* tarbar4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177E88B61D16D0E300EE20CF /* tarbar4@2x.png */; };
 		177E88CB1D16D0E300EE20CF /* tarbar4@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 177E88B71D16D0E300EE20CF /* tarbar4@3x.png */; };
+		1780A1631DD770B2001D68E2 /* card_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1780A1621DD770B2001D68E2 /* card_icon.png */; };
+		1780A1681DD77187001D68E2 /* found_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1780A1641DD77187001D68E2 /* found_1.png */; };
+		1780A1691DD77187001D68E2 /* found_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1780A1651DD77187001D68E2 /* found_2.png */; };
+		1780A16A1DD77187001D68E2 /* found_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1780A1661DD77187001D68E2 /* found_3.png */; };
+		1780A16B1DD77187001D68E2 /* found_4.png in Resources */ = {isa = PBXBuildFile; fileRef = 1780A1671DD77187001D68E2 /* found_4.png */; };
 		178186D71CE57F9B0030837A /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178186CA1CE57F9B0030837A /* Constraint.swift */; };
 		178186D81CE57F9B0030837A /* ConstraintAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178186CB1CE57F9B0030837A /* ConstraintAttributes.swift */; };
 		178186D91CE57F9B0030837A /* ConstraintDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178186CC1CE57F9B0030837A /* ConstraintDescription.swift */; };
@@ -1329,6 +1334,11 @@
 		177E88B51D16D0E300EE20CF /* tarbar4_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tarbar4_selected@3x.png"; sourceTree = "<group>"; };
 		177E88B61D16D0E300EE20CF /* tarbar4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tarbar4@2x.png"; sourceTree = "<group>"; };
 		177E88B71D16D0E300EE20CF /* tarbar4@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tarbar4@3x.png"; sourceTree = "<group>"; };
+		1780A1621DD770B2001D68E2 /* card_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_icon.png; sourceTree = "<group>"; };
+		1780A1641DD77187001D68E2 /* found_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = found_1.png; sourceTree = "<group>"; };
+		1780A1651DD77187001D68E2 /* found_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = found_2.png; sourceTree = "<group>"; };
+		1780A1661DD77187001D68E2 /* found_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = found_3.png; sourceTree = "<group>"; };
+		1780A1671DD77187001D68E2 /* found_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = found_4.png; sourceTree = "<group>"; };
 		178186CA1CE57F9B0030837A /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		178186CB1CE57F9B0030837A /* ConstraintAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttributes.swift; sourceTree = "<group>"; };
 		178186CC1CE57F9B0030837A /* ConstraintDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintDescription.swift; sourceTree = "<group>"; };
@@ -2173,6 +2183,11 @@
 		175449C71DB5C1C200DCBE77 /* icon */ = {
 			isa = PBXGroup;
 			children = (
+				1780A1641DD77187001D68E2 /* found_1.png */,
+				1780A1651DD77187001D68E2 /* found_2.png */,
+				1780A1661DD77187001D68E2 /* found_3.png */,
+				1780A1671DD77187001D68E2 /* found_4.png */,
+				1780A1621DD770B2001D68E2 /* card_icon.png */,
 				173850481DD70E8B00E4BFB1 /* renzheng_icon.png */,
 				173850491DD70E8B00E4BFB1 /* svip_icon.png */,
 				1738504A1DD70E8B00E4BFB1 /* vip_icon.png */,
@@ -3543,6 +3558,7 @@
 				177E88C71D16D0E300EE20CF /* tarbar3@3x.png in Resources */,
 				177E87D71D16CD9400EE20CF /* card_vip@2x.png in Resources */,
 				17730C2B1DBDA527005444EE /* jinbi1.png in Resources */,
+				1780A1691DD77187001D68E2 /* found_2.png in Resources */,
 				177E88771D16CD9400EE20CF /* user_bg.png in Resources */,
 				177E88521D16CD9400EE20CF /* heart_icon01_g.png in Resources */,
 				173E6BA01C030618008B14A8 /* Discount.storyboard in Resources */,
@@ -3562,6 +3578,7 @@
 				172F22831DBB50AD003EBFB3 /* qiandaopaihang_640@2x.jpg in Resources */,
 				17F017C81C7D9EBE002C1B23 /* PropertyPhotoInfoCell.xib in Resources */,
 				177E88931D16CD9400EE20CF /* index01@2x.png in Resources */,
+				1780A16B1DD77187001D68E2 /* found_4.png in Resources */,
 				177E88471D16CD9400EE20CF /* btn_unlike_normal.png in Resources */,
 				177E884F1D16CD9400EE20CF /* eye_icon.png in Resources */,
 				177E88591D16CD9400EE20CF /* list_share_icon.png in Resources */,
@@ -3600,6 +3617,7 @@
 				17D5DD841DBDB81400A5458C /* renzheng_icon0.png in Resources */,
 				17F2F9161C71B54800AD4321 /* shareIcon1.png in Resources */,
 				177E87D21D16CD9400EE20CF /* card_huodong@3x.png in Resources */,
+				1780A16A1DD77187001D68E2 /* found_3.png in Resources */,
 				171A88EA1C3E3CC700F303F6 /* oa_index_icon03.png in Resources */,
 				177E87D81D16CD9400EE20CF /* card_vip@3x.png in Resources */,
 				17F9AA361CA671A100B55085 /* wuye_index_5.png in Resources */,
@@ -3794,6 +3812,7 @@
 				177E87DD1D16CD9400EE20CF /* find_call@3x.png in Resources */,
 				17F22A8E1C5CA66B00836059 /* icon_list_visio.png in Resources */,
 				173E6B9C1C0304F7008B14A8 /* DiscountCollectionCell.xib in Resources */,
+				1780A1631DD770B2001D68E2 /* card_icon.png in Resources */,
 				1728A3881D642A9300FDF48E /* cover1136.png in Resources */,
 				177E87F61D16CD9400EE20CF /* my_choose_0@3x.png in Resources */,
 				177E888D1D16CD9400EE20CF /* history_icon.png in Resources */,
@@ -3890,6 +3909,7 @@
 				177E87DB1D16CD9400EE20CF /* del_icon_w.png in Resources */,
 				1771B2A71C2E65DE00A88E65 /* XBootView.xib in Resources */,
 				177E88791D16CD9400EE20CF /* ver_code_icon.png in Resources */,
+				1780A1681DD77187001D68E2 /* found_1.png in Resources */,
 				170EEB231C3FB6FD008FE174 /* b_arrow_icon.png in Resources */,
 				1738504C1DD70E8B00E4BFB1 /* svip_icon.png in Resources */,
 				17F2F9171C71B54800AD4321 /* shareIcon2.png in Resources */,

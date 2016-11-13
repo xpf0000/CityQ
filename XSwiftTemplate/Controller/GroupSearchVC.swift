@@ -36,6 +36,7 @@ class GroupSearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "商家搜索"
+        self.addBackButton()
         
         search.txtfield.text = key
         

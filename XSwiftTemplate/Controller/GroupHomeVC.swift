@@ -46,7 +46,6 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = APPBGColor
-        self.title = "商圈"
         
         block =
         {
@@ -113,13 +112,13 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if indexPath.section == 0
         {
             
-            return 56.0
+            return swidth * 0.33 * 48.0 / 204.0+20.0
         }
         else
         {
             if indexPath.row == 0
             {
-                return 52.0
+                return 44.0
             }
             else
             {

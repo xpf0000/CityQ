@@ -1,15 +1,16 @@
 //
-//  GroupSearchView.swift
+//  GroupSearchBarCell.swift
 //  chengshi
 //
-//  Created by X on 2016/11/12.
+//  Created by X on 2016/11/14.
 //  Copyright © 2016年 XSwiftTemplate. All rights reserved.
 //
 
 import UIKit
 
-class GroupSearchView: UIView,UITextFieldDelegate {
+class GroupSearchBarCell: UITableViewCell,UITextFieldDelegate {
 
+    
     @IBOutlet var mainView: UIView!
     
     @IBOutlet var txtfield: UITextField!
@@ -18,20 +19,15 @@ class GroupSearchView: UIView,UITextFieldDelegate {
     
     var block:XHTMLBlock?
     
-    @IBAction func click(sender: AnyObject) {
+    @IBAction func click(_ sender: AnyObject) {
         let str = txtfield.text ?? ""
         block?(str)
     }
+
     
     
-    func initSelf()
-    {
-        let containerView:UIView=("GroupSearchView".Nib.instantiateWithOwner(self, options: nil))[0] as! UIView
-        
-        let newFrame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
-        containerView.frame = newFrame
-        self.addSubview(containerView)
-        
+    override func awakeFromNib() {
+        super.awakeFromNib()
         mainView.layer.masksToBounds = true
         mainView.layer.borderColor = "dedede".color?.CGColor
         mainView.layer.borderWidth = 1.0
@@ -41,29 +37,20 @@ class GroupSearchView: UIView,UITextFieldDelegate {
         btn.layer.cornerRadius = 6.0
         
         txtfield.delegate = self
-        
     }
 
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.initSelf()
-        
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        self.initSelf()
-    }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
         self.endEdit()
         
         return true
+    }
+
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
     }
     
 }

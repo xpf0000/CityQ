@@ -66,6 +66,7 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         table.registerNib("GroupHomeCell1".Nib, forCellReuseIdentifier: "GroupHomeCell1")
         table.registerNib("GroupHomeCell2".Nib, forCellReuseIdentifier: "GroupHomeCell2")
+        table.registerNib("GroupSearchBarCell".Nib, forCellReuseIdentifier: "GroupSearchBarCell")
         table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         table.delegate = self
@@ -90,113 +91,133 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         http()
     }
     
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if indexPath.row < 3
+        {
+            cell.separatorInset=UIEdgeInsetsMake(0, swidth, 0, 0)
+            if(IOS_Version>=8.0)
+            {
+                if #available(iOS 8.0, *) {
+                    cell.layoutMargins=UIEdgeInsetsMake(0, swidth, 0, 0)
+                } else {
+                    // Fallback on earlier versions
+                }
+            }
+        }
+        else
+        {
+            cell.separatorInset=UIEdgeInsetsMake(0, 15, 0, 0)
+            if(IOS_Version>=8.0)
+            {
+                if #available(iOS 8.0, *) {
+                    cell.layoutMargins=UIEdgeInsetsMake(0, 15, 0, 0)
+                } else {
+                    // Fallback on earlier versions
+                }
+            }
+        }
+        
+        
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        
+        super.viewDidLayoutSubviews()
+        
+        self.table.separatorInset=UIEdgeInsetsZero
+        if(IOS_Version>=8.0)
+        {
+            if #available(iOS 8.0, *) {
+                self.table.layoutMargins=UIEdgeInsetsZero
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
+    
+    
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if section == 0
-        {
-            return 1
-        }
-        else
-        {
-            return httpHandle.listArr.count+1
-        }
-        
+        return httpHandle.listArr.count+3
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        if indexPath.section == 0
+        if indexPath.row == 0
         {
-            
             return swidth * 0.33 * 48.0 / 204.0+20.0
         }
-        else
+        else if indexPath.row == 1
         {
-            if indexPath.row == 0
-            {
-                return 44.0
-            }
-            else
-            {
-                return 100.0
-            }
-            
+            return 52.0
         }
+        else if indexPath.row == 2
+        {
+            return 44.0
+        }
+        
+        return 100.0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0
+        if indexPath.row == 0
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("GroupHomeCell1", forIndexPath: indexPath)
+        
+            return cell
+        }
+        else if indexPath.row == 1
+        {
             
+            let cell = tableView.dequeueReusableCellWithIdentifier("GroupSearchBarCell", forIndexPath: indexPath) as! GroupSearchBarCell
             
+            cell.block = block
             
             return cell
+        
+        }
+        else if indexPath.row == 2
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+            
+            cell.contentView.removeAllSubViews()
+            
+            let txt = UILabel()
+            txt.font = UIFont.systemFontOfSize(15.0)
+            txt.textColor = "666666".color
+            txt.text = "为您推荐"
+            
+            cell.contentView.addSubview(txt)
+            
+            txt.snp_makeConstraints(closure: { (make) in
+                make.bottom.equalTo(cell.contentView).offset(-8.0)
+                make.leading.equalTo(cell.contentView).offset(10.0)
+            })
+            
+            cell.selectionStyle = .None
+            return cell
+
         }
         else
         {
-            if indexPath.row == 0
-            {
-                let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-                
-                cell.contentView.removeAllSubViews()
-                
-                let txt = UILabel()
-                txt.font = UIFont.systemFontOfSize(15.0)
-                txt.textColor = "666666".color
-                txt.text = "为您推荐"
-                
-                cell.contentView.addSubview(txt)
-                
-                txt.snp_makeConstraints(closure: { (make) in
-                    make.bottom.equalTo(cell.contentView).offset(-8.0)
-                    make.leading.equalTo(cell.contentView).offset(10.0)
-                })
-                
-                
-                return cell
-            }
-            else
-            {
-                let cell = tableView.dequeueReusableCellWithIdentifier("GroupHomeCell2", forIndexPath: indexPath) as! GroupHomeCell2
-                
-                let m =  httpHandle.listArr[indexPath.row - 1] as! GroupModel
-                
-                cell.model = m
-                
-                return cell
-            }
+            let cell = tableView.dequeueReusableCellWithIdentifier("GroupHomeCell2", forIndexPath: indexPath) as! GroupHomeCell2
             
+            let m =  httpHandle.listArr[indexPath.row - 3] as! GroupModel
+            
+            cell.model = m
+            
+            return cell
         }
 
-    }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        if section == 1
-        {
-            return 50.0
-        }
-        
-        return 0.0
-    }
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        if section == 1
-        {
-            let v = GroupSearchView()
-            v.frame = CGRectMake(0, 0, swidth, 50.0)
-            v.block = block
-            return v
-        }
-        
-        return nil
     }
 
     override func didReceiveMemoryWarning() {

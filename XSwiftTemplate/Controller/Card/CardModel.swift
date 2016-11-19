@@ -8,6 +8,13 @@
 
 import UIKit
 
+class CardChongzhiModel: Reflect
+{
+    var id = ""
+    var money = ""
+    var value = ""
+}
+
 class CardModel: Reflect {
 
     var id = ""
@@ -25,6 +32,7 @@ class CardModel: Reflect {
     var cardnumber = ""
     var orvip = ""
     var jifen = ""
+    var cardid = ""
 
 }
 

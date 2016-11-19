@@ -55,7 +55,7 @@ class DataCache: NSObject {
         if(model != nil)
         {
             userModel = model as! UserModel
-            self.getUserInfo()
+            //self.getUserInfo()
         }
 
         let model1 = NewsSeeModel.read(name: "NewsViewed")

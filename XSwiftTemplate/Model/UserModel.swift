@@ -123,6 +123,7 @@ class UserModel: Reflect {
     
     func save()
     {
+        print(self)
         UserModel.delete(name: "userModel")
         UserModel.save(obj: self, name: "userModel")
     }

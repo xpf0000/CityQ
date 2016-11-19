@@ -32,6 +32,7 @@
 		17077C131CC2216100655363 /* shuifei.png in Resources */ = {isa = PBXBuildFile; fileRef = 17077C111CC2216100655363 /* shuifei.png */; };
 		17077C141CC2216100655363 /* tingche.png in Resources */ = {isa = PBXBuildFile; fileRef = 17077C121CC2216100655363 /* tingche.png */; };
 		17077C161CC230B200655363 /* PaymentInfoInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17077C151CC230B200655363 /* PaymentInfoInfoVC.swift */; };
+		170AA4B01DDD7F32008DDD52 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170AA4AF1DDD7F32008DDD52 /* CFNetwork.framework */; };
 		170B78EC1DBF543B00700568 /* JifenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B78EB1DBF543B00700568 /* JifenModel.swift */; };
 		170B78EF1DBF549A00700568 /* MyJifenRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B78ED1DBF549A00700568 /* MyJifenRecordCell.swift */; };
 		170B78F01DBF549A00700568 /* MyJifenRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 170B78EE1DBF549A00700568 /* MyJifenRecordCell.xib */; };
@@ -120,6 +121,7 @@
 		1728A3881D642A9300FDF48E /* cover1136.png in Resources */ = {isa = PBXBuildFile; fileRef = 1728A3841D642A9300FDF48E /* cover1136.png */; };
 		1728A3891D642A9300FDF48E /* cover1334.png in Resources */ = {isa = PBXBuildFile; fileRef = 1728A3851D642A9300FDF48E /* cover1334.png */; };
 		1728A38A1D642A9300FDF48E /* cover2208.png in Resources */ = {isa = PBXBuildFile; fileRef = 1728A3861D642A9300FDF48E /* cover2208.png */; };
+		172BB3C71DDE9F2300ECA87A /* CardUserYouhuiquanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BB3C61DDE9F2300ECA87A /* CardUserYouhuiquanVC.swift */; };
 		172BEBF51C0593990005E24D /* FriendInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BEBF41C0593990005E24D /* FriendInfoVC.swift */; };
 		172BEBF71C0594110005E24D /* Friend.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 172BEBF61C0594110005E24D /* Friend.storyboard */; };
 		172BEBF91C059DD00005E24D /* FriendReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BEBF81C059DD00005E24D /* FriendReplyView.swift */; };
@@ -240,6 +242,12 @@
 		17730C2B1DBDA527005444EE /* jinbi1.png in Resources */ = {isa = PBXBuildFile; fileRef = 17730C2A1DBDA527005444EE /* jinbi1.png */; };
 		17730C2D1DBDA59B005444EE /* GoodsCenterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17730C2C1DBDA59B005444EE /* GoodsCenterVC.swift */; };
 		17730C2F1DBDA7AA005444EE /* XCommonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17730C2E1DBDA7AA005444EE /* XCommonAlert.swift */; };
+		177E22311DDD7FC100883E69 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177E22301DDD7FC100883E69 /* UIKit.framework */; };
+		177E22331DDD7FC900883E69 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177E22321DDD7FC900883E69 /* Foundation.framework */; };
+		177E223A1DDD894800883E69 /* CardChongzhiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E22381DDD894800883E69 /* CardChongzhiCell.swift */; };
+		177E223B1DDD894800883E69 /* CardChongzhiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177E22391DDD894800883E69 /* CardChongzhiCell.xib */; };
+		177E223E1DDD9F6000883E69 /* CardTimeChongzhiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E223C1DDD9F6000883E69 /* CardTimeChongzhiCell.swift */; };
+		177E223F1DDD9F6000883E69 /* CardTimeChongzhiCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 177E223D1DDD9F6000883E69 /* CardTimeChongzhiCell.xib */; };
 		177E865E1D16C88500EE20CF /* XCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E865B1D16C88500EE20CF /* XCollectionView.swift */; };
 		177E865F1D16C88500EE20CF /* XHttpHandle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E865C1D16C88500EE20CF /* XHttpHandle.swift */; };
 		177E86601D16C88500EE20CF /* XTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177E865D1D16C88500EE20CF /* XTableView.swift */; };
@@ -546,6 +554,8 @@
 		17BDF1411C0B085600B922D8 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17BDF13F1C0B085600B922D8 /* AddressBookUI.framework */; };
 		17BE5A221B9D68FC00C8958A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17BE5A201B9D68FC00C8958A /* LaunchScreen.xib */; };
 		17BE5A2E1B9D68FC00C8958A /* XSwiftTemplateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BE5A2D1B9D68FC00C8958A /* XSwiftTemplateTests.swift */; };
+		17BEECC81DDD7A27001F6415 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 17BEECC71DDD7A27001F6415 /* libc++.tbd */; };
+		17BEECCA1DDD7CC5001F6415 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17BEECC91DDD7CC5001F6415 /* CoreMotion.framework */; };
 		17C0AD8E1DD9932B00E69B90 /* found_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 17C0AD8A1DD9932B00E69B90 /* found_1.png */; };
 		17C0AD8F1DD9932B00E69B90 /* found_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 17C0AD8B1DD9932B00E69B90 /* found_2.png */; };
 		17C0AD901DD9932B00E69B90 /* found_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 17C0AD8C1DD9932B00E69B90 /* found_3.png */; };
@@ -648,6 +658,8 @@
 		17E3A33E1C22473E0029D0B1 /* FriendInfoCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E3A33C1C22473E0029D0B1 /* FriendInfoCommentCell.swift */; };
 		17E3A33F1C22473E0029D0B1 /* FriendInfoCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17E3A33D1C22473E0029D0B1 /* FriendInfoCommentCell.xib */; };
 		17E3A3411C228AC70029D0B1 /* UserFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E3A3401C228AC70029D0B1 /* UserFeedVC.swift */; };
+		17E4D40E1DDDC1FB004BC04F /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 17E4D40C1DDDC1FB004BC04F /* AlipaySDK.bundle */; };
+		17E4D40F1DDDC1FB004BC04F /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E4D40D1DDDC1FB004BC04F /* AlipaySDK.framework */; };
 		17E7AA271CA3EBFC0026F1AE /* UserViewRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E7AA261CA3EBFC0026F1AE /* UserViewRecordModel.swift */; };
 		17E85E0C1BFD550C00AC0FC9 /* CardsAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E85D821BFD550C00AC0FC9 /* CardsAnimation.swift */; };
 		17E85E0D1BFD550C00AC0FC9 /* CubeAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E85D831BFD550C00AC0FC9 /* CubeAnimation.swift */; };
@@ -874,6 +886,7 @@
 		17077C111CC2216100655363 /* shuifei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuifei.png; sourceTree = "<group>"; };
 		17077C121CC2216100655363 /* tingche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tingche.png; sourceTree = "<group>"; };
 		17077C151CC230B200655363 /* PaymentInfoInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentInfoInfoVC.swift; sourceTree = "<group>"; };
+		170AA4AF1DDD7F32008DDD52 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		170B78EB1DBF543B00700568 /* JifenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JifenModel.swift; sourceTree = "<group>"; };
 		170B78ED1DBF549A00700568 /* MyJifenRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyJifenRecordCell.swift; sourceTree = "<group>"; };
 		170B78EE1DBF549A00700568 /* MyJifenRecordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyJifenRecordCell.xib; sourceTree = "<group>"; };
@@ -962,6 +975,7 @@
 		1728A3841D642A9300FDF48E /* cover1136.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover1136.png; sourceTree = "<group>"; };
 		1728A3851D642A9300FDF48E /* cover1334.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover1334.png; sourceTree = "<group>"; };
 		1728A3861D642A9300FDF48E /* cover2208.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cover2208.png; sourceTree = "<group>"; };
+		172BB3C61DDE9F2300ECA87A /* CardUserYouhuiquanVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardUserYouhuiquanVC.swift; sourceTree = SOURCE_ROOT; };
 		172BEBF41C0593990005E24D /* FriendInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendInfoVC.swift; sourceTree = "<group>"; };
 		172BEBF61C0594110005E24D /* Friend.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Friend.storyboard; sourceTree = "<group>"; };
 		172BEBF81C059DD00005E24D /* FriendReplyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendReplyView.swift; sourceTree = "<group>"; };
@@ -1084,6 +1098,12 @@
 		17730C2A1DBDA527005444EE /* jinbi1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jinbi1.png; sourceTree = "<group>"; };
 		17730C2C1DBDA59B005444EE /* GoodsCenterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsCenterVC.swift; sourceTree = "<group>"; };
 		17730C2E1DBDA7AA005444EE /* XCommonAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCommonAlert.swift; sourceTree = "<group>"; };
+		177E22301DDD7FC100883E69 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		177E22321DDD7FC900883E69 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		177E22381DDD894800883E69 /* CardChongzhiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardChongzhiCell.swift; sourceTree = SOURCE_ROOT; };
+		177E22391DDD894800883E69 /* CardChongzhiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardChongzhiCell.xib; sourceTree = SOURCE_ROOT; };
+		177E223C1DDD9F6000883E69 /* CardTimeChongzhiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTimeChongzhiCell.swift; sourceTree = SOURCE_ROOT; };
+		177E223D1DDD9F6000883E69 /* CardTimeChongzhiCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardTimeChongzhiCell.xib; sourceTree = SOURCE_ROOT; };
 		177E865B1D16C88500EE20CF /* XCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCollectionView.swift; sourceTree = "<group>"; };
 		177E865C1D16C88500EE20CF /* XHttpHandle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHttpHandle.swift; sourceTree = "<group>"; };
 		177E865D1D16C88500EE20CF /* XTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XTableView.swift; sourceTree = "<group>"; };
@@ -1396,6 +1416,8 @@
 		17BE5A271B9D68FC00C8958A /* chengshi.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chengshi.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BE5A2C1B9D68FC00C8958A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17BE5A2D1B9D68FC00C8958A /* XSwiftTemplateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XSwiftTemplateTests.swift; sourceTree = "<group>"; };
+		17BEECC71DDD7A27001F6415 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		17BEECC91DDD7CC5001F6415 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		17C0AD8A1DD9932B00E69B90 /* found_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = found_1.png; sourceTree = "<group>"; };
 		17C0AD8B1DD9932B00E69B90 /* found_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = found_2.png; sourceTree = "<group>"; };
 		17C0AD8C1DD9932B00E69B90 /* found_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = found_3.png; sourceTree = "<group>"; };
@@ -1499,6 +1521,8 @@
 		17E3A33C1C22473E0029D0B1 /* FriendInfoCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendInfoCommentCell.swift; sourceTree = "<group>"; };
 		17E3A33D1C22473E0029D0B1 /* FriendInfoCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendInfoCommentCell.xib; sourceTree = "<group>"; };
 		17E3A3401C228AC70029D0B1 /* UserFeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFeedVC.swift; sourceTree = "<group>"; };
+		17E4D40C1DDDC1FB004BC04F /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		17E4D40D1DDDC1FB004BC04F /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		17E7AA261CA3EBFC0026F1AE /* UserViewRecordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewRecordModel.swift; sourceTree = "<group>"; };
 		17E85D821BFD550C00AC0FC9 /* CardsAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardsAnimation.swift; sourceTree = "<group>"; };
 		17E85D831BFD550C00AC0FC9 /* CubeAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeAnimation.swift; sourceTree = "<group>"; };
@@ -1730,12 +1754,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				177E22331DDD7FC900883E69 /* Foundation.framework in Frameworks */,
+				177E22311DDD7FC100883E69 /* UIKit.framework in Frameworks */,
+				17E4D40F1DDDC1FB004BC04F /* AlipaySDK.framework in Frameworks */,
+				17DEAB341C0BF85C00038B82 /* CoreText.framework in Frameworks */,
+				170AA4B01DDD7F32008DDD52 /* CFNetwork.framework in Frameworks */,
+				17BEECCA1DDD7CC5001F6415 /* CoreMotion.framework in Frameworks */,
+				17BEECC81DDD7A27001F6415 /* libc++.tbd in Frameworks */,
 				174BBDAD1D59B27100F7553C /* libresolv.tbd in Frameworks */,
 				17DEAB3A1C0BF88A00038B82 /* libsqlite3.tbd in Frameworks */,
 				171018A11D5B317500516482 /* UTMini.framework in Frameworks */,
 				17DEAB381C0BF87A00038B82 /* AdSupport.framework in Frameworks */,
 				17DEAB361C0BF87000038B82 /* ImageIO.framework in Frameworks */,
-				17DEAB341C0BF85C00038B82 /* CoreText.framework in Frameworks */,
 				17F710E71C5874BC0080E6F7 /* WeChatConnection.framework in Frameworks */,
 				17DEAB321C0BF84000038B82 /* libz.1.2.5.tbd in Frameworks */,
 				17BDF1401C0B085600B922D8 /* AddressBook.framework in Frameworks */,
@@ -2052,6 +2082,10 @@
 				177E86BD1D16CC8500EE20CF /* CardIndexCell.xib */,
 				177E86C01D16CC9000EE20CF /* CardShopsActivitysCell.swift */,
 				177E86C11D16CC9000EE20CF /* CardShopsActivitysCell.xib */,
+				177E22381DDD894800883E69 /* CardChongzhiCell.swift */,
+				177E22391DDD894800883E69 /* CardChongzhiCell.xib */,
+				177E223C1DDD9F6000883E69 /* CardTimeChongzhiCell.swift */,
+				177E223D1DDD9F6000883E69 /* CardTimeChongzhiCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -2166,6 +2200,7 @@
 				177E86C61D16CCB000EE20CF /* CardIndexVC.swift */,
 				17CA1F521DC0A40600C9C534 /* CardChongzhiVC.swift */,
 				17CA1F541DC0AF6B00C9C534 /* CardTimesChongzhiVC.swift */,
+				172BB3C61DDE9F2300ECA87A /* CardUserYouhuiquanVC.swift */,
 				173C9F441D4086DD00C5C566 /* CardNoLingVC.swift */,
 				17A433C41D211AAA00FB2876 /* CardSearchVC.swift */,
 				177E86C81D16CCB900EE20CF /* CardInfoVC.swift */,
@@ -2241,6 +2276,15 @@
 				175449D71DB6080900DCBE77 /* my_icon8.png */,
 			);
 			path = icon;
+			sourceTree = "<group>";
+		};
+		177E22401DDDC00300883E69 /* AliPay */ = {
+			isa = PBXGroup;
+			children = (
+				17E4D40C1DDDC1FB004BC04F /* AlipaySDK.bundle */,
+				17E4D40D1DDDC1FB004BC04F /* AlipaySDK.framework */,
+			);
+			path = AliPay;
 			sourceTree = "<group>";
 		};
 		177E865A1D16C88500EE20CF /* XEasyListView */ = {
@@ -2800,6 +2844,7 @@
 				17BE5A141B9D68FC00C8958A /* XSwiftTemplate */,
 				17BE5A2A1B9D68FC00C8958A /* XSwiftTemplateTests */,
 				17BE5A131B9D68FC00C8958A /* Products */,
+				17BEECC61DDD7A27001F6415 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2866,6 +2911,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		17BEECC61DDD7A27001F6415 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				177E22321DDD7FC900883E69 /* Foundation.framework */,
+				177E22301DDD7FC100883E69 /* UIKit.framework */,
+				170AA4AF1DDD7F32008DDD52 /* CFNetwork.framework */,
+				17BEECC91DDD7CC5001F6415 /* CoreMotion.framework */,
+				17BEECC71DDD7A27001F6415 /* libc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		17D8F11D1C75A9CD00731186 /* Property */ = {
 			isa = PBXGroup;
 			children = (
@@ -2916,6 +2973,7 @@
 		17E85D721BFD550C00AC0FC9 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				177E22401DDDC00300883E69 /* AliPay */,
 				170B78F51DBF5AE300700568 /* XBanner */,
 				174BBD9F1D59B20200F7553C /* OneSDK */,
 				177E86A01D16C98200EE20CF /* XDownLoad */,
@@ -3530,6 +3588,7 @@
 				17C880E41D251CCC009FCC4B /* 2208_1.jpg in Resources */,
 				17F22A7E1C5C9D8600836059 /* index_icon11.png in Resources */,
 				171E2C371DB9F0AB0096E6FF /* home_head.png in Resources */,
+				177E223B1DDD894800883E69 /* CardChongzhiCell.xib in Resources */,
 				17F22A8B1C5CA66B00836059 /* icon_list_ppt.png in Resources */,
 				177E87F71D16CD9400EE20CF /* my_choose_1@2x.png in Resources */,
 				1728A38A1D642A9300FDF48E /* cover2208.png in Resources */,
@@ -3688,6 +3747,7 @@
 				172E82A01DB8666D0051D67B /* duihao.png in Resources */,
 				177E88C01D16D0E300EE20CF /* tarbar2_selected@2x.png in Resources */,
 				177E881F1D16CD9400EE20CF /* news_collect@2x.png in Resources */,
+				17E4D40E1DDDC1FB004BC04F /* AlipaySDK.bundle in Resources */,
 				17D5DD861DBDB81400A5458C /* renzheng_icon2.png in Resources */,
 				177E87C61D16CD9400EE20CF /* APPLogo.png in Resources */,
 				177E87F21D16CD9400EE20CF /* more_sanjiao@2x.png in Resources */,
@@ -3783,6 +3843,7 @@
 				17D5DD7C1DBDAB1100A5458C /* youhuiquan.png in Resources */,
 				177E88BE1D16D0E300EE20CF /* tarbar1@2x.png in Resources */,
 				177E88C41D16D0E300EE20CF /* tarbar3_selected@2x.png in Resources */,
+				177E223F1DDD9F6000883E69 /* CardTimeChongzhiCell.xib in Resources */,
 				17E2BC7F1CA8C65E007F95DF /* PropertyMsgCell.xib in Resources */,
 				177E88261D16CD9400EE20CF /* noNet1.png in Resources */,
 				177E88BF1D16D0E300EE20CF /* tarbar1@3x.png in Resources */,
@@ -3977,9 +4038,11 @@
 				17269DD81C9F932900E7AC28 /* XImageBrowse.swift in Sources */,
 				1723F1661C76E80400057CF3 /* UserAddHouseVC.swift in Sources */,
 				171A89151C3E6FAB00F303F6 /* OAAddressBookModel.swift in Sources */,
+				177E223A1DDD894800883E69 /* CardChongzhiCell.swift in Sources */,
 				17ECF9D51C07E2D7001243E4 /* XPhotoLib.swift in Sources */,
 				177E86C21D16CC9000EE20CF /* CardShopsActivitysCell.swift in Sources */,
 				17E85E211BFD550C00AC0FC9 /* XNavigationController.swift in Sources */,
+				177E223E1DDD9F6000883E69 /* CardTimeChongzhiCell.swift in Sources */,
 				17B258691C1C075B00A09C80 /* HmtlVC.swift in Sources */,
 				170753B81C7806D0005552FA /* PropertyFeedVC.swift in Sources */,
 				170C6B1D1C17F27B002D7406 /* FriendTopCell.swift in Sources */,
@@ -4137,6 +4200,7 @@
 				1723F1681C76F14400057CF3 /* UserHouseChooseVC.swift in Sources */,
 				17E2BC761CA8BEE9007F95DF /* PropertyPhoneCell.swift in Sources */,
 				17ECF9CA1C07DAAD001243E4 /* AGImagePreviewController.m in Sources */,
+				172BB3C71DDE9F2300ECA87A /* CardUserYouhuiquanVC.swift in Sources */,
 				17F203511C23A516000D1B4B /* NVActivityIndicatorAnimationBallPulseSync.swift in Sources */,
 				171A89161C3E6FAB00F303F6 /* OAAddressBookVC.swift in Sources */,
 				17F203551C23A516000D1B4B /* NVActivityIndicatorAnimationBallScaleMultiple.swift in Sources */,
@@ -4435,6 +4499,8 @@
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ShareSDK/UI",
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ImageUtil",
 					"$(PROJECT_DIR)/XSwiftTemplate/common/OneSDK",
+					"$(PROJECT_DIR)/XSwiftTemplate/common",
+					"$(PROJECT_DIR)/XSwiftTemplate/common/AliPay",
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = XSwiftTemplate/Info.plist;
@@ -4445,6 +4511,7 @@
 					"$(PROJECT_DIR)/XSwiftTemplate/common/UMessage_Sdk_1.1.0",
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ShareSDK/Extend/WeChatSDK",
+					"$(PROJECT_DIR)/XSwiftTemplate/common/AliPay",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "-DSNAPKIT_DEPLOYMENT_LEGACY";
@@ -4478,6 +4545,8 @@
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ShareSDK/UI",
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ImageUtil",
 					"$(PROJECT_DIR)/XSwiftTemplate/common/OneSDK",
+					"$(PROJECT_DIR)/XSwiftTemplate/common",
+					"$(PROJECT_DIR)/XSwiftTemplate/common/AliPay",
 				);
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = XSwiftTemplate/Info.plist;
@@ -4488,6 +4557,7 @@
 					"$(PROJECT_DIR)/XSwiftTemplate/common/UMessage_Sdk_1.1.0",
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/XSwiftTemplate/common/ShareSDK/Extend/WeChatSDK",
+					"$(PROJECT_DIR)/XSwiftTemplate/common/AliPay",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				OTHER_SWIFT_FLAGS = "-DSNAPKIT_DEPLOYMENT_LEGACY";

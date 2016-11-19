@@ -86,6 +86,8 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
                 if(o!["data"]["code"].intValue == 0 && o?["data"]["info"].arrayValue.count > 0)
                 {
                     
+                    print("user: \(o)")
+                    
                     DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
                     DataCache.Share.userModel.password = p
                     

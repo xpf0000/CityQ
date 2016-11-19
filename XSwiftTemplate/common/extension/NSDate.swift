@@ -29,6 +29,12 @@ extension NSDate
         return NSDate().formart().dateByAddingTimeInterval(XHttpPool.Share.serverTimeInterval)
     }
     
+    class func serverUnix()->NSTimeInterval
+    {
+        return NSDate().dateByAddingTimeInterval(XHttpPool.Share.serverTimeInterval).timeIntervalSince1970
+    }
+
+    
     var dateComponent:NSDateComponents
     {
         let calendar=NSCalendar.currentCalendar()

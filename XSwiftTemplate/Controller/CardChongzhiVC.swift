@@ -8,27 +8,34 @@
 
 import UIKit
 
-class CardChongzhiVC: UITableViewController {
 
-    @IBOutlet var btn1: UIButton!
+class CardChongzhiVC: UITableViewController {
     
-    @IBOutlet var btn2: UIButton!
-    
-    @IBOutlet var btn3: UIButton!
-    
-    @IBOutlet var btn4: UIButton!
-    
-    @IBOutlet var btn5: UIButton!
+    @IBOutlet var collect: XCollectionView!
     
     @IBOutlet var name: UILabel!
     
     @IBOutlet var num: UILabel!
     
-    @IBAction func choose(sender: UIButton) {
+    var chooseModel:CardChongzhiModel?
+    {
+        didSet
+        {
+            if let str = chooseModel?.money
+            {
+                num.text = str+"元"
+            }
+            
+        }
+    }
+    
+    func choose(sender: UIButton,model:CardChongzhiModel) {
         
         selectBtn?.selected = false
         sender.selected = true
         selectBtn = sender
+        
+        chooseModel = model
         
     }
     
@@ -36,31 +43,51 @@ class CardChongzhiVC: UITableViewController {
     
     var selectBtn:UIButton?
     
+    var harr:[CGFloat] = [44,44,10,0,10,44,70,85]
+    
+    func http()
+    {
+        let url = APPURL+"Public/Found/?service=Hyk.getCardProduct&id=\(model!.hcmid)"
+        
+        XHttpPool.requestJson(url, body: nil, method: .GET) { (res) in
+            
+            print("res: \(res)")
+        }
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
         
-        let arr = [btn1,btn2,btn3,btn4,btn5]
-        
-        for item in arr
-        {
-            item.layer.masksToBounds = true
-            item.layer.cornerRadius = 8.0
-            item.layer.borderColor = APPBlueColor.CGColor
-            item.layer.borderWidth = 1.0
-            
-            item.setTitleColor(APPBlueColor, forState: .Normal)
-            item.setTitleColor(UIColor.whiteColor(), forState: .Selected)
-            
-            item.setBackgroundImage(APPBlueColor.image, forState: .Selected)
-            item.setBackgroundImage(UIColor.whiteColor().image, forState: .Normal)
-        }
+        name.text = model?.shopname
         
         let view1=UIView()
         view1.backgroundColor=UIColor.clearColor()
         tableView.tableFooterView=view1
         tableView.tableHeaderView=view1
         
+        collect.ViewLayout.itemSize = CGSizeMake(swidth/3.0, 38.0)
+        
+        collect.ViewLayout.minimumLineSpacing = 16.0
+        collect.ViewLayout.minimumInteritemSpacing = 0.0
+        collect.ViewLayout.sectionInset = UIEdgeInsetsMake(16.0, 0.0, 16.0, 0.0)
+        
+        let url = APPURL+"Public/Found/?service=Hyk.getCardProduct&id=\(model!.id)"
+        
+        collect.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: CardChongzhiModel.self, CellIdentifier: "CardChongzhiCell")
+        
+        collect.httpHandle.BeforeBlock {[weak self] (res) in
+            
+            self?.harr[3] = CGFloat( 16.0+ceil(Double(res.count)/3.0)*54 )
+            
+            self?.tableView.reloadData()
+            
+        }
+        
+        collect.httpHandle.handle()
+
     }
 
     
@@ -106,6 +133,79 @@ class CardChongzhiVC: UITableViewController {
                 // Fallback on earlier versions
             }
         }
+        
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return harr[indexPath.row]
+    }
+    
+    
+    @IBAction func submit(sender: UIButton) {
+        
+        if model == nil {return}
+        if chooseModel == nil
+        {
+            ShowMessage("请选择充值金额")
+            return
+        }
+        
+        XWaitingView.show()
+        sender.enabled = false
+        
+        let url = APPURL+"Public/Found/?service=hyk.paysign&uid=\(Uid)&username=\(Uname)&mcardid=\(model!.id)&cpid=\(chooseModel!.id)"
+        
+        XHttpPool.requestJson(url, body: nil, method: .POST) {[weak self] (res) in
+            
+            if let str = res?["data"]["info"].string
+            {
+                let appScheme = "Xchengshiquan";
+                
+                AlipaySDK.defaultService().payOrder(str, fromScheme: appScheme, callback: { [weak self](o) -> Void in
+                    
+                    XWaitingView.hide()
+                    
+                    print("pay result: \(o)")
+                    
+                    let resultStatus = o["resultStatus"] as? String
+                    
+                    if(resultStatus != nil)
+                    {
+                        if(resultStatus!.numberValue.intValue == 9000)
+                        {
+                            NSNotificationCenter.defaultCenter().postNotificationName("PaySuccess", object: nil)
+                            XAlertView.show("支付成功", block: {[weak self] in
+                                self?.pop()
+                            })
+                        }
+                        else
+                        {
+                            var memo = o["memo"] as? String
+                            memo = memo == nil ? "" : memo
+                            memo = memo == "" ? "支付失败" : memo
+                            
+                            XAlertView.show(memo!, block: nil)
+                            
+                            sender.enabled = true
+                        }
+                    }
+                    else
+                    {
+                        XAlertView.show("支付失败", block: {[weak self] in
+                            self?.pop()
+                            })
+                    }
+                    
+                    
+                })
+            }
+            
+            
+            print("res: \(res)")
+        }
+        
+        
         
     }
     

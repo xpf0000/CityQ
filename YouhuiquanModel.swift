@@ -17,6 +17,9 @@ class YouhuiquanModel: Reflect {
     var s_money=""
     var orlq=0
     
+    var s_time_unix = 0.00
+    var e_time_unix = 0.00
+    
     
     override func setValue(value: AnyObject?, forKey key: String) {
         
@@ -31,7 +34,7 @@ class YouhuiquanModel: Reflect {
             {
                 let date=NSDate(timeIntervalSince1970: value!.doubleValue)
                 self.s_time = date.toStr("yyyy-MM-dd")!
-                
+                s_time_unix = value!.doubleValue
                 return
             }
             
@@ -43,7 +46,7 @@ class YouhuiquanModel: Reflect {
             {
                 let date=NSDate(timeIntervalSince1970: value!.doubleValue)
                 self.e_time = date.toStr("yyyy-MM-dd")!
-                
+                e_time_unix = value!.doubleValue
                 return
             }
             

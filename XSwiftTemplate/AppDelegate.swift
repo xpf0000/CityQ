@@ -55,9 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        
-        print(NSDate().toStr("EEEE"))
-        print(NSDate().toStr("EEE"))
+        let t = NSDate().timeIntervalSince1970
+
+        print("t: \(t)")
+ 
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onMessageReceived(_:)), name: "CCPDidReceiveMessageNotification", object: nil)
         
@@ -289,6 +290,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
 
     func applicationDidBecomeActive(application: UIApplication) {
         
+        //print("applicationDidBecomeActive !!!!!!!!!!")
+        
+        //NSNotificationCenter.defaultCenter().postNotificationName("applicationDidBecomeActive", object: nil)
+        
         Preloading.Share.CheckToken()
         
         //Preloading.Share.getMessage(Uid, username: Uname)
@@ -304,10 +309,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         return ShareSDK.handleOpenURL(url, wxDelegate: self)
         
     }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        
+        if url.host == "safepay"
+        {
+            AlipaySDK.defaultService().processOrderWithPaymentResult(url, standbyCallback: { (res) in
+                
+                XWaitingView.hide()
+                
+                print("resultStatus: \(res?["resultStatus"])")
+                
+                
+                if let resultStatus = res?["resultStatus"] as? String
+                {
+                    if resultStatus == "9000"
+                    {
+                        XAlertView.show("支付成功", block: {
+                            NSNotificationCenter.defaultCenter().postNotificationName("PaySuccess", object: nil)
+                        })
+                        
+                        return
+                    }
+                }
+                
+                let str = res?["memo"] as? String ?? "支付失败"
+                
+                XAlertView.show(str, block: nil)
+                
+                NSNotificationCenter.defaultCenter().postNotificationName("PayFail", object: nil)
+                
+                print("pay result11: \(res)")
+                
+            })
+        }
+        
+        
+        
+        
+        return true
+    }
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         
-        return ShareSDK.handleOpenURL(url, sourceApplication: sourceApplication, annotation: annotation, wxDelegate: self)
+        if url.host == "safepay"
+        {
+            AlipaySDK.defaultService().processOrderWithPaymentResult(url, standbyCallback: { (res) in
+                
+                print("pay result000: \(res)")
+                
+            })
+        }
+
+        ShareSDK.handleOpenURL(url, sourceApplication: sourceApplication, annotation: annotation, wxDelegate: self)
+        
+        return  true
     }
     
     func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {

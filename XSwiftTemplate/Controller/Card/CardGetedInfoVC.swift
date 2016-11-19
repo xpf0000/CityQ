@@ -38,23 +38,12 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
     
     @IBAction func doChongzhi(sender: AnyObject) {
         
-        if model.type == "充值卡"
-        {
-            let vc:CardChongzhiVC = "CardChongzhiVC".VC("Card") as! CardChongzhiVC
-            vc.model = model
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        else
-        {
-            let vc:CardTimesChongzhiVC = "CardTimesChongzhiVC".VC("Card") as! CardTimesChongzhiVC
-            vc.model = model
-            vc.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        let vc:CardTimesChongzhiVC = "CardTimesChongzhiVC".VC("Card") as! CardTimesChongzhiVC
         
+        vc.model = model
         
-        
+        vc.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -106,9 +95,11 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
         }
     }
     
+    var url = ""
+    
     func http()
     {
-        let url = APPURL+"Public/Found/?service=Hyk.getArticleYLQ&username=\(DataCache.Share.userModel.username)&id=\(model.hcmid)"
+        url = url == "" ? APPURL+"Public/Found/?service=Hyk.getArticleYLQ&username=\(DataCache.Share.userModel.username)&id=\(model.hcmid)" : url
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { [weak self](json) in
             
@@ -147,7 +138,8 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
         name.text = model.shopname
         cardType.text = model.type
         
-       
+        cardNum.text = "NO."+model.cardnumber
+        
         phone.text = model.tel
         address.text = model.address
        
@@ -217,6 +209,8 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
         super.viewDidLoad()
         self.title = "会员卡详情"
         self.addBackButton()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(http), name: "PaySuccess", object: nil)
         
         address.preferredMaxLayoutWidth = swidth - 105
         yue.preferredMaxLayoutWidth = swidth - 63
@@ -331,7 +325,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
     
     deinit
     {
-        
+        NSNotificationCenter.defaultCenter().removeObserver(self)
         //print("CardGetedInfoVC deinit !!!!!!!!!!")
     }
     

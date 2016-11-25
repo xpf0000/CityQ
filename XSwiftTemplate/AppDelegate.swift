@@ -54,11 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-        let t = NSDate().timeIntervalSince1970
-
-        print("t: \(t)")
- 
+        
+        initLocalHtml()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(onMessageReceived(_:)), name: "CCPDidReceiveMessageNotification", object: nil)
         
@@ -385,6 +382,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         UIApplication.sharedApplication().endBackgroundTask(self.backgroundUpdateTask!)
         self.backgroundUpdateTask = UIBackgroundTaskInvalid
     }
+    
+    
+    
+    func initLocalHtml()
+    {
+        print("-----------")
+        
+        let fm = NSFileManager.defaultManager()
+        let tmpDirURL = NSURL.fileURLWithPath(NSTemporaryDirectory()).URLByAppendingPathComponent("www")
+        
+        if let p = tmpDirURL?.path
+        {
+            if !fm.fileExistsAtPath(p)
+            {
+                try! fm.createDirectoryAtURL(tmpDirURL!, withIntermediateDirectories: true, attributes: nil)
+                
+                SSZipArchive.unzipFileAtPath("citytest.zip".path, toDestination: p)
+                
+                print(p)
+                print("解压缩完毕 !!!!!!!!!")
+            }
+            
+            
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
 
     deinit
     {

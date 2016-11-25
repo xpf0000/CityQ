@@ -101,6 +101,8 @@ class CardTimesChongzhiVC: UITableViewController {
         
         collect.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: CardChongzhiModel.self, CellIdentifier: "CardTimeChongzhiCell")
         
+        collect.postDict = ["type":type]
+        
         collect.httpHandle.BeforeBlock {[weak self] (res) in
             
             if res.count == 0

@@ -203,7 +203,54 @@ class HomeVC: UIViewController {
         alert.show()
     }
 
-    
+    func doQD(sender:UIButton)
+    {
+        if(!self.checkIsLogin())
+        {
+            return
+        }
+        
+        if DataCache.Share.userModel.orqd == 1
+        {
+            let vc = HtmlVC()
+            
+            vc.baseUrl = TmpDirURL
+            
+            if let u = TmpDirURL?.URLByAppendingPathComponent("index.html")
+            {
+                vc.url = "\(u)?uid=\(Uid)&uname=\(Uname)"
+            }
+            
+            vc.hidesBottomBarWhenPushed = true
+            vc.title = "每日签到"
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            return
+        }
+        
+        sender.enabled = false
+        
+        let url = APPURL + "Public/Found/?service=jifen.addQiandao&uid=\(Uid)&username=\(Uname)"
+        
+        XHttpPool.requestJson(url, body: nil, method: .POST) { (o) in
+            
+            if o?["data"]["code"].int == 0
+            {
+                XAlertView.show("签到成功,获得1怀府币", block: nil)
+                DataCache.Share.userModel.orqd = 1
+            }
+            else
+            {
+                var msg = o?["data"]["msg"].stringValue
+                msg = msg == "" ? "签到失败" : msg
+                XAlertView.show(msg!, block: nil)
+            }
+            
+            sender.enabled = true
+        }
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -213,6 +260,19 @@ class HomeVC: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.MsgChange.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.LoginSuccess.rawValue, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.LogoutSuccess.rawValue, object: nil)
+        
+        let button=UIButton(type: UIButtonType.Custom)
+        button.frame=CGRectMake(0, 0, 50, 24);
+        button.setTitle("签到", forState: .Normal)
+        button.titleLabel?.font = UIFont.systemFontOfSize(15.0)
+        button.showsTouchWhenHighlighted = true
+        button.exclusiveTouch = true
+        button.addTarget(self, action: #selector(doQD(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        let leftItem=UIBarButtonItem(customView: button)
+        self.navigationItem.leftBarButtonItem=leftItem;
+        
+        self.backButton=button
+
         
         menu.frame = CGRectMake(swidth/6.0, 0, swidth/3.0*2.0, 42.0*screenFlag)
         

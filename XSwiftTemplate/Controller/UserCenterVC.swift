@@ -54,7 +54,8 @@ class UserCenterVC: UITableViewController {
             
             if o?["data"]["code"].int == 0
             {
-                XAlertView.show("签到成功", block: nil)
+                XAlertView.show("签到成功,获得1怀府币", block: nil)
+                self.getUinfo()
             }
             else
             {
@@ -70,14 +71,6 @@ class UserCenterVC: UITableViewController {
     
     
     func toEdit() {
-        
-//        let vc = "InputNickNameVC".VC("User") as! InputNickNameVC
-//        vc.body = ""
-//        
-//        self.navigationController?.pushViewController(vc, animated: true)
-//        
-//        return
-        
         
         if(DataCache.Share.userModel.uid != "")
         {
@@ -158,11 +151,12 @@ class UserCenterVC: UITableViewController {
         let button=UIButton(type: UIButtonType.Custom)
         button.frame=CGRectMake(0, 0, 40, 21);
         button.setTitle("设置", forState: .Normal)
-        //button.titleLabel?.font = UIFont.systemFontOfSize(18.0)
+        button.titleLabel?.font = UIFont.systemFontOfSize(15.0)
         button.showsTouchWhenHighlighted = true
         button.exclusiveTouch = true
         let rightItem=UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem=rightItem;
+        
         button.click { [weak self](btn) in
             
             let vc:ConfigVC = "ConfigVC".VC("User") as! ConfigVC
@@ -328,6 +322,12 @@ class UserCenterVC: UITableViewController {
             
             self.navigationController?.pushViewController(vc, animated: true)
             
+        case 12:
+            
+            let vc:ConfigVC = "ConfigVC".VC("User") as! ConfigVC
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+            
             
         default :
             ""
@@ -335,12 +335,8 @@ class UserCenterVC: UITableViewController {
         
     }
     
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.showInfo()
-        
+    func getUinfo()
+    {
         DataCache.Share.userModel.OnValueChange {[weak self] (key, value) in
             
             if key == "hfb"
@@ -355,7 +351,13 @@ class UserCenterVC: UITableViewController {
         }
         
         DataCache.Share.userModel.getHFB()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         
+        self.showInfo()
+        getUinfo()
 
     }
     

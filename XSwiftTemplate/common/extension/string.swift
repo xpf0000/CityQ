@@ -231,7 +231,14 @@ extension String{
     
     var urlRequest:NSURLRequest?
     {
-        return NSURLRequest(URL: self.url!)
+        let str = self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+        
+        if let u = str?.url
+        {
+            return NSURLRequest(URL: u)
+        }
+        
+        return nil
     }
     
     var image:UIImage?

@@ -156,7 +156,7 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
             
             if o?["data"]["code"].int == 0
             {
-                XAlertView.show("签到成功", block: nil)
+                XAlertView.show("签到成功,获得1怀府币", block: nil)
                 self?.stateIcon.hidden = false
                 self?.state.text = "已完成"
                 self?.state.textColor = APPBlueColor

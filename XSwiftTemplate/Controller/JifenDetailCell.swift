@@ -42,6 +42,10 @@ class JifenDetailCell: UITableViewCell {
                     price.text = "-\(n)"
                 }
                 
+                if model?.type == "4"
+                {
+                    price.text = "-\(n)"
+                }
             }
             
             

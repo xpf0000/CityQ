@@ -403,7 +403,7 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let vc = "CardGetedInfoVC".VC("Card") as! CardGetedInfoVC
+        let vc = "CardGetedMainVC".VC("Card") as! CardGetedMainVC
         
         let model = table.httpHandle.listArr[indexPath.row] as! CardModel
         model.hcmid = model.id

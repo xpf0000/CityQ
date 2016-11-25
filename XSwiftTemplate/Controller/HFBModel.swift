@@ -21,6 +21,7 @@ class HFBModel: Reflect {
     var pm = ""
     var nick = ""
     var qdday = ""
+    var type = ""
 
     override func setValue(value: AnyObject?, forKey key: String) {
         

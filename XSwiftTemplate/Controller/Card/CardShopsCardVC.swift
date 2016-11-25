@@ -93,9 +93,9 @@ class CardShopsCardVC: UIViewController,UITableViewDelegate {
         
         if model.orlq > 0
         {
-            vc = "CardGetedInfoVC".VC("Card")
+            vc = "CardGetedMainVC".VC("Card")
             
-            (vc as! CardGetedInfoVC).model = model
+            (vc as! CardGetedMainVC).model = model
             
         }
         else

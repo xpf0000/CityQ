@@ -1113,11 +1113,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XSwiftTemplate/Controller/UserCenterVC.swift"
-            timestampString = "499159647.202847"
+            timestampString = "501243117.108985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "tableView(tableView:willDisplayCell:forRowAtIndexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1129,11 +1129,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XSwiftTemplate/Controller/UserCenterVC.swift"
-            timestampString = "499159647.202847"
+            timestampString = "501243117.108985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1145,11 +1145,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XSwiftTemplate/Controller/UserCenterVC.swift"
-            timestampString = "499159647.202847"
+            timestampString = "501243117.108985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "tableView(tableView:willDisplayCell:forRowAtIndexPath:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1241,11 +1241,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "XSwiftTemplate/Controller/UserCenterVC.swift"
-            timestampString = "499159647.202847"
+            timestampString = "501243117.108985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "toEdit()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1295,7 +1295,7 @@
             startingLineNumber = "148"
             endingLineNumber = "148"
             landmarkName = "http()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1311,7 +1311,7 @@
             startingLineNumber = "231"
             endingLineNumber = "231"
             landmarkName = "viewDidLoad()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1327,7 +1327,7 @@
             startingLineNumber = "157"
             endingLineNumber = "157"
             landmarkName = "http()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1502,8 +1502,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "243"
             endingLineNumber = "243"
-            landmarkName = "application(_:didRegisterForRemoteNotificationsWithDeviceToken:)"
-            landmarkType = "7">
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1596,7 +1596,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "257"
             endingLineNumber = "257"
-            landmarkName = "application(_:didReceiveRemoteNotification:fetchCompletionHandler:)"
+            landmarkName = "application(application:didReceiveRemoteNotification:fetchCompletionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1612,7 +1612,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "268"
             endingLineNumber = "268"
-            landmarkName = "application(_:didFailToRegisterForRemoteNotificationsWithError:)"
+            landmarkName = "applicationWillResignActive(application:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1628,8 +1628,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "299"
             endingLineNumber = "299"
-            landmarkName = "applicationDidBecomeActive(_:)"
-            landmarkType = "7">
+            landmarkName = "AppDelegate"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1901,7 +1901,7 @@
             startingLineNumber = "195"
             endingLineNumber = "195"
             landmarkName = "viewDidLoad()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2334,6 +2334,54 @@
             endingLineNumber = "59"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "XSwiftTemplate/common/Custom Controls/HmtlVC.swift"
+            timestampString = "501732268.956613"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "handleMSG(dic:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "chengshi.HtmlVC.(handleMSG (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "chengshi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/X/Desktop/WorkSpace/CityQ/XSwiftTemplate/common/Custom%20Controls/HmtlVC.swift"
+                  timestampString = "501732269.416982"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "100">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "chengshi.HtmlVC.(handleMSG (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;&gt;) -&gt; ()).(closure #1).(closure #1)"
+                  moduleName = "chengshi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/X/Desktop/WorkSpace/CityQ/XSwiftTemplate/common/Custom%20Controls/HmtlVC.swift"
+                  timestampString = "501732269.419427"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "2048">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

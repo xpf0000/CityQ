@@ -34,42 +34,6 @@ import UIKit
 import WebKit
 import JavaScriptCore
 
-class JSHandle:NSObject,XJSExports
-{
-    dynamic var msg:String = ""
-    
-    @objc static func jsMessage(message: String) {
-        
-        Share().msg = message
-        
-    }
-    
-    override init()
-    {
-        
-    }
-    
-    class func Share() ->JSHandle! {
-        
-        struct Once {
-            static var token:dispatch_once_t = 0
-            static var dataCenterObj:JSHandle! = nil
-        }
-        dispatch_once(&Once.token, {
-            Once.dataCenterObj = JSHandle.init()
-        })
-        return Once.dataCenterObj
-    }
-
-}
-
-
-
-@objc protocol XJSExports : JSExport {
-    var msg: String { get set }
-    static func jsMessage(message: String) -> Void
-}
-
 //typealias AnyBlock = (Any?)->Void
 
 class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler{
@@ -78,6 +42,7 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
     var url=""
     var html:String=""
     var block:AnyBlock?
+    let handle = JSHandle()
     weak var context:JSContext?
     
     
@@ -86,37 +51,32 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
         
         if(newSuperview == nil)
         {
-            if #available(iOS 8.0, *) {
-                (webView as! WKWebView).configuration.userContentController.removeScriptMessageHandlerForName("JSHandle")
-            }
+            (webView as! WKWebView).configuration.userContentController.removeScriptMessageHandlerForName("JSHandle")
 
         }
         
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        if(keyPath == "msg")
+    func handleMSG() {
+        
+        let json = handle.msg
+        
+        let data=json.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        do
         {
+            let dic:Dictionary<String,AnyObject>? = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? Dictionary<String,AnyObject>
             
-            let json=JSHandle.Share().msg
-            let data=json.dataUsingEncoding(NSUTF8StringEncoding)
-            
-            do
+            if(dic != nil)
             {
-                let dic:Dictionary<String,AnyObject>? = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.MutableContainers) as? Dictionary<String,AnyObject>
-                
-                if(dic != nil)
-                {
-                    self.block?(dic)
-                }
+                self.block?(dic)
             }
-            catch
-            {
-                self.block?(JSHandle.Share().msg)
-            }
-            
-            
         }
+        catch
+        {
+            self.block?(json)
+        }
+    
     }
     
     func show()
@@ -128,62 +88,42 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
         
         XWaitingView.show()
     
-        if #available(iOS 8.0, *) {
-            
-            if(self.url != "")
-            {
-                (webView as! WKWebView).loadRequest(url.urlRequest!)
-            }
-            else if(self.html != "")
-            {
-                (webView as! WKWebView).loadHTMLString(self.html, baseURL: nil)
-            }
-            
-            
-        } else {
-            
-            if(self.url != "")
-            {
-                (webView as! UIWebView).loadRequest(url.urlRequest!)
-            }
-            else if(self.html != "")
-            {
-                (webView as! UIWebView).loadHTMLString(self.html, baseURL: nil)
-            }
+        if(self.url != "")
+        {
+            (webView as! WKWebView).loadRequest(url.urlRequest!)
         }
+        else if(self.html != "")
+        {
+            (webView as! WKWebView).loadHTMLString(self.html, baseURL: nil)
+        }
+
     }
     
     func initSelf()
     {
-        JSHandle.Share().addObserver(self, forKeyPath: "msg", options: .New, context: nil)
-        
-        if #available(iOS 8.0, *) {
-            
-            let config = WKWebViewConfiguration()
-            let scriptHandle = WKUserContentController()
-            scriptHandle.addScriptMessageHandler(self, name: "JSHandle")
-            
-            let per = WKPreferences()
-            per.javaScriptCanOpenWindowsAutomatically = true
-            per.javaScriptEnabled = true
-            config.preferences = per
-            config.userContentController = scriptHandle
 
-            webView = WKWebView(frame: CGRectZero, configuration: config)
-            (webView as! WKWebView).UIDelegate=self
-            (webView as! WKWebView).navigationDelegate=self
-            webView?.frame=CGRectMake(0, 0, frame.size.width, frame.size.height)
-            (webView as! WKWebView).scrollView.showsHorizontalScrollIndicator = false
-            (webView as! WKWebView).scrollView.showsVerticalScrollIndicator = false
+        handle.onMsgChange {[weak self] (msg) in
             
-        } else {
-            webView = UIWebView()
-            webView?.frame=CGRectMake(0, 0, frame.size.width, frame.size.height)
-            (webView as! UIWebView).delegate=self
-            (webView as! UIWebView).scrollView.showsHorizontalScrollIndicator = false
-            (webView as! UIWebView).scrollView.showsVerticalScrollIndicator = false
-            
+            self?.handleMSG()
         }
+        
+        
+        let config = WKWebViewConfiguration()
+        let scriptHandle = WKUserContentController()
+        scriptHandle.addScriptMessageHandler(self, name: "JSHandle")
+        
+        let per = WKPreferences()
+        per.javaScriptCanOpenWindowsAutomatically = true
+        per.javaScriptEnabled = true
+        config.preferences = per
+        config.userContentController = scriptHandle
+        
+        webView = WKWebView(frame: CGRectZero, configuration: config)
+        (webView as! WKWebView).UIDelegate=self
+        (webView as! WKWebView).navigationDelegate=self
+        webView?.frame=CGRectMake(0, 0, frame.size.width, frame.size.height)
+        (webView as! WKWebView).scrollView.showsHorizontalScrollIndicator = false
+        (webView as! WKWebView).scrollView.showsVerticalScrollIndicator = false
         
         self.addSubview(webView!)
         
@@ -302,8 +242,7 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
     @available(iOS 8.0, *)
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         
-        
-        JSHandle.Share().msg = message.body as! String
+        handle.msg = message.body as! String
         
     }
     
@@ -312,21 +251,12 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
         
         self.block = nil
         self.context = nil
-        JSHandle.Share().removeObserver(self, forKeyPath: "msg")
-        if #available(iOS 8.0, *) {
-            (webView as! WKWebView).configuration.userContentController.removeScriptMessageHandlerForName("JSHandle")
-            (webView as! WKWebView).UIDelegate=nil
-            (webView as! WKWebView).navigationDelegate=nil
-            (webView as! WKWebView).stopLoading()
-            webView=nil
-            
-        } else {
-            (webView as! UIWebView).delegate=nil
-            (webView as! UIWebView).loadHTMLString("", baseURL: nil)
-            (webView as! UIWebView).stopLoading()
-            webView=nil
-        }
         
+        (webView as! WKWebView).configuration.userContentController.removeScriptMessageHandlerForName("JSHandle")
+        (webView as! WKWebView).UIDelegate=nil
+        (webView as! WKWebView).navigationDelegate=nil
+        (webView as! WKWebView).stopLoading()
+        webView=nil
     }
     
    

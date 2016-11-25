@@ -47,11 +47,7 @@ class XViewController: UIViewController,UIViewControllerTransitioningDelegate{
         JumpInteraction.Share.addRecognizer()
         
         super.presentViewController(viewControllerToPresent, animated: flag, completion: { () -> Void in
-            
-            if(c != nil)
-            {
-                c!()
-            }
+            c?()
         })
     }
     

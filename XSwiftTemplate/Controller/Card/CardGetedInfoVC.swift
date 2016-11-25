@@ -10,6 +10,8 @@ import UIKit
 
 class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDelegate    {
     
+    @IBOutlet var dhBtn: UIButton!
+    
     @IBOutlet var table: UITableView!
     
     @IBOutlet var img: UIImageView!
@@ -34,13 +36,43 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
     
     @IBOutlet var addressCell: UITableViewCell!
     
+    weak var supervc:CardGetedMainVC?
+    
+    @IBAction func doDuihuan(sender: UIButton) {
+        
+        
+        let vc = HtmlVC()
+        
+        vc.baseUrl = TmpDirURL
+        
+        if let u = TmpDirURL?.URLByAppendingPathComponent("duihuan.html")
+        {
+            vc.url = "\(u)?uid=\(Uid)&uname=\(Uname)&cid=\(model.id)&sname=\(model.shopname)"
+            
+            print(vc.url)
+        }
+        
+        vc.hidesBottomBarWhenPushed = true
+        vc.title = "积分兑换"
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
     
     
-    @IBAction func doChongzhi(sender: AnyObject) {
+    @IBAction func doChongzhi(sender: UIButton) {
         
         let vc:CardTimesChongzhiVC = "CardTimesChongzhiVC".VC("Card") as! CardTimesChongzhiVC
         
         vc.model = model
+        if model.type == "充值卡"
+        {
+            vc.type = 0
+        }
+        else
+        {
+            vc.type = 1
+        }
         
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
@@ -78,20 +110,17 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
     
     
     
-    var harr:[CGFloat] = [160,42.0,42.0,10,42.0,42,42,10,42,128,100]
+    var harr:[CGFloat] = [160,42.0,42.0,10,42.0,42,42,10,42,128]
     
     var model:CardModel!
     {
         didSet
         {
-            if oldValue == nil
-            {
-                http()
-            }
-            else
-            {
-                show()
-            }
+//            if oldValue == nil
+//            {
+//                http()
+//            }
+
         }
     }
     
@@ -106,6 +135,8 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
             if let item = json?["data"]["info"][0]
             {
                 self?.model = CardModel.parse(json: item, replace: nil)
+                
+                self?.show()
             }
             
         }
@@ -120,14 +151,16 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
             str = "剩余次数: "+model.values+"\r\n当前积分: "+model.jifen
         case "打折卡":
             ""
-            harr[10] = 0.0
+            supervc?.btn.hidden = true
+            supervc?.btnH.constant = 0.0
             str = "当前折扣: "+model.values+"\r\n当前积分: "+model.jifen
         case "充值卡":
             ""
             str = "剩余金额: ￥"+model.values+"\r\n当前积分: "+model.jifen
         case "积分卡":
             ""
-            harr[10] = 0.0
+            supervc?.btn.hidden = true
+            supervc?.btnH.constant = 0.0
             str = "当前积分: "+model.values
             
         default:
@@ -321,6 +354,12 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
         super.didReceiveMemoryWarning()
         
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        http()
     }
     
     deinit

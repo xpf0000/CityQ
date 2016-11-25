@@ -327,6 +327,62 @@
             </objects>
             <point key="canvasLocation" x="-2" y="273"/>
         </scene>
+        <!--Card Geted MainVC-->
+        <scene sceneID="ig5-3l-hxI">
+            <objects>
+                <viewController storyboardIdentifier="CardGetedMainVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p26-YX-Vqf" customClass="CardGetedMainVC" customModule="chengshi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lcX-Eg-zfm"/>
+                        <viewControllerLayoutGuide type="bottom" id="X2a-t2-Y7w"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1DQ-rG-Yaa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VD1-c7-etR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="621"/>
+                                <connections>
+                                    <segue destination="PMZ-Zm-94w" kind="embed" id="zbg-iL-RAm"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTB-v9-AMi">
+                                <rect key="frame" x="20" y="621" width="335" height="46"/>
+                                <color key="backgroundColor" red="0.12941176469999999" green="0.67843137249999996" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="Cxh-i6-yuA"/>
+                                </constraints>
+                                <state key="normal" title="充值"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="submit:" destination="p26-YX-Vqf" eventType="touchUpInside" id="czs-Si-xv3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ZTB-v9-AMi" secondAttribute="bottom" id="5hG-x7-WWF"/>
+                            <constraint firstItem="VD1-c7-etR" firstAttribute="leading" secondItem="1DQ-rG-Yaa" secondAttribute="leading" id="6hq-bb-Y1w"/>
+                            <constraint firstAttribute="trailing" secondItem="ZTB-v9-AMi" secondAttribute="trailing" constant="20" id="VXN-lH-G63"/>
+                            <constraint firstItem="ZTB-v9-AMi" firstAttribute="top" secondItem="VD1-c7-etR" secondAttribute="bottom" id="YPP-Af-5YZ"/>
+                            <constraint firstItem="VD1-c7-etR" firstAttribute="top" secondItem="1DQ-rG-Yaa" secondAttribute="top" id="Ygm-Vq-0Gl"/>
+                            <constraint firstAttribute="trailing" secondItem="VD1-c7-etR" secondAttribute="trailing" id="upj-nt-ynV"/>
+                            <constraint firstItem="ZTB-v9-AMi" firstAttribute="leading" secondItem="1DQ-rG-Yaa" secondAttribute="leading" constant="20" id="xWT-Og-6KC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btn" destination="ZTB-v9-AMi" id="9nv-kl-Ufw"/>
+                        <outlet property="btnH" destination="Cxh-i6-yuA" id="lxf-i3-dJZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bg2-70-PKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="741.60000000000002" y="-442.12893553223392"/>
+        </scene>
         <!--会员卡详情-已领取-->
         <scene sceneID="JN4-7V-5Ve">
             <objects>
@@ -464,9 +520,21 @@
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QLL-o5-rto">
+                                                    <rect key="frame" x="539" y="10" width="49" height="22"/>
+                                                    <color key="backgroundColor" red="0.12941176469999999" green="0.67843137249999996" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <inset key="contentEdgeInsets" minX="11" minY="3" maxX="11" maxY="3"/>
+                                                    <state key="normal" title="兑换"/>
+                                                    <connections>
+                                                        <action selector="doDuihuan:" destination="PMZ-Zm-94w" eventType="touchUpInside" id="e1O-GD-Msd"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="mEk-cQ-9JS" firstAttribute="leading" secondItem="SzK-ZK-ex7" secondAttribute="leading" constant="51" id="4wY-99-1OJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="QLL-o5-rto" secondAttribute="trailing" constant="12" id="6cK-JK-RNP"/>
+                                                <constraint firstItem="QLL-o5-rto" firstAttribute="centerY" secondItem="SzK-ZK-ex7" secondAttribute="centerY" id="pOc-mY-L5N"/>
                                                 <constraint firstAttribute="trailing" secondItem="mEk-cQ-9JS" secondAttribute="trailing" constant="12" id="rkV-Zp-JmG"/>
                                                 <constraint firstAttribute="bottom" secondItem="mEk-cQ-9JS" secondAttribute="bottom" constant="8" id="wGA-gm-qI5"/>
                                                 <constraint firstItem="mEk-cQ-9JS" firstAttribute="top" secondItem="SzK-ZK-ex7" secondAttribute="top" constant="8" id="wQs-2o-z2z"/>
@@ -651,40 +719,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.95294117649999999" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="4Qb-AN-ZVx">
-                                        <rect key="frame" x="0.0" y="582" width="600" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Qb-AN-ZVx" id="1mp-wq-ESv">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="99"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dr-Br-wCs">
-                                                    <rect key="frame" x="24" y="27" width="552" height="46"/>
-                                                    <color key="backgroundColor" red="0.12941176469999999" green="0.67843137249999996" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="46" id="rvD-Qs-UfH"/>
-                                                    </constraints>
-                                                    <state key="normal" title="充值"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="6"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="doChongzhi:" destination="PMZ-Zm-94w" eventType="touchUpInside" id="PSw-yf-D0V"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.95294117649999999" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <constraints>
-                                                <constraint firstItem="7dr-Br-wCs" firstAttribute="centerY" secondItem="1mp-wq-ESv" secondAttribute="centerY" id="Bh5-vw-L6u"/>
-                                                <constraint firstItem="7dr-Br-wCs" firstAttribute="leading" secondItem="1mp-wq-ESv" secondAttribute="leading" constant="24" id="CV3-6X-K3p"/>
-                                                <constraint firstAttribute="trailing" secondItem="7dr-Br-wCs" secondAttribute="trailing" constant="24" id="uLb-9V-8Ax"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.95294117649999999" green="0.96078431369999995" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -701,6 +735,7 @@
                         <outlet property="addressCell" destination="Q9E-44-h33" id="Qcf-Z0-sdK"/>
                         <outlet property="cardNum" destination="vMj-1J-yeh" id="AmV-0d-JsG"/>
                         <outlet property="cardType" destination="k0m-16-2cF" id="FEy-Ls-uwS"/>
+                        <outlet property="dhBtn" destination="QLL-o5-rto" id="Jzf-1E-tiN"/>
                         <outlet property="img" destination="Pif-GV-Im1" id="IZb-Pc-Ti4"/>
                         <outlet property="imgBG" destination="Z0L-A8-l3X" id="gHj-vf-JNq"/>
                         <outlet property="name" destination="h94-ya-ufB" id="zjF-Sc-lsl"/>

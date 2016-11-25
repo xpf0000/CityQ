@@ -270,20 +270,17 @@ class JumpAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                     self.fromView!.removeFromSuperview()
                 }
                 
-                self.transitionContext!.completeTransition(!self.transitionContext!.transitionWasCancelled())
+                self.transitionContext!.completeTransition(true)
             
         }
         
     }
     
+    
+    
     func animationEnded(transitionCompleted: Bool) {
-        
-        if transitionCompleted
-        {
-            self.transitionContext?.completeTransition(!self.transitionContext!.transitionWasCancelled())
-            self.transitionContext?.viewControllerForKey(UITransitionContextFromViewControllerKey)?.view.layer.mask = nil
-        }
-        
+
+        self.transitionContext?.viewControllerForKey(UITransitionContextFromViewControllerKey)?.view.layer.mask = nil
     }
     
 }

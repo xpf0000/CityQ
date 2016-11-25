@@ -21,7 +21,7 @@
                 <navigationController title="商城nv" id="r0K-d2-axX" customClass="XNavigationController" customModule="chengshi" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="" id="Szr-rK-Nee"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="fxU-nJ-O2y">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="fxU-nJ-O2y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -67,7 +67,7 @@
             <objects>
                 <navigationController title="首页NV" id="jtm-u5-R6h" customClass="XNavigationController" customModule="chengshi" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="axH-uH-O0L"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="gs1-Fe-CFy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="gs1-Fe-CFy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -86,7 +86,7 @@
         <scene sceneID="nuI-MQ-zRB">
             <objects>
                 <navigationController id="dLw-QO-QXR" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aPa-rt-VVM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="aPa-rt-VVM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -583,7 +583,7 @@
                 <navigationController title="会员卡NV" automaticallyAdjustsScrollViewInsets="NO" id="slG-R1-DVL" customClass="XNavigationController" customModule="chengshi" customModuleProvider="target" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <tabBarItem key="tabBarItem" title="" id="ogn-OL-MGN"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="t7F-pl-SUe">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="t7F-pl-SUe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -600,7 +600,7 @@
             <objects>
                 <navigationController title="朋友圈NV" id="8cX-eB-6T7" customClass="XNavigationController" customModule="chengshi" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="zT8-du-4wm"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="CjW-1A-mxp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="CjW-1A-mxp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -656,7 +656,7 @@
             <objects>
                 <navigationController title="预约NV" id="6fT-3r-SL1" customClass="XNavigationController" customModule="chengshi" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" id="o3P-Qu-6BU"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="xai-kC-BNC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="xai-kC-BNC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

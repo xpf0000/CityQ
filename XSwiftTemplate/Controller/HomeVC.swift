@@ -23,10 +23,45 @@ class HomeVC: UIViewController {
         
         super.init(coder: aDecoder)
 
-        addSearchButton { [weak self](btn) in
+        let view = UIView()
+        view.frame = CGRectMake(0, 0, 64, 30)
+        
+        let button=UIButton(type: UIButtonType.Custom)
+   
+        button.frame=CGRectMake(10, 5, 20, 20);
+        button.setBackgroundImage("search@3x.png".image, forState: UIControlState.Normal)
+        button.showsTouchWhenHighlighted = true
+        button.exclusiveTouch = true
+        view.addSubview(button)
+        
+        let button1=UIButton(type: UIButtonType.Custom)
+        
+        button1.frame=CGRectMake(40, 3, 24, 24);
+        button1.setBackgroundImage("home_message.png".image, forState: UIControlState.Normal)
+        button1.showsTouchWhenHighlighted = true
+        button1.exclusiveTouch = true
+        view.addSubview(button1)
+        
+        
+        
+        
+        let rightItem=UIBarButtonItem(customView: view)
+        self.navigationItem.rightBarButtonItem=rightItem;
+        
+        button.click { [weak self](btn) in
             
             self?.toSearch()
         }
+        
+        button1.click { [weak self](btn) in
+            
+            let vc = "MyMessageVC".VC("User")
+            
+            vc.hidesBottomBarWhenPushed = true
+            
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+        
         
         getCategory()
     }

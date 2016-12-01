@@ -120,6 +120,23 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
     {
         if let type = dic?["type"] as? String,let msg = dic?["msg"] as? String
         {
+            if type == "0" && msg == "跳转签到规则"
+            {
+                let vc = HtmlVC()
+                
+                vc.baseUrl = TmpDirURL
+                
+                if let u = TmpDirURL?.URLByAppendingPathComponent("hfbguize.html")
+                {
+                    vc.url = "\(u)?id=6886"
+                }
+                
+                vc.hidesBottomBarWhenPushed = true
+                vc.title = "签到规则"
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
             if type == "1" && msg == "兑换商品"
             {
                 let vc = HtmlVC()
@@ -128,7 +145,7 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
                 
                 if let u = TmpDirURL?.URLByAppendingPathComponent("duihuaninfo.html")
                 {
-                    vc.url = "\(u)?id=\(dic!["id"] as! String)"
+                    vc.url = "\(u)?id=\(dic!["id"] as! String)&uid=\(Uid)&uname=\(Uname)"
                 }
                 
                 vc.hidesBottomBarWhenPushed = true
@@ -138,58 +155,43 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
             }
             
             
-            if type == "2" && msg == "兑换商品"
+            if type == "2" && msg == "开始兑换商品"
+            {
+                XWaitingView.show()
+            }
+            
+            if type == "2" && msg == "商品兑换成功"
             {
                 let id = dic!["id"] as! String
-                
-                XWaitingView.show()
-                let url = "http://182.92.70.85/hfapi/Public/Found/?service=jifen.addDH&uid=\(Uid)&username=\(Uname)&id="+id
-                
-                XHttpPool.requestJson(url, body: nil, method: .POST) { (o) in
+                XAlertView.show("兑换成功", block: {[weak self] in
                     
-                    XWaitingView.hide()
+                    let vc = HtmlVC()
                     
-                    if o?["data"]["code"].int == 0
+                    vc.baseUrl = TmpDirURL
+                    
+                    if let u = TmpDirURL?.URLByAppendingPathComponent("duihuansuccess.html")
                     {
-                        XAlertView.show("兑换成功", block: {[weak self] in
-                            
-                            if let id = o?["data"]["info"]["id"].string
-                            {
-                                
-                                let vc = HtmlVC()
-                                
-                                vc.baseUrl = TmpDirURL
-                                
-                                if let u = TmpDirURL?.URLByAppendingPathComponent("duihuansuccess.html")
-                                {
-                                    vc.url = "\(u)?id=\(id)"
-                                }
-                                
-                                vc.hidesBottomBarWhenPushed = true
-                                vc.title = "兑换详情"
-                                
-                                self?.navigationController?.pushViewController(vc, animated: true)
-                                
-                            }
-                            
-                        })
- 
-                        
-                    }
-                    else
-                    {
-                        var msg = o?["data"]["msg"].stringValue
-                        msg = msg == "" ? "兑换失败" : msg
-                        XAlertView.show(msg!, block: nil)
+                        vc.url = "\(u)?id=\(id)"
                     }
                     
-                }
+                    vc.hidesBottomBarWhenPushed = true
+                    vc.title = "兑换详情"
+                    
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                    
+                })
+            }
+            
+            if type == "2" && msg == "商品兑换失败"
+            {
+                let info = dic!["info"] as! String
+                XAlertView.show(info, block: nil)
             }
             
             
             if type == "3" && msg == "跳转怀府币商城"
             {
-                let vc = "GoodsCenterVC".VC("Jifen")
+                let vc = "JifenCenterMainVC".VC("Jifen")
                 
                 vc.hidesBottomBarWhenPushed = true
                 
@@ -201,7 +203,7 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
                 XWaitingView.show()
             }
             
-            if type == "5" && msg == "积分兑换成功"
+            if type == "4" && msg == "积分兑换成功"
             {
                 XWaitingView.hide()
                 XAlertView.show("积分兑换成功", block: {
@@ -231,7 +233,7 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
                 
             }
             
-            if type == "6" && msg == "积分兑换失败"
+            if type == "4" && msg == "积分兑换失败"
             {
                 XWaitingView.hide()
                 XAlertView.show(dic!["info"] as! String, block: nil)

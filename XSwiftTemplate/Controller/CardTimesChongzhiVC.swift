@@ -42,6 +42,8 @@ class CardTimesChongzhiVC: UITableViewController {
         }
     }
     
+    var ordernumber = ""
+    
     func choose(sender: UIButton,model:CardChongzhiModel) {
         
         selectBtn?.selected = false
@@ -67,11 +69,29 @@ class CardTimesChongzhiVC: UITableViewController {
         btn?.enabled = true
     }
     
+    func paySuccess()
+    {
+        let vc = HtmlVC()
+        
+        vc.baseUrl = TmpDirURL
+        
+        if let u = TmpDirURL?.URLByAppendingPathComponent("czsuccess.html")
+        {
+            vc.url = "\(u)?ordernumber=\(ordernumber)&uid=\(Uid)&uname=\(Uname)"
+        }
+        
+        vc.hidesBottomBarWhenPushed = true
+        vc.title = "充值"
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(pop), name: "PaySuccess", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(paySuccess), name: "PaySuccess", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(payFail), name: "PayFail", object: nil)
         
@@ -210,6 +230,11 @@ class CardTimesChongzhiVC: UITableViewController {
             
             XWaitingView.hide()
             
+            if let str = res?["data"]["orderinfo"]["ordernumber"].string
+            {
+                self?.ordernumber = str
+            }
+            
             if let str = res?["data"]["info"].string
             {
                 let appScheme = "Xchengshiquan";
@@ -225,9 +250,6 @@ class CardTimesChongzhiVC: UITableViewController {
                         if(resultStatus!.numberValue.intValue == 9000)
                         {
                             NSNotificationCenter.defaultCenter().postNotificationName("PaySuccess", object: nil)
-                            XAlertView.show("支付成功", block: {[weak self] in
-                                self?.pop()
-                                })
                         }
                         else
                         {

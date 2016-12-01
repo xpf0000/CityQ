@@ -1,5 +1,5 @@
 //
-//  MyMessageInfoCell.swift
+//  MyMessageInfoCellEdit.swift
 //  chengshi
 //
 //  Created by X on 16/6/13.
@@ -8,7 +8,10 @@
 
 import UIKit
 
-class MyMessageInfoCell: UITableViewCell {
+class MyMessageInfoCellEdit: UITableViewCell {
+    
+    
+    @IBOutlet var checkbox: UIButton!
     
     @IBOutlet var from: UILabel!
     
@@ -51,42 +54,42 @@ class MyMessageInfoCell: UITableViewCell {
     }
     
     var model:MessageModel!
-    {
+        {
         didSet
         {
-                let date=NSDate(timeIntervalSince1970: model.create_time.doubleValue!)
-                time.text = date.toStr("yyyy-MM-dd HH:mm")!
+            let date=NSDate(timeIntervalSince1970: model.create_time.doubleValue!)
+            time.text = date.toStr("yyyy-MM-dd HH:mm")!
             
-                mtitle.text = model.title
-                mcontent.text = model.content
+            mtitle.text = model.title
+            mcontent.text = model.content
             
-                see.hidden = DataCache.Share.userMsg.checkViewed(model)
+            see.hidden = DataCache.Share.userMsg.checkViewed(model)
             
-                if(see.hidden)
-                {
-                    mtitle.textColor = "8E8E8E".color
-                    
-                    mcontent.textColor = "8E8E8E".color
-                    
-                    from.textColor = "8E8E8E".color
-                    
-                    btn.selected = true
-                    
-                }
-                else
-                {
-                    mtitle.textColor = "333333".color
-                    
-                    mcontent.textColor = "666666".color
-                    
-                    from.textColor = "999999".color
-                    
-                    btn.selected = false
-
-                }
-
+            if(see.hidden)
+            {
+                mtitle.textColor = "8E8E8E".color
+                
+                mcontent.textColor = "8E8E8E".color
+                
+                from.textColor = "8E8E8E".color
+                
+                btn.selected = true
+                
+            }
+            else
+            {
+                mtitle.textColor = "333333".color
+                
+                mcontent.textColor = "666666".color
+                
+                from.textColor = "999999".color
+                
+                btn.selected = false
+                
+            }
             
-                from.text = model.xqname == "" ? model.shopname : model.xqname
+            
+            from.text = model.xqname == "" ? model.shopname : model.xqname
             
         }
     }
@@ -96,20 +99,19 @@ class MyMessageInfoCell: UITableViewCell {
         
         mcontent.preferredMaxLayoutWidth = mcontent.frame.size.width
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-      
+        
         mainView.layer.masksToBounds = true
         mainView.layer.cornerRadius = 6.0
         mainView.layer.borderColor = "d7d7d7".color!.CGColor
         mainView.layer.borderWidth = 1.0
         
     }
-
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         
     }
     

@@ -45,6 +45,8 @@ class CardChongzhiVC: UITableViewController {
     
     var harr:[CGFloat] = [44,44,10,0,10,44,70,85]
     
+    var ordernumber = ""
+    
     func http()
     {
         let url = APPURL+"Public/Found/?service=Hyk.getCardProduct&id=\(model!.hcmid)"
@@ -158,6 +160,11 @@ class CardChongzhiVC: UITableViewController {
         
         XHttpPool.requestJson(url, body: nil, method: .POST) {[weak self] (res) in
             
+            if let str = res?["data"]["orderinfo"]["ordernumber"].string
+            {
+                self?.ordernumber = str
+            }
+            
             if let str = res?["data"]["info"].string
             {
                 let appScheme = "Xchengshiquan";
@@ -176,7 +183,23 @@ class CardChongzhiVC: UITableViewController {
                         {
                             NSNotificationCenter.defaultCenter().postNotificationName("PaySuccess", object: nil)
                             XAlertView.show("支付成功", block: {[weak self] in
-                                self?.pop()
+                                
+                                
+                                let vc = HtmlVC()
+                                
+                                vc.baseUrl = TmpDirURL
+                                
+                                if let u = TmpDirURL?.URLByAppendingPathComponent("czsuccess.html"),let onum = self?.ordernumber
+                                {
+                                    vc.url = "\(u)?ordernumber=\(onum)&uid=\(Uid)&uname=\(Uname)"
+                                }
+                                
+                                vc.hidesBottomBarWhenPushed = true
+                                vc.title = "充值"
+                                
+                                self?.navigationController?.pushViewController(vc, animated: true)
+                                
+                                
                             })
                         }
                         else

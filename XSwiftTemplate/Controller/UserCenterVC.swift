@@ -46,6 +46,25 @@ class UserCenterVC: UITableViewController {
             return
         }
         
+        if DataCache.Share.userModel.orqd == 1
+        {
+            let vc = HtmlVC()
+            
+            vc.baseUrl = TmpDirURL
+            
+            if let u = TmpDirURL?.URLByAppendingPathComponent("index.html")
+            {
+                vc.url = "\(u)?uid=\(Uid)&uname=\(Uname)"
+            }
+            
+            vc.hidesBottomBarWhenPushed = true
+            vc.title = "每日签到"
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            return
+        }
+        
         sender.enabled = false
         
         let url = APPURL + "Public/Found/?service=jifen.addQiandao&uid=\(Uid)&username=\(Uname)"
@@ -147,25 +166,6 @@ class UserCenterVC: UITableViewController {
         super.viewDidLoad()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.MsgChange.rawValue, object: nil)
-        
-        let button=UIButton(type: UIButtonType.Custom)
-        button.frame=CGRectMake(0, 0, 40, 21);
-        button.setTitle("设置", forState: .Normal)
-        button.titleLabel?.font = UIFont.systemFontOfSize(15.0)
-        button.showsTouchWhenHighlighted = true
-        button.exclusiveTouch = true
-        let rightItem=UIBarButtonItem(customView: button)
-        self.navigationItem.rightBarButtonItem=rightItem;
-        
-        button.click { [weak self](btn) in
-            
-            let vc:ConfigVC = "ConfigVC".VC("User") as! ConfigVC
-            
-            self?.navigationController?.pushViewController(vc, animated: true)
- 
-        }
-        
-        
         self.navigationController?.view.window?.addSubview(XPhotoChoose.Share())
         XPhotoChoose.Share().removeFromSuperview()
         

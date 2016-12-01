@@ -156,49 +156,23 @@ class GoodsCenterVC: UITableViewController,UICollectionViewDelegate {
         
         let m = collect.httpHandle.listArr[indexPath.row] as! GoodsModel
         
-        let alert = XCommonAlert(title: "提醒", message: "确定要兑换该商品?", buttons: "取消","确定")
+        let vc = HtmlVC()
         
-        alert.click {[weak self] (index) -> Bool in
-            
-            if index == 1
-            {
-                self?.doDuihuan(m)
-            }
-            
-            return true
+        vc.baseUrl = TmpDirURL
+        
+        if let u = TmpDirURL?.URLByAppendingPathComponent("duihuaninfo.html")
+        {
+            vc.url = "\(u)?uid=\(Uid)&uname=\(Uname)&id=\(m.id)"
         }
         
-        alert.show()
+        vc.hidesBottomBarWhenPushed = true
+        vc.title = "兑换详情"
+        
+        self.navigationController?.pushViewController(vc, animated: true)
         
         
     }
     
-    func doDuihuan(m:GoodsModel)
-    {
-        XWaitingView.show()
-        let url = "http://182.92.70.85/hfapi/Public/Found/?service=jifen.addDH&uid=\(Uid)&username=\(Uname)&id="+m.id
-        
-        XHttpPool.requestJson(url, body: nil, method: .POST) { (o) in
-            
-            XWaitingView.hide()
-            
-            if o?["data"]["code"].int == 0
-            {
-                XAlertView.show("兑换成功", block: nil)
-            }
-            else
-            {
-                var msg = o?["data"]["msg"].stringValue
-                msg = msg == "" ? "兑换失败" : msg
-                XAlertView.show(msg!, block: nil)
-            }
-            
-        }
-        
-        
-    }
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
        

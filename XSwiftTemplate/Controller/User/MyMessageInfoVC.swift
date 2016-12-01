@@ -11,8 +11,10 @@ import UIKit
 class MyMessageInfoVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     let table = XTableView()
-    
+    var inEditing = false
     var type = 1
+    
+    var btn:UIButton!
     
     func setData()
     {
@@ -54,12 +56,25 @@ class MyMessageInfoVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setData), name: NoticeWord.MsgChange.rawValue, object: nil)
         
-        self.addNvButton(false, img: nil, title: "清空") {[weak self] (btn) in
+        btn = self.addNvButton(false, img: nil, title: "编辑") {[weak self] (btn) in
             if self == nil {return}
-            DataCache.Share.userMsg.clear(self!.type)
-            self?.table.httpHandle.listArr.removeAll(keepCapacity: false)
+            
+            if let b = self?.inEditing
+            {
+                if b
+                {
+                    self?.doDel()
+                }
+                
+                btn.selected = !b
+                self?.inEditing = !b
+            }
+
             self?.table.reloadData()
         }
+        
+        btn.setTitle("编辑", forState: .Normal)
+        btn.setTitle("删除", forState: .Selected)
         
         let bgColor = "F3F5F7".color
         self.view.backgroundColor = bgColor
@@ -70,6 +85,8 @@ class MyMessageInfoVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         
         table.registerNib("MyMessageInfoCell".Nib, forCellReuseIdentifier: "MyMessageInfoCell")
         
+        table.registerNib("MyMessageInfoCellEdit".Nib, forCellReuseIdentifier: "MyMessageInfoCellEdit")
+        
         table.CellIdentifier = "MyMessageInfoCell"
         
         table.cellHeight = 155
@@ -78,8 +95,8 @@ class MyMessageInfoVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         table.showsVerticalScrollIndicator = false
         table.showsHorizontalScrollIndicator = false
         
-        table.Delegate(self)
-        table.DataSource(self)
+        table.delegate = self
+        table.dataSource = self
         
         let v = UIView()
         v.backgroundColor = UIColor.clearColor()
@@ -97,19 +114,82 @@ class MyMessageInfoVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         
     }
     
+    func doDel()
+    {
+        for item in selectArr
+        {
+            DataCache.Share.userMsg.remove(table.httpHandle.listArr[item] as! MessageModel)
+        }
+        
+        selectArr.removeAll(keepCapacity: false)
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return 155
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return table.httpHandle.listArr.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        return UITableViewCell()
+        if inEditing
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier("MyMessageInfoCellEdit", forIndexPath: indexPath) as! MyMessageInfoCellEdit
+            
+            cell.model = table.httpHandle.listArr[indexPath.row] as! MessageModel
+            
+            cell.checkbox.selected = selectArr.contains(indexPath.row)
+            
+            return cell
+        }
+        else
+        {
+            let cell = tableView.dequeueReusableCellWithIdentifier("MyMessageInfoCell", forIndexPath: indexPath) as! MyMessageInfoCell
+            
+            cell.model = table.httpHandle.listArr[indexPath.row] as! MessageModel
+            
+            return cell
+
+        }
+        
+    }
+    
+    var selectArr:[Int] = []
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        if inEditing
+        {
+            if let i = selectArr.indexOf(indexPath.row)
+            {
+                selectArr.removeAtIndex(i)
+            }
+            else
+            {
+                selectArr.append(indexPath.row)
+            }
+            
+            table.reloadData()
+        }
+        else
+        {
+            if let cell = tableView.cellForRowAtIndexPath(indexPath) as? MyMessageInfoCell
+            {
+                cell.toInfoVC()
+            }
+        }
+        
+        
     }
     
     
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        
-        return true
+        return !inEditing
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {

@@ -18,10 +18,6 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
     
     @IBOutlet var name: UILabel!
     
-    @IBOutlet var phone: UILabel!
-    
-    @IBOutlet var address: UILabel!
-    
     @IBOutlet var web: UIWebView!
     
     @IBOutlet var imgBG: UIView!
@@ -33,8 +29,6 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
     @IBOutlet var yue: UILabel!
     
     @IBOutlet var yueCell: UITableViewCell!
-    
-    @IBOutlet var addressCell: UITableViewCell!
     
     weak var supervc:CardGetedMainVC?
     
@@ -79,50 +73,9 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
     }
     
     
-    @IBAction func callPhone(sender: AnyObject) {
-        if(self.model.tel == "")
-        {
-            return
-        }
-        
-        let cameraSheet=UIActionSheet()
-        cameraSheet.delegate=self
-        cameraSheet.addButtonWithTitle("拨打: "+self.model.tel)
-        cameraSheet.addButtonWithTitle("取消")
-        
-        cameraSheet.actionSheetStyle = UIActionSheetStyle.BlackTranslucent;
-        cameraSheet.showInView(UIApplication.sharedApplication().keyWindow!)
-    }
-    
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        
-        if(buttonIndex == 0)
-        {
-            let str="tel:"+self.model.tel
-            if(str.url != nil)
-            {
-                UIApplication.sharedApplication().openURL(str.url!)
-            }
-            
-        }
-        
-    }
-    
-    
-    
-    var harr:[CGFloat] = [160,42.0,42.0,10,42.0,42,42,10,42,128]
+    var harr:[CGFloat] = [160,42.0,42.0,10,42,128]
     
     var model:CardModel!
-    {
-        didSet
-        {
-//            if oldValue == nil
-//            {
-//                http()
-//            }
-
-        }
-    }
     
     var url = ""
     
@@ -173,9 +126,6 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
         
         cardNum.text = "NO."+model.cardnumber
         
-        phone.text = model.tel
-        address.text = model.address
-       
         
         let rang=(str as NSString).rangeOfString("\(model.jifen)", options: NSStringCompareOptions.BackwardsSearch)
         
@@ -215,12 +165,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
         
         harr[2] = h
 
-        var h1 = addressCell.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize).height
-        h1 = max(h1, 42.0)
-        
-        harr[6] = h1
-        
-        
+
         table.reloadData()
         
     }
@@ -230,7 +175,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
         webView.frame.size.height = 1
         let size = webView.sizeThatFits(CGSizeZero)
         
-        harr[9] = size.height
+        harr[5] = size.height
         web.layoutIfNeeded()
         web.setNeedsLayout()
         web.scrollView.scrollEnabled = false
@@ -245,7 +190,6 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(http), name: "PaySuccess", object: nil)
         
-        address.preferredMaxLayoutWidth = swidth - 105
         yue.preferredMaxLayoutWidth = swidth - 63
         
         harr[0] = swidth * 0.485
@@ -281,7 +225,7 @@ class CardGetedInfoVC: UITableViewController,UIActionSheetDelegate,UIWebViewDele
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if(indexPath.row < 9)
+        if(indexPath.row < 5)
         {
             cell.separatorInset=UIEdgeInsetsMake(0, 0, 0, 0)
             if(IOS_Version>=8.0)

@@ -18,6 +18,8 @@ class HomeVC: UIViewController {
     let noNet:NoNewWork = NoNewWork(frame: CGRectZero)
     lazy var topArr:Array<XHorizontalMenuModel> = []
     lazy var views:Array<UIView> = []
+    
+    let msgbtn = UIButton(type: UIButtonType.Custom)
 
     required init?(coder aDecoder: NSCoder) {
         
@@ -34,16 +36,12 @@ class HomeVC: UIViewController {
         button.exclusiveTouch = true
         view.addSubview(button)
         
-        let button1=UIButton(type: UIButtonType.Custom)
-        
-        button1.frame=CGRectMake(40, 3, 24, 24);
-        button1.setBackgroundImage("home_message.png".image, forState: UIControlState.Normal)
-        button1.showsTouchWhenHighlighted = true
-        button1.exclusiveTouch = true
-        view.addSubview(button1)
-        
-        
-        
+        msgbtn.frame=CGRectMake(40, 3, 24, 24);
+        msgbtn.setBackgroundImage("home_message.png".image, forState: UIControlState.Normal)
+        msgbtn.setBackgroundImage("home_message_1.png".image, forState: UIControlState.Selected)
+        msgbtn.showsTouchWhenHighlighted = true
+        msgbtn.exclusiveTouch = true
+        view.addSubview(msgbtn)
         
         let rightItem=UIBarButtonItem(customView: view)
         self.navigationItem.rightBarButtonItem=rightItem;
@@ -53,7 +51,12 @@ class HomeVC: UIViewController {
             self?.toSearch()
         }
         
-        button1.click { [weak self](btn) in
+        msgbtn.click { [weak self](btn) in
+            
+            if(self?.checkIsLogin() == false)
+            {
+                return;
+            }
             
             let vc = "MyMessageVC".VC("User")
             
@@ -126,6 +129,8 @@ class HomeVC: UIViewController {
     
     func msgCountChange()
     {
+        msgbtn.selected = UMsgCount != nil
+        
         if let item = self.tabBarController?.tabBar.items?[4]
         {
             if screenScale == 3.0
@@ -420,7 +425,7 @@ class HomeVC: UIViewController {
         
         NSThread(target: self, selector: #selector(timeThread), object: nil).start()
         
-        
+        msgbtn.selected = UMsgCount != nil
         
         if !CheckNet()
         {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GoodsDuihuanDetailVC: UIViewController {
+class GoodsDuihuanDetailVC: UIViewController,UITableViewDelegate {
     
     let table = XTableView()
     
@@ -24,12 +24,35 @@ class GoodsDuihuanDetailVC: UIViewController {
         table.cellHeight = 64
         table.postDict = ["type":1]
         
+        table.Delegate(self)
         
         let url = APPURL+"Public/Found/?service=Jifen.getDHList&uid=\(Uid)&username=\(Uname)&page=[page]&pernumber=20"
         
         table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: HFBModel.self, CellIdentifier: "JifenDetailCell")
         
         table.show()
+        
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let model = table.httpHandle.listArr[indexPath.row] as! HFBModel
+        
+        let vc = HtmlVC()
+        
+        vc.baseUrl = TmpDirURL
+        
+        if let u = TmpDirURL?.URLByAppendingPathComponent("duihuansuccess.html")
+        {
+            vc.url = "\(u)?id=\(model.id)"
+        }
+        
+        vc.hidesBottomBarWhenPushed = true
+        vc.title = "兑换详情"
+        
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     

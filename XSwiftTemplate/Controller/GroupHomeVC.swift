@@ -57,7 +57,7 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         table.frame = CGRectMake(0, 0, swidth, sheight-64)
         table.backgroundColor = UIColor.whiteColor()
-
+        table.separatorStyle = .None
         let v = UIView()
         table.tableHeaderView = v
         let v1 = UIView()
@@ -67,6 +67,7 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         table.registerNib("GroupHomeCell1".Nib, forCellReuseIdentifier: "GroupHomeCell1")
         table.registerNib("GroupHomeCell2".Nib, forCellReuseIdentifier: "GroupHomeCell2")
         table.registerNib("GroupSearchBarCell".Nib, forCellReuseIdentifier: "GroupSearchBarCell")
+        table.registerNib("GroupSearchCell".Nib, forCellReuseIdentifier: "GroupSearchCell")
         table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         table.delegate = self
@@ -164,7 +165,7 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             return 44.0
         }
         
-        return 100.0
+        return 120.0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -209,7 +210,7 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("GroupHomeCell2", forIndexPath: indexPath) as! GroupHomeCell2
+            let cell = tableView.dequeueReusableCellWithIdentifier("GroupSearchCell", forIndexPath: indexPath) as! GroupSearchCell
             
             let m =  httpHandle.listArr[indexPath.row - 3] as! GroupModel
             

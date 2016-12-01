@@ -98,6 +98,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
                         self.block!("loginSuccess")
                     }
                     DataCache.Share.userModel.registNotice()
+                    DataCache.Share.userModel.getHFB()
                     NoticeWord.LoginSuccess.rawValue.postNotice()
                     
                     self.dismissViewControllerAnimated(true, completion: { () -> Void in

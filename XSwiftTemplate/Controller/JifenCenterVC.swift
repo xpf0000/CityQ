@@ -141,7 +141,31 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        if indexPath.row == 4 && stateIcon.hidden
+        if indexPath.row == 3
+        {
+            let vc = HtmlVC()
+            
+            vc.baseUrl = TmpDirURL
+            
+            if let u = TmpDirURL?.URLByAppendingPathComponent("hfbguize.html")
+            {
+                vc.url = "\(u)?id=6892"
+            }
+            
+            vc.hidesBottomBarWhenPushed = true
+            vc.title = "怀府币规则"
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        if indexPath.row == 4
+        {
+            let vc:EditUserInfoVC = "EditUserInfoVC".VC("User") as! EditUserInfoVC
+            vc.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        if indexPath.row == 5
         {
             self.doQD()
         }
@@ -150,6 +174,27 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
     
     func doQD()
     {
+        
+        if DataCache.Share.userModel.orqd == 1
+        {
+            let vc = HtmlVC()
+            
+            vc.baseUrl = TmpDirURL
+            
+            if let u = TmpDirURL?.URLByAppendingPathComponent("index.html")
+            {
+                vc.url = "\(u)?uid=\(Uid)&uname=\(Uname)"
+            }
+            
+            vc.hidesBottomBarWhenPushed = true
+            vc.title = "每日签到"
+            
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+            return
+        }
+        
+        
         let url = APPURL + "Public/Found/?service=jifen.addQiandao&uid=\(Uid)&username=\(Uname)"
         
         XHttpPool.requestJson(url, body: nil, method: .POST) {[weak self] (o) in
@@ -175,47 +220,22 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
         
         let m = collect.httpHandle.listArr[indexPath.row] as! GoodsModel
         
-        let alert = XCommonAlert(title: "提醒", message: "确定要兑换该商品?", buttons: "取消","确定")
+        let vc = HtmlVC()
         
-        alert.click {[weak self] (index) -> Bool in
-            
-            if index == 1
-            {
-                self?.doDuihuan(m)
-            }
-            
-            return true
+        vc.baseUrl = TmpDirURL
+        
+        if let u = TmpDirURL?.URLByAppendingPathComponent("duihuaninfo.html")
+        {
+            vc.url = "\(u)?uid=\(Uid)&uname=\(Uname)&id=\(m.id)"
         }
         
-        alert.show()
+        vc.hidesBottomBarWhenPushed = true
+        vc.title = "兑换详情"
         
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
-    func doDuihuan(m:GoodsModel)
-    {
-        XWaitingView.show()
-        let url = "http://182.92.70.85/hfapi/Public/Found/?service=jifen.addDH&uid=\(Uid)&username=\(Uname)&id="+m.id
-        
-        XHttpPool.requestJson(url, body: nil, method: .POST) { (o) in
-            
-            XWaitingView.hide()
-            
-            if o?["data"]["code"].int == 0
-            {
-                XAlertView.show("兑换成功", block: nil)
-            }
-            else
-            {
-                var msg = o?["data"]["msg"].stringValue
-                msg = msg == "" ? "兑换失败" : msg
-                XAlertView.show(msg!, block: nil)
-            }
-            
-        }
-        
-        
-    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

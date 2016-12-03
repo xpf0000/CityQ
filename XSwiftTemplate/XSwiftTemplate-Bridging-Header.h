@@ -11,11 +11,22 @@
 #define kWX_Share_AppSecret @"186e064461a62c8c323146d3981c40be"
 
 #import "XOC.h"
+
 #import <ShareSDK/ShareSDK.h>
-#import <TencentOpenAPI/QQApiInterface.h>
+#import <ShareSDKUI/ShareSDK+SSUI.h>
+#import <ShareSDKConnector/ShareSDKConnector.h>
+
+//腾讯开放平台（对应QQ和QQ空间）SDK头文件
 #import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+
+//微信SDK头文件
 #import "WXApi.h"
+
+//新浪微博SDK头文件
 #import "WeiboSDK.h"
+
+
 #import <AlipaySDK/AlipaySDK.h>
 #import <CloudPushSDK/CloudPushSDK.h>
 #import <CloudPushSDK/CCPSysMessage.h>

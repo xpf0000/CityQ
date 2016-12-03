@@ -66,7 +66,7 @@ class JifenQiandaoListVC: UIViewController,UITableViewDelegate,UITableViewDataSo
         bview.layer.shadowOpacity = 1.0
         bview.layer.shadowRadius = 1.0
         
-        let url = "http://182.92.70.85/hfapi/Public/Found/?service=Jifen.getQDPM&page=[page]&pernumber=20&uid=\(Uid)"
+        let url = "http://182.92.70.85/hfapi/Public/Found/?service=Jifen.getQDPM&page=[page]&perNumber=20&uid=\(Uid)"
         
         httpHandle.setHandle(table, url: url, pageStr: "[page]", keys: ["data","info"], model: HFBModel.self)
         

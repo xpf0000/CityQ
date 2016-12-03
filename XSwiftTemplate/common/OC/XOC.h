@@ -14,5 +14,4 @@
 + (id) classFromName:(NSString*)name;
 + (UIViewController *)activityViewController;
 
-+ (NSArray*)ShareTypeList;
 @end

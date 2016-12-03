@@ -107,26 +107,28 @@ class NewsInfoVC: XViewController {
             }
         }
         
-        var image:ISSCAttachment!
+        var image:SSDKImage!
         
         let img = model.url.image
         
         if(img == nil)
         {
-            image = ShareSDK.imageWithUrl(imgUrl)
+            image = SSDKImage.init(URL: imgUrl.url)
         }
         else
         {
-            let data = UIImagePNGRepresentation(img!)
+            let data = img!.data(0.01)
             
-            image = ShareSDK.imageWithData(data, fileName: model.url.md5, mimeType: "png")
+            image = SSDKImage.init(image: UIImage.init(data: data!), format: SSDKImageFormatJpeg, settings: nil)
         }
 
-        let publishContent : ISSContent = ShareSDK.content(model.title, defaultContent:model.title,image:image, title:model.title,url:self.url,description:model.title,mediaType:SSPublishContentMediaTypeNews)
         
+        let dic = NSMutableDictionary()
+        
+        dic.SSDKSetupShareParamsByText(model.title, images: image, url: url.url, title: model.title, type: SSDKContentType.Auto)
         
         ShareSDKCustomUI.Share.pushVC = self
-        ShareSDKCustomUI.Share.shareContent = publishContent
+        ShareSDKCustomUI.Share.shareContent = dic
         UIApplication.sharedApplication().keyWindow?.addSubview(ShareSDKCustomUI.Share)
  
     }

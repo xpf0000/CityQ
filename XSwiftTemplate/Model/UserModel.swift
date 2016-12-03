@@ -47,7 +47,6 @@ class UserModel: Reflect {
     var username=""
 
     var headimage=""
-    var password=""
     var openid=""
     var mobile=""
     var houseid=""
@@ -135,7 +134,6 @@ class UserModel: Reflect {
         sex = m.sex
         username = m.username
         headimage=m.headimage
-        password=m.password
         openid=m.openid
         mobile=m.mobile
         houseid=m.houseid
@@ -156,7 +154,6 @@ class UserModel: Reflect {
         sex = ""
         username = ""
         headimage=""
-        password=""
         openid=""
         mobile=""
         houseid=""

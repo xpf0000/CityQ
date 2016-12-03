@@ -10,6 +10,9 @@ import UIKit
 
 class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
     
+    
+    @IBOutlet var nickname: UITextField!
+    
     @IBOutlet var cellContent: UIView!
     
     @IBOutlet var table: UITableView!
@@ -28,9 +31,30 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
     
     @IBOutlet var phone: UITextField!
     
+    var needNick = false
+    var body = ""
+    
+    
     @IBAction func submit(sender: UIButton) {
         
         self.view.endEditing(true)
+        
+        if(needNick)
+        {
+            if !nickname.checkNull()
+            {
+                return
+            }
+            
+            if(!nickname.checkLength(2, max: 15))
+            {
+                
+                ShowMessage("昵称为2-15位")
+                
+                return
+            }
+
+        }
         
         if self.pass.text!.trim() != self.pass1.text!.trim()
         {
@@ -43,27 +67,88 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
         waitActiv.hidden = false
         waitActiv.startAnimating()
         
+        if needNick
+        {
+            self.doRegist()
+        }
+        else
+        {
+            self.doBind()
+        }
+        
+        
+        
+    }
+    
+    var user:UserModel = DataCache.Share.userModel
+    
+    func doRegist()
+    {
+        XWaitingView.show()
+        
+        let nick = self.nickname.text!.trim()
+        let body = self.body + "&nickname="+nick
+        
+        let url=APPURL+"Public/Found/?service=User.openRegister"
+        XHttpPool.requestJson(url, body: body, method: .POST) { [weak self](o) -> Void in
+            
+            if let code = o?["data"]["code"].int
+            {
+                if code == 0
+                {
+                    self?.user = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
+                    
+                    self?.doBind()
+                    
+                    return
+                    
+                }
+                else
+                {
+                    XWaitingView.hide()
+                    self?.reSetButton()
+                    ShowMessage(o!["data"]["msg"].stringValue)
+                }
+                
+            }
+            else
+            {
+                XWaitingView.hide()
+                self?.reSetButton()
+                ShowMessage("注册失败")
+            }
+            
+        }
+    }
+
+    func doBind()
+    {
         let pass = self.pass.text!.trim()
         let code = self.code.text!.trim()
         let p = self.phone.text!.trim()
         
         let url=APPURL+"Public/Found/?service=User.openMobileAdd"
-        let body="username="+DataCache.Share.userModel.username+"&mobile="+p+"&password="+pass+"&code="+code
-        let msg="绑定成功"
+        let body="username="+user.username+"&mobile="+p+"&password="+pass+"&code="+code
+        let msg = "绑定成功"
         
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
+            XWaitingView.hide()
             
             if(o?["data"].dictionaryValue.count > 0)
             {
                 if(o!["data"]["code"].intValue == 0)
                 {
+                    DataCache.Share.userModel = self.user
                     DataCache.Share.userModel.mobile = p
-                    DataCache.Share.userModel.password = pass
                     DataCache.Share.userModel.save()
+                    
+                    DataCache.Share.userModel.getHFB()
+                    
+                    NoticeWord.LoginSuccess.rawValue.postNotice()
                     
                     self.navigationController?.view.showAlert(msg, block: { (o) -> Void in
                         
-                        self.navigationController?.popToRootViewControllerAnimated(true)
+                        self.dismissViewControllerAnimated(true, completion: nil)
                         
                     })
                     
@@ -71,7 +156,11 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
                 }
                 else
                 {
-                    self.navigationController?.view.showAlert(o!["data"]["msg"].stringValue, block: nil)
+                    if let str = o?["data"]["msg"].string
+                    {
+                        ShowMessage(str)
+                    }
+                    
                     self.reSetButton()
                     return
                 }
@@ -79,11 +168,10 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
             else
             {
                 self.reSetButton()
-                self.navigationController?.view.showAlert("绑定失败", block: nil)
+                ShowMessage("绑定失败")
             }
             
         }
-        
     }
     
     func reSetButton()
@@ -91,7 +179,14 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
         self.waitActiv.hidden = true
         button.titleLabel?.alpha = 1.0
         
-        if(!self.phone.text!.match(.Phone) || code.text!.trim() == "" || !self.pass.checkLength(6, max: 15) || !self.pass1.checkLength(6, max: 15))
+        var b = true
+        
+        if needNick
+        {
+           b = self.pass.checkLength(2, max: 15)
+        }
+        
+        if(!self.phone.text!.match(.Phone) || code.text!.trim() == "" || !self.pass.checkLength(6, max: 15) || !self.pass1.checkLength(6, max: 15) || !b)
         {
             if(self.waitActiv.hidden)
             {
@@ -116,6 +211,16 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
         super.viewDidLoad()
         self.addBackButton()
         
+        if needNick
+        {
+            harr[0] = 55.0
+        }
+        else
+        {
+            harr[0] = 0.0
+
+        }
+        
         waitActiv.hidden = true
         self.button.enabled = false
         
@@ -137,6 +242,24 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
             
         }
         
+        let block:XTextChangeBlock = {[weak self] (tf,str) in
+            
+            if tf == self?.phone
+            {
+                XVerifyButton.Share().Phone(str)
+            }
+            
+            self?.reSetButton()
+            
+        }
+        
+        nickname.onTextChange(block)
+        pass.onTextChange(block)
+        pass1.onTextChange(block)
+        code.onTextChange(block)
+        phone.onTextChange(block)
+        
+        
     }
     
     
@@ -145,22 +268,12 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
         var txt=textField.text!
         txt=(txt as NSString).stringByReplacingCharactersInRange(range, withString: string)
         
-        
-        if(textField == self.phone)
-        {
-            XVerifyButton.Share().Phone(txt)
-        }
-        
         if(txt.length()>15)
         {
             return false
         }
         
-        textField.text = txt
-        
-        reSetButton()
-        
-        return false
+        return true
         
     }
     
@@ -210,6 +323,14 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
         
     }
     
+    var harr:[CGFloat] = [55.0,55.0,55.0,55.0,55.0,90.0]
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return harr[indexPath.row]
+        
+    }
+    
     override func viewDidLayoutSubviews() {
         
         super.viewDidLayoutSubviews()
@@ -232,6 +353,11 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    deinit {
+        
+        print("AuthBandPhoneVC deinit !!!!!!!!!!")
+        
+    }
     
     
 }

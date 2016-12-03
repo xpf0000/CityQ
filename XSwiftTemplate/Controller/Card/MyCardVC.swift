@@ -29,13 +29,24 @@ class MyCardVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
     
     var typeid = ""
     
+    weak var superVC:CardIndexVC?
+    
     @IBAction func toGetCard(sender: AnyObject) {
         
         if self.checkIsLogin()
         {
-            self.navigationController?.popToRootViewControllerAnimated(false)
             
-            tabbar?.selectedIndex = 1
+            if superVC != nil
+            {
+                superVC?.main.selectIndex = 0
+            }
+            else
+            {
+                let vc = "CardIndexVC".VC
+                vc.hidesBottomBarWhenPushed=true
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
         }
         
         

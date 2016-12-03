@@ -155,12 +155,9 @@ class ConfigVC: UITableViewController ,UIAlertViewDelegate{
         if(alertView ==  logoutAlert && buttonIndex == 1)
         {
             
-            ShareSDK.cancelAuthWithType(ShareTypeSinaWeibo)
-            ShareSDK.cancelAuthWithType(ShareTypeQQ)
-            ShareSDK.cancelAuthWithType(ShareTypeQQSpace)
-            
-            //ShareSDK.cancelAuthWithType(ShareTypeWeixiSession)
-            ShareSDK.cancelAuthWithType(ShareTypeWeixiTimeline)
+            ShareSDK.cancelAuthorize(.TypeSinaWeibo)
+            ShareSDK.cancelAuthorize(.TypeQQ)
+            ShareSDK.cancelAuthorize(.TypeWechat)
             
             DataCache.Share.userModel.unRegistNotice()
             DataCache.Share.userModel.reSet()

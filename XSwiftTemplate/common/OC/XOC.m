@@ -18,19 +18,6 @@
     return [[c alloc]init];
 }
 
-+ (NSArray*)ShareTypeList
-{
-    NSArray *shareList = [ShareSDK getShareListWithType:
-                          ShareTypeSinaWeibo,
-                          ShareTypeWeixiSession,
-                          ShareTypeWeixiTimeline,
-                          ShareTypeQQ,
-                          ShareTypeQQSpace,
-                          ShareTypeCopy,nil];
-    
-    return shareList;
-}
-
 + (UIViewController *)activityViewController
 {
     UIViewController* activityViewController = nil;

@@ -74,13 +74,16 @@ class CardIndexVC: UIViewController,ReactionMenuDelegate,UITableViewDelegate {
         model.view = vc.view
         
         let model1 = XHorizontalMenuModel()
-        let vc1 = "MyCardVC".VC("User")
+        let vc1 = "MyCardVC".VC("User") as! MyCardVC
+        vc1.superVC = self
         self.addChildViewController(vc1)
         model1.view = vc1.view
 
         main.menuArr = [model,model1]
         
     }
+    
+
     
     func changePage(sender:UISegmentedControl)
     {

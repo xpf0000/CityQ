@@ -71,6 +71,8 @@ class UserCenterVC: UITableViewController {
         
         XHttpPool.requestJson(url, body: nil, method: .POST) { (o) in
             
+            print("签到结果: \(o)")
+            
             if o?["data"]["code"].int == 0
             {
                 XAlertView.show("签到成功,获得1怀府币", block: nil)
@@ -103,20 +105,6 @@ class UserCenterVC: UITableViewController {
         
         let vc:LoginVC = "LoginVC".VC("User") as! LoginVC
         let nv:XNavigationController = XNavigationController(rootViewController: vc)
-        
-        vc.block =
-            {
-                [weak self]
-                (o)->Void in
-                
-                if(self == nil)
-                {
-                    return
-                }
-                
-                self?.showInfo()
-                
-        }
         
         self.presentViewController(nv, animated: true) { () -> Void in
             

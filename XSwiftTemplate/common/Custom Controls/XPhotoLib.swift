@@ -86,7 +86,7 @@ class XPhotoLib: NSObject,AGImagePickerControllerDelegate {
         cancelButton.setTitle("取消", forState: UIControlState.Normal)
         cancelButton.setTitleColor(blackTXT, forState: UIControlState.Normal)
         
-        cancelButton.addTarget(self, action: #selector(ISSCRequest.cancel), forControlEvents: UIControlEvents.TouchUpInside)
+        cancelButton.addTarget(self, action: #selector(XPhotoLib.cancel), forControlEvents: UIControlEvents.TouchUpInside)
         
         cancelItem = AGIPCToolbarItem(barButtonItem: UIBarButtonItem(customView: cancelButton), andSelectionBlock: nil)
         

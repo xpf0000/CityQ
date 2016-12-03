@@ -39,7 +39,7 @@ class ShareSDKCustomUI: UIView,UIGestureRecognizerDelegate,UICollectionViewDeleg
     
     var fontW:CGFloat = 0.0
     
-    var shareContent:ISSContent!
+    var shareContent:NSMutableDictionary!
     
     weak var pushVC:UIViewController!
     
@@ -271,32 +271,31 @@ class ShareSDKCustomUI: UIView,UIGestureRecognizerDelegate,UICollectionViewDeleg
         
         if(collectionView ==  self.collection1)
         {
-            var shareType:ShareType!
+            var shareType:SSDKPlatformType!
             switch indexPath.row
             {
             case 0:
                 ""
-                shareType=ShareTypeWeixiSession
+                shareType=SSDKPlatformType.SubTypeWechatSession
             case 1:
                 ""
-                shareType=ShareTypeWeixiTimeline
+                shareType=SSDKPlatformType.SubTypeWechatTimeline
             case 2:
                 ""
-                shareType=ShareTypeSinaWeibo
+                shareType=SSDKPlatformType.TypeSinaWeibo
             case 3:
                 ""
-                shareType=ShareTypeQQ
+                shareType=SSDKPlatformType.SubTypeQQFriend
             case 4:
                 ""
-                shareType=ShareTypeQQSpace
+                shareType=SSDKPlatformType.SubTypeQZone
             default:
                 ""
             }
             
-            
-            ShareSDK.showShareViewWithType(shareType, container: nil, content: shareContent, statusBarTips: true, authOptions: nil, shareOptions: nil, result: { (type, state, info, error, end) -> Void in
+            ShareSDK.share(shareType, parameters: shareContent, onStateChanged: { (state, info, entity, err) in
                 
-                if (state == SSResponseStateSuccess)
+                if (state == SSDKResponseState.Success)
                 {
                     
                     let alert = UIAlertView(title: "提示", message:"分享成功", delegate:self, cancelButtonTitle: "ok")
@@ -306,16 +305,18 @@ class ShareSDKCustomUI: UIView,UIGestureRecognizerDelegate,UICollectionViewDeleg
                 {
                     
                     
-                    if (state == SSResponseStateFail)
+                    if (state == SSDKResponseState.Fail)
                     {
                         
-                        let alert = UIAlertView(title: "提示", message:error.errorDescription(), delegate:self, cancelButtonTitle: "ok")
+                        let alert = UIAlertView(title: "提示", message:err.domain, delegate:self, cancelButtonTitle: "ok")
                         alert.show()
                         
                     }
                     
                 }
+                
             })
+            
             
             self.hide()
             
@@ -335,7 +336,7 @@ class ShareSDKCustomUI: UIView,UIGestureRecognizerDelegate,UICollectionViewDeleg
             case 1:
                 ""
                 let past = UIPasteboard.generalPasteboard()
-                past.string = shareContent.url()
+                past.string = "\(shareContent.valueForKey("url")!)"
                 
                 self.hide({ (o) -> Void in
                     

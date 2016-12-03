@@ -93,29 +93,42 @@ class PicNewsInfoVC: XViewController,UIScrollViewDelegate,UITextViewDelegate {
     
     @IBAction func share(sender: AnyObject) {
         
+        if !WXApi.isWXAppInstalled()
+        {
+            let alert = UIAlertView(title: "提示", message:"未安装微信客户端,无法分享", delegate:nil, cancelButtonTitle: "确定")
+            
+            alert.show()
+            
+            return
+        }
+
+        
         let url=WapUrl+"/city/pic_info.html?id=\(model.id)"
         
-        let publishContent : ISSContent = ShareSDK.content(model.title, defaultContent:model.title,image:ShareSDK.imageWithUrl(model.url), title:model.title,url:url,description:model.descrip,mediaType:SSPublishContentMediaTypeNews)
+        let dic = NSMutableDictionary()
         
-        ShareSDK.showShareActionSheet(nil, shareList: XOC.ShareTypeList(), content: publishContent, statusBarTips: true, authOptions: nil, shareOptions: nil, result:
-            {(type:ShareType,state:SSResponseState,statusInfo:ISSPlatformShareInfo!,error:ICMErrorInfo!,end:Bool) in
-                
-                if (state == SSResponseStateSuccess)
+        dic.SSDKSetupShareParamsByText(model.title, images: model.url, url: url.url, title: model.title, type: SSDKContentType.Auto)
+        
+        ShareSDK.showShareActionSheet(view, items: nil, shareParams: dic) { (state, type, info, entity, err, end) in
+            
+            if (state == SSDKResponseState.Success)
+            {
+                let alert = UIAlertView(title: "提示", message:"分享成功", delegate:self, cancelButtonTitle: "ok")
+                alert.show()
+            }
+            else
+            {
+                if (state == SSDKResponseState.Fail)
                 {
-                    let alert = UIAlertView(title: "提示", message:"分享成功", delegate:self, cancelButtonTitle: "ok")
+                    let alert = UIAlertView(title: "提示", message:"分享失败", delegate:self, cancelButtonTitle: "ok")
                     alert.show()
-                }
-                else
-                {
-                    if (state == SSResponseStateFail)
-                    {
-                        let alert = UIAlertView(title: "提示", message:"您没有安装客户端，无法使用分享功能！", delegate:self, cancelButtonTitle: "ok")
-                        alert.show()
-                        
-                    }
                     
                 }
-        })
+                
+            }
+            
+        }
+        
     }
     
     

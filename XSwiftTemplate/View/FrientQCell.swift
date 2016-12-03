@@ -545,14 +545,19 @@ class FrientQCell: UITableViewCell {
 
         let url=WapUrl+"/city/city_info.html?id=\(model.id)"
 
-        let data = img!.data(0.001)
+        let data = img!.data(0.01)
         
-        let image = ShareSDK.imageWithData(data, fileName: model.picList[0].url.md5, mimeType: "jpg")
+        let nimg = UIImage(data: data!)
         
-        let publishContent : ISSContent = ShareSDK.content(model.content, defaultContent:model.content,image:image, title:model.content,url:url,description:model.title,mediaType:SSPublishContentMediaTypeNews)
+        let image = SSDKImage.init(image: nimg, format: SSDKImageFormatJpeg, settings: nil)
+        
+        
+        let dic = NSMutableDictionary()
+        
+        dic.SSDKSetupShareParamsByText(model.content, images: image, url: url.url, title: model.content, type: SSDKContentType.Auto)
         
         ShareSDKCustomUI.Share.pushVC = self.viewController
-        ShareSDKCustomUI.Share.shareContent = publishContent
+        ShareSDKCustomUI.Share.shareContent = dic
         UIApplication.sharedApplication().keyWindow?.addSubview(ShareSDKCustomUI.Share)
         
     }

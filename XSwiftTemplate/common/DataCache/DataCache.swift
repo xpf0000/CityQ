@@ -114,44 +114,6 @@ class DataCache: NSObject {
         
     }
     
-    func getUserInfo()
-    {
-        var url=APPURL+"Public/Found/?service=User.login"
-        let p = userModel.password
-        let u = userModel.mobile
-        var body="password="+p+"&mobile="+u
-        
-        if(userModel.openid != "")
-        {
-            url=APPURL+"Public/Found/?service=User.openLogin"
-            body="openid="+userModel.openid
-        }
-
-        let h = self.userModel.house
-        
-        XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
-
-            self.userModel.reSet()
-            
-            if(o?["data"].dictionaryValue.count > 0)
-            {
-                if(o!["data"]["code"].intValue == 0 && o?["data"]["info"].arrayValue.count > 0)
-                {
-                    
-                    self.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
-                    
-                    self.userModel.password = p
-                    self.userModel.house = h
-                    DataCache.Share.userModel.save()
-                    NoticeWord.UpdateUserSuccess.rawValue.postNotice()
-                }
-                
-            }
-            
-        }
-    }
-    
-    
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         
         if(keyPath == "cityID")

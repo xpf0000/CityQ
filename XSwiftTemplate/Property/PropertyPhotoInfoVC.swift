@@ -29,7 +29,8 @@ class PropertyPhotoInfoVC: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         self.addBackButton()
         
-        textField.autoHeightOpen(8.0)
+        textField.autoHeightOpen(8.0, moveView: self.view)
+    
         textField.delegate = self
         textField.returnKeyType = .Send
         
@@ -101,8 +102,7 @@ class PropertyPhotoInfoVC: UIViewController,UITextFieldDelegate {
     
     deinit
     {
-        self.textField.autoHeightClose()
-        
+    
     }
     
 

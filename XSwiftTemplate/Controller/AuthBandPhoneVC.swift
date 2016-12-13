@@ -141,7 +141,8 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
                     DataCache.Share.userModel = self.user
                     DataCache.Share.userModel.mobile = p
                     DataCache.Share.userModel.save()
-                    
+                                        
+                    DataCache.Share.userModel.registNotice()
                     DataCache.Share.userModel.getHFB()
                     
                     NoticeWord.LoginSuccess.rawValue.postNotice()

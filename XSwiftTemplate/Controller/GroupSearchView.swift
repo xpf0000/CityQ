@@ -33,7 +33,7 @@ class GroupSearchView: UIView,UITextFieldDelegate {
         self.addSubview(containerView)
         
         mainView.layer.masksToBounds = true
-        mainView.layer.borderColor = "dedede".color?.CGColor
+        mainView.layer.borderColor = "21ADFD".color?.CGColor
         mainView.layer.borderWidth = 1.0
         mainView.layer.cornerRadius = 6.0
         

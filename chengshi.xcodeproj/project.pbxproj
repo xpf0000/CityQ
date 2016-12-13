@@ -32,6 +32,15 @@
 		17077C131CC2216100655363 /* shuifei.png in Resources */ = {isa = PBXBuildFile; fileRef = 17077C111CC2216100655363 /* shuifei.png */; };
 		17077C141CC2216100655363 /* tingche.png in Resources */ = {isa = PBXBuildFile; fileRef = 17077C121CC2216100655363 /* tingche.png */; };
 		17077C161CC230B200655363 /* PaymentInfoInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17077C151CC230B200655363 /* PaymentInfoInfoVC.swift */; };
+		1709FD011DFFE55700171425 /* qdsuccessalert.png in Resources */ = {isa = PBXBuildFile; fileRef = 1709FD001DFFE55700171425 /* qdsuccessalert.png */; };
+		1709FD041DFFF9A100171425 /* MyMinePageCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1709FD021DFFF9A100171425 /* MyMinePageCell1.swift */; };
+		1709FD051DFFF9A100171425 /* MyMinePageCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1709FD031DFFF9A100171425 /* MyMinePageCell1.xib */; };
+		1709FD081E000CCD00171425 /* MyMinePageCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1709FD061E000CCD00171425 /* MyMinePageCell2.swift */; };
+		1709FD091E000CCD00171425 /* MyMinePageCell2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1709FD071E000CCD00171425 /* MyMinePageCell2.xib */; };
+		1709FD0B1E000E3C00171425 /* MyMinePageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1709FD0A1E000E3C00171425 /* MyMinePageHeader.swift */; };
+		1709FD0D1E000E4B00171425 /* MyMinePageHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1709FD0C1E000E4B00171425 /* MyMinePageHeader.xib */; };
+		1709FD101E0014F800171425 /* MyMinePageCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1709FD0E1E0014F800171425 /* MyMinePageCell3.swift */; };
+		1709FD111E0014F800171425 /* MyMinePageCell3.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1709FD0F1E0014F800171425 /* MyMinePageCell3.xib */; };
 		170AA4B01DDD7F32008DDD52 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170AA4AF1DDD7F32008DDD52 /* CFNetwork.framework */; };
 		170B78EC1DBF543B00700568 /* JifenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B78EB1DBF543B00700568 /* JifenModel.swift */; };
 		170B78EF1DBF549A00700568 /* MyJifenRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170B78ED1DBF549A00700568 /* MyJifenRecordCell.swift */; };
@@ -908,6 +917,15 @@
 		17077C111CC2216100655363 /* shuifei.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuifei.png; sourceTree = "<group>"; };
 		17077C121CC2216100655363 /* tingche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tingche.png; sourceTree = "<group>"; };
 		17077C151CC230B200655363 /* PaymentInfoInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentInfoInfoVC.swift; sourceTree = "<group>"; };
+		1709FD001DFFE55700171425 /* qdsuccessalert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qdsuccessalert.png; sourceTree = "<group>"; };
+		1709FD021DFFF9A100171425 /* MyMinePageCell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMinePageCell1.swift; sourceTree = "<group>"; };
+		1709FD031DFFF9A100171425 /* MyMinePageCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMinePageCell1.xib; sourceTree = "<group>"; };
+		1709FD061E000CCD00171425 /* MyMinePageCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMinePageCell2.swift; sourceTree = "<group>"; };
+		1709FD071E000CCD00171425 /* MyMinePageCell2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMinePageCell2.xib; sourceTree = "<group>"; };
+		1709FD0A1E000E3C00171425 /* MyMinePageHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMinePageHeader.swift; sourceTree = "<group>"; };
+		1709FD0C1E000E4B00171425 /* MyMinePageHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMinePageHeader.xib; sourceTree = "<group>"; };
+		1709FD0E1E0014F800171425 /* MyMinePageCell3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMinePageCell3.swift; sourceTree = "<group>"; };
+		1709FD0F1E0014F800171425 /* MyMinePageCell3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyMinePageCell3.xib; sourceTree = "<group>"; };
 		170AA4AF1DDD7F32008DDD52 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		170B78EB1DBF543B00700568 /* JifenModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JifenModel.swift; sourceTree = "<group>"; };
 		170B78ED1DBF549A00700568 /* MyJifenRecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyJifenRecordCell.swift; sourceTree = "<group>"; };
@@ -2231,6 +2249,14 @@
 				17DBB5921D192B270090677D /* MyWalletCell.xib */,
 				170B78ED1DBF549A00700568 /* MyJifenRecordCell.swift */,
 				170B78EE1DBF549A00700568 /* MyJifenRecordCell.xib */,
+				1709FD021DFFF9A100171425 /* MyMinePageCell1.swift */,
+				1709FD031DFFF9A100171425 /* MyMinePageCell1.xib */,
+				1709FD061E000CCD00171425 /* MyMinePageCell2.swift */,
+				1709FD071E000CCD00171425 /* MyMinePageCell2.xib */,
+				1709FD0A1E000E3C00171425 /* MyMinePageHeader.swift */,
+				1709FD0C1E000E4B00171425 /* MyMinePageHeader.xib */,
+				1709FD0E1E0014F800171425 /* MyMinePageCell3.swift */,
+				1709FD0F1E0014F800171425 /* MyMinePageCell3.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -2291,6 +2317,7 @@
 		175449C71DB5C1C200DCBE77 /* icon */ = {
 			isa = PBXGroup;
 			children = (
+				1709FD001DFFE55700171425 /* qdsuccessalert.png */,
 				179032C01DF01D4200C362F0 /* check_0.png */,
 				179032C11DF01D4200C362F0 /* check_1.png */,
 				179032B81DEFF74300C362F0 /* home_message_1.png */,
@@ -3749,6 +3776,7 @@
 				170E286D1BD505610010989A /* PostCommentView.xib in Resources */,
 				171A88FB1C3E3DFB00F303F6 /* user.png in Resources */,
 				175449DA1DB6080900DCBE77 /* my_icon3.png in Resources */,
+				1709FD091E000CCD00171425 /* MyMinePageCell2.xib in Resources */,
 				177E88061D16CD9400EE20CF /* my_login_account@3x.png in Resources */,
 				177E883C1D16CD9400EE20CF /* go_arrow_icon.png in Resources */,
 				17CA1F4C1DC08F3100C9C534 /* tarbar4_selected_1@2x.png in Resources */,
@@ -3823,6 +3851,7 @@
 				170EEB211C3FB6EA008FE174 /* list_icon.png in Resources */,
 				17CF77CF1DF1045E00D78108 /* README.txt in Resources */,
 				177E883F1D16CD9400EE20CF /* more_icon.png in Resources */,
+				1709FD111E0014F800171425 /* MyMinePageCell3.xib in Resources */,
 				171A88F31C3E3CC700F303F6 /* oa_index_icon06.png in Resources */,
 				17F017C21C7D8E8A002C1B23 /* PropertyPhotoInfoView.xib in Resources */,
 				177E87D51D16CD9400EE20CF /* card_phone@2x.png in Resources */,
@@ -3995,6 +4024,7 @@
 				177E87F51D16CD9400EE20CF /* my_choose_0@2x.png in Resources */,
 				172E82981DB856AB0051D67B /* Jifen.storyboard in Resources */,
 				171A890E1C3E6F3400F303F6 /* OA.storyboard in Resources */,
+				1709FD051DFFF9A100171425 /* MyMinePageCell1.xib in Resources */,
 				17D5DD7C1DBDAB1100A5458C /* youhuiquan.png in Resources */,
 				177E88BE1D16D0E300EE20CF /* tarbar1@2x.png in Resources */,
 				177E88C41D16D0E300EE20CF /* tarbar3_selected@2x.png in Resources */,
@@ -4086,6 +4116,7 @@
 				177E88141D16CD9400EE20CF /* my_system@3x.png in Resources */,
 				177E881A1D16CD9400EE20CF /* my_time@3x.png in Resources */,
 				17C880E51D251CCC009FCC4B /* 2208_2.jpg in Resources */,
+				1709FD011DFFE55700171425 /* qdsuccessalert.png in Resources */,
 				177E87F31D16CD9400EE20CF /* more_sanjiao@3x.png in Resources */,
 				177E87CE1D16CD9400EE20CF /* card_address@3x.png in Resources */,
 				17F2F90E1C7162ED00AD4321 /* ShareSDKCustomUI.xib in Resources */,
@@ -4097,6 +4128,7 @@
 				177E87EE1D16CD9400EE20CF /* logo_icon@2x.png in Resources */,
 				177E883E1D16CD9400EE20CF /* Discount_icon.png in Resources */,
 				17C880DF1D251CCC009FCC4B /* 1136_2.jpg in Resources */,
+				1709FD0D1E000E4B00171425 /* MyMinePageHeader.xib in Resources */,
 				175449DB1DB6080900DCBE77 /* my_icon4.png in Resources */,
 				17D6D7A71C7BED12007E4CC5 /* userDefaultHead.png in Resources */,
 				177E87E71D16CD9400EE20CF /* left_type_0@3x.png in Resources */,
@@ -4296,6 +4328,7 @@
 				1723E2021D0C52F1000A4C7D /* UIButton.swift in Sources */,
 				17C0DFE21DE6F3D4006B3442 /* ioapi.c in Sources */,
 				17ECF9D01C07DAAD001243E4 /* AGIPCToolbarItem.m in Sources */,
+				1709FD081E000CCD00171425 /* MyMinePageCell2.swift in Sources */,
 				177E86DC1D16CD3600EE20CF /* ActivitysCell.swift in Sources */,
 				173850531DD71F6700E4BFB1 /* GroupSearchVC.swift in Sources */,
 				17E85E5A1BFD550C00AC0FC9 /* pchHeader.swift in Sources */,
@@ -4307,6 +4340,7 @@
 				179032C61DF01DE900C362F0 /* MyMessageInfoCellEdit.swift in Sources */,
 				17F104A41C046AD5008EFEE8 /* FriendModel.swift in Sources */,
 				170384C01C8001D0005B3F6E /* PaymentInfoCell.swift in Sources */,
+				1709FD101E0014F800171425 /* MyMinePageCell3.swift in Sources */,
 				17E85E151BFD550C00AC0FC9 /* ReactionMenuView.swift in Sources */,
 				17AE0D171DBD95EB004783D1 /* JifenGoodsCell.swift in Sources */,
 				17A433C51D211AAA00FB2876 /* CardSearchVC.swift in Sources */,
@@ -4450,6 +4484,7 @@
 				17F2036A1C23A516000D1B4B /* NVActivityIndicatorView.swift in Sources */,
 				17C0DFE31DE6F3D4006B3442 /* mztools.c in Sources */,
 				170E286B1BD505470010989A /* PostCommentView.swift in Sources */,
+				1709FD041DFFF9A100171425 /* MyMinePageCell1.swift in Sources */,
 				17F2034A1C23A516000D1B4B /* NVActivityIndicatorAnimationBallClipRotate.swift in Sources */,
 				177E86971D16C91200EE20CF /* Reflect+Class.swift in Sources */,
 				17269DD91C9F932900E7AC28 /* XImageDownLoader.swift in Sources */,
@@ -4485,6 +4520,7 @@
 				17C884421C72B7C60041E491 /* ReportVC.swift in Sources */,
 				17E2BC731CA8BD74007F95DF /* PropertyPhoneVC.swift in Sources */,
 				17149C721C7D5E56005DD9B7 /* PropertyPhotoInfoVC.swift in Sources */,
+				1709FD0B1E000E3C00171425 /* MyMinePageHeader.swift in Sources */,
 				178186D71CE57F9B0030837A /* Constraint.swift in Sources */,
 				17ADD19C1D2648CD007CA23D /* CardActivitysInfoVC.swift in Sources */,
 				17C0DFDD1DE6F3D4006B3442 /* hmac.c in Sources */,

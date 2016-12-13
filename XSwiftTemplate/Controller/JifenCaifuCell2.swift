@@ -18,6 +18,22 @@ class JifenCaifuCell2: UITableViewCell {
     
     @IBOutlet var num: UILabel!
     
+    
+    @IBAction func click(sender: AnyObject) {
+        
+        if model == nil  {return}
+        
+        let vc = "MyMinePageVC".VC("User") as! MyMinePageVC
+        
+        vc.uid = model!.uid
+        vc.uname = model!.username
+        
+        vc.hidesBottomBarWhenPushed = true
+        
+        self.viewController?.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
     var dw = ""
     
     var model:HFBModel?

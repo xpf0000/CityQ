@@ -277,7 +277,7 @@ class HomeVC: UIViewController {
             
             if o?["data"]["code"].int == 0
             {
-                XAlertView.show("签到成功,获得1怀府币", block: nil)
+                QDSuccessAlert()
                 DataCache.Share.userModel.orqd = 1
             }
             else

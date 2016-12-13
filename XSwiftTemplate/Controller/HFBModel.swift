@@ -10,6 +10,8 @@ import UIKit
 
 class HFBModel: Reflect {
 
+    var uid = ""
+    var username = ""
     var id=""
     var hfb=""
     var hfbsy=""

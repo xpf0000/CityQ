@@ -75,7 +75,7 @@ class UserCenterVC: UITableViewController {
             
             if o?["data"]["code"].int == 0
             {
-                XAlertView.show("签到成功,获得1怀府币", block: nil)
+                QDSuccessAlert()
                 self.getUinfo()
             }
             else
@@ -176,7 +176,7 @@ class UserCenterVC: UITableViewController {
         
     }
     
-    let sarr:[Int] = [0,3,4,5,8,9]
+    let sarr:[Int] = [0,3,4,5,8]
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         if sarr.contains(indexPath.row)
@@ -225,7 +225,7 @@ class UserCenterVC: UITableViewController {
         }
     }
 
-    let tarr:[Int] = [0,1,3,4,5,6,8,9,10]
+    let tarr:[Int] = [0,1,3,4,5,6,8,9]
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
@@ -246,7 +246,10 @@ class UserCenterVC: UITableViewController {
             
         case 3:
             
-            let vc = "MyMinePageVC".VC("User")
+            let vc = "MyMinePageVC".VC("User") as! MyMinePageVC
+            
+            vc.uid = Uid
+            vc.uname = Uname
             
             vc.hidesBottomBarWhenPushed = true
             
@@ -282,16 +285,6 @@ class UserCenterVC: UITableViewController {
             
             self.navigationController?.pushViewController(vc, animated: true)
             
-        case 9:
-            
-            let vc = "MyCardVC".VC("User") as!  MyCardVC
-            
-            vc.hidesBottomBarWhenPushed = true
-            
-            vc.tabbar = self.tabBarController
-            
-            self.navigationController?.pushViewController(vc, animated: true)
-            
             return
             
         case 6:
@@ -302,7 +295,7 @@ class UserCenterVC: UITableViewController {
             
             self.navigationController?.pushViewController(vc, animated: true)
             
-        case 10:
+        case 9:
             
             let vc = MyYouhuiquanVC()
             
@@ -310,7 +303,7 @@ class UserCenterVC: UITableViewController {
             
             self.navigationController?.pushViewController(vc, animated: true)
             
-        case 12:
+        case 11:
             
             let vc:ConfigVC = "ConfigVC".VC("User") as! ConfigVC
             vc.hidesBottomBarWhenPushed = true
@@ -327,24 +320,28 @@ class UserCenterVC: UITableViewController {
     {
         DataCache.Share.userModel.OnValueChange {[weak self] (key, value) in
             
-            if key == "hfb"
+            if key == "HFB"
             {
-                self?.leftnum.text = value as? String
+                let m = value as! UserModel
+                self?.leftnum.text = m.hfb
+                self?.rightnum.text = "\(m.wqd)/7"
             }
-            else if key == "wqd"
+            
+            if key == "User"
             {
-                self?.rightnum.text = "\(value as! String)/7"
+                self?.showInfo()
             }
             
         }
         
         DataCache.Share.userModel.getHFB()
+        DataCache.Share.userModel.getUser()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.showInfo()
+        
         getUinfo()
 
     }

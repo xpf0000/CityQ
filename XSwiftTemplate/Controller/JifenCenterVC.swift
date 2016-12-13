@@ -12,13 +12,15 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
 
     @IBOutlet var tatle: UILabel!
     
-    @IBOutlet var num: UILabel!
-    
     @IBOutlet var state: UILabel!
     
     @IBOutlet var stateIcon: UIImageView!
     
     @IBOutlet var collect: XCollectionView!
+    
+    @IBOutlet  var zlicon: UIImageView!
+    
+    @IBOutlet  var zltxt: UILabel!
     
     var harr:[CGFloat] = [48,140,12,44,44,44,12,44,100]
     
@@ -201,7 +203,7 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
             
             if o?["data"]["code"].int == 0
             {
-                XAlertView.show("签到成功,获得1怀府币", block: nil)
+                QDSuccessAlert()
                 self?.stateIcon.hidden = false
                 self?.state.text = "已完成"
                 self?.state.textColor = APPBlueColor
@@ -242,15 +244,22 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
         
         DataCache.Share.userModel.OnValueChange {[weak self] (key, value) in
             
-            if key == "orqd"
+            if key == "HFB"
             {
-                let orqd = value as! Int
-                
-                if orqd == 0
+                let m = value as! UserModel
+                self?.tatle.text = m.hfb
+                if m.orqd == 0
                 {
                     self?.stateIcon.hidden = true
                     self?.state.text = "还未签到"
                     self?.state.textColor = "333333".color
+                }
+               
+                if(m.orwsinfo == "1")
+                {
+                    self?.zlicon.image = "duihao.png".image
+                    self?.zltxt.text = "已完成"
+                    self?.zltxt.textColor = APPBlueColor
                 }
             
             }

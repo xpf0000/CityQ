@@ -29,7 +29,7 @@ class GroupSearchBarCell: UITableViewCell,UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         mainView.layer.masksToBounds = true
-        mainView.layer.borderColor = "dedede".color?.CGColor
+        mainView.layer.borderColor = "21adfd".color?.CGColor
         mainView.layer.borderWidth = 1.0
         mainView.layer.cornerRadius = 6.0
         

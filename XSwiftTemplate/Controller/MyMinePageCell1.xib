@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyMinePageCell1" rowHeight="449" id="KGk-i7-Jjw" customClass="MyMinePageCell1" customModule="chengshi" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="845" height="449"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="845" height="448"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w4c-kk-0i9">
+                        <rect key="frame" x="0.0" y="-0.5" width="845" height="450"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="jrp-ew-ViJ">
+                                <rect key="frame" x="0.0" y="-0.5" width="843" height="450"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jrp-ew-ViJ" secondAttribute="height" multiplier="750:400" id="eQY-SH-cxg"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3x-d7-r62">
+                                <rect key="frame" x="323" y="118" width="200" height="213"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_head.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nea-ao-XRK">
+                                        <rect key="frame" x="10" y="0.0" width="180" height="180"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="Nea-ao-XRK" secondAttribute="height" multiplier="1:1" id="tsA-ke-9Lr"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="叮当" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMt-uu-Oqc">
+                                        <rect key="frame" x="10" y="192" width="180" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="GMt-uu-Oqc" firstAttribute="top" secondItem="Nea-ao-XRK" secondAttribute="bottom" constant="12" id="GLr-z5-5ma"/>
+                                    <constraint firstItem="GMt-uu-Oqc" firstAttribute="width" relation="greaterThanOrEqual" secondItem="Nea-ao-XRK" secondAttribute="width" id="IDL-Sw-Nz0"/>
+                                    <constraint firstAttribute="trailing" secondItem="GMt-uu-Oqc" secondAttribute="trailing" constant="10" id="PPB-tT-b60"/>
+                                    <constraint firstAttribute="bottom" secondItem="GMt-uu-Oqc" secondAttribute="bottom" id="Z1d-rN-xNa"/>
+                                    <constraint firstItem="GMt-uu-Oqc" firstAttribute="leading" secondItem="b3x-d7-r62" secondAttribute="leading" constant="10" id="bOZ-dI-29F"/>
+                                    <constraint firstItem="Nea-ao-XRK" firstAttribute="top" secondItem="b3x-d7-r62" secondAttribute="top" id="i9k-NT-ShB"/>
+                                    <constraint firstItem="Nea-ao-XRK" firstAttribute="centerX" secondItem="b3x-d7-r62" secondAttribute="centerX" id="jOx-oI-8q7"/>
+                                    <constraint firstItem="GMt-uu-Oqc" firstAttribute="centerX" secondItem="b3x-d7-r62" secondAttribute="centerX" id="xXq-jG-yus"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b3x-d7-r62" firstAttribute="centerX" secondItem="w4c-kk-0i9" secondAttribute="centerX" id="8as-iP-lYA"/>
+                            <constraint firstItem="b3x-d7-r62" firstAttribute="centerY" secondItem="w4c-kk-0i9" secondAttribute="centerY" id="FCd-z7-Dw2"/>
+                            <constraint firstItem="jrp-ew-ViJ" firstAttribute="leading" secondItem="w4c-kk-0i9" secondAttribute="leading" id="O90-Vv-PO6"/>
+                            <constraint firstItem="Nea-ao-XRK" firstAttribute="height" secondItem="jrp-ew-ViJ" secondAttribute="height" multiplier="0.4" id="Sqa-SC-ev6"/>
+                            <constraint firstAttribute="bottom" secondItem="jrp-ew-ViJ" secondAttribute="bottom" id="URK-dO-eID"/>
+                            <constraint firstAttribute="trailing" secondItem="jrp-ew-ViJ" secondAttribute="trailing" id="UYU-RI-jtd"/>
+                            <constraint firstItem="jrp-ew-ViJ" firstAttribute="top" secondItem="w4c-kk-0i9" secondAttribute="top" id="twV-wv-O72"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="w4c-kk-0i9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="HMp-1W-Bqq"/>
+                    <constraint firstAttribute="trailing" secondItem="w4c-kk-0i9" secondAttribute="trailing" id="LgY-K7-f1L"/>
+                    <constraint firstAttribute="bottom" secondItem="w4c-kk-0i9" secondAttribute="bottom" id="hgf-5Z-S01"/>
+                    <constraint firstItem="w4c-kk-0i9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="qGc-NY-R4n"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="img" destination="Nea-ao-XRK" id="GPb-yo-3J0"/>
+                <outlet property="name" destination="GMt-uu-Oqc" id="vwP-mg-L9E"/>
+            </connections>
+            <point key="canvasLocation" x="49.5" y="-1.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="header_bg.png" width="750" height="400"/>
+        <image name="home_head.png" width="180" height="180"/>
+    </resources>
+</document>

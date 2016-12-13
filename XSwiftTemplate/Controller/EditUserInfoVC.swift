@@ -30,6 +30,10 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
     
     @IBOutlet var nameIcon: UIImageView!
     
+    @IBOutlet  var aihao: UITextField!
+    
+    @IBOutlet  var qianming: UITextField!
+    
     
     var imageIng = false
     var headImage:UIImage?
@@ -47,10 +51,12 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         let truename = name.text!.trim()
         let birthday = self.birthday.text!.trim()
         let address = self.address.text!.trim()
+        let aihao = self.aihao.text!.trim()
+        let qianming = self.qianming.text!.trim()
         
         let url=APPURL+"Public/Found/?service=User.userEdit"
         
-        let body="username="+Uname+"&nickname="+nick+"&sex=\(sexN)&truename=\(truename)&birthday="+birthday+"&address="+address
+        let body="username="+Uname+"&nickname="+nick+"&sex=\(sexN)&truename=\(truename)&birthday="+birthday+"&address="+address+"&aihao="+aihao+"&qianming="+qianming
         
         XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
             
@@ -120,6 +126,8 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         phone.text = Umobile
         birthday.text = DataCache.Share.userModel.birthday
         address.text = DataCache.Share.userModel.address
+        aihao.text = DataCache.Share.userModel.aihao
+        qianming.text = DataCache.Share.userModel.qianming
         
         if(DataCache.Share.userModel.sex == "0")
         {

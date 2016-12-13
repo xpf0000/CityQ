@@ -26,20 +26,6 @@ var Umobile:String
 class UserModel: Reflect {
     
     var uid=""
-    {
-        didSet
-        {
-            if uid != ""
-            {
-                CloudPushSDK.bindAccount(self.uid) { (res) in}
-            }
-            else
-            {
-                CloudPushSDK.unbindAccount({ (res) in})
-            }
-
-        }
-    }
     
     var nickname=""
     var sex=""
@@ -58,15 +44,34 @@ class UserModel: Reflect {
     var birthday=""
     var address=""
     
-    var hfb = ""
+    var hfb = "0"
     var qdday = ""
-    var wqd = ""
+    var wqd = "0"
     var orqd = 0
     
     var token = ""
     
+    var orwsinfo = ""
+    var aihao = ""
+    var qianming = ""
+    
+    func onIDChanged()
+    {
+        if uid != ""
+        {
+            CloudPushSDK.bindAccount(self.uid) { (res) in}
+        }
+        else
+        {
+            CloudPushSDK.unbindAccount({ (res) in})
+        }
+
+    }
+    
     func registNotice()
     {
+        onIDChanged()
+        
         if token != ""
         {
             CloudPushSDK.addAlias(token, withCallback: { (res) in
@@ -82,42 +87,63 @@ class UserModel: Reflect {
     }
 
     
+    func getUser()
+    {
+        if username == "" {
+            valueChangeBlock?("User", UserModel())
+            return
+        }
+        
+        let url = "http://182.92.70.85/hfapi/Public/Found/?service=User.getUser&username=\(username)"
+        let arr = ["mobile","orwsinfo","hfb","nickname","sex","headimage","birthday","aihao","qianming","houseid","fanghaoid","truename"]
+        
+        XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](o) in
+            
+            
+            let m = UserModel.parse(json: o?["data"]["info"][0], replace: nil)
+            
+            for str in arr
+            {
+                self?.setValue(m.valueForKey(str), forKey: str)
+            }
+            
+            self?.valueChangeBlock?("User",m)
+            
+            self?.save()
+            
+        }
+        
+        
+    }
+
+    
     func getHFB()
     {
         if uid == "" || username == "" {
-            valueChangeBlock?("hfb","0")
-            valueChangeBlock?("wqd","0")
+            valueChangeBlock?("HFB", UserModel())
             return
         }
         
         let url = "http://182.92.70.85/hfapi/Public/Found/?service=jifen.getUinfo&uid=\(uid)&username=\(username)"
+        let arr = ["qdday","hfb","orwsinfo","wqd","orqd"]
         
         XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](o) in
             
-            if let str = o?["data"]["info"][0]["hfb"].string
+            
+            let m = UserModel.parse(json: o?["data"]["info"][0], replace: nil)
+            
+            for str in arr
             {
-                self?.hfb = str
-                self?.valueChangeBlock?("hfb",str)
+                self?.setValue(m.valueForKey(str), forKey: str)
             }
             
-            if let str = o?["data"]["info"][0]["qdday"].string
-            {
-                self?.qdday = str
-            }
+            self?.valueChangeBlock?("HFB",m)
             
-            if let str = o?["data"]["info"][0]["wqd"].string
-            {
-                self?.wqd = str
-                self?.valueChangeBlock?("wqd",str)
-            }
+            self?.save()
             
-            if let str = o?["data"]["info"][0]["orqd"].int
-            {
-                self?.orqd = str
-                self?.valueChangeBlock?("orqd",str)
-            }
-    
         }
+        
+        
     }
     
     func save()
@@ -127,32 +153,16 @@ class UserModel: Reflect {
         UserModel.save(obj: self, name: "userModel")
     }
     
-    func clone(m:UserModel)
-    {
-        uid = m.uid
-        nickname = m.nickname
-        sex = m.sex
-        username = m.username
-        headimage=m.headimage
-        openid=m.openid
-        mobile=m.mobile
-        houseid=m.houseid
-        fanghaoid=m.fanghaoid
-        house=m.house
-        truename=m.truename
-        louhaoid = m.louhaoid
-        danyuanid = m.danyuanid
-        birthday=m.birthday
-        address=m.address
-        token=m.token
-    }
-    
+
     func reSet()
     {
-        uid = ""
-        nickname = ""
-        sex = ""
-        username = ""
+        uid=""
+        
+        nickname=""
+        sex=""
+        
+        username=""
+        
         headimage=""
         openid=""
         mobile=""
@@ -164,9 +174,21 @@ class UserModel: Reflect {
         danyuanid = ""
         birthday=""
         address=""
-        token=""
+        
+        hfb = "0"
+        qdday = ""
+        wqd = "0"
+        orqd = 0
+        
+        token = ""
+        
+        orwsinfo = ""
+        aihao = ""
+        qianming = ""
         
         self.save()
+        
+        onIDChanged()
         
     }
     

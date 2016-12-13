@@ -41,9 +41,8 @@ class GroupSearchVC: UIViewController {
         search.txtfield.text = key
         
         let url = APPURL+"Public/Found/?service=Hyk.getShopSearch&page=[page]&perNumber=20&keyword="+key
-        table.separatorStyle = .None
-        table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: GroupModel.self, CellIdentifier: "GroupSearchCell")
-        table.cellHeight = 120
+        table.setHandle(url, pageStr: "[page]", keys: ["data","info"], model: GroupModel.self, CellIdentifier: "GroupHomeCell2")
+        table.cellHeight = 110
         
         table.show()
         

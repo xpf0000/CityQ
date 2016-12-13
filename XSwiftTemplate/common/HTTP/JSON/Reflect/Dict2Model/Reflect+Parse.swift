@@ -85,6 +85,7 @@ extension Reflect{
                         switch type.realType
                         {
                         case .String:
+                        
                             model.setValue(json![key].stringValue, forKeyPath: name)
                             
                         case .Int:

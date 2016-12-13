@@ -140,20 +140,32 @@ class JifenQiandaoListVC: UIViewController,UITableViewDelegate,UITableViewDataSo
             
             cell.dw = "天"
             
-            let m1 = httpHandle.listArr[0] as! HFBModel
-            m1.pm = "1"
+            if(httpHandle.listArr.count > 0)
+            {
+                
+                let m1 = httpHandle.listArr[0] as! HFBModel
+                m1.pm = "1"
+                cell.model1 = m1
+                
+            }
             
-            let m2 = httpHandle.listArr[1] as! HFBModel
-            m2.pm = "2"
+            if(httpHandle.listArr.count > 1)
+            {
+                
+                let m2 = httpHandle.listArr[1] as! HFBModel
+                m2.pm = "2"
+                cell.model2 = m2
+                
+            }
             
-            let m3 = httpHandle.listArr[2] as! HFBModel
-            m3.pm = "3"
-            
-            cell.model1 = m1
-            cell.model2 = m2
-            cell.model3 = m3
-            
-            
+            if(httpHandle.listArr.count > 2)
+            {
+                
+                let m3 = httpHandle.listArr[2] as! HFBModel
+                m3.pm = "3"
+                cell.model3 = m3
+                
+            }
             
             return cell
             
@@ -162,7 +174,15 @@ class JifenQiandaoListVC: UIViewController,UITableViewDelegate,UITableViewDataSo
         {
             let m = httpHandle.listArr[indexPath.row+2] as! HFBModel
             
-            m.pm = "\(indexPath.row+3)"
+            if indexPath.row+3 > 100
+            {
+                m.pm = "100+"
+            }
+            else
+            {
+                m.pm = "\(indexPath.row+3)"
+            }
+
 
             let cell = tableView.dequeueReusableCellWithIdentifier("JifenCaifuCell2", forIndexPath: indexPath) as! JifenCaifuCell2
             

@@ -225,3 +225,57 @@ let BaseHtml = "<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n" +
     "img {width:100%;height: auto}\r\n" +
     "</style>\r\n</head>\r\n<body>\r\n"+"[XHTMLX]"+"\r\n</body>\r\n</html>"
 
+
+
+
+func QDSuccessAlert()
+{
+    let imageview = UIImageView(frame: CGRectMake(0, 0, swidth*0.7, swidth*0.7))
+    imageview.image = "qdsuccessalert.png".image
+    imageview.center = CGPointMake(swidth*0.5, sheight*0.5-50)
+    
+    let view = UIView()
+    view.frame = CGRectMake(0, 0, swidth, sheight)
+    view.backgroundColor = UIColor.init(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.4)
+    view.alpha = 0.0
+    
+    UIApplication.sharedApplication().keyWindow?.addSubview(view)
+    view.addSubview(imageview)
+    
+    imageview.alertAnimation(0.3, delegate: nil)
+    
+    UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+        view.alpha = 1.0
+        
+    }) { (finished) -> Void in
+        if(finished)
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1.5 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
+                
+                UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+                    
+                    view.alpha=0.0
+                    
+                }) { (finished) -> Void in
+                    
+                    if(finished)
+                    {
+                        imageview.removeFromSuperview()
+                        view.removeFromSuperview()
+                    }
+                }
+                
+                
+            });
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+}
+
+

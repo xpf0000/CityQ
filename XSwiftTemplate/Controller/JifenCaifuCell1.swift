@@ -40,6 +40,54 @@ class JifenCaifuCell1: UITableViewCell {
     
     @IBOutlet var number3: UILabel!
     
+    
+    @IBAction func click1(sender: AnyObject) {
+        
+        if model1 == nil  {return}
+        
+        let vc = "MyMinePageVC".VC("User") as! MyMinePageVC
+        
+        vc.uid = model1!.uid
+        vc.uname = model1!.username
+        
+        vc.hidesBottomBarWhenPushed = true
+        
+        self.viewController?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func click2(sender: AnyObject) {
+        
+        if model2 == nil  {return}
+        
+        let vc = "MyMinePageVC".VC("User") as! MyMinePageVC
+        
+        vc.uid = model2!.uid
+        vc.uname = model2!.username
+        
+        vc.hidesBottomBarWhenPushed = true
+        
+        self.viewController?.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    @IBAction func click3(sender: AnyObject) {
+        
+        if model3 == nil  {return}
+        
+        let vc = "MyMinePageVC".VC("User") as! MyMinePageVC
+        
+        vc.uid = model3!.uid
+        vc.uname = model3!.username
+        
+        vc.hidesBottomBarWhenPushed = true
+        
+        self.viewController?.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    
+    
+    
     var dw = ""
     
     var model1:HFBModel?

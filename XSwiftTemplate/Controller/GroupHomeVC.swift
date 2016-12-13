@@ -57,7 +57,7 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         table.frame = CGRectMake(0, 0, swidth, sheight-64)
         table.backgroundColor = UIColor.whiteColor()
-        table.separatorStyle = .None
+
         let v = UIView()
         table.tableHeaderView = v
         let v1 = UIView()
@@ -67,7 +67,6 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         table.registerNib("GroupHomeCell1".Nib, forCellReuseIdentifier: "GroupHomeCell1")
         table.registerNib("GroupHomeCell2".Nib, forCellReuseIdentifier: "GroupHomeCell2")
         table.registerNib("GroupSearchBarCell".Nib, forCellReuseIdentifier: "GroupSearchBarCell")
-        table.registerNib("GroupSearchCell".Nib, forCellReuseIdentifier: "GroupSearchCell")
         table.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         table.delegate = self
@@ -95,7 +94,7 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if indexPath.row < 3
+        if indexPath.row < 1
         {
             cell.separatorInset=UIEdgeInsetsMake(0, swidth, 0, 0)
             if(IOS_Version>=8.0)
@@ -147,36 +146,26 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return httpHandle.listArr.count+3
+        return httpHandle.listArr.count+2
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         if indexPath.row == 0
         {
-            return swidth * 0.33 * 48.0 / 204.0+20.0
+            return 62.0
         }
         else if indexPath.row == 1
-        {
-            return 52.0
-        }
-        else if indexPath.row == 2
         {
             return 44.0
         }
         
-        return 120.0
+        return 110
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.row == 0
-        {
-            let cell = tableView.dequeueReusableCellWithIdentifier("GroupHomeCell1", forIndexPath: indexPath)
-        
-            return cell
-        }
-        else if indexPath.row == 1
         {
             
             let cell = tableView.dequeueReusableCellWithIdentifier("GroupSearchBarCell", forIndexPath: indexPath) as! GroupSearchBarCell
@@ -186,7 +175,7 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             return cell
         
         }
-        else if indexPath.row == 2
+        else if indexPath.row == 1
         {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
             
@@ -210,9 +199,9 @@ class GroupHomeVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("GroupSearchCell", forIndexPath: indexPath) as! GroupSearchCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("GroupHomeCell2", forIndexPath: indexPath) as! GroupHomeCell2
             
-            let m =  httpHandle.listArr[indexPath.row - 3] as! GroupModel
+            let m =  httpHandle.listArr[indexPath.row - 2] as! GroupModel
             
             cell.model = m
             

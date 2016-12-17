@@ -108,6 +108,11 @@ class JifenCenterVC: UITableViewController,UICollectionViewDelegate {
                 }
             }
         }
+        else if  indexPath.row == 7
+        {
+            cell.separatorInset=UIEdgeInsetsMake(0, 0, 0, 0)
+            cell.layoutMargins=UIEdgeInsetsMake(0, 0, 0, 0)
+        }
         else
         {
             cell.separatorInset=UIEdgeInsetsMake(0, swidth, 0, 0)

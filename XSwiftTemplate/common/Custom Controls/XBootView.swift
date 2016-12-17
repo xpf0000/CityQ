@@ -9,7 +9,7 @@
 import UIKit
 
 class XBootView: UIView,UIScrollViewDelegate {
-
+    
     @IBOutlet var scrollView: UIScrollView!
     
     @IBOutlet var content: UIView!
@@ -32,7 +32,7 @@ class XBootView: UIView,UIScrollViewDelegate {
         self.scrollView.delegate = nil
         
         page.hidden = true
-
+        
     }
     
     override init(frame: CGRect) {
@@ -107,9 +107,32 @@ class XBootView: UIView,UIScrollViewDelegate {
             })
             
             i++
+            
+            if(Int(i) == DataCache.Share.welcom.info.count)
+            {
+                let btn = UIButton(type: .Custom)
+                btn.frame = CGRectMake(0, 0, swidth, sheight)
+                btn.addTarget(self, action: #selector(click), forControlEvents: .TouchUpInside)
+                imageView.addSubview(btn)
+                
+                imageView.userInteractionEnabled = true
+                
+            }
+            
         }
-
+        
         view?.addSubview(self)
+    }
+    
+    func click()
+    {
+        self.scrollView.removeObserver(self, forKeyPath: "contentOffset")
+        
+        DataCache.Share.welcom.reSet()
+        self.block?(true)
+        self.block=nil
+        self.removeFromSuperview()
+        
     }
     
     override func awakeFromNib() {
@@ -124,6 +147,6 @@ class XBootView: UIView,UIScrollViewDelegate {
         self.scrollView.delegate = nil
         self.block = nil
     }
-
+    
     
 }

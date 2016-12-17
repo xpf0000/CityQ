@@ -10,7 +10,6 @@ import UIKit
 
 class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
     
-    
     @IBOutlet var nickname: UITextField!
     
     @IBOutlet var cellContent: UIView!
@@ -31,29 +30,20 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
     
     @IBOutlet var phone: UITextField!
     
-    var needNick = false
-    var body = ""
+    var userinfo:SSDKUser!
+    var type:String  = ""
     
     
     @IBAction func submit(sender: UIButton) {
         
         self.view.endEditing(true)
         
-        if(needNick)
+        if(!nickname.checkLength(3, max: 12))
         {
-            if !nickname.checkNull()
-            {
-                return
-            }
             
-            if(!nickname.checkLength(2, max: 15))
-            {
-                
-                ShowMessage("昵称为2-15位")
-                
-                return
-            }
-
+            ShowMessage("昵称为3-12位")
+            
+            return
         }
         
         if self.pass.text!.trim() != self.pass1.text!.trim()
@@ -67,45 +57,51 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
         waitActiv.hidden = false
         waitActiv.startAnimating()
         
-        if needNick
-        {
-            self.doRegist()
-        }
-        else
-        {
-            self.doBind()
-        }
-        
-        
+        self.doRegist()
         
     }
     
-    var user:UserModel = DataCache.Share.userModel
-    
     func doRegist()
     {
+    
         XWaitingView.show()
         
         let nick = self.nickname.text!.trim()
-        let body = self.body + "&nickname="+nick
+        let sex=userinfo.gender.rawValue == 0 ? 1 : 0
+        let p = phone.text!.trim()
+        let pass = self.pass.text!.trim()
+        let code = self.code.text!.trim()
         
         let url=APPURL+"Public/Found/?service=User.openRegister"
+        
+        let body = "openid=\(userinfo.uid)&type=\(type)&nickname=\(nick)&sex=\(sex)&headimage=\(userinfo.icon)&mobile=\(p)&password=\(pass)&code=\(code)"
+        
         XHttpPool.requestJson(url, body: body, method: .POST) { [weak self](o) -> Void in
+            
+            XWaitingView.hide()
             
             if let code = o?["data"]["code"].int
             {
                 if code == 0
                 {
-                    self?.user = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
+                    DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
                     
-                    self?.doBind()
+                    DataCache.Share.userModel.save()
+                    
+                    DataCache.Share.userModel.registNotice()
+                    DataCache.Share.userModel.getHFB()
+                    NoticeWord.LoginSuccess.rawValue.postNotice()
+                    
+                    self?.dismissViewControllerAnimated(true, completion: { () -> Void in
+                        
+                        
+                    })
                     
                     return
                     
                 }
                 else
                 {
-                    XWaitingView.hide()
                     self?.reSetButton()
                     ShowMessage(o!["data"]["msg"].stringValue)
                 }
@@ -113,7 +109,6 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
             }
             else
             {
-                XWaitingView.hide()
                 self?.reSetButton()
                 ShowMessage("注册失败")
             }
@@ -121,71 +116,13 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
         }
     }
 
-    func doBind()
-    {
-        let pass = self.pass.text!.trim()
-        let code = self.code.text!.trim()
-        let p = self.phone.text!.trim()
-        
-        let url=APPURL+"Public/Found/?service=User.openMobileAdd"
-        let body="username="+user.username+"&mobile="+p+"&password="+pass+"&code="+code
-        let msg = "绑定成功"
-        
-        XHttpPool.requestJson(url, body: body, method: .POST) { (o) -> Void in
-            XWaitingView.hide()
-            
-            if(o?["data"].dictionaryValue.count > 0)
-            {
-                if(o!["data"]["code"].intValue == 0)
-                {
-                    DataCache.Share.userModel = self.user
-                    DataCache.Share.userModel.mobile = p
-                    DataCache.Share.userModel.save()
-                                        
-                    DataCache.Share.userModel.registNotice()
-                    DataCache.Share.userModel.getHFB()
-                    
-                    NoticeWord.LoginSuccess.rawValue.postNotice()
-                    
-                    self.navigationController?.view.showAlert(msg, block: { (o) -> Void in
-                        
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                        
-                    })
-                    
-                    return
-                }
-                else
-                {
-                    if let str = o?["data"]["msg"].string
-                    {
-                        ShowMessage(str)
-                    }
-                    
-                    self.reSetButton()
-                    return
-                }
-            }
-            else
-            {
-                self.reSetButton()
-                ShowMessage("绑定失败")
-            }
-            
-        }
-    }
     
     func reSetButton()
     {
         self.waitActiv.hidden = true
         button.titleLabel?.alpha = 1.0
         
-        var b = true
-        
-        if needNick
-        {
-           b = self.pass.checkLength(2, max: 15)
-        }
+        let b = self.pass.checkLength(3, max: 12)
         
         if(!self.phone.text!.match(.Phone) || code.text!.trim() == "" || !self.pass.checkLength(6, max: 15) || !self.pass1.checkLength(6, max: 15) || !b)
         {
@@ -211,16 +148,6 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
-        
-        if needNick
-        {
-            harr[0] = 55.0
-        }
-        else
-        {
-            harr[0] = 0.0
-
-        }
         
         waitActiv.hidden = true
         self.button.enabled = false

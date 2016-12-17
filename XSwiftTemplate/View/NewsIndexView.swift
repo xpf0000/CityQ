@@ -280,7 +280,7 @@ class NewsIndexView: UITableView,UITableViewDelegate,UITableViewDataSource{
             }
             else if bannerID == "106" || bannerID == "103"
             {
-                return 170.0 * screenFlag
+                return (swidth-10)*7.0/16.0+48
             }
 
             

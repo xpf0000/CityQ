@@ -43,14 +43,14 @@ class OALoginVC: UIViewController,UITextFieldDelegate{
         var h:CGFloat=0.0
         self.view.backgroundColor="#f0f0f0".color
         
-        let log:UIImageView=UIImageView(image: UIImage(contentsOfFile: "logo.png".path))
-        log.frame=CGRectMake((50.0/320.0)*swidth, (28.0/480.0)*sheight, swidth-((50.0/320.0)*swidth)*2, (swidth-((50.0/320.0)*swidth)*2)*(94.0/320.0))
-        log.contentMode = UIViewContentMode.ScaleAspectFit
-        //log.layer.borderWidth=0.5
-        log.layer.borderColor=UIColor.blackColor().CGColor
-        self.view.addSubview(log)
+//        let log:UIImageView=UIImageView(image: UIImage(contentsOfFile: "logo.png".path))
+//        log.frame=CGRectMake((50.0/320.0)*swidth, (28.0/480.0)*sheight, swidth-((50.0/320.0)*swidth)*2, (swidth-((50.0/320.0)*swidth)*2)*(94.0/320.0))
+//        log.contentMode = UIViewContentMode.ScaleAspectFit
+//        //log.layer.borderWidth=0.5
+//        log.layer.borderColor=UIColor.blackColor().CGColor
+//        self.view.addSubview(log)
         
-        h=(28.0/480.0)*sheight+(swidth-((50.0/320.0)*swidth)*2)*(94.0/320.0)+20
+        h=70
         
         user.frame=CGRectMake((20.0/320.0)*swidth, h, swidth-(20.0/320.0)*swidth*2, 60)
         user.backgroundColor=UIColor.whiteColor()
@@ -67,7 +67,7 @@ class OALoginVC: UIViewController,UITextFieldDelegate{
         
         user.leftView=leftview
         user.leftViewMode = UITextFieldViewMode.Always
-        
+        user.placeholder = "用户名"
         user.clearButtonMode=UITextFieldViewMode.WhileEditing
         
         self.view.addSubview(user)
@@ -79,6 +79,7 @@ class OALoginVC: UIViewController,UITextFieldDelegate{
         pass.layer.cornerRadius=6.0
         pass.layer.borderWidth=0.5
         pass.layer.borderColor=UIColor(red: 223.0/255.0, green: 223.0/255.0, blue: 223.0/255.0, alpha: 1.0).CGColor
+        pass.placeholder = "密码"
         
         leftimg=UIImageView(image: UIImage(contentsOfFile: "pass.png".path))
         leftimg.frame=CGRectMake(8, 13, 34, 34)
@@ -100,7 +101,7 @@ class OALoginVC: UIViewController,UITextFieldDelegate{
         
         h=h+60+25;
         
-        submit.frame=CGRectMake((20.0/320.0)*swidth, h, swidth-(20.0/320.0)*swidth*2, 60)
+        submit.frame=CGRectMake((16.0/320.0)*swidth, h, swidth-(16.0/320.0)*swidth*2, 50)
         
         submit.backgroundColor=UIColor(red: 102.0/255.0, green: 150.0/255.0, blue: 232.0/255.0, alpha: 1.0)
         
@@ -112,6 +113,7 @@ class OALoginVC: UIViewController,UITextFieldDelegate{
         
         submit.titleLabel?.font=UIFont.systemFontOfSize(20)
         submit.layer.cornerRadius=6.0
+        submit.layer.masksToBounds = true
         
         submit.addTarget(self, action: #selector(OALoginVC.login), forControlEvents: UIControlEvents.TouchUpInside)
         

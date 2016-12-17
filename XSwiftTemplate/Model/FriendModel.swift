@@ -116,6 +116,7 @@ class FriendModel: Reflect {
     var orzan=0
     var sex=""
     var all = false
+    var username=""
     
     override func setValue(value: AnyObject?, forKey key: String) {
         

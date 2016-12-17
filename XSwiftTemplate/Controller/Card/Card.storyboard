@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1050,13 +1050,22 @@ DQ
                                                         <constraint firstAttribute="width" constant="24" id="cRM-RL-bVb"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JN1-5A-Kwy">
+                                                    <rect key="frame" x="135" y="8.5" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="28" id="KoL-JC-TlC"/>
+                                                        <constraint firstAttribute="height" constant="28" id="kmK-vj-rum"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="JN1-5A-Kwy" firstAttribute="leading" secondItem="6lJ-4q-mk1" secondAttribute="trailing" constant="8" id="5Qu-Pz-Een"/>
                                                 <constraint firstItem="zQp-i6-zNr" firstAttribute="leading" secondItem="ecR-kz-ylw" secondAttribute="leading" constant="16" id="DFZ-EU-kO7"/>
                                                 <constraint firstItem="OvK-sZ-Yas" firstAttribute="centerY" secondItem="ecR-kz-ylw" secondAttribute="centerY" id="Ukk-sw-Gft"/>
                                                 <constraint firstItem="6lJ-4q-mk1" firstAttribute="centerY" secondItem="ecR-kz-ylw" secondAttribute="centerY" id="Vhj-2r-T84"/>
                                                 <constraint firstAttribute="trailing" secondItem="OvK-sZ-Yas" secondAttribute="trailing" constant="15" id="a49-4G-npQ"/>
                                                 <constraint firstItem="6lJ-4q-mk1" firstAttribute="leading" secondItem="ecR-kz-ylw" secondAttribute="leadingMargin" constant="45" id="bFt-5b-elH"/>
+                                                <constraint firstItem="JN1-5A-Kwy" firstAttribute="centerY" secondItem="ecR-kz-ylw" secondAttribute="centerY" id="vib-hW-MIK"/>
                                                 <constraint firstItem="zQp-i6-zNr" firstAttribute="centerY" secondItem="ecR-kz-ylw" secondAttribute="centerY" id="wXu-Zl-Asz"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1140,6 +1149,7 @@ DQ
                         <outlet property="address" destination="F2w-ld-e2j" id="Vnu-65-icZ"/>
                         <outlet property="addressCell" destination="kEs-QJ-x7K" id="ChI-n9-RAh"/>
                         <outlet property="img" destination="2uu-Xv-Yv2" id="cbo-WE-kNF"/>
+                        <outlet property="levelIcon" destination="JN1-5A-Kwy" id="31l-pS-C81"/>
                         <outlet property="phone" destination="QjV-HV-VUv" id="w7K-PF-WOD"/>
                         <outlet property="table" destination="ZfZ-xT-rzK" id="NVs-i3-gMs"/>
                         <outlet property="web" destination="7CR-1c-Y3l" id="X16-bj-3yf"/>
@@ -1147,7 +1157,7 @@ DQ
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etP-kE-Yjh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3" y="1064"/>
+            <point key="canvasLocation" x="-3.2000000000000002" y="1063.2683658170915"/>
         </scene>
         <!--活动详情-->
         <scene sceneID="6m5-yP-Vbe">

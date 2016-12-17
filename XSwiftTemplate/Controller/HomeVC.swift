@@ -129,13 +129,13 @@ class HomeVC: UIViewController {
     
     func msgCountChange()
     {
-        msgbtn.selected = UMsgCount != nil
+        msgbtn.selected = UMsgCount != 0
         
         if let item = self.tabBarController?.tabBar.items?[4]
         {
             if screenScale == 3.0
             {
-                if UMsgCount != nil
+                if UMsgCount != 0
                 {
                     item.image="tarbar4_1@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                     item.selectedImage="tarbar4_selected_1@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
@@ -148,7 +148,7 @@ class HomeVC: UIViewController {
             }
             else
             {
-                if UMsgCount != nil
+                if UMsgCount != 0
                 {
                     item.image="tarbar4_1@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                     item.selectedImage="tarbar4_selected_1@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
@@ -298,8 +298,6 @@ class HomeVC: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BackToRootViewController), name: "AccountLogout", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.MsgChange.rawValue, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.LoginSuccess.rawValue, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.LogoutSuccess.rawValue, object: nil)
         
         let button=UIButton(type: UIButtonType.Custom)
         button.frame=CGRectMake(0, 0, 50, 24);
@@ -307,6 +305,8 @@ class HomeVC: UIViewController {
         button.titleLabel?.font = UIFont.systemFontOfSize(15.0)
         button.showsTouchWhenHighlighted = true
         button.exclusiveTouch = true
+        button.sizeToFit()
+        button.frame=CGRectMake(0, 0,button.frame.size.width, button.frame.size.height);
         button.addTarget(self, action: #selector(doQD(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         let leftItem=UIBarButtonItem(customView: button)
         self.navigationItem.leftBarButtonItem=leftItem;
@@ -371,7 +371,7 @@ class HomeVC: UIViewController {
                 item.image="tarbar\(i)@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                 item.selectedImage="tarbar\(i)_selected@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                 
-                if UMsgCount != nil && index == 4
+                if UMsgCount != 0 && index == 4
                 {
                     item.image="tarbar\(i)_1@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                     item.selectedImage="tarbar\(i)_selected_1@3x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
@@ -382,7 +382,7 @@ class HomeVC: UIViewController {
                 item.image="tarbar\(i)@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                 item.selectedImage="tarbar\(i)_selected@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                 
-                if UMsgCount != nil && index == 4
+                if UMsgCount != 0 && index == 4
                 {
                     item.image="tarbar\(i)_1@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
                     item.selectedImage="tarbar\(i)_selected_1@2x.png".image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
@@ -425,7 +425,7 @@ class HomeVC: UIViewController {
         
         NSThread(target: self, selector: #selector(timeThread), object: nil).start()
         
-        msgbtn.selected = UMsgCount != nil
+        msgbtn.selected = UMsgCount != 0
         
         if !CheckNet()
         {

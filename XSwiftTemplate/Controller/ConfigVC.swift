@@ -136,13 +136,25 @@ class ConfigVC: UITableViewController ,UIAlertViewDelegate{
             alertView.show()
         }
         
-        if(indexPath.row == 3)
+        if(indexPath.row == 2)
+        {
+            if(!checkIsLogin())
+            {
+                return
+            }
+            
+            let vc:ChangePassVC = "ChangePassVC".VC("User") as! ChangePassVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+
+        
+        if(indexPath.row == 4)
         {
             let vc:UserFeedVC = "UserFeedVC".VC("User") as! UserFeedVC
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
-        if(indexPath.row == 4)
+        if(indexPath.row == 5)
         {
             let vc:AboutVC = "AboutVC".VC("User") as! AboutVC
             self.navigationController?.pushViewController(vc, animated: true)
@@ -167,7 +179,10 @@ class ConfigVC: UITableViewController ,UIAlertViewDelegate{
             NSUserDefaults.standardUserDefaults().synchronize()
             
             NoticeWord.LogoutSuccess.rawValue.postNotice()
-
+            Preloading.Share.getMessage(Uid, username: Uname)
+            
+            pop()
+            
             return
             
         }

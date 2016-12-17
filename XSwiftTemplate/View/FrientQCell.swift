@@ -47,6 +47,7 @@ class FrientQCell: UITableViewCell {
     
     @IBOutlet var showButtonH: NSLayoutConstraint!
     
+    @IBOutlet weak var mineBtn: FriendHeadButton!
     
     var baseW=swidth-62
     
@@ -122,6 +123,8 @@ class FrientQCell: UITableViewCell {
         
         self.typeButton.hidden = !self.typeEnable
         
+        mineBtn.uid = model.uid
+        mineBtn.uname = model.username
         //self.picsView.picCollection.removeAllSubViews()
         
         self.replyView.replyOtherBlock =

@@ -71,12 +71,9 @@ class RegistVC: UITableViewController,UITextFieldDelegate {
                 if(o!["data"]["code"].intValue == 0)
                 {
                     
-                    if(self.rootVC != nil)
-                    {
-                        self.rootVC!.user.text = self.registPhone
-                        self.rootVC!.pass.text = pass
-                        self.rootVC!.login(self.rootVC!.loginButton)
-                    }
+                    self.rootVC?.user.text = self.registPhone
+                    self.rootVC?.pass.text = pass
+                    self.rootVC?.login(self.rootVC!.loginButton)
                     
                     self.navigationController?.popToRootViewControllerAnimated(true)
                     

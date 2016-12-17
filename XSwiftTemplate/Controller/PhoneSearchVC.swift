@@ -80,7 +80,7 @@ class PhoneSearchVC: XViewController ,UISearchBarDelegate,UITableViewDelegate{
         }
         
         self.searchTable.registerNib("PhoneCell".Nib, forCellReuseIdentifier: "PhoneCell")
-        self.searchTable.cellHeight = 75+16
+        self.searchTable.cellHeight = 65+16
         self.searchTable.CellIdentifier = "PhoneCell"
         self.searchTable.httpHandle.modelClass = PhoneModel.self
         searchTable.hideHeadRefresh()

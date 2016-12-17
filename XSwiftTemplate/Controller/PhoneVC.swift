@@ -45,7 +45,7 @@ class PhoneVC: UIViewController,UITextFieldDelegate {
         let table = XTableView()
         
         table.registerNib("PhoneCell".Nib, forCellReuseIdentifier: "PhoneCell")
-        table.cellHeight = 75+16
+        table.cellHeight = 65+16
         
         let u = APPURL+"Public/Found/?service=Tel.getHot&page=[page]&perNumber=20"
         

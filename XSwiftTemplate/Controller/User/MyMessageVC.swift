@@ -147,6 +147,15 @@ class MyMessageVC: UITableViewController {
         super.viewWillAppear(animated)
         http()
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let str = UMsgCount
+        
+        print("str: \(str)")
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

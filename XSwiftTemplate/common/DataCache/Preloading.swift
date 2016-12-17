@@ -257,7 +257,10 @@ class Preloading: NSObject{
     func getMessage(uid:String,username:String)
     {
 
-        if uid == "" || username == "" {return}
+        if uid == "" || username == "" {
+            NoticeWord.MsgChange.rawValue.postNotice()
+            return
+        }
         
         let url = APPURL + "Public/Found/?service=User.getMessagesCount&uid=\(uid)&username=\(username)"
         
@@ -295,7 +298,7 @@ class Preloading: NSObject{
                 }
             }
             
-            
+            NoticeWord.MsgChange.rawValue.postNotice()
             
             
         }

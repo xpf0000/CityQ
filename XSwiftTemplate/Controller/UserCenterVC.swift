@@ -10,6 +10,9 @@ import UIKit
 
 class UserCenterVC: UITableViewController {
     
+    
+    @IBOutlet weak var msgicon: UIImageView!
+    
     @IBOutlet var table: UITableView!
     
     @IBOutlet var headW: NSLayoutConstraint!
@@ -139,21 +142,22 @@ class UserCenterVC: UITableViewController {
     
     func msgCountChange()
     {
-//        if let txt = UMsgCount
-//        {
-//            msgBG.hidden = false
-//            msg.text = txt
-//        }
-//        else
-//        {
-//            msgBG.hidden = true
-//        }
+        if UMsgCount > 0
+        {
+            msgicon.image = "my_icon3_1.png".image
+        }
+        else
+        {
+            msgicon.image = "my_icon3.png".image
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.MsgChange.rawValue, object: nil)
+        
+        
         self.navigationController?.view.window?.addSubview(XPhotoChoose.Share())
         XPhotoChoose.Share().removeFromSuperview()
         

@@ -35,6 +35,31 @@ extension NSObject{
     }
     
     
+    func checkNickName()->Bool
+    {
+        var r = false
+        if let text = self.valueForKey("text") as? String
+        {
+            if(!text.match(.NickName))
+            {
+                r = true
+            }
+        }
+        
+        if !r
+        {
+            if self is UIView
+            {
+                (self as! UIView).endEdit()
+                ShowMessage("不能有特殊字符")
+            }
+        }
+        
+        return r
+        
+    }
+    
+    
     func checkPhone()->Bool
     {
         var r = false

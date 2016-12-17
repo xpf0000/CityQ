@@ -68,6 +68,8 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
     
     @IBOutlet var zanView: UIView!
     
+    @IBOutlet weak var mineBtn: FriendHeadButton!
+    
     lazy var cheight:Dictionary<Int,CGFloat> = [:]
     lazy var carr:Array<FriendCommentModel> = []
     lazy var zarr:Array<FriendZanModel> = []
@@ -432,6 +434,9 @@ class FriendInfoVC: XViewController,UIScrollViewDelegate,XDeleteDelegate,UITable
         }
         self.postion.text = fmodel.location
         self.headPic.url = fmodel.headimage
+        
+        mineBtn.uid = fmodel.uid
+        mineBtn.uname = fmodel.username
         
         let date=NSDate(timeIntervalSince1970: NSTimeInterval(fmodel.create_time)!)
         

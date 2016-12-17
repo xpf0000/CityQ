@@ -125,16 +125,17 @@ class GoodsCenterVC: UITableViewController,UICollectionViewDelegate {
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        cell.separatorInset=UIEdgeInsetsMake(0, swidth, 0, 0)
-        if(IOS_Version>=8.0)
+        if  indexPath.row == 3
         {
-            if #available(iOS 8.0, *) {
-                cell.layoutMargins=UIEdgeInsetsMake(0, swidth, 0, 0)
-            } else {
-                // Fallback on earlier versions
-            }
+            cell.separatorInset=UIEdgeInsetsMake(0, 0, 0, 0)
+            cell.layoutMargins=UIEdgeInsetsMake(0, 0, 0, 0)
         }
-  
+        else
+        {
+            cell.separatorInset=UIEdgeInsetsMake(0, swidth, 0, 0)
+            cell.layoutMargins=UIEdgeInsetsMake(0, swidth, 0, 0)
+        }
+        
     }
     
     override func viewDidLayoutSubviews() {

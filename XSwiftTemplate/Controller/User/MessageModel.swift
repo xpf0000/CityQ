@@ -8,7 +8,7 @@
 
 import UIKit
 
-var UMsgCount : String?
+var UMsgCount : Int
 {
     var c = 0
     
@@ -16,7 +16,7 @@ var UMsgCount : String?
     
     UIApplication.sharedApplication().applicationIconBadgeNumber = c
     
-    return c == 0 ? nil : ""
+    return c
 }
 
 var UMsgCount1: Int
@@ -158,7 +158,6 @@ class UserMsgModel:Reflect
     
     func save()
     {
-        "MsgChange".postNotice()
         UserMsgModel.save(obj: self, name: "UserMsgModel")
     }
     

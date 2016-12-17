@@ -94,6 +94,8 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
     
     var inBoot = false
     
+    var userinfo:SSDKUser?
+    
     func msgChanged() {
         
         let json=handle.msg
@@ -238,6 +240,136 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
                 XWaitingView.hide()
                 XAlertView.show(dic!["info"] as! String, block: nil)
             }
+            
+            if type == "5" && msg == "跳转注册页面"
+            {
+                let bindtype = dic!["bindtype"] as! String
+                var type = ""
+                switch bindtype {
+                case "新浪微博":
+                    type = "1"
+                case "微信":
+                    type = "2"
+                case "QQ":
+                    type = "3"
+                default:
+                    ""
+                }
+
+                
+                let vc:AuthBandPhoneVC = "AuthBandPhoneVC".VC("User") as! AuthBandPhoneVC
+                vc.userinfo = userinfo
+                vc.type = type
+                
+                vc.hidesBottomBarWhenPushed = true
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            
+            if type == "5" && msg == "跳转绑定现有帐号页面"
+            {
+                
+                let openid = dic!["openid"] as! String
+                let bindtype = dic!["bindtype"] as! String
+                var type = ""
+                switch bindtype {
+                case "新浪微博":
+                    type = "1"
+                case "微信":
+                    type = "2"
+                case "QQ":
+                    type = "3"
+                default:
+                    ""
+                }
+                
+                let vc = HtmlVC()
+                
+                vc.baseUrl = TmpDirURL
+                
+                if let u = TmpDirURL?.URLByAppendingPathComponent("loginBind.html")
+                {
+                    vc.url = "\(u)?openid=\(openid)&type=\(type)"
+                }
+                
+                vc.hidesBottomBarWhenPushed = true
+                vc.title = "登录绑定"
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+                
+                
+            }
+            
+             if type == "6" && msg == "跳转找回密码页面"
+             {
+                let vc = "FindBackPassVC".VC("User")
+                
+                vc.hidesBottomBarWhenPushed = true
+                
+                self.navigationController?.pushViewController(vc, animated: true)
+
+            }
+            
+            
+            if type == "6" && msg == "绑定登录"
+            {
+                
+                XWaitingView.show()
+                
+                let account = dic!["account"] as! String
+                let pass = dic!["pass"] as! String
+                let openid = dic!["openid"] as! String
+                let type = dic!["bindtype"] as! String
+                
+                let url=APPURL+"Public/Found/?service=User.openBD"
+                let body="openid="+openid+"&type="+type+"&mobile="+account+"&password="+pass
+                
+                print("body: \(body)")
+                
+                XHttpPool.requestJson(url, body: body, method: .POST, block: { (res) in
+                    
+                    XWaitingView.hide()
+                    print("res: \(res)")
+                    
+                    if let code = res?["data"]["code"].int
+                    {
+                        if code == 0
+                        {
+                            
+                            DataCache.Share.userModel = UserModel.parse(json: res!["data"]["info"][0], replace: nil)
+                            
+                            DataCache.Share.userModel.save()
+                            
+                            DataCache.Share.userModel.registNotice()
+                            DataCache.Share.userModel.getHFB()
+                            NoticeWord.LoginSuccess.rawValue.postNotice()
+                            
+                            self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                                
+                                
+                            })
+                            
+                            return
+                            
+                        }
+                    }
+                    
+                    var msg = "绑定失败"
+                    
+                    if let str = res?["data"]["msg"].string
+                    {
+                            msg = str
+                    }
+                    
+                    ShowMessage(msg)
+                    
+                    
+                })
+     
+                
+            }
+
+
 
             
             

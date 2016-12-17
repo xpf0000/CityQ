@@ -70,12 +70,6 @@ class DiscoverVC1: UITableViewController {
         }
         else if(indexPath.row == 2)
         {
-            let vc:DiscountVC = "DiscountVC".VC("Discount") as! DiscountVC
-            vc.hidesBottomBarWhenPushed=true
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        else if(indexPath.row == 3)
-        {
             if !checkIsLogin()
             {
                 return
@@ -117,7 +111,7 @@ class DiscoverVC1: UITableViewController {
             
             
         }
-        else if(indexPath.row == 4)
+        else if(indexPath.row == 3)
         {
             if(DataCache.Share.oaUserModel.uid == "")
             {

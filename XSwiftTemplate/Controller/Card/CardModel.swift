@@ -33,6 +33,7 @@ class CardModel: Reflect {
     var orvip = ""
     var jifen = ""
     var cardid = ""
+    var viplevel = ""
 
 }
 

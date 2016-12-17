@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -67,21 +67,28 @@
                                     <constraint firstAttribute="width" constant="16" id="vqd-8b-5Ph"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XgG-cT-bpe" customClass="FriendHeadButton" customModule="chengshi" customModuleProvider="target">
+                                <rect key="frame" x="10" y="12" width="34" height="34"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3JW-Yp-TXD" firstAttribute="centerY" secondItem="5JE-y3-heU" secondAttribute="centerY" constant="-1" id="5Gp-1U-jmN"/>
                             <constraint firstItem="1Ga-HD-Idk" firstAttribute="leading" secondItem="5JE-y3-heU" secondAttribute="leading" id="5dX-qd-2rf"/>
+                            <constraint firstItem="XgG-cT-bpe" firstAttribute="centerX" secondItem="7I1-mV-Ecm" secondAttribute="centerX" id="NkA-Oo-fla"/>
                             <constraint firstItem="3JW-Yp-TXD" firstAttribute="leading" secondItem="5JE-y3-heU" secondAttribute="trailing" constant="6" id="NzS-fL-VAs"/>
                             <constraint firstItem="7I1-mV-Ecm" firstAttribute="top" secondItem="dR4-pb-GJM" secondAttribute="top" constant="12" id="PtZ-3j-aov"/>
                             <constraint firstItem="1Ga-HD-Idk" firstAttribute="bottom" secondItem="7I1-mV-Ecm" secondAttribute="bottom" constant="2" id="SUW-oo-qPU"/>
+                            <constraint firstItem="XgG-cT-bpe" firstAttribute="centerY" secondItem="7I1-mV-Ecm" secondAttribute="centerY" id="dUp-vN-EE5"/>
                             <constraint firstItem="5JE-y3-heU" firstAttribute="top" secondItem="7I1-mV-Ecm" secondAttribute="top" constant="-2" id="gwP-yY-hoE"/>
                             <constraint firstItem="K0Y-kD-0qb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5JE-y3-heU" secondAttribute="trailing" constant="12" id="h0x-O2-Twz"/>
                             <constraint firstItem="7I1-mV-Ecm" firstAttribute="leading" secondItem="dR4-pb-GJM" secondAttribute="leading" constant="10" id="nI6-Qn-4z4"/>
                             <constraint firstAttribute="height" constant="52" id="rVa-M1-zhi"/>
                             <constraint firstItem="K0Y-kD-0qb" firstAttribute="centerY" secondItem="5JE-y3-heU" secondAttribute="centerY" id="teg-ev-mVy"/>
+                            <constraint firstItem="XgG-cT-bpe" firstAttribute="width" secondItem="7I1-mV-Ecm" secondAttribute="width" id="tlC-BI-bnJ"/>
                             <constraint firstAttribute="trailing" secondItem="K0Y-kD-0qb" secondAttribute="trailing" constant="10" id="tvb-nO-G5U"/>
                             <constraint firstItem="5JE-y3-heU" firstAttribute="leading" secondItem="7I1-mV-Ecm" secondAttribute="trailing" constant="8" id="vIO-kM-IXV"/>
+                            <constraint firstItem="XgG-cT-bpe" firstAttribute="height" secondItem="7I1-mV-Ecm" secondAttribute="height" id="yld-Wg-fcA"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="347" translatesAutoresizingMaskIntoConstraints="NO" id="OOA-vn-CzZ">
@@ -204,6 +211,7 @@
                 <outlet property="bottomLine" destination="z9f-EU-aVw" id="dSe-ou-u2T"/>
                 <outlet property="content" destination="OOA-vn-CzZ" id="TfI-z4-t8Y"/>
                 <outlet property="headPic" destination="7I1-mV-Ecm" id="XgB-e5-vU3"/>
+                <outlet property="mineBtn" destination="XgG-cT-bpe" id="21U-dn-3XZ"/>
                 <outlet property="name" destination="5JE-y3-heU" id="8Ds-8b-0Ea"/>
                 <outlet property="picsH" destination="QIZ-Kq-Gpu" id="3sf-Lj-cyk"/>
                 <outlet property="picsView" destination="XnF-40-h9M" id="4Xg-pa-MIm"/>

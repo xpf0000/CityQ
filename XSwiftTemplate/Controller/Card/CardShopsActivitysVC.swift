@@ -49,7 +49,7 @@ class CardShopsActivitysVC: UIViewController,UITableViewDelegate {
         
         table.registerNib("ActivitysCell".Nib, forCellReuseIdentifier: "ActivitysCell")
         table.CellIdentifier = "ActivitysCell"
-        table.cellHeight = 170.0 * screenFlag
+        table.cellHeight = (swidth-10)*7.0/16.0+48
         
         table.setHandle("", pageStr: "[page]", keys: ["data","info"], model: NewsModel.self, CellIdentifier: "ActivitysCell")
         table.httpHandle.pageSize = 10000

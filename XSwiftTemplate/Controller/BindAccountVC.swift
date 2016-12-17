@@ -1,15 +1,15 @@
 //
-//  LoginVC.swift
+//  BindAccountVC.swift
 //  chengshi
 //
-//  Created by X on 15/11/28.
-//  Copyright © 2015年 XSwiftTemplate. All rights reserved.
+//  Created by 徐鹏飞 on 2016/12/17.
+//  Copyright © 2016年 XSwiftTemplate. All rights reserved.
 //
 
 import UIKit
 
-class LoginVC: UITableViewController,UITextFieldDelegate {
-
+class BindAccountVC: UITableViewController,UITextFieldDelegate {
+    
     @IBOutlet var table: UITableView!
     
     @IBOutlet var user: UITextField!
@@ -19,52 +19,6 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
     @IBOutlet var loginIcon: UIActivityIndicatorView!
     
     @IBOutlet var loginButton: UIButton!
-    
-    @IBOutlet var wxBtn: UIButton!
-    
-    //var block:AnyBlock?
-    
-    func toInputNickVC(userInfo:SSDKUser,type:String)
-    {
-        
-        var dic = ["1":"新浪微博","2":"微信","3":"QQ"]
-        
-        let vc = HtmlVC()
-        
-        vc.baseUrl = TmpDirURL
-        vc.userinfo = userInfo
-        
-        if let u = TmpDirURL?.URLByAppendingPathComponent("unitLogin.html")
-        {
-            vc.url = "\(u)?header=\(userInfo.icon)&type=\(dic[type]!)&nick=\(userInfo.nickname)&openid=\(userInfo.uid)"
-        }
-        
-        vc.hidesBottomBarWhenPushed = true
-        vc.title = "联合登录"
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func wxLogin(sender: AnyObject) {
-        
-        self.view.showWaiting()
-        
-        ShareSDK.getUserInfo(.TypeWechat) {[weak self] (state, userInfo, err) -> Void in
-            
-            if(state == SSDKResponseState.Success)
-            {
-                self?.otherLogin(userInfo,type: "2")
-            }
-            else
-            {
-                RemoveWaiting()
-                ShowMessage("登录失败")
-            }
-        }
-        
-    }
-    
-    
     
     @IBAction func login(sender: AnyObject) {
         
@@ -126,7 +80,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
                 self.reSetButton()
                 self.navigationController?.view.showAlert("登录失败", block: nil)
             }
- 
+            
         }
         
         
@@ -144,14 +98,14 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
     @IBAction func regist(sender: AnyObject) {
         
         let vc:BandPhoneVC = "BandPhoneVC".VC("User") as! BandPhoneVC
-        vc.rootVC = self
+
         vc.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
     @IBAction func forget(sender: AnyObject) {
-     
+        
         let vc = "FindBackPassVC".VC("User")
         
         vc.hidesBottomBarWhenPushed = true
@@ -159,106 +113,6 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
-    
-    @IBAction func QQ(sender: AnyObject) {
-        
-        self.view.showWaiting()
-        
-        ShareSDK.getUserInfo(.TypeQQ) {[weak self] (state, userInfo, err) -> Void in
-            
-            if(state == SSDKResponseState.Success)
-            {
-                self?.otherLogin(userInfo,type: "3")
-            }
-            else
-            {
-                RemoveWaiting()
-                ShowMessage("登录失败")
-            }
-        }
-
-    }
-    
-    @IBAction func sina(sender: AnyObject) {
-        
-        self.view.showWaiting()
-        
-        ShareSDK.getUserInfo(.TypeSinaWeibo) {[weak self] (state, userInfo, err) -> Void in
-            
-            if(state == SSDKResponseState.Success)
-            {
-                self?.otherLogin(userInfo,type: "1")
-            }
-            else
-            {
-                RemoveWaiting()
-                ShowMessage("登录失败")
-            }
-        }
-
-    }
-    
-    func otherLogin(userInfo:SSDKUser,type:String)
-    {
-        
-        let uid=userInfo.uid
-        
-        let url=APPURL+"Public/Found/?service=User.openLogin"
-        let body="openid="+uid+"&type="+type
-        
-        print("body: \(body)")
-        
-        XHttpPool.requestJson(url, body: body, method: .POST, block: {[weak self] (o) -> Void in
-            RemoveWaiting()
-            if(o?["data"]["code"].intValue == 1)
-            {
-//                let sex=userInfo.gender.rawValue == 0 ? 1 : 0
-//                let headimage=userInfo.icon
-               
-                self?.toInputNickVC(userInfo,type: type)
-                
-                return
-            }
-            
-            if(o?["data"]["info"].arrayValue.count > 0)
-            {
-                if let mobile = o?["data"]["info"][0]["mobile"].string
-                {
-                    if mobile != ""
-                    {
-                        
-                        DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
-                        
-                        DataCache.Share.userModel.save()
-                        
-                        DataCache.Share.userModel.getHFB()
-                        
-                        DataCache.Share.userModel.registNotice()
-                        NoticeWord.LoginSuccess.rawValue.postNotice()
-                        
-                        self?.dismissViewControllerAnimated(true, completion: { () -> Void in
-                            
-                            
-                        })
-                        
-                        return
-                        
-                    }
-                }
-                
-//                let u = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
-//                self?.toInputNickVC(nil,user: u)
-                
-            }
-            else
-            {
-                ShowMessage("登录失败")
-            }
-            
-            })
-    }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -278,8 +132,6 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
         view1.backgroundColor=UIColor.clearColor()
         table.tableFooterView=view1
         table.tableHeaderView=view1
-        
-        wxBtn.hidden = !WXApi.isWXAppInstalled()
         
     }
     
@@ -335,7 +187,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
                 }
             }
         }
-         
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -369,15 +221,15 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
         super.viewWillDisappear(animated)
         self.view.endEditing(true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     deinit
     {
         //print("LoginVC deinit !!!!!!!!!!")
     }
-
+    
 }

@@ -7,6 +7,8 @@ import UIKit
 
 enum RegularType : String{
 
+    case NickName="[~!/@#$%^&#$%^&amp;*()-_=+\\|[{}];:\'\",&#$%^&amp;*()-_=+\\|[{}];:\'\",&lt;.&#$%^&amp;*()-_=+\\|[{}];:\'\",&lt;.&gt;/?]+"
+    
     case Phone="^(1)[0-9]{10}$"
     case Email="^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$"
 }

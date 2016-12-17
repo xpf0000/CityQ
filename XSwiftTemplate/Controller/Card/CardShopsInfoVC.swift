@@ -10,6 +10,9 @@ import UIKit
 
 class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDelegate {
     
+    
+    @IBOutlet weak var levelIcon: UIImageView!
+    
     @IBOutlet var table: UITableView!
     
     @IBOutlet var img: UIImageView!
@@ -88,8 +91,15 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
     
     func show()
     {
-        if model.orvip != "1"
-        {
+        
+        switch model.viplevel {
+        case "1":
+            levelIcon.image = "rezheng_icon.png".image
+        case "2":
+            levelIcon.image = "vip_icon.png".image
+        case "3":
+            levelIcon.image = "svip_icon.png".image
+        default:
             harr[7] = 0.0
             harr[8] = 0.0
         }

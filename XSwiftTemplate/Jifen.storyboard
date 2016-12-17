@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -42,6 +42,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUB-42-fJm">
                                         <rect key="frame" x="0.0" y="0.0" width="187" height="48"/>
+                                        <color key="backgroundColor" red="0.90980392156862744" green="0.49803921568627452" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="兑换商城"/>
                                         <connections>
@@ -50,6 +51,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZm-zs-oPr">
                                         <rect key="frame" x="188" y="0.0" width="187" height="48"/>
+                                        <color key="backgroundColor" red="0.90980392160000001" green="0.49803921569999998" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="财富排行榜"/>
                                         <connections>
@@ -57,7 +59,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.90980392160000001" green="0.49803921569999998" blue="0.01176470588" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="38h-sd-WCo"/>
                                     <constraint firstItem="GZm-zs-oPr" firstAttribute="leading" secondItem="uHJ-my-RVw" secondAttribute="trailing" id="3DI-QA-a00"/>
@@ -350,7 +352,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cw-00-Gc0">
-                                                    <rect key="frame" x="0.0" y="0.0" width="3" height="44"/>
+                                                    <rect key="frame" x="0.0" y="8" width="3" height="27.5"/>
                                                     <color key="backgroundColor" red="1" green="0.54117647059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="3" id="fTW-m5-kif"/>
@@ -374,9 +376,9 @@
                                                 <constraint firstItem="PQD-Ql-ed6" firstAttribute="centerY" secondItem="RcV-aH-l6X" secondAttribute="centerY" id="4DQ-KM-7sJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="D8s-TU-qHy" secondAttribute="trailing" constant="10" id="8ht-GY-dzf"/>
                                                 <constraint firstItem="2cw-00-Gc0" firstAttribute="leading" secondItem="RcV-aH-l6X" secondAttribute="leading" id="OjA-4m-AyD"/>
-                                                <constraint firstAttribute="bottom" secondItem="2cw-00-Gc0" secondAttribute="bottom" id="Xda-go-eN1"/>
+                                                <constraint firstAttribute="bottom" secondItem="2cw-00-Gc0" secondAttribute="bottom" constant="8" id="Xda-go-eN1"/>
                                                 <constraint firstItem="PQD-Ql-ed6" firstAttribute="leading" secondItem="2cw-00-Gc0" secondAttribute="trailing" constant="8" id="c3U-qU-Tz0"/>
-                                                <constraint firstItem="2cw-00-Gc0" firstAttribute="top" secondItem="RcV-aH-l6X" secondAttribute="top" id="rxH-ac-URZ"/>
+                                                <constraint firstItem="2cw-00-Gc0" firstAttribute="top" secondItem="RcV-aH-l6X" secondAttribute="top" constant="8" id="rxH-ac-URZ"/>
                                                 <constraint firstItem="D8s-TU-qHy" firstAttribute="width" secondItem="D8s-TU-qHy" secondAttribute="height" multiplier="1:1" id="v46-zf-6bE"/>
                                                 <constraint firstItem="D8s-TU-qHy" firstAttribute="centerY" secondItem="RcV-aH-l6X" secondAttribute="centerY" id="yym-c3-pxy"/>
                                             </constraints>
@@ -391,7 +393,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TN1-8A-uzC" customClass="XCollectionView" customModule="chengshi" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                                                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rAe-8h-YXU">
                                                         <size key="itemSize" width="50" height="50"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -401,7 +403,7 @@
                                                     <cells/>
                                                 </collectionView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="TN1-8A-uzC" secondAttribute="trailing" id="O7O-qI-5F0"/>
                                                 <constraint firstItem="TN1-8A-uzC" firstAttribute="top" secondItem="FJ3-qR-k8Y" secondAttribute="top" id="cEX-nb-osD"/>
@@ -409,7 +411,7 @@
                                                 <constraint firstItem="TN1-8A-uzC" firstAttribute="leading" secondItem="FJ3-qR-k8Y" secondAttribute="leading" id="xag-iF-0oc"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </cells>
@@ -688,7 +690,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nxC-6e-cyr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="90i-cw-YNd">
                                 <cells>
@@ -850,7 +852,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ntb-Zc-qwH">
-                                                    <rect key="frame" x="0.0" y="0.0" width="3" height="44"/>
+                                                    <rect key="frame" x="0.0" y="8" width="3" height="27.5"/>
                                                     <color key="backgroundColor" red="1" green="0.54117647059999996" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="3" id="2n0-uE-eBi"/>
@@ -864,11 +866,11 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Ntb-Zc-qwH" secondAttribute="bottom" id="0Lr-1j-FUC"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ntb-Zc-qwH" secondAttribute="bottom" constant="8" id="0Lr-1j-FUC"/>
                                                 <constraint firstItem="tf1-2B-O5C" firstAttribute="centerY" secondItem="QKL-WC-hXI" secondAttribute="centerY" id="5u5-oU-KvX"/>
                                                 <constraint firstItem="Ntb-Zc-qwH" firstAttribute="leading" secondItem="QKL-WC-hXI" secondAttribute="leading" id="Is6-J4-qsx"/>
                                                 <constraint firstItem="tf1-2B-O5C" firstAttribute="leading" secondItem="Ntb-Zc-qwH" secondAttribute="trailing" constant="8" id="bK5-N0-65s"/>
-                                                <constraint firstItem="Ntb-Zc-qwH" firstAttribute="top" secondItem="QKL-WC-hXI" secondAttribute="top" id="hbb-WJ-ZN6"/>
+                                                <constraint firstItem="Ntb-Zc-qwH" firstAttribute="top" secondItem="QKL-WC-hXI" secondAttribute="top" constant="8" id="hbb-WJ-ZN6"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -881,7 +883,7 @@
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ql5-1Z-QFm" customClass="XCollectionView" customModule="chengshi" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                                                    <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="V7u-Ku-u0z">
                                                         <size key="itemSize" width="50" height="50"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -891,7 +893,7 @@
                                                     <cells/>
                                                 </collectionView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Ql5-1Z-QFm" secondAttribute="trailing" id="0R8-C7-POZ"/>
                                                 <constraint firstItem="Ql5-1Z-QFm" firstAttribute="leading" secondItem="4tb-Iw-jHX" secondAttribute="leading" id="0Rh-bz-VGj"/>
@@ -899,7 +901,7 @@
                                                 <constraint firstItem="Ql5-1Z-QFm" firstAttribute="top" secondItem="4tb-Iw-jHX" secondAttribute="top" id="QhM-La-XqH"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </cells>
@@ -918,7 +920,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vjb-LM-QYh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-864.79999999999995" y="565.36731634182911"/>
+            <point key="canvasLocation" x="-866" y="617"/>
         </scene>
     </scenes>
     <resources>

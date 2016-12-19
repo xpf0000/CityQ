@@ -101,6 +101,15 @@ class CardActivitysInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelega
         
         RemoveWaiting()
         
+        webView.frame.size.height = 1
+        let size = webView.sizeThatFits(CGSizeZero)
+        
+        infoH.constant = size.height
+        web.layoutIfNeeded()
+        web.setNeedsLayout()
+        web.scrollView.scrollEnabled = false
+
+        
     }
     
     
@@ -128,8 +137,7 @@ class CardActivitysInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelega
         self.infoWeb.scrollView.showsVerticalScrollIndicator=false
         self.infoWeb.scrollView.scrollEnabled=true
         
-        self.infoWeb.scrollView.addObserver(self, forKeyPath: "contentSize", options: .New, context: nil)
-        
+    
         infoH.constant = 0.34
         lineH.constant = 0.34
         imgH.constant = swidth/16.0*9.0
@@ -141,17 +149,10 @@ class CardActivitysInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelega
     
     
     override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        
         if(keyPath == "center")
         {
             middleViewH.constant = positionIcon.center.y+8
-        }
-        
-        if(keyPath == "contentSize")
-        {
-            infoH.constant = infoWeb.scrollView.contentSize.height
-            
-            infoWeb.layoutIfNeeded()
-            infoWeb.setNeedsLayout()
         }
         
     }
@@ -195,7 +196,6 @@ class CardActivitysInfoVC: XViewController,UIActionSheetDelegate,UIWebViewDelega
     deinit
     {
         positionIcon.removeObserver(self, forKeyPath: "center")
-        self.infoWeb.scrollView.removeObserver(self, forKeyPath: "contentSize")
     }
     
     override func didReceiveMemoryWarning() {

@@ -527,7 +527,6 @@
 		178478411D01857900258414 /* XRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1784783E1D01857900258414 /* XRefresh.swift */; };
 		17896AAE1E04D68200C0B71D /* FriendHeadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17896AAD1E04D68200C0B71D /* FriendHeadButton.swift */; };
 		17896AB01E05022000C0B71D /* BindAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17896AAF1E05022000C0B71D /* BindAccountVC.swift */; };
-		17896AC21E053AD000C0B71D /* citytest.zip in Resources */ = {isa = PBXBuildFile; fileRef = 17896AC11E053AD000C0B71D /* citytest.zip */; };
 		178F976E1B9D6B2D00B86E60 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178F976C1B9D6B2200B86E60 /* MapKit.framework */; };
 		178F97811B9D6C0D00B86E60 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178F977F1B9D6BED00B86E60 /* Accelerate.framework */; };
 		178F97821B9D6C0D00B86E60 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 178F977D1B9D6BE300B86E60 /* CoreGraphics.framework */; };
@@ -675,6 +674,7 @@
 		17D6D7B11C7C30B6007E4CC5 /* PropertyPhptoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17D6D7AF1C7C30B6007E4CC5 /* PropertyPhptoCell.xib */; };
 		17D6D7B31C7C3B8C007E4CC5 /* PostPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D6D7B21C7C3B8C007E4CC5 /* PostPhotoVC.swift */; };
 		17D6D7B51C7C5278007E4CC5 /* tanhao.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D6D7B41C7C5278007E4CC5 /* tanhao.png */; };
+		17D7EF3A1E07CE8600EA8B70 /* citytest.zip in Resources */ = {isa = PBXBuildFile; fileRef = 17D7EF391E07CE8600EA8B70 /* citytest.zip */; };
 		17D8F11A1C755A6200731186 /* OAFileInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D8F1191C755A6200731186 /* OAFileInfoVC.swift */; };
 		17D8F11F1C75AA4B00731186 /* PropertyIndexVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D8F11E1C75AA4B00731186 /* PropertyIndexVC.swift */; };
 		17D8F1241C75AB3E00731186 /* wuye_index_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D8F1201C75AB3E00731186 /* wuye_index_0.png */; };
@@ -1419,7 +1419,6 @@
 		1784783E1D01857900258414 /* XRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XRefresh.swift; sourceTree = "<group>"; };
 		17896AAD1E04D68200C0B71D /* FriendHeadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendHeadButton.swift; sourceTree = "<group>"; };
 		17896AAF1E05022000C0B71D /* BindAccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindAccountVC.swift; sourceTree = "<group>"; };
-		17896AC11E053AD000C0B71D /* citytest.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = citytest.zip; sourceTree = "<group>"; };
 		178F976C1B9D6B2200B86E60 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		178F976F1B9D6BA500B86E60 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		178F97711B9D6BB100B86E60 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1608,6 +1607,7 @@
 		17D6D7AF1C7C30B6007E4CC5 /* PropertyPhptoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PropertyPhptoCell.xib; sourceTree = "<group>"; };
 		17D6D7B21C7C3B8C007E4CC5 /* PostPhotoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostPhotoVC.swift; sourceTree = "<group>"; };
 		17D6D7B41C7C5278007E4CC5 /* tanhao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tanhao.png; sourceTree = "<group>"; };
+		17D7EF391E07CE8600EA8B70 /* citytest.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = citytest.zip; sourceTree = "<group>"; };
 		17D8F1191C755A6200731186 /* OAFileInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAFileInfoVC.swift; sourceTree = "<group>"; };
 		17D8F11E1C75AA4B00731186 /* PropertyIndexVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyIndexVC.swift; sourceTree = "<group>"; };
 		17D8F1201C75AB3E00731186 /* wuye_index_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wuye_index_0.png; sourceTree = "<group>"; };
@@ -2965,7 +2965,7 @@
 		17BE5A141B9D68FC00C8958A /* XSwiftTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				17896AC11E053AD000C0B71D /* citytest.zip */,
+				17D7EF391E07CE8600EA8B70 /* citytest.zip */,
 				17C0DFB11DE6F3D4006B3442 /* SSZipArchive */,
 				178F978B1B9D6C9500B86E60 /* AppDelegate.swift */,
 				17E85E691BFD56CB00AC0FC9 /* XSwiftTemplate-Bridging-Header.h */,
@@ -3863,7 +3863,7 @@
 				177E883F1D16CD9400EE20CF /* more_icon.png in Resources */,
 				1709FD111E0014F800171425 /* MyMinePageCell3.xib in Resources */,
 				171A88F31C3E3CC700F303F6 /* oa_index_icon06.png in Resources */,
-				17896AC21E053AD000C0B71D /* citytest.zip in Resources */,
+				17D7EF3A1E07CE8600EA8B70 /* citytest.zip in Resources */,
 				17F017C21C7D8E8A002C1B23 /* PropertyPhotoInfoView.xib in Resources */,
 				177E87D51D16CD9400EE20CF /* card_phone@2x.png in Resources */,
 				172BEBFF1C05BF9E0005E24D /* FriendPicView.xib in Resources */,

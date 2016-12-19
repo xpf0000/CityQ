@@ -212,9 +212,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
             RemoveWaiting()
             if(o?["data"]["code"].intValue == 1)
             {
-//                let sex=userInfo.gender.rawValue == 0 ? 1 : 0
-//                let headimage=userInfo.icon
-               
+
                 self?.toInputNickVC(userInfo,type: type)
                 
                 return

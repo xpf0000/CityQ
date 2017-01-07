@@ -426,6 +426,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
                 print(p)
                 print("解压缩完毕 !!!!!!!!!")
             }
+            else{
+                
+                do
+                {
+                   let _ = try? SSZipArchive.unzipFileAtPath("citytest.zip".path, toDestination: p, overwrite: true, password: nil, delegate: nil)
+                    
+                    print("解压缩成功 !!!!!!!!!")
+                }
+                catch
+                {
+                    print("解压失败 !!!!!!!!!")
+                }
+                
+            }
             
             
         }

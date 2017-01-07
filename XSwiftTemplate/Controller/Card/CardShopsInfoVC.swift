@@ -94,7 +94,7 @@ class CardShopsInfoVC: UITableViewController,UIWebViewDelegate,UIActionSheetDele
         
         switch model.viplevel {
         case "1":
-            levelIcon.image = "rezheng_icon.png".image
+            levelIcon.image = "renzheng_icon.png".image
         case "2":
             levelIcon.image = "vip_icon.png".image
         case "3":

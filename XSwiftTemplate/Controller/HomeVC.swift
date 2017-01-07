@@ -258,6 +258,10 @@ class HomeVC: UIViewController {
             
             if let u = TmpDirURL?.URLByAppendingPathComponent("index.html")
             {
+                let str = "\(u)"
+    
+                print(NSFileManager.defaultManager().fileExistsAtPath(str))
+                
                 vc.url = "\(u)?uid=\(Uid)&uname=\(Uname)"
             }
             

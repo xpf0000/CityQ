@@ -27,7 +27,10 @@ class NoGuanzhuView: UIView {
             
             if self?.viewController?.checkIsLogin() == true
             {
-                self?.viewController?.tabBarController?.selectedIndex = 1
+                let vc = "CardIndexVC".VC
+                vc.hidesBottomBarWhenPushed=true
+                self?.viewController?.navigationController?.pushViewController(vc, animated: true)
+                
             }
 
         }

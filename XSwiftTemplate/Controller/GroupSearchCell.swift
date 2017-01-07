@@ -32,7 +32,7 @@ class GroupSearchCell: UITableViewCell {
                 if str == "1"
                 {
                     
-                    icon.image = "rezheng_icon.png".image
+                    icon.image = "renzheng_icon.png".image
                 }
                 else if str == "2"
                 {

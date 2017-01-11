@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
                 {
                     if Uid != ""
                     {
-                        NSNotificationCenter.defaultCenter().postNotificationName("AccountLogout", object: nil)
+                       NSNotificationCenter.defaultCenter().postNotificationName("AccountLogout", object: nil)
                     }
    
                 }
@@ -172,6 +172,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         
         CloudPushSDK.handleLaunching(launchOptions)
         
+    
         return true
     }
     

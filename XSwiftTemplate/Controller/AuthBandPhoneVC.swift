@@ -84,6 +84,7 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
             {
                 if code == 0
                 {
+
                     DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
                     
                     DataCache.Share.userModel.save()

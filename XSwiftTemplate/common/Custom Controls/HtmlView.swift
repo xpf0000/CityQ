@@ -42,7 +42,7 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
     var url=""
     var html:String=""
     var block:AnyBlock?
-    let handle = JSHandle()
+    let handle:JSHandle? = JSHandle()
     weak var context:JSContext?
     
     
@@ -59,9 +59,9 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
     
     func handleMSG() {
         
-        let json = handle.msg
-        
-        let data=json.dataUsingEncoding(NSUTF8StringEncoding)
+        let json=handle?.msg
+        if(json == nil){return}
+        let data=json!.dataUsingEncoding(NSUTF8StringEncoding)
         
         do
         {
@@ -102,7 +102,7 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
     func initSelf()
     {
 
-        handle.onMsgChange {[weak self] (msg) in
+        handle?.onMsgChange {[weak self] (msg) in
             
             self?.handleMSG()
         }
@@ -176,6 +176,14 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
         XWaitingView.hide()
     }
     
+    func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
+        
+        XWaitingView.hide()
+        ShowMessage("网络无法连接")
+    
+    }
+
+    
     @available(iOS 8.0, *)
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
         
@@ -194,7 +202,13 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
     @available(iOS 8.0, *)
     func webView(webView: WKWebView, didCommitNavigation navigation: WKNavigation!) {
         //waiting.removeFromSuperview()
+        
+        print("didCommitNavigation !!!!!!!!!!!!!")
+        
+        
     }
+    
+
     
     @available(iOS 8.0, *)
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
@@ -242,7 +256,7 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
     @available(iOS 8.0, *)
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         
-        handle.msg = message.body as! String
+        handle?.msg = message.body as? String
         
     }
     

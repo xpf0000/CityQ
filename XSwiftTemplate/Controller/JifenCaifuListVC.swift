@@ -45,7 +45,7 @@ class JifenCaifuListVC: UIViewController,UITableViewDelegate,UITableViewDataSour
         super.viewDidLoad()
         self.addBackButton()
         
-        bgImage.image = "caifupaihang_\(Int(swidth * screenScale))@2x.jpg".image
+        bgImage.image = "caifupaihang_\(Int(swidth * screenScale))@\(Int(screenScale))x.jpg".image
         
         let img = "home_head.png".image
         header.placeholder = img

@@ -21,6 +21,21 @@ class MyMinePageVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     {
         didSet
         {
+            if(type == 0)
+            {
+                btnH.constant = 0.0
+            }
+            else
+            {
+                if uid == Uid
+                {
+                    btnH.constant = 46.0
+                }
+            }
+     
+            btn.setBackgroundImage("f6f6f6".color?.image, forState: .Normal)
+            btn.layoutIfNeeded()
+            
             table.reloadData()
         }
     }
@@ -49,12 +64,25 @@ class MyMinePageVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func getUser()
     {
         if uid == Uid {
+            if(type == 0)
+            {
+                btnH.constant = 0.0
+            }
+            else
+            {
+                btnH.constant = 46.0
+            }
+         
+            btn.setBackgroundImage("f6f6f6".color?.image, forState: .Normal)
+            btn.layoutIfNeeded()
+
             umodel = DataCache.Share.userModel
             table.reloadData()
-            return
+                        return
         }
         else{
             btnH.constant = 0.0
+            btn.layoutIfNeeded()
         }
         
         let url = "http://182.92.70.85/hfapi/Public/Found/?service=User.getUser&username=\(uname)"

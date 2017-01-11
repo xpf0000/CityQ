@@ -97,7 +97,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
                 {
                     
                     print("user: \(o)")
-                    
+
                     DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
                     
                     DataCache.Share.userModel.save()
@@ -224,7 +224,7 @@ class LoginVC: UITableViewController,UITextFieldDelegate {
                 {
                     if mobile != ""
                     {
-                        
+
                         DataCache.Share.userModel = UserModel.parse(json: o!["data"]["info"][0], replace: nil)
                         
                         DataCache.Share.userModel.save()

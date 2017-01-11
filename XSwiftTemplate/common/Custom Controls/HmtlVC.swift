@@ -44,7 +44,7 @@ import JavaScriptCore
 
 typealias JSHandleBlock = (String)->Void
 
-class JSHandle:NSObject,XJSExports
+class JSHandle
 {
     var block:JSHandleBlock?
     
@@ -53,11 +53,15 @@ class JSHandle:NSObject,XJSExports
         block = b
     }
     
-    var msg:String = ""
+    var msg:String? = ""
     {
         didSet
         {
-            block?(msg)
+            if(msg != nil)
+            {
+                block?(msg!)
+            }
+            
         }
     }
     
@@ -66,10 +70,9 @@ class JSHandle:NSObject,XJSExports
         msg = message
         
     }
-    
-    override init()
-    {
-        
+
+    deinit{
+        print("JSHandle deinit !!!!!!!!!!!!!!!")
     }
     
 }
@@ -77,7 +80,7 @@ class JSHandle:NSObject,XJSExports
 
 
 protocol XJSExports : JSExport {
-    var msg: String { get set }
+    var msg: String? { get set }
     func jsMessage(message: String) -> Void
 }
 
@@ -89,16 +92,15 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
     var url=""
     var html:String=""
     var baseUrl:NSURL?
-    let handle = JSHandle()
+    var handle:JSHandle? = JSHandle()
     var isSub = false
     
     var inBoot = false
     
     var userinfo:SSDKUser?
     
-    func msgChanged() {
+    func msgChanged(json:String) {
         
-        let json=handle.msg
         let data=json.dataUsingEncoding(NSUTF8StringEncoding)
         
         do
@@ -335,7 +337,7 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
                     {
                         if code == 0
                         {
-                            
+ 
                             DataCache.Share.userModel = UserModel.parse(json: res!["data"]["info"][0], replace: nil)
                             
                             DataCache.Share.userModel.save()
@@ -428,19 +430,35 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
         }
     }
     
+    override func pop() {
+        
+        handle?.msg = nil
+        handle = nil
+        
+        webView?.configuration.userContentController.removeScriptMessageHandlerForName("JSHandle")
+        webView?.UIDelegate=nil
+        webView?.navigationDelegate=nil
+        webView?.stopLoading()
+        webView=nil
+        
+        super.pop()
+    }
+    
+    let scriptHandle = WKUserContentController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()
         self.view.backgroundColor = UIColor.whiteColor()
   
-        handle.onMsgChange { [weak self](msg) in
+        handle?.onMsgChange { [weak self](msg) in
             
-            self?.msgChanged()
+            self?.msgChanged(msg)
             
         }
         
         let config = WKWebViewConfiguration()
-        let scriptHandle = WKUserContentController()
+        
         scriptHandle.addScriptMessageHandler(self, name: "JSHandle")
         
         let per = WKPreferences()
@@ -486,7 +504,10 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
     
     func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage) {
         
-        handle.msg = message.body as! String
+        if let str = message.body as? String
+        {
+            handle?.msg = str
+        }
         
     }
     
@@ -606,6 +627,8 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
         webView?.navigationDelegate=nil
         webView?.stopLoading()
         webView=nil
+        
+        print("HtmlVC deinit !!!!!!!!!!!!!!!!")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -616,6 +639,11 @@ class HtmlVC: UIViewController,WKNavigationDelegate,WKUIDelegate,WKScriptMessage
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+    
     }
     
     override func didReceiveMemoryWarning() {

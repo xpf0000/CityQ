@@ -286,9 +286,13 @@ class HomeVC: UIViewController {
             }
             else
             {
-                var msg = o?["data"]["msg"].stringValue
-                msg = msg == "" ? "签到失败" : msg
-                XAlertView.show(msg!, block: nil)
+                var msg = "签到失败"
+                if let str = o?["data"]["msg"].string
+                {
+                    msg = str
+                }
+                
+                XAlertView.show(msg, block: nil)
             }
             
             sender.enabled = true
@@ -298,6 +302,12 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if(Uid == "")
+        {
+            CloudPushSDK.removeAlias(nil) { (res) in}
+        }
+
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(BackToRootViewController), name: "AccountLogout", object: nil)
         

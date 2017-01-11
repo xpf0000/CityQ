@@ -45,7 +45,7 @@ class JifenQiandaoListVC: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewDidLoad()
         self.addBackButton()
         
-        bgImage.image = "qiandaopaihang_\(Int(swidth * screenScale))@2x.jpg".image
+        bgImage.image = "qiandaopaihang_\(Int(swidth * screenScale))@\(Int(screenScale))x.jpg".image
         
         let img = "home_head.png".image
         header.placeholder = img

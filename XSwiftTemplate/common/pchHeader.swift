@@ -105,7 +105,7 @@ enum 腾讯颜色 : String{
 }
 
 //let WapUrl = "http://wap.huaifuwang.com"
-let WapUrl = "http://182.92.70.85"
+let WapUrl = "http://101.201.169.38"
 let serverPath=WapUrl+"/test"
 
 func ShowMessage(str:String)

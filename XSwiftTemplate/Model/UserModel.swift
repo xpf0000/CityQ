@@ -235,6 +235,11 @@ class UserModel: Reflect {
             getUserHouse()
         }
    
+        if key == "birthday"
+        {
+            birthday = birthday.replace("0000-00-00", with: "")
+        }
+        
     }
     
     

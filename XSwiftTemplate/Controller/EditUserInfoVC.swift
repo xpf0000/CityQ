@@ -42,6 +42,31 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
     
     @IBAction func submit(sender: UIButton) {
         
+        if(DataCache.Share.userModel.headimage == "")
+        {
+                ShowMessage("请选择用户头像")
+                return
+        }
+        
+        if(!sex.checkNull() || sex.text == "未选择")
+        {
+            ShowMessage("请设置性别")
+            return
+        }
+        
+        if(!name.checkNull())
+        {
+            ShowMessage("请设置真实姓名")
+            return
+        }
+        
+        if(!self.birthday.checkNull())
+        {
+            ShowMessage("请设置出生年月")
+            return
+        }
+
+        
         self.view.endEditing(true)
         self.view.showWaiting()
         sender.enabled = false
@@ -133,9 +158,13 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         {
             self.sex.text = "女"
         }
-        else
+        else if(DataCache.Share.userModel.sex == "1")
         {
             self.sex.text = "男"
+        }
+        else
+        {
+            self.sex.text = "未选择"
         }
         
         picon.hidden = Umobile != ""

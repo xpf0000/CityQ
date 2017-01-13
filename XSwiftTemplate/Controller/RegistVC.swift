@@ -211,7 +211,7 @@ class RegistVC: UITableViewController,UITextFieldDelegate {
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
-        if(indexPath.row == 0 || indexPath.row == 3 || indexPath.row == 4)
+        if(indexPath.row > 1)
         {
             
             cell.separatorInset=UIEdgeInsetsMake(0, swidth, 0, 0)

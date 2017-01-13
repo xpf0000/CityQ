@@ -271,7 +271,7 @@ class Preloading: NSObject{
                 DataCache.Share.userMsg.users[Uid] = UserMsgModel()
             }
             
-            if let count = json?["data"]["info"]["count1"].string?.numberValue.integerValue
+            if let count = json?["data"]["info"][0]["count1"].string?.numberValue.integerValue
             {
                 if count > 0
                 {
@@ -280,7 +280,7 @@ class Preloading: NSObject{
                 }
             }
             
-            if let count = json?["data"]["info"]["count2"].string?.numberValue.integerValue
+            if let count = json?["data"]["info"][0]["count2"].string?.numberValue.integerValue
             {
                 if count > 0
                 {
@@ -289,7 +289,7 @@ class Preloading: NSObject{
                 }
             }
             
-            if let count = json?["data"]["info"]["count3"].string?.numberValue.integerValue
+            if let count = json?["data"]["info"][0]["count3"].string?.numberValue.integerValue
             {
                 if count > 0
                 {

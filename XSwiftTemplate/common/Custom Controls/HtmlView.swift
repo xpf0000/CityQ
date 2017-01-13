@@ -213,8 +213,8 @@ class HtmlView: UIView,UIWebViewDelegate ,WKNavigationDelegate,WKUIDelegate,WKSc
     @available(iOS 8.0, *)
     func webView(webView: WKWebView, decidePolicyForNavigationAction navigationAction: WKNavigationAction, decisionHandler: (WKNavigationActionPolicy) -> Void) {
         
-        let url = "\(navigationAction.request.URL!)"
-
+        let url = "\(navigationAction.request.URL!)".lowercaseString
+        
         if(url.has(WapUrl+"/city/news_info.php?id="))
         {
             if(url.has("&type="))

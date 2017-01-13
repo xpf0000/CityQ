@@ -20,6 +20,25 @@ class BandPhoneVC: UITableViewController,UITextFieldDelegate {
     
     weak var rootVC:LoginVC?
     
+    @IBAction func toTiaokuan(sender: AnyObject) {
+        
+        let vc = HtmlVC()
+        
+        vc.baseUrl = TmpDirURL
+        
+        if let u = TmpDirURL?.URLByAppendingPathComponent("hfbguize.html")
+        {
+            vc.url = "\(u)?id=6243"
+        }
+        
+        vc.hidesBottomBarWhenPushed = true
+        vc.title = "服务条款"
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addBackButton()

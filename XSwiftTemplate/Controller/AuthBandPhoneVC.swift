@@ -32,20 +32,27 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
     
     var userinfo:SSDKUser!
     var type:String  = ""
+    var isnickhased = false;
     
     
     @IBAction func submit(sender: UIButton) {
         
         self.view.endEditing(true)
         
-        if(!nickname.checkLength(3, max: 12))
+        if(!nickname.checkLength(2, max: 12))
         {
             
-            ShowMessage("昵称为3-12位")
+            ShowMessage("昵称为2-12位")
             
             return
         }
         
+        if(isnickhased)
+        {
+            ShowMessage("昵称已存在,请更换")
+            return
+        }
+
         if self.pass.text!.trim() != self.pass1.text!.trim()
         {
             ShowMessage("密码和确认密码不一致!")
@@ -64,6 +71,7 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
     func doRegist()
     {
     
+        
         XWaitingView.show()
         
         let nick = self.nickname.text!.trim()
@@ -144,6 +152,10 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
         
     }
     
+    override func pop() {
+        nickname.removeTextChangeBlock()
+        super.pop()
+    }
     
     
     override func viewDidLoad() {
@@ -188,6 +200,45 @@ class AuthBandPhoneVC: UITableViewController,UITextFieldDelegate {
         code.onTextChange(block)
         phone.onTextChange(block)
         
+        
+        nickname.onTextChange {[weak self] (tf, str) in
+            
+            self?.checkIfNickHas(tf,str: str)
+            
+        }
+        
+        
+    }
+    
+    func checkIfNickHas(tf:UITextField,str:String)
+    {
+        if(str.length() < 2 && str.length() > 12)
+        {
+            tf.textColor = "000000".color
+            self.isnickhased = false
+            return
+        }
+        
+        self.isnickhased = true
+        let url = APPURL+"Public/Found/?service=User.getOrNickname&nickname="+str
+        XHttpPool.requestJson(url, body: nil, method: .GET) { [weak self](res) in
+            
+            if let code = res?["data"]["code"].int
+            {
+                if(code == 0)
+                {
+                    self?.isnickhased = false
+                    tf.textColor = "000000".color
+                }
+                else
+                {
+                    self?.isnickhased = true
+                    tf.textColor = "ff0000".color
+                    ShowMessage("昵称已存在,请更换")
+                }
+            }
+            
+        }
         
     }
     

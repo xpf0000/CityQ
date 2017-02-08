@@ -158,6 +158,12 @@ class UserCenterVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let a: [String:NSObject]? = nil
+//        print(a!)
+        
+//        let b = [1,2,3]
+//        print(b[5])
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(msgCountChange), name: NoticeWord.MsgChange.rawValue, object: nil)
         

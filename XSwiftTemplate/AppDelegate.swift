@@ -126,6 +126,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     
         initCloudPush()
         
+    
+        UMAnalyticsConfig.sharedInstance().appKey = "5693535e67e58e4b8e002114"
+        MobClick.setLogEnabled(false)
+        MobClick.startWithConfigure(UMAnalyticsConfig.sharedInstance())
+        
+        
         mapManager=BMKMapManager()
         let res:Bool=mapManager!.start("wsMGrlpr7TSyESGHSutdPoK8", generalDelegate: nil)
         if(res)
@@ -180,18 +186,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
     {
         
         let man = ALBBMANAnalytics.getInstance()
+        man.turnOffCrashHandler()
         man.initWithAppKey(AliAppKey, secretKey: AliAppMSecret)
+        
+//        let crashhandle = CrashHandle()
+//        man.setCrashCaughtListener(crashhandle)
         
         CloudPushSDK.asyncInit(AliAppKey, appSecret: AliAppMSecret) { (res) in
             
             if (res.success) {
+                
+                print("CloudPushSDK.asyncInit success !!!!!!!!!!!!")
                 
             } else {
                 
             }
         }
         
-        CloudPushSDK.turnOnDebug()
+        //CloudPushSDK.turnOnDebug()
     }
     
     func initShareSDK()
@@ -420,15 +432,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
         {
             if !fm.fileExistsAtPath(p)
             {
-                try! fm.createDirectoryAtURL(tmpDirURL!, withIntermediateDirectories: true, attributes: nil)
-                
-                SSZipArchive.unzipFileAtPath("citytest.zip".path, toDestination: p)
-                
-                print(p)
-                print("解压缩完毕 !!!!!!!!!")
+                do
+                {
+                    let _ = try? fm.createDirectoryAtURL(tmpDirURL!, withIntermediateDirectories: true, attributes: nil)
+                    
+                    let _ = try? SSZipArchive.unzipFileAtPath("citytest.zip".path, toDestination: p, overwrite: true, password: nil, delegate: nil)
+                    
+                    print("解压缩成功 !!!!!!!!!")
+                }
+                catch
+                {
+                    print("解压失败 !!!!!!!!!")
+                    ShowMessage("存储空间不足,请清理后再次使用")
+                }
+
+
             }
             else{
-                
                 do
                 {
                    let _ = try? SSZipArchive.unzipFileAtPath("citytest.zip".path, toDestination: p, overwrite: true, password: nil, delegate: nil)
@@ -438,6 +458,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,BMKLocationServiceDelegate
                 catch
                 {
                     print("解压失败 !!!!!!!!!")
+                    ShowMessage("存储空间不足,请清理后再次使用")
                 }
                 
             }

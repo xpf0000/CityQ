@@ -32,7 +32,9 @@
 #import <CloudPushSDK/CCPSysMessage.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <AlicloudMobileAnalitics/ALBBMAN.h>
+#import "CrashHandle.h"
 #import "ZipArchive.h"
+#import "UMMobClick/MobClick.h"
 //#import "//UMessage.h"
 
 #import "SkyRadiusView.h"

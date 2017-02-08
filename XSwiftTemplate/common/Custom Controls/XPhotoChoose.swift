@@ -33,6 +33,12 @@ class XPhotoChoose: UIView,UIGestureRecognizerDelegate {
     @IBOutlet var bottom: NSLayoutConstraint!
     
     var block:AnyBlock?  /// 回传 0 拍照 1 选照片
+    {
+        didSet
+        {
+            
+        }
+    }
     
     weak var vc:UIViewController?
     var showed=false

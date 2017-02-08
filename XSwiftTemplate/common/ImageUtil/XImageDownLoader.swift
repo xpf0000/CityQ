@@ -275,9 +275,7 @@ class XImageDownLoader: NSOperation {
         if error != nil || self.data == nil {return (nil,nil)}
         
         autoreleasepool {
-            
-            self.data?.writeToFile(savePath, atomically: false)
-            
+          self.data?.writeToFile(savePath, atomically: false)
         }
         
         return handleData(self.data!)

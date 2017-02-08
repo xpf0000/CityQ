@@ -418,7 +418,7 @@ class PostFriendVC: XViewController,UICollectionViewDataSource,UICollectionViewD
     
     deinit
     {
-        
+        print("PostFriendVC deinit !!!!!!!!!!!!!!!!!!")
     }
     
     

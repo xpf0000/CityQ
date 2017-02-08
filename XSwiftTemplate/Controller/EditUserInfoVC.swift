@@ -133,6 +133,8 @@ class EditUserInfoVC: UITableViewController,UITextFieldDelegate,UIActionSheetDel
         super.viewDidLoad()
         self.addBackButton()
 
+        XPhotoChoose.Share().delegate = nil
+        
         self.headPic.url=DataCache.Share.userModel.headimage
         self.nickName.text = DataCache.Share.userModel.nickname
         self.name.text = DataCache.Share.userModel.truename

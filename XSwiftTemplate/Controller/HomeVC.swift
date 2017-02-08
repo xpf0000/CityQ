@@ -169,11 +169,19 @@ class HomeVC: UIViewController {
     {
         coverImage.frame = CGRectMake(0,0,swidth,sheight)
         coverImage.contentMode = .ScaleAspectFill
-        coverImage.image = "cover\(Int(sheight * UIScreen.mainScreen().scale)).png".image
-        //coverImage.image = UIColor.whiteColor().image
+        
+        switch sheight {
+        case 480:
+            coverImage.image = "cover960.png".image
+        case 568:
+            coverImage.image = "cover1136.png".image
+        case 667:
+            coverImage.image = "cover1334.png".image
+        default:
+            coverImage.image = "cover2208.png".image
+        }
         
         AdvImage?.frame = CGRectMake(0,0,swidth,sheight - 423.0*swidth/1242.0)
-        //AdvImage?.frame = CGRectMake(0,0,swidth,sheight)
         coverImage.addSubview(AdvImage!)
         
         timeLabel.frame=CGRectMake(swidth-48-16, 22, 44, 24)
@@ -191,7 +199,7 @@ class HomeVC: UIViewController {
         
         coverImage.userInteractionEnabled = true;
         
-        timeLabel.click {[weak self,weak timeLabel] (btn) in
+        timeLabel.click {[weak self] (btn) in
             
             self?.timer?.invalidate()
             self?.timer = nil
@@ -302,6 +310,8 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         
         if(Uid == "")
         {

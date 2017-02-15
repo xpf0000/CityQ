@@ -59,7 +59,7 @@ class NewsListCell: UITableViewCell {
                     pic.url=m.picList[0].url
                 }
 
-                let str=m.title.subStringToIndex(26)
+                let str=m.title
                 
                 let attributedString1:NSMutableAttributedString = NSMutableAttributedString(string: str)
                 let paragraphStyle1:NSMutableParagraphStyle = NSMutableParagraphStyle()
